@@ -1,5 +1,6 @@
 package net.darkhax.moreswords;
 
+import net.darkhax.moreswords.lib.Reference;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -7,11 +8,11 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "", name = "", version = "")
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class MoreSwords {
 	
-	@Mod.Instance("")
+	@Mod.Instance(Reference.MOD_ID)
 	public static MoreSwords instance;
 	
 	@EventHandler
