@@ -2,7 +2,7 @@ package net.darkhax.moreswords;
 
 import java.util.Arrays;
 
-import nat.darkhax.moreswords.core.proxy.CommonProxy;
+import net.darkhax.moreswords.core.proxy.CommonProxy;
 import net.darkhax.moreswords.lib.Reference;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
