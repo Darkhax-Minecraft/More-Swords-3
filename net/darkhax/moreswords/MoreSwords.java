@@ -3,6 +3,7 @@ package net.darkhax.moreswords;
 import java.util.Arrays;
 
 import net.darkhax.moreswords.core.proxy.CommonProxy;
+import net.darkhax.moreswords.item.Items;
 import net.darkhax.moreswords.lib.Config;
 import net.darkhax.moreswords.lib.Reference;
 import cpw.mods.fml.common.Mod;
@@ -29,6 +30,7 @@ public class MoreSwords {
 		
 		setModInfo(pre.getModMetadata());
 		new Config(pre);
+		new Items();
 	}
 	
 	@EventHandler
