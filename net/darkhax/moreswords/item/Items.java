@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.item;
 
+import net.darkhax.moreswords.lib.Config;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 
@@ -24,16 +25,16 @@ public class Items {
 	
 	void addItems() {
 		
-		swordDawmStar = new ItemCoreSword(13400, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.dawnstar");
-		swordVampiric = new ItemCoreSword(13401, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.vampiric");
-		swordGladiolus = new ItemCoreSword(13402, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.gladiolus");
-		swordDraconic = new ItemCoreSword(13403, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.draconic");
-		swordEnder = new ItemCoreSword(13404, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.ender");
-		swordCrystal = new ItemCoreSword(13405, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.crystal");
-		swordInfinity = new ItemCoreSword(13406, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.infinity");
-		swordGlacial = new ItemCoreSword(13407, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.glacial");
-		swordAether = new ItemCoreSword(13408, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.aether");
-		swordWither = new ItemCoreSword(13409, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.wither");
-		swordAdmin = new ItemCoreSword(13410, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.admin");
+		swordDawmStar = new ItemCoreSword(Config.swordDawnStarID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.dawnstar");
+		swordVampiric = new ItemCoreSword(Config.swordVampiricID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.vampiric");
+		swordGladiolus = new ItemCoreSword(Config.swordGladiolusID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.gladiolus");
+		swordDraconic = new ItemCoreSword(Config.swordDraconicID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.draconic");
+		swordEnder = new ItemCoreSword(Config.swordEnderID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.ender");
+		swordCrystal = new ItemCoreSword(Config.swordCrystalID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.crystal");
+		swordInfinity = new ItemCoreSword(Config.swordInfinityID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.infinity");
+		swordGlacial = new ItemCoreSword(Config.swordGladiolusID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.glacial");
+		swordAether = new ItemCoreSword(Config.swordAetherID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.aether");
+		swordWither = new ItemCoreSword(Config.swordWitherID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.wither");
+		swordAdmin = new ItemCoreSword(Config.swordAdminID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.admin");
 	}
 }
