@@ -1,4 +1,4 @@
-package darkhax.moreswords;
+package net.darkhax.moreswords;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
