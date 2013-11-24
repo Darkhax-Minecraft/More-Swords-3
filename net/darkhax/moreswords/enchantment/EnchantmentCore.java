@@ -12,7 +12,7 @@ public class EnchantmentCore extends Enchantment {
 
 	int maxLevel;
 	int minLevel;
-	ItemStack stack;
+	Item item;
 	
 	/**
 	 * @param id: ID for the enchantment being added.
@@ -22,11 +22,12 @@ public class EnchantmentCore extends Enchantment {
 	 * @param maxLevel: The highest possible level of enchantment.
 	 * @param itemStack: Stack that can get this enchantment. Books added by default.
 	 */
-	protected EnchantmentCore(int id, int weight, EnumEnchantmentType type, int minLevel, int maxLevel, ItemStack itemStack) {
+	protected EnchantmentCore(int id, int weight, int minLevel, int maxLevel, Item item) {
 		
 		super(id, weight, EnumManager.enumSwords);
 		this.minLevel = minLevel;
 		this.maxLevel = maxLevel;
+		this.item = item;
 	}
 
     public int getMinLevel() {
@@ -41,7 +42,7 @@ public class EnchantmentCore extends Enchantment {
     
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
 		
-		if (stack.getItem() == this.stack.getItem() | stack.getItem() == Item.book) {
+		if (stack.getItem() == this.item | stack.getItem() == Item.book) {
 			
 			return true;
 		}
