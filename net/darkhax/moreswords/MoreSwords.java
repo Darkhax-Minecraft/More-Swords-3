@@ -3,10 +3,13 @@ package net.darkhax.moreswords;
 import java.util.Arrays;
 
 import net.darkhax.moreswords.core.proxy.CommonProxy;
+import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.item.Items;
 import net.darkhax.moreswords.lib.Config;
 import net.darkhax.moreswords.lib.Reference;
+
 import net.minecraft.creativetab.CreativeTabs;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
@@ -34,6 +37,7 @@ public class MoreSwords {
 		setModInfo(pre.getModMetadata());
 		new Config(pre);
 		new Items();
+		new Enchantments();
 	}
 	
 	@EventHandler
