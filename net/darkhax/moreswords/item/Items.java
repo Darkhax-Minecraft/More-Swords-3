@@ -32,7 +32,7 @@ public class Items {
 		swordEnder = new ItemCoreSword(Config.swordEnderID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.ender");
 		swordCrystal = new ItemCoreSword(Config.swordCrystalID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.crystal");
 		swordInfinity = new ItemCoreSword(Config.swordInfinityID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.infinity");
-		swordGlacial = new ItemCoreSword(Config.swordGladiolusID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.glacial");
+		swordGlacial = new ItemCoreSword(Config.swordGlacialID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.glacial");
 		swordAether = new ItemCoreSword(Config.swordAetherID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.aether");
 		swordWither = new ItemCoreSword(Config.swordWitherID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.wither");
 		swordAdmin = new ItemCoreSword(Config.swordAdminID, EnumToolMaterial.EMERALD).setUnlocalizedName("msm.admin");
