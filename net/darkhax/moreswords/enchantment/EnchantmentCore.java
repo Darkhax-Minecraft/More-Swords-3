@@ -13,17 +13,17 @@ public class EnchantmentCore extends Enchantment {
 	int maxLevel;
 	int minLevel;
 	Item item;
-	
+
 	/**
 	 * @param id: ID for the enchantment being added.
 	 * @param weight: How often the enchantment shows up.
-	 * @param unlocalizedName: Name for the enchantment. (unlocalized) 
+	 * @param unlocalizedName: Name for the enchantment. (unlocalized)
 	 * @param minLevel: The lowest possible level of enchantment.
 	 * @param maxLevel: The highest possible level of enchantment.
 	 * @param item: item that can get this enchantment. Books added by default.
 	 */
 	protected EnchantmentCore(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
-		
+
 		super(id, weight, EnumManager.enumSwords);
 		this.name = unlocalizedName;
 		this.minLevel = minLevel;
@@ -31,33 +31,35 @@ public class EnchantmentCore extends Enchantment {
 		this.item = item;
 	}
 
-    public int getMinLevel() {
-    	
-        return this.minLevel;
-    }
+	public int getMinLevel() {
 
-    public int getMaxLevel() {
-    	
-        return this.maxLevel;
-    }
-    
+		return this.minLevel;
+	}
+
+	public int getMaxLevel() {
+
+		return this.maxLevel;
+	}
+
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
-		
+
 		if (stack.getItem() == this.item | stack.getItem() == Item.book) {
-			
+
 			return true;
 		}
-		
-		else return false;
+
+		else
+			return false;
 	}
-	
-    public boolean canApply(ItemStack stack) {
-    	
-    	if (stack.getItem() instanceof ItemSword | stack.getItem() == Item.book) {
-    			
-    		return true;
-    	}	
-    	
-    	else return false;
-    }
+
+	public boolean canApply(ItemStack stack) {
+
+		if (stack.getItem() instanceof ItemSword | stack.getItem() == Item.book) {
+
+			return true;
+		}
+
+		else
+			return false;
+	}
 }
