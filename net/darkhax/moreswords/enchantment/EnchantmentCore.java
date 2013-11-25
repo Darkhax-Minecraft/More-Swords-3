@@ -17,14 +17,15 @@ public class EnchantmentCore extends Enchantment {
 	/**
 	 * @param id: ID for the enchantment being added.
 	 * @param weight: How often the enchantment shows up.
-	 * @param type: Type of enchantment, defaulted to more swords custom type.
+	 * @param unlocalizedName: Name for the enchantment. (unlocalized) 
 	 * @param minLevel: The lowest possible level of enchantment.
 	 * @param maxLevel: The highest possible level of enchantment.
-	 * @param itemStack: Stack that can get this enchantment. Books added by default.
+	 * @param item: item that can get this enchantment. Books added by default.
 	 */
-	protected EnchantmentCore(int id, int weight, int minLevel, int maxLevel, Item item) {
+	protected EnchantmentCore(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 		
 		super(id, weight, EnumManager.enumSwords);
+		this.name = unlocalizedName;
 		this.minLevel = minLevel;
 		this.maxLevel = maxLevel;
 		this.item = item;
