@@ -1,5 +1,8 @@
 #English file by Darkhax
 
+#Creative Tab
+itemGroup.moreSwords= More Swords Mod
+
 #Items
 item.msm.dawnstar.name=Dawn Star
 item.msm.vampiric.name=Vampiric Blade
@@ -13,5 +16,6 @@ item.msm.aether.name=Aether's Guard
 item.msm.wither.name=Wither's Bane
 item.msm.admin.name=Adminium Ark
 
-#Creative Tab
-itemGroup.moreSwords= More Swords Mod
+#Enchantments
+enchantment.msm.ignite=Ignite
+enchantment.msm.descent=Descent
