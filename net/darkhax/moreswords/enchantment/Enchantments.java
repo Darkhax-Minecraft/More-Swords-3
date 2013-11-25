@@ -11,4 +11,24 @@ public class Enchantments {
 	
 	public static final Enchantment ignite = new EnchantmentCore(60, basic, "msm.ignite", 1, 3, Items.swordDawmStar);
 	public static final Enchantment descent = new EnchantmentCore(61, advanced, "msm.descent", 1, 1, Items.swordDawmStar);
+	public static final Enchantment feast = new EnchantmentCore(62, basic, "msm.feast", 1, 3, Items.swordVampiric);
+	public static final Enchantment vitality = new EnchantmentCore(63, advanced, "msm.vitality", 1, 1, Items.swordVampiric);
+	public static final Enchantment venomAspect = new EnchantmentCore(64, basic, "msm.venomAspect", 1, 3, Items.swordGladiolus);
+	public static final Enchantment gladiolus2 = new EnchantmentCore(65, advanced, "msm.gladiolus1", 1, 1, Items.swordGladiolus);
+	public static final Enchantment draconic1 = new EnchantmentCore(66, basic, "msm.draconic1", 1, 3, Items.swordDraconic);
+	public static final Enchantment draconic2 = new EnchantmentCore(67, advanced, "msm.draconic2", 1, 1, Items.swordDraconic);
+	public static final Enchantment enderPulse = new EnchantmentCore(68, basic, "msm.enderPulse", 1, 3, Items.swordEnder);
+	public static final Enchantment enderSlash = new EnchantmentCore(69, advanced, "msm.enderSlash", 1, 1, Items.swordEnder);
+	public static final Enchantment crystal1 = new EnchantmentCore(70, basic, "msm.crystal1", 1, 3, Items.swordCrystal);
+	public static final Enchantment crystal2 = new EnchantmentCore(71, advanced, "msm.crystal2", 1, 1, Items.swordCrystal);
+	public static final Enchantment infinity1 = new EnchantmentCore(72, basic, "msm.infinity1", 1, 3, Items.swordInfinity);
+	public static final Enchantment infinity2 = new EnchantmentCore(73, advanced, "msm.infinity2", 1, 1, Items.swordInfinity);
+	public static final Enchantment frozenAspect = new EnchantmentCore(74, basic, "msm.frozenAspect", 1, 3, Items.swordGlacial);
+	public static final Enchantment glacial2 = new EnchantmentCore(75, advanced, "msm.glacial2", 1, 1, Items.swordGlacial);
+	public static final Enchantment ascension = new EnchantmentCore(76, basic, "msm.ascension", 1, 3, Items.swordAether);
+	public static final Enchantment aether2 = new EnchantmentCore(77, advanced, "msm.aether2", 1, 1, Items.swordAether);
+	public static final Enchantment decay = new EnchantmentCore(78, basic, "msm.decay", 1, 3, Items.swordWither);
+	public static final Enchantment wither2 = new EnchantmentCore(79, advanced, "msm.wither2", 1, 1, Items.swordWither);
+	public static final Enchantment stealth = new EnchantmentCore(80, basic, "msm.stealth", 1, 3, Items.swordAdmin);
+	public static final Enchantment admin1 = new EnchantmentCore(81, advanced, "msm.admin", 1, 1, Items.swordAdmin);
 }
