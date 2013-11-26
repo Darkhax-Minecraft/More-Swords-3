@@ -12,19 +12,11 @@ import net.minecraft.item.ItemSword;
 
 public class ItemCoreSword extends ItemSword {
 
-	protected static final UUID player = UUID.fromString("5D6F0BA2-1186-46AC-B896-C61C5CEE99CC");
+	protected static final UUID player = UUID.fromString("91AEAA56-376B-4498-935B-2F7F68070635");
 	
 	public ItemCoreSword(int id, EnumToolMaterial material) {
 	
 		super(id, material);
 		this.setCreativeTab(MoreSwords.tabSwords);
 	}
-	
-	/* Test code
-    public Multimap getItemAttributeModifiers() {
-        Multimap multimap = super.getItemAttributeModifiers();
-        multimap.put(SharedMonsterAttributes.maxHealth.getAttributeUnlocalizedName(), new AttributeModifier(player, "potion.healthBoost", 23, 0));
-        return multimap;
-    }
-    */
 }
