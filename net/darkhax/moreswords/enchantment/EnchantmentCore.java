@@ -62,4 +62,14 @@ public class EnchantmentCore extends Enchantment {
 		else
 			return false;
 	}
+	
+    public int getMinEnchantability(int par1) {
+    	
+        return 10 + 20 * (par1 - 1);
+    }
+
+    public int getMaxEnchantability(int par1) {
+    	
+        return super.getMinEnchantability(par1) + 50;
+    }
 }
