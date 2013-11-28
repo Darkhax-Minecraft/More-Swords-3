@@ -1,5 +1,7 @@
 package net.darkhax.moreswords.lib;
 
+import java.io.File;
+
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.Configuration;
 
@@ -21,9 +23,9 @@ public class Config {
 	public static int swordWitherID;
 	public static int swordAdminID;
 	
-	public Config(FMLPreInitializationEvent event) {
+	public Config(File configFile) {
 		
-		config = new Configuration(event.getSuggestedConfigurationFile());
+		config = new Configuration(configFile);
 		config.load();
 		generateConfig();
 		config.save();	
