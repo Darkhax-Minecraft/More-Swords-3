@@ -14,9 +14,9 @@ public class Enchantments {
 	public static final Enchantment feast = new EnchantmentCore(62, basic, "msm.feast", 1, 3, Items.swordVampiric);
 	public static final Enchantment vitality = new EnchantmentCore(63, advanced, "msm.vitality", 1, 1, Items.swordVampiric);
 	public static final Enchantment venomAspect = new EnchantmentCore(64, basic, "msm.venomAspect", 1, 3, Items.swordGladiolus);
-	public static final Enchantment gladiolus2 = new EnchantmentCore(65, advanced, "msm.gladiolus1", 1, 1, Items.swordGladiolus);
-	public static final Enchantment draconic1 = new EnchantmentCore(66, basic, "msm.draconic1", 1, 3, Items.swordDraconic);
-	public static final Enchantment draconic2 = new EnchantmentCore(67, advanced, "msm.draconic2", 1, 1, Items.swordDraconic);
+	public static final Enchantment growth = new EnchantmentCore(65, advanced, "msm.growth", 1, 1, Items.swordGladiolus);
+	public static final Enchantment keenEdge = new EnchantmentCore(66, basic, "msm.keenEdge", 1, 3, Items.swordDraconic);
+	public static final Enchantment restoration = new EnchantmentCore(67, advanced, "msm.restoration", 1, 1, Items.swordDraconic);
 	public static final Enchantment enderPulse = new EnchantmentCore(68, basic, "msm.enderPulse", 1, 3, Items.swordEnder);
 	public static final Enchantment enderSlash = new EnchantmentCore(69, advanced, "msm.enderSlash", 1, 1, Items.swordEnder);
 	public static final Enchantment crystal1 = new EnchantmentCore(70, basic, "msm.crystal1", 1, 3, Items.swordCrystal);
