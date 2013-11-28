@@ -35,7 +35,7 @@ public class MoreSwords {
 	public void preInit(FMLPreInitializationEvent pre) {
 		
 		setModInfo(pre.getModMetadata());
-		new Config(pre);
+		new Config(pre.getSuggestedConfigurationFile());
 		new Items();
 		new Enchantments();
 	}
