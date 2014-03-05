@@ -1,0 +1,31 @@
+#English file by Darkhax
+
+#Creative Tab
+itemGroup.moreSwords= More Swords Mod
+
+#Items
+item.msm.dawnstar.name=Dawn Star
+item.msm.vampiric.name=Vampiric Blade
+item.msm.gladiolus.name=Gladiolus
+item.msm.draconic.name=Draconic Blade
+item.msm.ender.name=EyeEnd Sword
+item.msm.crystal.name=Crystalline Blade
+item.msm.infinity.name=Infinity Blade
+item.msm.glacial.name=Glacial Blade
+item.msm.aether.name=Aether's Guard
+item.msm.wither.name=Wither's Bane
+item.msm.admin.name=Adminium Ark
+
+#Enchantments
+enchantment.msm.ignite=Ignite
+enchantment.msm.descent=Descent
+enchantment.msm.feast=Feast
+enchantment.msm.venomAspect=Venomous Aspect
+enchantment.msm.growth=Growth
+enchantment.msm.keenEdge=Keen Edge
+enchantment.msm.restoration=Restoration
+enchantment.msm.enderPulse=Ender Pulse
+enchantment.msm.enderSlash=Ender Slash
+enchantment.msm.greed=Greed
+enchantment.msm.wisdom=Wisdom
+
