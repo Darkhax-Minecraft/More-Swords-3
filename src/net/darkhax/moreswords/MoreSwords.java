@@ -2,11 +2,11 @@ package net.darkhax.moreswords;
 
 import java.util.Arrays;
 
-import net.darkhax.moreswords.core.proxy.CommonProxy;
 import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.lib.Config;
 import net.darkhax.moreswords.lib.Reference;
+import net.darkhax.moreswords.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraftforge.common.util.EnumHelper;

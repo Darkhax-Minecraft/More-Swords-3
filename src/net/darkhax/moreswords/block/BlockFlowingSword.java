@@ -15,31 +15,31 @@ public class BlockFlowingSword extends BlockLiquid {
 	private IIcon iconStill;
 	private IIcon iconFlowing;
 	private String liquidName;
-	
+
 	public BlockFlowingSword(String liquidName) {
 
 		super(Material.water);
 		this.setHardness(1337);
-		this.setLightOpacity(1);	
+		this.setLightOpacity(1);
 		this.liquidName = liquidName;
 		this.setCreativeTab(MoreSwords.tabSwords);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister ir) {
-		
+
 		this.iconStill = ir.registerIcon(Reference.TEXTURE_DOMAIN + this.liquidName + "_still");
 		this.iconFlowing = ir.registerIcon(Reference.TEXTURE_DOMAIN + this.liquidName + "_flow");
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta) {
-    	
-    	if (side == 0 || side == 1) {
-    		
-    		return this.iconStill;
-    	}
-    	
-    	return this.iconFlowing;
-    }
+
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta) {
+
+		if (side == 0 || side == 1) {
+
+			return this.iconStill;
+		}
+
+		return this.iconFlowing;
+	}
 }

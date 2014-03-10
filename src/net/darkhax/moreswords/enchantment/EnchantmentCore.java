@@ -49,26 +49,29 @@ public class EnchantmentCore extends Enchantment {
 			return true;
 		}
 
-		else return false;
+		else
+			return false;
 	}
 
 	public boolean canApply(ItemStack stack) {
 
-		if (stack.getItem() instanceof ItemSword | stack.getItem() == Items.book) {
+		if (stack.getItem() instanceof ItemSword
+				| stack.getItem() == Items.book) {
 
 			return true;
 		}
 
-		else return false;
+		else
+			return false;
 	}
-	
-    public int getMinEnchantability(int par1) {
-    	
-        return 10 + 20 * (par1 - 1);
-    }
 
-    public int getMaxEnchantability(int par1) {
-    	
-        return super.getMinEnchantability(par1) + 50;
-    }
+	public int getMinEnchantability(int par1) {
+
+		return 10 + 20 * (par1 - 1);
+	}
+
+	public int getMaxEnchantability(int par1) {
+
+		return super.getMinEnchantability(par1) + 50;
+	}
 }

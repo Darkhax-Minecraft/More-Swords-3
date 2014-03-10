@@ -104,7 +104,7 @@ public class Config {
 		Configuration config = new Configuration(configFile);
 		config.load();
 		
-	    damageDawnStar = config.get(damage, "Damage Value Of Dawns Star", 100).getInt(); 
+		damageDawnStar = config.get(damage, "Damage Value Of Dawns Star", 100).getInt(); 
 		damageVampiric = config.get(damage, "Damage Value Of Vampiric Blade", 100).getInt(); 
 		damageGladiolus = config.get(damage, "Damage Value Of Gladiolus", 100).getInt(); 
 		damageDraconic = config.get(damage, "Damage Value Of Draconic Blade", 100).getInt(); 
@@ -128,7 +128,7 @@ public class Config {
 		durabilityWither = config.get(durability, "Durability Value Of Withers Bane", 100).getInt();  
 		durabilityAdmin = config.get(durability, "Durability Value Of Adminium Ark", 100).getInt();  
 		
-	    enchantDawnStar = config.get(enchant, "Enchantability Of DawnStar", 100).getInt();  
+		enchantDawnStar = config.get(enchant, "Enchantability Of DawnStar", 100).getInt();  
 		enchantVampiric = config.get(enchant, "Enchantability Of Vampiric Blade", 100).getInt();  
 		enchantGladiolus = config.get(enchant, "Enchantability Of Gladiolus", 100).getInt();  
 		enchantDraconic = config.get(enchant, "Enchantability Of Draconic Blade", 100).getInt();  
@@ -140,7 +140,7 @@ public class Config {
 		enchantWither = config.get(enchant, "Enchantability Of Withers Bane", 100).getInt();  
 		enchantAdmin = config.get(enchant, "Enchantability Of Adminium Ark", 100).getInt();  
 		
-	    harvestDawnStar = config.get(harvest, "Harvest Level Of DawnStar", 100).getInt();  
+		harvestDawnStar = config.get(harvest, "Harvest Level Of DawnStar", 100).getInt();  
 		harvestVampiric = config.get(harvest, "Harvest Level Of Vampiric Blade", 100).getInt();  
 		harvestGladiolus = config.get(harvest, "Harvest Level Of Gladiolus", 100).getInt();  
 		harvestDraconic = config.get(harvest, "Harvest Level Of Draconic Blade", 100).getInt();  
@@ -152,7 +152,7 @@ public class Config {
 		harvestWither = config.get(harvest, "Harvest Level Of Withers Bane", 100).getInt();  
 		harvestAdmin = config.get(harvest, "Harvest Level Of Adminium Ark", 100).getInt();  
 		
-	    efficientDawnStar = config.get(efficient, "Efficiency  Of DawnStar", 100).getInt();  
+		efficientDawnStar = config.get(efficient, "Efficiency  Of DawnStar", 100).getInt();  
 		efficientVampiric = config.get(efficient, "Efficiency  Of Vampiric Blade", 100).getInt();  
 		efficientGladiolus = config.get(efficient, "Efficiency  Of Gladiolus", 100).getInt();  
 		efficientDraconic = config.get(efficient, "Efficiency  Of Draconic Blade", 100).getInt();  
@@ -164,7 +164,7 @@ public class Config {
 		efficientWither = config.get(efficient, "Efficiency  Of Withers Bane", 100).getInt();  
 		efficientAdmin = config.get(efficient, "Efficiency  Of Adminium Ark", 100).getInt();  
 		
-	    repairDawnStar = config.get(repair, "Repair Item For DawnStar", "none").getString();  
+		repairDawnStar = config.get(repair, "Repair Item For DawnStar", "none").getString();  
 		repairVampiric = config.get(repair, "Repair Item For Vampiric Blade", "none").getString();  
 		repairGladiolus = config.get(repair, "Repair Item For Gladiolus", "none").getString();  
 		repairDraconic = config.get(repair, "Repair Item For Draconic Blade", "none").getString();  
@@ -176,7 +176,7 @@ public class Config {
 		repairWither = config.get(repair, "Repair Item For Withers Bane", "none").getString();  
 		repairAdmin = config.get(repair, "Repair Item For Adminium Ark", "none").getString();  
 		
-	    craftingDawnStar = config.get(crafting, "Should the  DawnStar Be Craftable?", true).getBoolean(true);  
+		craftingDawnStar = config.get(crafting, "Should the  DawnStar Be Craftable?", true).getBoolean(true);  
 		craftingVampiric = config.get(crafting, "Should the  Vampiric Blade Be Craftable?", true).getBoolean(true);  
 		craftingGladiolus = config.get(crafting, "Should the  Gladiolus Be Craftable?", true).getBoolean(true);  
 		craftingDraconic = config.get(crafting, "Should the  Draconic Blade Be Craftable?", true).getBoolean(true);  
