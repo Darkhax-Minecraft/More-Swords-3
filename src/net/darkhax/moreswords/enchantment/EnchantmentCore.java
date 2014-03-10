@@ -1,8 +1,9 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.lib.EnumManager;
+import net.darkhax.moreswords.MoreSwords;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBook;
 import net.minecraft.item.ItemStack;
@@ -24,8 +25,8 @@ public class EnchantmentCore extends Enchantment {
 	 */
 	protected EnchantmentCore(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-		super(id, weight, EnumManager.enumSwords);
-		this.name = unlocalizedName;
+		super(id, weight, MoreSwords.enumSwords);
+		this.name = "msm." + unlocalizedName;
 		this.minLevel = minLevel;
 		this.maxLevel = maxLevel;
 		this.item = item;
@@ -43,24 +44,22 @@ public class EnchantmentCore extends Enchantment {
 
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
 
-		if (stack.getItem() == this.item | stack.getItem() == Item.book) {
+		if (stack.getItem() == this.item | stack.getItem() == Items.book) {
 
 			return true;
 		}
 
-		else
-			return false;
+		else return false;
 	}
 
 	public boolean canApply(ItemStack stack) {
 
-		if (stack.getItem() instanceof ItemSword | stack.getItem() == Item.book) {
+		if (stack.getItem() instanceof ItemSword | stack.getItem() == Items.book) {
 
 			return true;
 		}
 
-		else
-			return false;
+		else return false;
 	}
 	
     public int getMinEnchantability(int par1) {

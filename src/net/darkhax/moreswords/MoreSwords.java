@@ -4,11 +4,16 @@ import java.util.Arrays;
 
 import net.darkhax.moreswords.core.proxy.CommonProxy;
 import net.darkhax.moreswords.enchantment.Enchantments;
-import net.darkhax.moreswords.item.Items;
+import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.lib.Config;
 import net.darkhax.moreswords.lib.Reference;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.Configuration;
+import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraftforge.common.util.EnumHelper;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
@@ -16,14 +21,15 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER)
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class MoreSwords {
 	
 	public static CreativeTabs tabSwords = new CreativeTabMoreSwords(CreativeTabs.getNextID(), "moreSwords");
+	public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
 	
+	public static final Logger logger = LogManager.getLogger("MoreSwords");
+	  
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
 	
@@ -35,18 +41,9 @@ public class MoreSwords {
 		
 		setModInfo(pre.getModMetadata());
 		
-		new Items();
-
-	}
-	
-	@EventHandler
-	public void init(FMLInitializationEvent init) {
-		
-	}
-	
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent post) {
-		
+		new Config(pre.getSuggestedConfigurationFile());
+		new SwordItems();
+		new Enchantments();
 	}
 	
 	void setModInfo(ModMetadata meta) {
