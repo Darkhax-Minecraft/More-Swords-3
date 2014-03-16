@@ -3,17 +3,9 @@ package net.darkhax.moreswords.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.darkhax.moreswords.MoreSwords;
-import net.darkhax.moreswords.block.BlockFlowingSword;
-import net.darkhax.moreswords.lib.Config;
 import net.darkhax.moreswords.lib.Reference;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
 	
