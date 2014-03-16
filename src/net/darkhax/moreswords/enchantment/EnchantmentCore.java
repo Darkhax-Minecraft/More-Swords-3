@@ -2,10 +2,8 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 
