@@ -15,7 +15,7 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 public class EnchantmentIgnite extends EnchantmentCore {
 
 	protected EnchantmentIgnite(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
-		
+
 		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -24,22 +24,22 @@ public class EnchantmentIgnite extends EnchantmentCore {
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (event.target instanceof EntityLiving) {
-			
+
 			EntityLiving living = (EntityLiving) event.target;
-			
+
 			if (event.entityLiving.getHeldItem() != null) {
-				
+
 				ItemStack stack = event.entityLiving.getHeldItem();
 				int enchLevel = EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
 
 				if (enchLevel > 0) {
-					
-					living.setFire(enchLevel);
-					
+
+					living.setFire(2 * enchLevel);
+
 					if (living instanceof EntityCreeper) {
-						
+
 						EntityCreeper creeper = (EntityCreeper) living;
-						creeper.getDataWatcher().updateObject(18, Byte.valueOf((byte)1));
+						creeper.getDataWatcher().updateObject(18, Byte.valueOf((byte) 1));
 					}
 				}
 			}

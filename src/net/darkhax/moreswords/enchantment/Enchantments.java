@@ -10,7 +10,7 @@ public class Enchantments {
 	static int advanced = 1;
 	
 	public static final Enchantment ignite = new EnchantmentIgnite(170, basic, "ignite", 1, 3, SwordItems.swordDawmStar);
-	public static final Enchantment descent = new EnchantmentCore(171, advanced, "descent", 1, 1, SwordItems.swordDawmStar);
+	public static final Enchantment spark = new EnchantmentSpark(171, advanced, "spark", 1, 1, SwordItems.swordDawmStar);
 	public static final Enchantment feast = new EnchantmentFeast(172, basic, "feast", 1, 3, SwordItems.swordVampiric);
 	public static final Enchantment vitality = new EnchantmentCore(173, advanced, "vitality", 1, 1, SwordItems.swordVampiric);
 	public static final Enchantment venomAspect = new EnchantmentCore(174, basic, "venomAspect", 1, 3, SwordItems.swordGladiolus);

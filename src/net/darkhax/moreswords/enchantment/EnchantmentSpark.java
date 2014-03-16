@@ -1,18 +1,21 @@
 package net.darkhax.moreswords.enchantment;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.darkhax.moreswords.lib.Reference;
+import net.darkhax.moreswords.MoreSwords;
+import net.darkhax.moreswords.lib.Utils;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 
-public class EnchantmentFeast extends EnchantmentCore {
+public class EnchantmentSpark extends EnchantmentCore {
 
-	protected EnchantmentFeast(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+	protected EnchantmentSpark(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
 		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -32,9 +35,17 @@ public class EnchantmentFeast extends EnchantmentCore {
 
 				if (enchLevel > 0) {
 
-					int repair = Reference.random.nextIntII(0, 3) * enchLevel;
+					for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
 
-					stack.damageItem(-repair, event.entityLiving);
+						if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
+
+							if (Utils.isEntityWithinRange(living, event.entityLiving, 3.5d)) {
+
+								EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
+								closeEntity.setFire(1);
+							}
+						}
+					}
 				}
 			}
 		}
