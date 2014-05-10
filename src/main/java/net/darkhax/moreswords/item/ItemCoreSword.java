@@ -8,7 +8,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemCoreSword extends ItemSword {
 	
-	private final String swordName;
+	public final String swordName;
 
 	public ItemCoreSword(String swordName) {
 		

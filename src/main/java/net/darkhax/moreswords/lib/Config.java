@@ -13,7 +13,8 @@ public class Config {
 	public static String efficient = "Efficiency Values";
 	public static String repair = "Repair Items";
 	public static String crafting = "Disable Crafting Recipes";
-	public static String enchants = "Enchantment ID Values";
+	public static String enchantsID = "Enchantment ID Values";
+	public static String effects = "Enchantment Effects";
 	
 	public static int damageDawnStar;
 	public static int damageVampiric;
@@ -98,6 +99,11 @@ public class Config {
 	public static boolean craftingAether;
 	public static boolean craftingWither;
 	public static boolean craftingAdmin;
+	
+	public static int igniteDamage;
+	public static boolean igniteBoom;
+	public static int sparkDamage;
+	public static double sparkRange;
 	
 	public Config(File configFile) {
 		
@@ -187,6 +193,11 @@ public class Config {
 		craftingAether = config.get(crafting, "Should the  Aether's Guard Be Craftable?", true).getBoolean(true);  
 		craftingWither = config.get(crafting, "Should the  Withers Bane Be Craftable?", true).getBoolean(true);  
 		craftingAdmin = config.get(crafting, "Should the  Adminium Ark Be Craftable?", true).getBoolean(true);  
+		
+		igniteDamage = config.get(effects, "How much base damage the ignite effect has", 2).getInt();
+		igniteBoom = config.get(effects, "Should the ignite effect cause creepers to go boom?", true).getBoolean(true);
+		sparkDamage = config.get(effects, "How much is the base damage for the Spark enchantment", 3).getInt() ;
+		sparkRange = config.get(effects, "How close do mobs have to be to be effected by the spark effect", 3.5).getDouble(3.5d);
 		
 		config.save();
 	}

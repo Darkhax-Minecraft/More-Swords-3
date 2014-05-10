@@ -40,7 +40,9 @@ public class SwordItems {
 	
 	public void registerItem(Item item) {
 		
-		GameRegistry.registerItem(item, item.getUnlocalizedName(), Reference.MOD_ID);
+
+		ItemCoreSword sword = (ItemCoreSword) item;
+		GameRegistry.registerItem(item, sword.swordName, Reference.MOD_ID);
 		swordList.add(item);
 	}
 }

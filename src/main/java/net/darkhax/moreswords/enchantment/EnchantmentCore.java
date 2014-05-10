@@ -2,6 +2,9 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -53,8 +56,7 @@ public class EnchantmentCore extends Enchantment {
 
 	public boolean canApply(ItemStack stack) {
 
-		if (stack.getItem() instanceof ItemSword
-				| stack.getItem() == Items.book) {
+		if (stack.getItem() instanceof ItemSword | stack.getItem() == Items.book) {
 
 			return true;
 		}
@@ -71,5 +73,28 @@ public class EnchantmentCore extends Enchantment {
 	public int getMaxEnchantability(int par1) {
 
 		return super.getMinEnchantability(par1) + 50;
+	}
+	
+	public boolean isLiving(Entity entity) {
+		
+		if (entity instanceof EntityLiving) {
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean isValidPlayer(Entity entity) {
+		
+		if (entity instanceof EntityPlayer) {
+			
+			if (((EntityPlayer) entity).getHeldItem() != null) {
+				
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

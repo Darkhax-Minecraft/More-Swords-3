@@ -1,17 +1,18 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.lib.Utils;
+import net.darkhax.moreswords.lib.Config;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EnchantmentSpark extends EnchantmentCore {
+public class EnchantmentIgnite extends EnchantmentCore {
 
-	protected EnchantmentSpark(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+	protected EnchantmentIgnite(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
 		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -31,16 +32,12 @@ public class EnchantmentSpark extends EnchantmentCore {
 
 				if (enchLevel > 0) {
 
-					for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
+					living.setFire(Config.igniteDamage * enchLevel);
 
-						if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
+					if (living instanceof EntityCreeper && Config.igniteBoom) {
 
-							if (Utils.isEntityWithinRange(living, event.entityLiving, 3.5d)) {
-
-								EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
-								closeEntity.setFire(1);
-							}
-						}
+						EntityCreeper creeper = (EntityCreeper) living;
+						creeper.getDataWatcher().updateObject(18, Byte.valueOf((byte) 1));
 					}
 				}
 			}
