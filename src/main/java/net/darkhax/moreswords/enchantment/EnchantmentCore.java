@@ -92,7 +92,10 @@ public class EnchantmentCore extends Enchantment {
 			
 			if (((EntityPlayer) entity).getHeldItem() != null) {
 				
-				return true;
+				if (level(((EntityPlayer) entity).getHeldItem()) > 0) {
+					
+					return true;
+				}
 			}
 		}
 		
