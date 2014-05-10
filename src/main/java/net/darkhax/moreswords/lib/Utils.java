@@ -3,8 +3,11 @@ package net.darkhax.moreswords.lib;
 import java.util.List;
 import java.util.UUID;
 
+import com.google.common.collect.Multimap;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -232,5 +235,27 @@ public class Utils {
 		
 		System.out.println("There was an error retrieving the " + atbName + " Attribute from the " + stack.getDisplayName() + " 0.00 was returned");
 		return 0.00;
+	}
+	
+	/**
+	 * Returns how much damage an item will initially do to an entity. 
+	 * @param stack: ItemStack being checked. 
+	 */
+	public static double getItemWeaponDamage(ItemStack stack) {
+		
+		Multimap multimap = stack.getAttributeModifiers();
+		if (multimap.containsKey(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName())) {
+
+			if (multimap.get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName()).toArray().length > 0) {
+
+				if (multimap.get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName()).toArray()[0] instanceof AttributeModifier) {
+
+					AttributeModifier weaponModifier = (AttributeModifier) multimap.get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName()).toArray()[0];
+					return weaponModifier.getAmount();
+				}
+			}
+		}
+
+		return 0;
 	}
 }
