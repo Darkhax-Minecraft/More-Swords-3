@@ -31,7 +31,7 @@ public class EnchantmentFeast extends EnchantmentCore {
 
 				if (enchLevel > 0) {
 
-					int repair = Reference.random.nextIntII(0, 3) * enchLevel;
+					int repair = Reference.RND.nextIntII(0, 3) * enchLevel;
 
 					stack.damageItem(-repair, event.entityLiving);
 				}

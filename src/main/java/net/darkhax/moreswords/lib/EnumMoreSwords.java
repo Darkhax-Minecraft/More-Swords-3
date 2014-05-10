@@ -67,7 +67,7 @@ public enum EnumMoreSwords {
             }
         }
 
-        MoreSwords.logger.info("There was an error when attempting to look up " + name);
+        Reference.LOGGER.info("There was an error when attempting to look up " + name);
         return null;
     }
 
