@@ -2,6 +2,7 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -96,5 +97,10 @@ public class EnchantmentCore extends Enchantment {
 		}
 		
 		return false;
+	}
+	
+	public int level(ItemStack stack) {
+		
+		return EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
 	}
 }
