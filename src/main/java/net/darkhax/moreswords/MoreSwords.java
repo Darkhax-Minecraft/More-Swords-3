@@ -26,8 +26,6 @@ public class MoreSwords {
 	public static CreativeTabs tabSwords = new CreativeTabMoreSwords(CreativeTabs.getNextID(), "moreSwords");
 	public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
 
-	public static final Logger logger = LogManager.getLogger("MoreSwords");
-
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
 
