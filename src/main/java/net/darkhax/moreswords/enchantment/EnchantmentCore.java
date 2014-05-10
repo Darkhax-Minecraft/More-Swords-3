@@ -76,6 +76,10 @@ public class EnchantmentCore extends Enchantment {
 		return super.getMinEnchantability(par1) + 50;
 	}
 	
+	/**
+	 * Checks to see if the entity is an instance of EntityLiving
+	 * @param entity: The entity being checked. 
+	 */
 	public boolean isLiving(Entity entity) {
 		
 		if (entity instanceof EntityLiving) {
@@ -86,6 +90,12 @@ public class EnchantmentCore extends Enchantment {
 		return false;
 	}
 	
+	/**
+	 * Checks to see if a player is valid. This is done by seeing if 
+	 * they are an instance of EntityPlayer, currently holding an item
+	 * and if that item has the current enchantment or not. 
+	 * @param entity: The entity being checked. 
+	 */
 	public boolean isValidPlayer(Entity entity) {
 		
 		if (entity instanceof EntityPlayer) {
@@ -102,6 +112,10 @@ public class EnchantmentCore extends Enchantment {
 		return false;
 	}
 	
+	/**
+	 * Returns the current level of this enchantment on the item. 
+	 * @param stack: ItemStack being checked. 
+	 */
 	public int level(ItemStack stack) {
 		
 		return EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
