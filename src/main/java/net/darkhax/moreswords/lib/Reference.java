@@ -9,5 +9,5 @@ public class Reference {
 	public static final String SERVER_PROXY_CLASS = "net.darkhax.moreswords.proxy.CommonProxy";
 	public static final String TEXTURE_DOMAIN = "moreswords:";
 	
-	public static RandomUtils random = new RandomUtils();
+	public static final RandomUtils random = new RandomUtils();
 }
