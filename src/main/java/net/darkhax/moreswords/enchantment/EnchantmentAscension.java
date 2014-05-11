@@ -23,7 +23,7 @@ public class EnchantmentAscension extends EnchantmentCore {
 			if (isValidPlayer(event.entityLiving)) {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
-				double Y = EnchantmentHelper.getEnchantmentLevel(Enchantments.ascension.effectId, stack) * 1;
+				double Y = level(stack) * 1;
 				event.target.setVelocity(0, Y, 0);
 			}
 		}

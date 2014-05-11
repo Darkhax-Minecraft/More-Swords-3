@@ -21,24 +21,17 @@ public class EnchantmentIgnite extends EnchantmentCore {
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
-		if (event.target instanceof EntityLiving) {
-
-			EntityLiving living = (EntityLiving) event.target;
-
-			if (event.entityLiving.getHeldItem() != null) {
-
+		if (isLiving(event.target)) {
+			
+			if (isValidPlayer(event.entityPlayer)) {
+				
 				ItemStack stack = event.entityLiving.getHeldItem();
-				int enchLevel = EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
+				event.target.setFire(Config.igniteDamage * level(stack));
 
-				if (enchLevel > 0) {
+				if (event.target instanceof EntityCreeper && Config.igniteBoom) {
 
-					living.setFire(Config.igniteDamage * enchLevel);
-
-					if (living instanceof EntityCreeper && Config.igniteBoom) {
-
-						EntityCreeper creeper = (EntityCreeper) living;
-						creeper.getDataWatcher().updateObject(18, Byte.valueOf((byte) 1));
-					}
+					EntityCreeper creeper = (EntityCreeper) event.target;
+					creeper.getDataWatcher().updateObject(18, Byte.valueOf((byte) 1));
 				}
 			}
 		}

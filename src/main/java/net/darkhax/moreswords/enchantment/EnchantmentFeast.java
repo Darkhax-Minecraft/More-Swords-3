@@ -20,22 +20,14 @@ public class EnchantmentFeast extends EnchantmentCore {
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
-		if (event.target instanceof EntityLiving) {
-
-			EntityLiving living = (EntityLiving) event.target;
-
-			if (event.entityLiving.getHeldItem() != null) {
-
-				ItemStack stack = event.entityLiving.getHeldItem();
-				int enchLevel = EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
-
-				if (enchLevel > 0) {
-
-					int repair = Reference.RND.nextIntII(0, 3) * enchLevel;
-
-					stack.damageItem(-repair, event.entityLiving);
-				}
+		if (isLiving(event.entityPlayer)) {
+			
+			if (isValidPlayer(event.entityPlayer)) {
+				
+				ItemStack stack = event.entityPlayer.getHeldItem();
+				int repair = Reference.RND.nextIntII(0, 3) * level(stack);
+				stack.damageItem(-repair, event.entityLiving);
 			}
-		}
+		}	
 	}
 }

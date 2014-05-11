@@ -27,14 +27,14 @@ public class EnchantmentVitality extends EnchantmentCore {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				EntityPlayer player = event.entityPlayer;
-				int enchLevel = EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
+				int enchLevel = level(stack);
 				
-		        if (enchLevel >= 1) {
-		        	
-		            player.getHeldItem().damageItem(250, player);
-		            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 40 * enchLevel, 0));   
-		            player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 60 * enchLevel, 1));
-		        }
+	            player.getHeldItem().damageItem(250, player);
+	            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 140 * enchLevel, 0));   
+	            player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 120 * enchLevel, 1));
+	            player.addPotionEffect(new PotionEffect(Potion.heal.id, 15, 0));
+	            
+	            stack.damageItem(150 / enchLevel, player);
 			}
 		}
 	}

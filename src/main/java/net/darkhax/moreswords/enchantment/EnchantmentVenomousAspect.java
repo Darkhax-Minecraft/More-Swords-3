@@ -2,6 +2,7 @@ package net.darkhax.moreswords.enchantment;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -26,9 +27,7 @@ public class EnchantmentVenomousAspect extends EnchantmentCore {
 			if (isValidPlayer(event.entityLiving)) {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
-				EntityLiving living = (EntityLiving) event.target;
-				int enchLevel = EnchantmentHelper.getEnchantmentLevel(this.effectId, stack) * 1;
-				living.addPotionEffect(new PotionEffect(Potion.poison.id, 40 * enchLevel, enchLevel));
+				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.poison.id, 20 * level(stack), 1));
 			}
 		}
 	}

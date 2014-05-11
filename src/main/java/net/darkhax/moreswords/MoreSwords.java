@@ -9,10 +9,15 @@ import net.darkhax.moreswords.lib.Reference;
 import net.darkhax.moreswords.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -23,8 +28,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER)
 public class MoreSwords {
 
-	public static CreativeTabs tabSwords = new CreativeTabMoreSwords(CreativeTabs.getNextID(), "moreSwords");
-	public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
+	public static CreativeTabs tabSwords = new CreativeTabMoreSwords(
+			CreativeTabs.getNextID(), "moreSwords");
+	public static EnumEnchantmentType enumSwords = EnumHelper
+			.addEnchantmentType("moreSword");
 
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;

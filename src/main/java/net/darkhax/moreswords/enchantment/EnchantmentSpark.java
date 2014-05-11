@@ -21,28 +21,21 @@ public class EnchantmentSpark extends EnchantmentCore {
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
-		if (event.target instanceof EntityLiving) {
-
-			EntityLiving living = (EntityLiving) event.target;
-
-			if (event.entityLiving.getHeldItem() != null) {
-
-				ItemStack stack = event.entityLiving.getHeldItem();
-				int enchLevel = EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
-
-				if (enchLevel > 0) {
-
-					for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
+		if (isLiving(event.target)) {
+			
+			if (isValidPlayer(event.entityPlayer)) {
+				
+				EntityLiving living = (EntityLiving) event.target;
+				for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
+					
+					if (living.worldObj.loadedEntityList.get(i) != living) {
 						
-						if (living.worldObj.loadedEntityList.get(i) != living) {
-							
-							if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
+						if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
 
-								if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), Config.sparkRange)) {
+							if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), Config.sparkRange)) {
 
-									EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
-									closeEntity.setFire(Config.sparkDamage);
-								}
+								EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
+								closeEntity.setFire(3);
 							}
 						}
 					}
