@@ -17,6 +17,10 @@ public class EnchantmentFeast extends EnchantmentCore {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	/**
+	 * The feast enchantment will repair damage equal to
+	 * 0-3 per level on the sword. 
+	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 

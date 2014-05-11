@@ -19,6 +19,9 @@ public class EnchantmentVenomousAspect extends EnchantmentCore {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	/**
+	 * Poisons a mob for seconds equal to the enchantment level. 
+	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 

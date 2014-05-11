@@ -15,6 +15,10 @@ public class EnchantmentAscension extends EnchantmentCore {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	/**
+	 * The Ascension Enchantment will knock hit entities up into the
+	 * air. Motion is 0.5 multiplied by enchantment level. 
+	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
@@ -23,7 +27,7 @@ public class EnchantmentAscension extends EnchantmentCore {
 			if (isValidPlayer(event.entityLiving)) {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
-				double Y = level(stack) * 1;
+				double Y = level(stack) * 0.5;
 				event.target.setVelocity(0, Y, 0);
 			}
 		}

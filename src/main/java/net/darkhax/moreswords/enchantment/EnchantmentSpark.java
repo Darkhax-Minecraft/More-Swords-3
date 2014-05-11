@@ -18,6 +18,9 @@ public class EnchantmentSpark extends EnchantmentCore {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	/**
+	 * Sets mobs that are 2.4 blocks away on fire for 3 ticks. 
+	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
@@ -32,7 +35,7 @@ public class EnchantmentSpark extends EnchantmentCore {
 						
 						if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
 
-							if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), Config.sparkRange)) {
+							if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), 2.4)) {
 
 								EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
 								closeEntity.setFire(3);

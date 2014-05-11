@@ -18,6 +18,12 @@ public class EnchantmentVitality extends EnchantmentCore {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	/**
+	 * Consumes 150 divided by the enchantment level out of the durability of 
+	 * the tool, gives the wielder regeneration for 3 seconds multiplied by the
+	 * enchantment level, gives a 4 heart health boost for 3 seconds multiplied by
+	 * the enchantment level and a low level instant health boost for 0.05 seconds.
+	 */
 	@SubscribeEvent
 	public void onItemUsed(PlayerInteractEvent event) {
 		
@@ -30,9 +36,9 @@ public class EnchantmentVitality extends EnchantmentCore {
 				int enchLevel = level(stack);
 				
 	            player.getHeldItem().damageItem(250, player);
-	            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 140 * enchLevel, 0));   
-	            player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 120 * enchLevel, 1));
-	            player.addPotionEffect(new PotionEffect(Potion.heal.id, 15, 0));
+	            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 60 * enchLevel, 0));   
+	            player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 60 * enchLevel, 1));
+	            player.addPotionEffect(new PotionEffect(Potion.heal.id, 1, 0));
 	            
 	            stack.damageItem(150 / enchLevel, player);
 			}

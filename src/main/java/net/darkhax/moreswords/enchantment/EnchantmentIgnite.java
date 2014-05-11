@@ -18,6 +18,13 @@ public class EnchantmentIgnite extends EnchantmentCore {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	/**
+	 * The ignite enchantment will do fire damage to a mob
+	 * equal to that of the effect. If the mob is a creeper
+	 * he will explode. 
+	 * 
+	 * TODO add config option to disable creeper explosions.
+	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 

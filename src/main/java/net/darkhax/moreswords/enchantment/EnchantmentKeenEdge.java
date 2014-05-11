@@ -18,6 +18,9 @@ public class EnchantmentKeenEdge extends EnchantmentCore {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
+	/**
+	 * Deals extra damage to a mob on hit equal to that of the enchantment. 
+	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
@@ -27,7 +30,6 @@ public class EnchantmentKeenEdge extends EnchantmentCore {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				event.target.attackEntityFrom(DamageSource.magic, (float) (level(stack) + Utils.getItemWeaponDamage(stack)));
-				System.out.println("Damage: " + (float) ((level(stack) * 1.5) + Utils.getItemWeaponDamage(stack)));
 			}
 		}
 	}
