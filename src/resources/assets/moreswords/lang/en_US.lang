@@ -18,12 +18,13 @@ item.msm.admin.name=Adminium Ark
 
 #Enchantments
 enchantment.msm.ignite=Ignite
-enchantment.msm.descent=Descent
+enchantment.msm.spark=Sparks
 enchantment.msm.feast=Feast
+enchantment.msm.vitality=Vitality
 enchantment.msm.venomAspect=Venomous Aspect
 enchantment.msm.growth=Growth
 enchantment.msm.keenEdge=Keen Edge
-enchantment.msm.restoration=Restoration
+enchantment.msm.scorn=Scorn
 enchantment.msm.enderPulse=Ender Pulse
 enchantment.msm.enderSlash=Ender Slash
 enchantment.msm.greed=Greed
