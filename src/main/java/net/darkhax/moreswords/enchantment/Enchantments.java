@@ -13,11 +13,11 @@ public class Enchantments {
 	public static final Enchantment feast = new EnchantmentFeast(172, basic, "feast", 1, 3, SwordItems.swordVampiric);
 	public static final Enchantment vitality = new EnchantmentVitality(173, advanced, "vitality", 1, 1, SwordItems.swordVampiric);
 	public static final Enchantment venomAspect = new EnchantmentVenomousAspect(174, basic, "venomAspect", 1, 3, SwordItems.swordGladiolus);
-	//skipped
+
 	public static final Enchantment growth = new EnchantmentCore(175, advanced, "growth", 1, 1, SwordItems.swordGladiolus);
 	
 	public static final Enchantment keenEdge = new EnchantmentKeenEdge(176, basic, "keenEdge", 1, 3, SwordItems.swordDraconic);
-	public static final Enchantment purify = new EnchantmentCore(177, advanced, "purify", 1, 1, SwordItems.swordDraconic);
+	public static final Enchantment purify = new EnchantmentCore(177, advanced, "scorn", 1, 1, SwordItems.swordDraconic);
 	public static final Enchantment enderPulse = new EnchantmentCore(178, basic, "enderPulse", 1, 3, SwordItems.swordEnder);
 	public static final Enchantment enderSlash = new EnchantmentCore(179, advanced, "enderSlash", 1, 1, SwordItems.swordEnder);
 	public static final Enchantment greed = new EnchantmentCore(180, basic, "greed", 1, 3, SwordItems.swordCrystal);
