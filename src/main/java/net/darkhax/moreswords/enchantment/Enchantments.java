@@ -17,7 +17,7 @@ public class Enchantments {
 	public static final Enchantment keenEdge = new EnchantmentKeenEdge(176, basic, "keenEdge", 1, 3, SwordItems.swordDraconic);
 	public static final Enchantment scorn = new EnchantmentScorn(177, advanced, "scorn", 1, 1, SwordItems.swordDraconic);
 	public static final Enchantment enderPulse = new EnchantmentEnderPulse(178, basic, "enderPulse", 1, 3, SwordItems.swordEnder);
-	public static final Enchantment enderSlash = new EnchantmentCore(179, advanced, "enderSlash", 1, 1, SwordItems.swordEnder);
+	public static final Enchantment enderAura = new EnchantmentEnderAura(179, advanced, "enderAura", 1, 1, SwordItems.swordEnder);
 	public static final Enchantment greed = new EnchantmentCore(180, basic, "greed", 1, 3, SwordItems.swordCrystal);
 	public static final Enchantment wisdom = new EnchantmentCore(181, advanced, "wisdom", 1, 1, SwordItems.swordCrystal);
 	public static final Enchantment infinity1 = new EnchantmentCore(182, basic, "infinity1", 1, 3, SwordItems.swordInfinity);
