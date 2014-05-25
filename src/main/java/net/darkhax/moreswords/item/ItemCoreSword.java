@@ -1,7 +1,7 @@
 package net.darkhax.moreswords.item;
 
 import net.darkhax.moreswords.MoreSwords;
-import net.darkhax.moreswords.lib.EnumMoreSwords;
+import net.darkhax.moreswords.util.EnumMoreSwords;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.util.EnumHelper;

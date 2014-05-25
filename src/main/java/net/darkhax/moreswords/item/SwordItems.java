@@ -3,7 +3,7 @@ package net.darkhax.moreswords.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.darkhax.moreswords.lib.Reference;
+import net.darkhax.moreswords.util.Reference;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 

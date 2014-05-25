@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.lib.Config;
-import net.darkhax.moreswords.lib.Reference;
 import net.darkhax.moreswords.proxy.CommonProxy;
+import net.darkhax.moreswords.util.Config;
+import net.darkhax.moreswords.util.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.SharedMonsterAttributes;

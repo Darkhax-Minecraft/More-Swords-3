@@ -1,4 +1,4 @@
-package net.darkhax.moreswords.lib;
+package net.darkhax.moreswords.util;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,7 +1,7 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.lib.Reference;
-import net.darkhax.moreswords.lib.Utils;
+import net.darkhax.moreswords.util.Reference;
+import net.darkhax.moreswords.util.Utils;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -22,16 +22,21 @@ public class EnchantmentEnderAura extends EnchantmentCore {
 	}
 
 	/**
-	 * Has a 1 in 80 chance of 
+	 * Has a 15% chance of warping the player to the next nearest entity within 
+	 * 32 blocks. Note: Entity may not be friendly :)
 	 */
 	@SubscribeEvent
 	public void onEntityHit(LivingHurtEvent event) {
 
-		if (isValidPlayer(event.entityLiving)) {
+		double d = Math.random();
+		if (d < 0.15) {
 			
-			EntityPlayer living = (EntityPlayer) event.entityLiving;
-			
-			attemptWarp(living);
+			if (isValidPlayer(event.entityLiving)) {
+				
+				EntityPlayer living = (EntityPlayer) event.entityLiving;
+				
+				attemptWarp(living);
+			}
 		}
 	}
 	

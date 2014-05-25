@@ -1,4 +1,4 @@
-package net.darkhax.moreswords.lib;
+package net.darkhax.moreswords.util;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.minecraft.item.Item;
