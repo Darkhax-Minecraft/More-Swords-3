@@ -1,9 +1,6 @@
 package net.darkhax.moreswords.util;
 
-import java.util.List;
 import java.util.UUID;
-
-import com.google.common.collect.Multimap;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -15,6 +12,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
+import com.google.common.collect.Multimap;
 
 public class Utils {
 

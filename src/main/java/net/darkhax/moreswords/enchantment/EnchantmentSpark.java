@@ -1,11 +1,8 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Config;
 import net.darkhax.moreswords.util.Utils;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
