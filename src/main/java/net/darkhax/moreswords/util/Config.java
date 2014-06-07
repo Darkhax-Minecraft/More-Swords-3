@@ -160,6 +160,12 @@ public class Config {
 	public static int frozenID;
 	public static int frozenTime;
 	public static int frozenLevel;
+
+	public static boolean frostEnabled;
+	public static int frostID;
+	public static double frostRange;
+	public static int frostTime;
+	public static int frostLevel;
 	
 	public Config(File configFile) {
 		
@@ -340,6 +346,13 @@ public class Config {
 		frozenID = config.get(frozen, "Enchantment ID for Frozen", 142).getInt();
 		frozenTime = config.get(frozen, "How long the effect should last, per level", 60).getInt();
 		frozenLevel = config.get(frozen, "What level of this effect should be applied per level", 1).getInt();
+		
+		String frost = "Enchantment: Frost Wave";
+		frostEnabled = config.get(frost, "Should the Frost Wave Enchantment be available?", true).getBoolean(true);
+		frostID = config.get(frost, "Enchantment ID for FrostWave", 143).getInt();
+		frostRange = config.get(frost, "How many blocks should the effect reach?", 2.5).getDouble(2.5);
+		frostTime = config.get(frost, "How long will the effect last?", 30).getInt();
+		frostLevel = config.get(frost, "What level will the effect be?", 1).getInt();
 		config.save();
 	}
 }
