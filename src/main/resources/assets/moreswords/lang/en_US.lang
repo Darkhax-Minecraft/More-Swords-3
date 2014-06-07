@@ -22,11 +22,14 @@ enchantment.msm.spark=Sparks
 enchantment.msm.feast=Feast
 enchantment.msm.vitality=Vitality
 enchantment.msm.venomAspect=Venomous Aspect
-enchantment.msm.growth=Growth
+enchantment.msm.absorb=Absorb
 enchantment.msm.keenEdge=Keen Edge
 enchantment.msm.scorn=Scorn
 enchantment.msm.enderPulse=Ender Pulse
-enchantment.msm.enderSlash=Ender Slash
+enchantment.msm.enderAura=Ender Aura
 enchantment.msm.greed=Greed
 enchantment.msm.wisdom=Wisdom
+enchantment.msm.frozenAspect=Frozen Aspect
+enchantment.msm.frostWave=Frost Wave
+enchantment.msm.ascension=Ascension
 
