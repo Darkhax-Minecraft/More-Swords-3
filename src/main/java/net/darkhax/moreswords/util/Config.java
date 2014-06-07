@@ -167,6 +167,10 @@ public class Config {
 	public static int frostTime;
 	public static int frostLevel;
 	
+	public static boolean ascensionEnabled;
+	public static int ascensionID;
+	public static double ascensionBase;
+	
 	public Config(File configFile) {
 		
 		Configuration config = new Configuration(configFile);
@@ -353,6 +357,11 @@ public class Config {
 		frostRange = config.get(frost, "How many blocks should the effect reach?", 2.5).getDouble(2.5);
 		frostTime = config.get(frost, "How long will the effect last?", 30).getInt();
 		frostLevel = config.get(frost, "What level will the effect be?", 1).getInt();
+		
+		String ascension = "Enchantment: Ascension";
+		ascensionEnabled = config.get(ascension, "Should the Ascension Enchantment be available?", true).getBoolean(true);
+		ascensionID = config.get(ascension, "Enchantment ID for Ascension", 144).getInt();
+		ascensionBase = config.get(ascension, "What is the base distance for this effect?", 0.45).getDouble(0.45);
 		config.save();
 	}
 }

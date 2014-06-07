@@ -16,7 +16,7 @@ public class EnchantmentAscension extends EnchantmentCore {
 
 	/**
 	 * The Ascension Enchantment will knock hit entities up into the
-	 * air. Motion is 0.5 multiplied by enchantment level. 
+	 * air. Motion is 0.45 multiplied by enchantment level. 
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
@@ -26,8 +26,8 @@ public class EnchantmentAscension extends EnchantmentCore {
 			if (isValidPlayer(event.entityLiving)) {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
-				double Y = level(stack) * 1;
-				//event.target.addVelocity(0, Y, 0);
+				double Y = level(stack) * cfg.ascensionBase;
+				event.target.motionY = Y;
 			}
 		}
 	}
