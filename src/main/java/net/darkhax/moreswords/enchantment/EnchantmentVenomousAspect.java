@@ -30,7 +30,7 @@ public class EnchantmentVenomousAspect extends EnchantmentCore {
 			if (isValidPlayer(event.entityLiving)) {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
-				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.poison.id, 20 * level(stack), 1));
+				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.poison.id, cfg.venomTime * level(stack), cfg.venomLevel));
 			}
 		}
 	}

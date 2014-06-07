@@ -32,7 +32,7 @@ public class EnchantmentScorn extends EnchantmentCore {
 				if (event.entityPlayer.dimension != 0) {
 				
 					ItemStack stack = event.entityPlayer.getHeldItem();
-					event.target.attackEntityFrom(DamageSource.generic, (float) (Utils.getItemWeaponDamage(stack) * 2));
+					event.target.attackEntityFrom(DamageSource.generic, (float) (Utils.getItemWeaponDamage(stack) * cfg.scornMultiplier));
 				}
 			}
 		}

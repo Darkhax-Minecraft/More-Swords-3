@@ -264,11 +264,11 @@ public class Utils {
 	}
 	
 	/**
-	 * TODO: Finish java docs
-	 * @param world
-	 * @param player
-	 * @param length
-	 * @return
+	 * TODO: gets the block the player is looking at.
+	 * @param world: The world
+	 * @param player: The player
+	 * @param length: A cap on the distance
+	 * @return MovingObjectPosition
 	 */
 	public static MovingObjectPosition rayTrace(World world, EntityPlayer player, int length) {
 

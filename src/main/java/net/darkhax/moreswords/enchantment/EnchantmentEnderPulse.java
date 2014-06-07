@@ -36,7 +36,7 @@ public class EnchantmentEnderPulse extends EnchantmentCore {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				EntityPlayer player = event.entityPlayer;
-				int distance = level(stack) * 18;	
+				int distance = level(stack) * cfg.enderPulseRange;	
 		        MovingObjectPosition position = Utils.rayTrace(player.worldObj, player, distance); 
 		        
 		        if ((position != null) && (position.typeOfHit == MovingObjectType.BLOCK)) {      
@@ -68,9 +68,9 @@ public class EnchantmentEnderPulse extends EnchantmentCore {
 		                y++;          
 		        	}
 		         
-		        	stack.damageItem(50, player);        
+		        	stack.damageItem(cfg.enderPulseItemDamage, player);        
 		        	player.setPositionAndUpdate(x, y, z);        
-		        	player.attackEntityFrom(DamageSource.fall, 1);          
+		        	player.attackEntityFrom(DamageSource.fall, cfg.enderPulseFallDamage);          
 		        }       
 			}
 		}

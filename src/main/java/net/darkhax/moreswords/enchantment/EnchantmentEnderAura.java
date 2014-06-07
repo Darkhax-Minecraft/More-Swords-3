@@ -29,7 +29,7 @@ public class EnchantmentEnderAura extends EnchantmentCore {
 	public void onEntityHit(LivingHurtEvent event) {
 
 		double d = Math.random();
-		if (d < 0.15) {
+		if (d < (cfg.enderAuraChance)) {
 			
 			if (isValidPlayer(event.entityLiving)) {
 				
@@ -46,7 +46,7 @@ public class EnchantmentEnderAura extends EnchantmentCore {
 		
 		if (isLiving(target)) {
 			
-			if (Utils.isEntityWithinRange(living, target, 32.0d)) {
+			if (Utils.isEntityWithinRange(living, target, cfg.enderAuraRange)) {
 				
 				living.setPositionAndUpdate(target.posX, target.posY, target.posZ);
 				return;

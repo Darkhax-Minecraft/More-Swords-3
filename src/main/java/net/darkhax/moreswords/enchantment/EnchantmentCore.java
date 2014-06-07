@@ -3,6 +3,9 @@ package net.darkhax.moreswords.enchantment;
 import java.util.Random;
 
 import net.darkhax.moreswords.MoreSwords;
+import net.darkhax.moreswords.util.Config;
+import net.darkhax.moreswords.util.RandomUtils;
+import net.darkhax.moreswords.util.Reference;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -15,7 +18,9 @@ import net.minecraft.item.ItemSword;
 
 public class EnchantmentCore extends Enchantment {
 
+	public static Config cfg;
 	protected Random rand = new Random();;
+	protected  RandomUtils rnd = Reference.RND;
 	int maxLevel;
 	int minLevel;
 	Item item;

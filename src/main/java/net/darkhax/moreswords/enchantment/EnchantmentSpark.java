@@ -35,10 +35,10 @@ public class EnchantmentSpark extends EnchantmentCore {
 						
 						if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
 
-							if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), 2.4)) {
+							if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.sparkRange)) {
 
 								EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
-								closeEntity.setFire(3);
+								closeEntity.setFire(cfg.sparkDamage);
 							}
 						}
 					}

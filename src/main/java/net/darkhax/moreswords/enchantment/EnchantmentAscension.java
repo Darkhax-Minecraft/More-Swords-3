@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,8 +28,8 @@ public class EnchantmentAscension extends EnchantmentCore {
 			if (isValidPlayer(event.entityLiving)) {
 				
 				ItemStack stack = event.entityPlayer.getHeldItem();
-				double Y = level(stack) * 0.5;
-				event.target.setVelocity(0, Y, 0);
+				double Y = level(stack) * 1;
+				//event.target.addVelocity(0, Y, 0);
 			}
 		}
 	}

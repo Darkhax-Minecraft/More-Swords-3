@@ -22,8 +22,6 @@ public class EnchantmentIgnite extends EnchantmentCore {
 	 * The ignite enchantment will do fire damage to a mob
 	 * equal to that of the effect. If the mob is a creeper
 	 * he will explode. 
-	 * 
-	 * TODO add config option to disable creeper explosions.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
@@ -33,9 +31,9 @@ public class EnchantmentIgnite extends EnchantmentCore {
 			if (isValidPlayer(event.entityPlayer)) {
 				
 				ItemStack stack = event.entityLiving.getHeldItem();
-				event.target.setFire(Config.igniteDamage * level(stack));
+				event.target.setFire(cfg.igniteDamage * level(stack));
 
-				if (event.target instanceof EntityCreeper && Config.igniteBoom) {
+				if (event.target instanceof EntityCreeper && cfg.igniteBoom) {
 
 					EntityCreeper creeper = (EntityCreeper) event.target;
 					creeper.getDataWatcher().updateObject(18, Byte.valueOf((byte) 1));
