@@ -9,6 +9,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
 	
+	//List of all swords. Not currently used for anything. Yet.
 	List<Item> swordList = new ArrayList<Item>();
 	
 	public static Item swordDawmStar = new ItemCoreSword("dawnStar");
@@ -17,7 +18,6 @@ public class SwordItems {
 	public static Item swordDraconic = new ItemCoreSword("draconic");
 	public static Item swordEnder = new ItemCoreSword("ender");
 	public static Item swordCrystal = new ItemCoreSword("crystal");
-	public static Item swordInfinity = new ItemCoreSword("infinity");
 	public static Item swordGlacial = new ItemCoreSword("glacial");
 	public static Item swordAether = new ItemCoreSword("aether");
 	public static Item swordWither = new ItemCoreSword("wither");
@@ -31,7 +31,6 @@ public class SwordItems {
 		registerItem(swordDraconic);
 		registerItem(swordEnder);
 		registerItem(swordCrystal);
-		registerItem(swordInfinity);
 		registerItem(swordGlacial);
 		registerItem(swordAether);
 		registerItem(swordWither);

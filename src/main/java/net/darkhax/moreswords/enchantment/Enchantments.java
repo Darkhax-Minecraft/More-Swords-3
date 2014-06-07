@@ -22,8 +22,6 @@ public class Enchantments {
 	public static final Enchantment enderAura = new EnchantmentEnderAura(cfg.enderAuraID, advanced, "enderAura", 1, 1, SwordItems.swordEnder);
 	public static final Enchantment greed = new EnchantmentGreed(cfg.greedID, basic, "greed", 1, 3, SwordItems.swordCrystal);
 	public static final Enchantment wisdom = new EnchantmentCore(cfg.wisdomID, advanced, "wisdom", 1, 1, SwordItems.swordCrystal);
-	public static final Enchantment infinity1 = new EnchantmentCore(182, basic, "infinity1", 1, 3, SwordItems.swordInfinity);
-	public static final Enchantment infinity2 = new EnchantmentCore(183, advanced, "infinity2", 1, 1, SwordItems.swordInfinity);
 	public static final Enchantment frozenAspect = new EnchantmentCore(184, basic, "frozenAspect", 1, 3, SwordItems.swordGlacial);
 	public static final Enchantment glacial2 = new EnchantmentCore(185, advanced, "glacial2", 1, 1, SwordItems.swordGlacial);
 	public static final Enchantment ascension = new EnchantmentAscension(186, basic, "ascension", 1, 3, SwordItems.swordAether);
