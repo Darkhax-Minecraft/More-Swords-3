@@ -154,6 +154,11 @@ public class Config {
 	public static double wisdomChance;
 	public static int wisdomMultiplier;
 	
+	public static boolean frozenEnabled;
+	public static int frozenID;
+	public static int frozenTime;
+	public static int frozenLevel;
+	
 	public Config(File configFile) {
 		
 		Configuration config = new Configuration(configFile);
@@ -325,6 +330,12 @@ public class Config {
 		wisdomID = config.get(wisdom, "Enchantment ID for Wisdom", 141).getInt();
 		wisdomChance = config.get(wisdom, "How often should the exp be multiplied?", 0.15).getDouble(0.15);
 		wisdomMultiplier = config.get(wisdom, "How many times should the wisdom effect multiply dropped exp?", 2).getInt();
+		
+		String frozen = "Enchantment: Frozen";
+		frozenEnabled = config.get(frozen, "Should the Frozen Enchantment be available?", true).getBoolean(true);
+		frozenID = config.get(frozen, "Enchantment ID for Frozen", 142).getInt();
+		frozenTime = config.get(frozen, "How long the effect should last, per level", 60).getInt();
+		frozenLevel = config.get(frozen, "What level of this effect should be applied per level", 1).getInt();
 		config.save();
 	}
 }
