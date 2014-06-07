@@ -23,13 +23,13 @@ public class EnchantmentAbsorb extends EnchantmentCore {
 		
 		double d = Math.random();
 		
-		if (d < 0.05) {
+		if (d < cfg.absorbChance) {
 			
 			if (isValidPlayer(event.entityPlayer)) {
 
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				int food = Reference.RND.nextIntII(cfg.absorbMin, cfg.absorbMax);
-				float saturation = 0.4f * food;
+				float saturation = (float) (cfg.absorbSaturation * food);
 				event.entityPlayer.getFoodStats().addStats(food, saturation);
 			}
 		}

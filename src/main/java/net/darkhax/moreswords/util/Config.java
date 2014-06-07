@@ -122,6 +122,8 @@ public class Config {
 	
 	public static boolean absorbEnabled;
 	public static int absorbID;
+	public static double absorbChance;
+	public static double absorbSaturation;
 	public static int absorbMin;
 	public static int absorbMax;
 	
@@ -293,6 +295,8 @@ public class Config {
 		String absorb = "Enchantment: Absorb";
 		absorbEnabled = config.get(absorb, "Should the Absorb Enchantment be available?", true).getBoolean(true);
 		absorbID = config.get(absorb, "Enchantment ID for Absorb", 135).getInt();
+		absorbChance = config.get(absorb, "The percent chance this effect will trigger", 0.05).getDouble(0.05);
+		absorbSaturation = config.get(absorb, "The multiplier for the saturation given", 0.4).getDouble(0.4);
 		absorbMin = config.get(absorb, "Minimum food restored", 0).getInt();
 		absorbMax = config.get(absorb, "Maximum food restored", 2).getInt();
 		
