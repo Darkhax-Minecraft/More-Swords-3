@@ -171,6 +171,12 @@ public class Config {
 	public static int ascensionID;
 	public static double ascensionBase;
 	
+	public static boolean descensionEnabled;
+	public static int descensionID;
+	public static double descensionFloat;
+	public static double descensionFall;
+	public static boolean descensionShift;
+	
 	public Config(File configFile) {
 		
 		Configuration config = new Configuration(configFile);
@@ -362,6 +368,13 @@ public class Config {
 		ascensionEnabled = config.get(ascension, "Should the Ascension Enchantment be available?", true).getBoolean(true);
 		ascensionID = config.get(ascension, "Enchantment ID for Ascension", 144).getInt();
 		ascensionBase = config.get(ascension, "What is the base distance for this effect?", 0.45).getDouble(0.45);
+		
+		String descension = "Enchantment: Descension";
+		descensionEnabled = config.get(descension, "Should the Descension Enchantment be available?", true).getBoolean(true);
+		descensionID = config.get(descension, "Enchantment ID for Descension", 145).getInt();
+		descensionFloat = config.get(descension, "How much resistance should the effect give the player", 0.6).getDouble(0.6);
+		descensionFall = config.get(descension, "How much fall distance should be applied", 0).getDouble(0);
+		descensionShift = config.get(descension, "Should the effect only work when shifting?", true).getBoolean(true);
 		config.save();
 	}
 }
