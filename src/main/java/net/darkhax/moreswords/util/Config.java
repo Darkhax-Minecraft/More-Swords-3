@@ -177,6 +177,19 @@ public class Config {
 	public static double descensionFall;
 	public static boolean descensionShift;
 	
+	public static boolean shadowsEnabled;
+	public static int shadowsID;
+	public static int shadowsTime;
+	public static int shadowsLevel;
+	public static double shadowsWitherChance;
+	public static double shadowsWitherTime;
+	public static int shadowsWitherLevel;
+	
+	public static boolean decayEnabled;
+	public static int decayID;
+	public static int decayTime;
+	public static int decayLevel;
+	
 	public Config(File configFile) {
 		
 		Configuration config = new Configuration(configFile);
@@ -375,6 +388,21 @@ public class Config {
 		descensionFloat = config.get(descension, "How much resistance should the effect give the player", 0.6).getDouble(0.6);
 		descensionFall = config.get(descension, "How much fall distance should be applied", 0).getDouble(0);
 		descensionShift = config.get(descension, "Should the effect only work when shifting?", true).getBoolean(true);
+		
+		String shadows = "Enchantment: Shadows";
+		shadowsEnabled = config.get(shadows, "Should the Shadows Enchantment be available?", true).getBoolean(true);
+		shadowsID = config.get(shadows, "Enchantment ID for Shadows", 146).getInt();
+		shadowsTime = config.get(shadows, "How long should blindness last per level?", 30).getInt();
+		shadowsLevel = config.get(shadows, "What level of the effect should be applied per effect level?", 1).getInt();
+		shadowsWitherChance = config.get(shadows, "How often shout the witther effect be applied?",  0.12).getDouble(0.12);
+		shadowsWitherTime = config.get(shadows, "How long should the wither effect last per level",  20).getInt();
+		shadowsWitherLevel = config.get(shadows, "What level of wither effect should be applied?", 1).getInt();
+		
+		String decay = "Enchantment: Decay";
+		decayEnabled = config.get(decay, "Should the Decay Enchantment be available?", true).getBoolean(true);
+		decayID = config.get(decay, "Enchantment ID for Decay", 147).getInt();
+		decayTime = config.get(decay, "How long should the effect last per level", 75).getInt();
+		decayLevel = config.get(decay, "What level of wither should be applied", 1).getInt();
 		config.save();
 	}
 }
