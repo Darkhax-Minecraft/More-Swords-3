@@ -190,6 +190,14 @@ public class Config {
 	public static int decayTime;
 	public static int decayLevel;
 	
+	public static boolean stealthEnabled;
+	public static int stealthID;
+	public static boolean stealthVanilla;
+	
+	public static boolean extinctionEnabled;
+	public static int extinctionID;
+	public static boolean extinctionVanilla;
+	
 	public Config(File configFile) {
 		
 		Configuration config = new Configuration(configFile);
@@ -403,6 +411,16 @@ public class Config {
 		decayID = config.get(decay, "Enchantment ID for Decay", 147).getInt();
 		decayTime = config.get(decay, "How long should the effect last per level", 75).getInt();
 		decayLevel = config.get(decay, "What level of wither should be applied", 1).getInt();
+		
+		String stealth = "Enchantment: Stealth";
+		stealthEnabled = config.get(stealth, "Should the Stealth Enchantment be available?", true).getBoolean(true);
+		stealthID = config.get(stealth, "Enchantment ID for Stealth", 148).getInt();
+		stealthVanilla = config.get(stealth, "Should this effect be available in vanilla?", false).getBoolean(false);
+		
+		String extinction = "Enchantment: Extinction";
+		extinctionEnabled = config.get(extinction, "Should the Extinction Enchantment be available?", true).getBoolean(true);
+		extinctionID = config.get(extinction, "Enchantment ID for Extinction", 149).getInt();
+		extinctionVanilla = config.get(extinction, "Should this effect be available in vanilla?", false).getBoolean(false);
 		config.save();
 	}
 }
