@@ -3,6 +3,7 @@ package net.darkhax.moreswords;
 import java.util.Arrays;
 
 import net.darkhax.moreswords.enchantment.Enchantments;
+import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.proxy.CommonProxy;
 import net.darkhax.moreswords.util.Config;
@@ -19,10 +20,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER)
 public class MoreSwords {
 
-	public static CreativeTabs tabSwords = new CreativeTabMoreSwords(
-			CreativeTabs.getNextID(), "moreSwords");
-	public static EnumEnchantmentType enumSwords = EnumHelper
-			.addEnchantmentType("moreSword");
+	public static CreativeTabs tabSwords = new CreativeTabMoreSwords(CreativeTabs.getNextID(), "moreSwords");
+	public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
 
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
@@ -34,10 +33,10 @@ public class MoreSwords {
 	public void preInit(FMLPreInitializationEvent pre) {
 
 		setModInfo(pre.getModMetadata());
-
 		new Config(pre.getSuggestedConfigurationFile());
 		new SwordItems();
 		new Enchantments();
+		new RecipeHandler();
 	}
 
 	void setModInfo(ModMetadata meta) {

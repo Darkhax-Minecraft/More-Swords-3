@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.util;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public enum EnumMoreSwords {
@@ -10,7 +11,6 @@ public enum EnumMoreSwords {
     DRACONIC("draconic", Config.damageDraconic, Config.durabilityDraconic, Config.enchantDraconic, Config.harvestDraconic, Config.efficientDraconic, Config.repairDraconic, Config.craftingDraconic),
     ENDER("ender", Config.damageEnder, Config.durabilityEnder, Config.enchantEnder, Config.harvestEnder, Config.efficientEnder, Config.repairEnder, Config.craftingEnder),
     CRYSTAL("crystal", Config.damageCrystal, Config.durabilityCrystal, Config.enchantCrystal, Config.harvestCrystal, Config.efficientCrystal, Config.repairCrystal, Config.craftingCrystal),
-    INFINITY("infinity", Config.damageInfinity, Config.durabilityInfinity, Config.enchantInfinity, Config.harvestInfinity, Config.efficientInfinity, Config.repairInfinity, Config.craftingInfinity),
     GLACIAL("glacial", Config.damageGlacial, Config.durabilityGlacial, Config.enchantGlacial, Config.harvestGlacial, Config.efficientGlacial, Config.repairGlacial, Config.craftingGlacial),
     AETHER("aether", Config.damageAether, Config.durabilityAether, Config.enchantAether, Config.harvestAether, Config.efficientAether, Config.repairAether, Config.craftingAether),
     WITHER("wither", Config.damageWither, Config.durabilityWither, Config.enchantWither, Config.harvestWither, Config.efficientWither, Config.repairWither, Config.craftingWither),
@@ -40,7 +40,7 @@ public enum EnumMoreSwords {
     	this.swordEnchantability = enchant;
     	this.swordHarvestLevel = harvest;
     	this.swordEfficiency = efficient;
-    	this.swordRepairItem = repairMaterial;
+    	this.swordRepairItem = getRepairItem(repairMaterial);
     }
 
     public String swordName;
@@ -49,7 +49,7 @@ public enum EnumMoreSwords {
     public int swordEnchantability;
     public int swordHarvestLevel;
     public int swordEfficiency;
-    public String swordRepairItem;
+    public Item swordRepairItem;
 
     /**
      * Get a swordType from the list of enums.
@@ -162,13 +162,17 @@ public enum EnumMoreSwords {
      */
     public static Item getRepairItem(String name) {
     	
-    	EnumMoreSwords swordType = getType(name);
+		if (Item.itemRegistry.getObject(name) != null) {
+			
+			return (Item) Item.itemRegistry.getObject(name);
+		}
+		
+		else if (Block.blockRegistry.getObject(name) != null) {
+			
+			return Item.getItemFromBlock((Block) Block.blockRegistry.getObject(name));
+		}
     	
-    	if (swordType != null) {
-    		
-    		return (Item) Item.itemRegistry.getObject(swordType.swordRepairItem);
-    	}
-    	
+    	Reference.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
     	return null;
     }
 }

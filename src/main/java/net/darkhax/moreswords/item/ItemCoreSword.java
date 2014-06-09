@@ -27,6 +27,8 @@ public class ItemCoreSword extends ItemSword {
 	public static Item.ToolMaterial generateToolMaterials(String swordName) {
 		
 		EnumMoreSwords sword = EnumMoreSwords.getType(swordName);
-		return EnumHelper.addToolMaterial(swordName, sword.swordHarvestLevel, sword.swordDurability, sword.swordEfficiency, sword.swordDamage - 4, sword.swordEnchantability);
+		Item.ToolMaterial material = EnumHelper.addToolMaterial(swordName, sword.swordHarvestLevel, sword.swordDurability, sword.swordEfficiency, sword.swordDamage - 4, sword.swordEnchantability);
+		material.customCraftingMaterial = sword.swordRepairItem;
+		return material;
 	}
 }
