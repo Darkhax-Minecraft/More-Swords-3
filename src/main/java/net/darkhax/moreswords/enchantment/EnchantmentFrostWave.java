@@ -9,7 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EnchantmentFrostWave extends EnchantmentCore {
+public class EnchantmentFrostWave extends EnchantmentBase {
 
 	protected EnchantmentFrostWave(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 

@@ -8,7 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EnchantmentGreed extends EnchantmentCore {
+public class EnchantmentGreed extends EnchantmentBase {
 
 	protected EnchantmentGreed(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 

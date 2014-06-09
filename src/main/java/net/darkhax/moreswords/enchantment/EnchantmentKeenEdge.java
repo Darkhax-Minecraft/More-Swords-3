@@ -8,7 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EnchantmentKeenEdge extends EnchantmentCore {
+public class EnchantmentKeenEdge extends EnchantmentBase {
 
 	protected EnchantmentKeenEdge(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 

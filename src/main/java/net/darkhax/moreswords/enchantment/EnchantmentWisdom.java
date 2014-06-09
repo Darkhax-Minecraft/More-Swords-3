@@ -7,7 +7,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EnchantmentWisdom extends EnchantmentCore {
+public class EnchantmentWisdom extends EnchantmentBase {
 
 	protected EnchantmentWisdom(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 

@@ -16,7 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 
-public class EnchantmentCore extends Enchantment {
+public class EnchantmentBase extends Enchantment {
 
 	public static Config cfg;
 	protected Random rand = new Random();;
@@ -39,7 +39,7 @@ public class EnchantmentCore extends Enchantment {
 	 * @param item
 	 *            : item that can get this enchantment. Books added by default.
 	 */
-	protected EnchantmentCore(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+	protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
 		super(id, weight, MoreSwords.enumSwords);
 		this.name = "msm." + unlocalizedName;

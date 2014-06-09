@@ -7,11 +7,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.util.EnumHelper;
 
-public class ItemCoreSword extends ItemSword {
+public class ItemBaseSword extends ItemSword {
 
 	public final String swordName;
 
-	public ItemCoreSword(String swordName) {
+	public ItemBaseSword(String swordName) {
 
 		super(generateToolMaterials(swordName));
 		this.swordName = swordName;

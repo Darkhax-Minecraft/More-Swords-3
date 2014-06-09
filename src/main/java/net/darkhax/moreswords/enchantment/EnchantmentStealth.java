@@ -7,7 +7,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class EnchantmentStealth extends EnchantmentCore {
+public class EnchantmentStealth extends EnchantmentBase {
 
 	protected EnchantmentStealth(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 

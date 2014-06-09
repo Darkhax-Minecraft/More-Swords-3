@@ -7,7 +7,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 
-public class EnchantmentDescension extends EnchantmentCore {
+public class EnchantmentDescension extends EnchantmentBase {
 
 	protected EnchantmentDescension(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
