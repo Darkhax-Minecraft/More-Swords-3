@@ -6,6 +6,12 @@ import net.minecraftforge.common.config.Configuration;
 
 public class Config {
 	
+	public static boolean itemsCraftable;
+	public static boolean itemsRepairable;
+	public static boolean itemsInLoot;
+	public static boolean privateEnchant;
+	public static boolean enabledEnchant;
+	
 	public static int damageDawnStar;
 	public static int damageVampiric;
 	public static int damageGladiolus;
@@ -202,6 +208,13 @@ public class Config {
 		
 		Configuration config = new Configuration(configFile);
 		config.load();
+		
+		String general = "General Settings";
+		itemsCraftable = config.get(general, "Should all swords be craftable?", true).getBoolean(true);
+		itemsRepairable = config.get(general, "Should all swords be repairable?", true).getBoolean(true);
+		itemsInLoot =  config.get(general, "Should swords be added to to dungeon chests?", true).getBoolean(true);
+		privateEnchant = config.get(general, "Should enchantments be restricted to the sword of their theme?", true).getBoolean(true);
+		enabledEnchant = config.get(general, "Should enchantments be enabled in the game?", true).getBoolean(true);
 		
 		String damage = "Damage Values";
 		damageDawnStar = config.get(damage, "Damage Value Of Dawns Star", 7).getInt(); 

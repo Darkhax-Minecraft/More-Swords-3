@@ -22,6 +22,7 @@ public class MoreSwords {
 
 	public static CreativeTabs tabSwords = new CreativeTabMoreSwords(CreativeTabs.getNextID(), "moreSwords");
 	public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
+	Config cfg;
 
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
@@ -35,8 +36,8 @@ public class MoreSwords {
 		setModInfo(pre.getModMetadata());
 		new Config(pre.getSuggestedConfigurationFile());
 		new SwordItems();
-		new Enchantments();
-		new RecipeHandler();
+		new Enchantments(cfg.enabledEnchant);
+		new RecipeHandler(cfg.itemsCraftable);
 	}
 
 	void setModInfo(ModMetadata meta) {

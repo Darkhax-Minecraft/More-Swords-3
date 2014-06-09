@@ -54,6 +54,11 @@ public class EnchantmentCore extends Enchantment {
 
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
 
+		if (!cfg.privateEnchant) {
+			
+			return true;
+		}
+		
 		if (stack.getItem() == this.item | stack.getItem() == Items.book) {
 
 			return true;
@@ -65,6 +70,11 @@ public class EnchantmentCore extends Enchantment {
 
 	public boolean canApply(ItemStack stack) {
 
+		if (!cfg.privateEnchant) {
+			
+			return true;
+		}
+		
 		if (stack.getItem() instanceof ItemSword | stack.getItem() == Items.book) {
 
 			return true;
