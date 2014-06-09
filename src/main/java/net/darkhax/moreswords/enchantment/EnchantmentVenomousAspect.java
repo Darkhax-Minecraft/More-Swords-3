@@ -18,15 +18,15 @@ public class EnchantmentVenomousAspect extends EnchantmentCore {
 	}
 
 	/**
-	 * Poisons a mob for seconds equal to the enchantment level. 
+	 * Poisons a mob for seconds equal to the enchantment level.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityLiving)) {
-				
+
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.poison.id, cfg.venomTime * level(stack), cfg.venomLevel));
 			}

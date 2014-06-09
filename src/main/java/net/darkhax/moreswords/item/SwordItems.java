@@ -8,10 +8,10 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
-	
-	//List of all swords. Not currently used for anything. Yet.
+
+	// List of all swords. Not currently used for anything. Yet.
 	List<Item> swordList = new ArrayList<Item>();
-	
+
 	public static Item swordDawmStar = new ItemCoreSword("dawnStar");
 	public static Item swordVampiric = new ItemCoreSword("vampiric");
 	public static Item swordGladiolus = new ItemCoreSword("gladiolus");
@@ -22,9 +22,9 @@ public class SwordItems {
 	public static Item swordAether = new ItemCoreSword("aether");
 	public static Item swordWither = new ItemCoreSword("wither");
 	public static Item swordAdmin = new ItemCoreSword("admin");
-   
+
 	public SwordItems() {
-		
+
 		registerItem(swordDawmStar);
 		registerItem(swordVampiric);
 		registerItem(swordGladiolus);
@@ -36,9 +36,8 @@ public class SwordItems {
 		registerItem(swordWither);
 		registerItem(swordAdmin);
 	}
-	
+
 	public void registerItem(Item item) {
-		
 
 		ItemCoreSword sword = (ItemCoreSword) item;
 		GameRegistry.registerItem(item, sword.swordName, Reference.MOD_ID);

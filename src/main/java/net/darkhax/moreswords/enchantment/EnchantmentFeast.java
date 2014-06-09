@@ -15,20 +15,20 @@ public class EnchantmentFeast extends EnchantmentCore {
 	}
 
 	/**
-	 * The feast enchantment will repair damage equal to
-	 * 0-3 per level on the sword. 
+	 * The feast enchantment will repair damage equal to 0-3 per level on the
+	 * sword.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.entityPlayer)) {
-			
+
 			if (isValidPlayer(event.entityPlayer)) {
-				
+
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				int repair = rnd.nextIntII(cfg.feastMin, cfg.feastMax) * level(stack);
 				stack.damageItem(-repair, event.entityLiving);
 			}
-		}	
+		}
 	}
 }

@@ -14,34 +14,34 @@ public class EnchantmentDescension extends EnchantmentCore {
 		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
 		FMLCommonHandler.instance().bus().register(this);
 	}
-	
+
 	@SubscribeEvent
 	public void onUpdate(TickEvent.PlayerTickEvent event) {
-		
+
 		if (isValidPlayer(event.player)) {
-			
+
 			ItemStack stack = event.player.getHeldItem();
-			
-			if (cfg.descensionShift && event.player.isSneaking()) 
+
+			if (cfg.descensionShift && event.player.isSneaking())
 				playerGlide(event.player);
-				
-			
-			else if (!cfg.descensionShift) 
+
+			else if (!cfg.descensionShift)
 				playerGlide(event.player);
-			
-			else return;
+
+			else
+				return;
 		}
 	}
-	
+
 	public void playerGlide(EntityPlayer player) {
-		
+
 		if (!player.onGround) {
 
-	        if (player.motionY < 0.0D) {
-	        	
-	            player.motionY *= 0.6D;
-	            player.fallDistance = (float) (player.fallDistance * cfg.descensionFall);
-	        }
+			if (player.motionY < 0.0D) {
+
+				player.motionY *= 0.6D;
+				player.fallDistance = (float) (player.fallDistance * cfg.descensionFall);
+			}
 		}
 	}
 }

@@ -20,11 +20,11 @@ public class EnchantmentAbsorb extends EnchantmentCore {
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
-		
+
 		double d = Math.random();
-		
+
 		if (d < cfg.absorbChance) {
-			
+
 			if (isValidPlayer(event.entityPlayer)) {
 
 				ItemStack stack = event.entityPlayer.getHeldItem();

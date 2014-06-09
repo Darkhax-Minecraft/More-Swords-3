@@ -16,17 +16,16 @@ public class EnchantmentIgnite extends EnchantmentCore {
 	}
 
 	/**
-	 * The ignite enchantment will do fire damage to a mob
-	 * equal to that of the effect. If the mob is a creeper
-	 * he will explode. 
+	 * The ignite enchantment will do fire damage to a mob equal to that of the
+	 * effect. If the mob is a creeper he will explode.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityPlayer)) {
-				
+
 				ItemStack stack = event.entityLiving.getHeldItem();
 				event.target.setFire(cfg.igniteDamage * level(stack));
 

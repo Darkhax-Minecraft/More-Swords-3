@@ -16,31 +16,36 @@ public class EnchantmentWisdom extends EnchantmentCore {
 	}
 
 	/**
-	 * Drops a bonus of experience orbs where the mob is. The effect will 
-	 * activate about 7% of the time. The chances of this effect being 
-	 * activated increase with every level of the effect.The amount
-	 * dropped is a range between two numbers, by default 1-3. Note that this
-	 * effect will still work even if the mob is not killed. 
+	 * Drops a bonus of experience orbs where the mob is. The effect will
+	 * activate about 7% of the time. The chances of this effect being activated
+	 * increase with every level of the effect.The amount dropped is a range
+	 * between two numbers, by default 1-3. Note that this effect will still
+	 * work even if the mob is not killed.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityLiving)) {
-				
+
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				EntityLiving living = (EntityLiving) event.target;
-				
+
 				/*
-				 * TODO this code is not working, it appears that the mappings have been changed. Currently attempting to find the correct field name. 
-				int exp = (int)ObfuscationReflectionHelper.getPrivateValue(EntityLiving.class, living, "field_70728_aV") * cfg.wisdomMultiplier * level(stack);
-				
-				if (!living.worldObj.isRemote) {
-					
-					living.worldObj.spawnEntityInWorld(new EntityXPOrb(living.worldObj, living.posX, living.posY, living.posZ, exp));
-				}
-				*/
+				 * TODO this code is not working, it appears that the mappings
+				 * have been changed. Currently attempting to find the correct
+				 * field name. int exp =
+				 * (int)ObfuscationReflectionHelper.getPrivateValue
+				 * (EntityLiving.class, living, "field_70728_aV") *
+				 * cfg.wisdomMultiplier * level(stack);
+				 * 
+				 * if (!living.worldObj.isRemote) {
+				 * 
+				 * living.worldObj.spawnEntityInWorld(new
+				 * EntityXPOrb(living.worldObj, living.posX, living.posY,
+				 * living.posZ, exp)); }
+				 */
 			}
 		}
 	}

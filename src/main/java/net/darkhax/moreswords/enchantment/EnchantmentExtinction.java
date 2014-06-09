@@ -20,45 +20,45 @@ public class EnchantmentExtinction extends EnchantmentCore {
 
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
-		
+
 		if (isValidPlayer(event.entityPlayer)) {
-			
+
 			ItemStack stack = event.entityLiving.getHeldItem();
-			
+
 			for (Entity entity : (List<Entity>) event.entityPlayer.worldObj.loadedEntityList) {
-				
+
 				if (!entity.getClass().equals(event.entityPlayer.getClass())) {
-					
+
 					if (entity.getClass().equals(event.target.getClass())) {
-						
+
 						entity.setDead();
 					}
 				}
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
-		
+
 		return cfg.extinctionVanilla;
 	}
-	
+
 	@Override
-    public boolean isAllowedOnBooks() {
-        
-    	return cfg.extinctionVanilla;
-    }
-	
+	public boolean isAllowedOnBooks() {
+
+		return cfg.extinctionVanilla;
+	}
+
 	@Override
-    public boolean canApply(ItemStack stack) {
-    	
-        return cfg.extinctionVanilla;
-    }
-	
+	public boolean canApply(ItemStack stack) {
+
+		return cfg.extinctionVanilla;
+	}
+
 	@Override
-    public boolean canApplyTogether(Enchantment par1Enchantment) {
-    	
-        return cfg.extinctionVanilla;
-    }
+	public boolean canApplyTogether(Enchantment par1Enchantment) {
+
+		return cfg.extinctionVanilla;
+	}
 }

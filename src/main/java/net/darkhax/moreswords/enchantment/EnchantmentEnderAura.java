@@ -18,7 +18,7 @@ public class EnchantmentEnderAura extends EnchantmentCore {
 	}
 
 	/**
-	 * Has a 15% chance of warping the player to the next nearest entity within 
+	 * Has a 15% chance of warping the player to the next nearest entity within
 	 * 32 blocks. Note: Entity may not be friendly :)
 	 */
 	@SubscribeEvent
@@ -26,29 +26,29 @@ public class EnchantmentEnderAura extends EnchantmentCore {
 
 		double d = Math.random();
 		if (d < (cfg.enderAuraChance)) {
-			
+
 			if (isValidPlayer(event.entityLiving)) {
-				
+
 				EntityPlayer living = (EntityPlayer) event.entityLiving;
-				
+
 				attemptWarp(living);
 			}
 		}
 	}
-	
+
 	public void attemptWarp(EntityPlayer living) {
-		
+
 		Entity target = (Entity) living.worldObj.loadedEntityList.get(Reference.RND.nextIntII(1, living.worldObj.loadedEntityList.size() - 1));
-		
+
 		if (isLiving(target)) {
-			
+
 			if (Utils.isEntityWithinRange(living, target, cfg.enderAuraRange)) {
-				
+
 				living.setPositionAndUpdate(target.posX, target.posY, target.posZ);
 				return;
 			}
 		}
-		
+
 		attemptWarp(living);
 	}
 }

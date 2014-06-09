@@ -18,15 +18,16 @@ public class EnchantmentFrozenAspect extends EnchantmentCore {
 	}
 
 	/**
-	 * Slows down the mob for three second * ench level. The strength is equal to ench level.
+	 * Slows down the mob for three second * ench level. The strength is equal
+	 * to ench level.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityLiving)) {
-				
+
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, cfg.frozenTime * level(stack), cfg.frozenLevel * level(stack)));
 			}

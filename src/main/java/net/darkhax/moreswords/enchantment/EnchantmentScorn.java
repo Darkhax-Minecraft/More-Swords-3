@@ -17,18 +17,18 @@ public class EnchantmentScorn extends EnchantmentCore {
 	}
 
 	/**
-	 * Deals double damage to entities if the player is not in 
-	 * the surface world. 
+	 * Deals double damage to entities if the player is not in the surface
+	 * world.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityPlayer)) {
-				
+
 				if (event.entityPlayer.dimension != 0) {
-				
+
 					ItemStack stack = event.entityPlayer.getHeldItem();
 					event.target.attackEntityFrom(DamageSource.generic, (float) (Utils.getItemWeaponDamage(stack) * cfg.scornMultiplier));
 				}

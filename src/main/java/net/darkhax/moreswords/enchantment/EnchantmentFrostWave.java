@@ -24,14 +24,14 @@ public class EnchantmentFrostWave extends EnchantmentCore {
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityPlayer)) {
-				
+
 				EntityLiving living = (EntityLiving) event.target;
 				for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
-					
+
 					if (living.worldObj.loadedEntityList.get(i) != living) {
-						
+
 						if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
 
 							if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.frostRange)) {

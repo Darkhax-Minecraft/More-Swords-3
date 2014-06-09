@@ -24,9 +24,9 @@ public class EnchantmentDecay extends EnchantmentCore {
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityLiving)) {
-				
+
 				ItemStack stack = event.entityPlayer.getHeldItem();
 				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.wither.id, cfg.decayTime * level(stack), cfg.decayLevel));
 			}

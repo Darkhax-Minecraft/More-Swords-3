@@ -16,20 +16,20 @@ public class EnchantmentSpark extends EnchantmentCore {
 	}
 
 	/**
-	 * Sets mobs that are 2.4 blocks away on fire for 3 ticks. 
+	 * Sets mobs that are 2.4 blocks away on fire for 3 ticks.
 	 */
 	@SubscribeEvent
 	public void onEntityHit(AttackEntityEvent event) {
 
 		if (isLiving(event.target)) {
-			
+
 			if (isValidPlayer(event.entityPlayer)) {
-				
+
 				EntityLiving living = (EntityLiving) event.target;
 				for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
-					
+
 					if (living.worldObj.loadedEntityList.get(i) != living) {
-						
+
 						if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
 
 							if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.sparkRange)) {

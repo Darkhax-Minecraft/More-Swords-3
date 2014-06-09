@@ -20,18 +20,24 @@ public class EnchantmentCore extends Enchantment {
 
 	public static Config cfg;
 	protected Random rand = new Random();;
-	protected  RandomUtils rnd = Reference.RND;
+	protected RandomUtils rnd = Reference.RND;
 	int maxLevel;
 	int minLevel;
 	Item item;
 
 	/**
-	 * @param id: ID for the enchantment being added.
-	 * @param weight: How often the enchantment shows up.
-	 * @param unlocalizedName: Name for the enchantment. (unlocalized)
-	 * @param minLevel: The lowest possible level of enchantment.
-	 * @param maxLevel: The highest possible level of enchantment.
-	 * @param item: item that can get this enchantment. Books added by default.
+	 * @param id
+	 *            : ID for the enchantment being added.
+	 * @param weight
+	 *            : How often the enchantment shows up.
+	 * @param unlocalizedName
+	 *            : Name for the enchantment. (unlocalized)
+	 * @param minLevel
+	 *            : The lowest possible level of enchantment.
+	 * @param maxLevel
+	 *            : The highest possible level of enchantment.
+	 * @param item
+	 *            : item that can get this enchantment. Books added by default.
 	 */
 	protected EnchantmentCore(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
@@ -55,10 +61,10 @@ public class EnchantmentCore extends Enchantment {
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
 
 		if (!cfg.privateEnchant) {
-			
+
 			return true;
 		}
-		
+
 		if (stack.getItem() == this.item | stack.getItem() == Items.book) {
 
 			return true;
@@ -71,10 +77,10 @@ public class EnchantmentCore extends Enchantment {
 	public boolean canApply(ItemStack stack) {
 
 		if (!cfg.privateEnchant) {
-			
+
 			return true;
 		}
-		
+
 		if (stack.getItem() instanceof ItemSword | stack.getItem() == Items.book) {
 
 			return true;
@@ -93,49 +99,55 @@ public class EnchantmentCore extends Enchantment {
 
 		return super.getMinEnchantability(par1) + 50;
 	}
-	
+
 	/**
 	 * Checks to see if the entity is an instance of EntityLiving
-	 * @param entity: The entity being checked. 
+	 * 
+	 * @param entity
+	 *            : The entity being checked.
 	 */
 	public boolean isLiving(Entity entity) {
-		
+
 		if (entity instanceof EntityLiving) {
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
-	 * Checks to see if a player is valid. This is done by seeing if 
-	 * they are an instance of EntityPlayer, currently holding an item
-	 * and if that item has the current enchantment or not. 
-	 * @param entity: The entity being checked. 
+	 * Checks to see if a player is valid. This is done by seeing if they are an
+	 * instance of EntityPlayer, currently holding an item and if that item has
+	 * the current enchantment or not.
+	 * 
+	 * @param entity
+	 *            : The entity being checked.
 	 */
 	public boolean isValidPlayer(Entity entity) {
-		
+
 		if (entity instanceof EntityPlayer) {
-			
+
 			if (((EntityPlayer) entity).getHeldItem() != null) {
-				
+
 				if (level(((EntityPlayer) entity).getHeldItem()) > 0) {
-					
+
 					return true;
 				}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
-	 * Returns the current level of this enchantment on the item. 
-	 * @param stack: ItemStack being checked. 
+	 * Returns the current level of this enchantment on the item.
+	 * 
+	 * @param stack
+	 *            : ItemStack being checked.
 	 */
 	public int level(ItemStack stack) {
-		
+
 		return EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
 	}
 }
