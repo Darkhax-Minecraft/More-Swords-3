@@ -2,7 +2,6 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.util.Config;
-import net.minecraft.enchantment.Enchantment;
 
 public class Enchantments {
 

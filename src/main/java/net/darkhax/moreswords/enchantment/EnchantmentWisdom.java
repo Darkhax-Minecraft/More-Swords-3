@@ -1,12 +1,10 @@
 package net.darkhax.moreswords.enchantment;
 
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentWisdom extends EnchantmentCore {
