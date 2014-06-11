@@ -8,7 +8,6 @@ public class Config {
 
 	public static boolean itemsCraftable;
 	public static boolean itemsRepairable;
-	public static boolean itemsInLoot;
 	public static boolean privateEnchant;
 	public static boolean enabledEnchant;
 
@@ -18,7 +17,6 @@ public class Config {
 	public static int damageDraconic;
 	public static int damageEnder;
 	public static int damageCrystal;
-	public static int damageInfinity;
 	public static int damageGlacial;
 	public static int damageAether;
 	public static int damageWither;
@@ -30,7 +28,6 @@ public class Config {
 	public static int durabilityDraconic;
 	public static int durabilityEnder;
 	public static int durabilityCrystal;
-	public static int durabilityInfinity;
 	public static int durabilityGlacial;
 	public static int durabilityAether;
 	public static int durabilityWither;
@@ -42,7 +39,6 @@ public class Config {
 	public static int enchantDraconic;
 	public static int enchantEnder;
 	public static int enchantCrystal;
-	public static int enchantInfinity;
 	public static int enchantGlacial;
 	public static int enchantAether;
 	public static int enchantWither;
@@ -54,7 +50,6 @@ public class Config {
 	public static int harvestDraconic;
 	public static int harvestEnder;
 	public static int harvestCrystal;
-	public static int harvestInfinity;
 	public static int harvestGlacial;
 	public static int harvestAether;
 	public static int harvestWither;
@@ -66,7 +61,6 @@ public class Config {
 	public static int efficientDraconic;
 	public static int efficientEnder;
 	public static int efficientCrystal;
-	public static int efficientInfinity;
 	public static int efficientGlacial;
 	public static int efficientAether;
 	public static int efficientWither;
@@ -78,7 +72,6 @@ public class Config {
 	public static String repairDraconic;
 	public static String repairEnder;
 	public static String repairCrystal;
-	public static String repairInfinity;
 	public static String repairGlacial;
 	public static String repairAether;
 	public static String repairWither;
@@ -90,11 +83,17 @@ public class Config {
 	public static boolean craftingDraconic;
 	public static boolean craftingEnder;
 	public static boolean craftingCrystal;
-	public static boolean craftingInfinity;
 	public static boolean craftingGlacial;
 	public static boolean craftingAether;
 	public static boolean craftingWither;
 	public static boolean craftingAdmin;
+	
+	public static boolean zombieSwords;
+	public static boolean skeletonSwords;
+	public static boolean pigSwords;
+	public static double zombieChance;
+	public static double skeletonChance;
+	public static double pigChance;
 
 	public static boolean igniteEnabled;
 	public static int igniteID;
@@ -212,7 +211,6 @@ public class Config {
 		String general = "General Settings";
 		itemsCraftable = config.get(general, "Should all swords be craftable?", true).getBoolean(true);
 		itemsRepairable = config.get(general, "Should all swords be repairable?", true).getBoolean(true);
-		itemsInLoot = config.get(general, "Should swords be added to to dungeon chests?", true).getBoolean(true);
 		privateEnchant = config.get(general, "Should enchantments be restricted to the sword of their theme?", true).getBoolean(true);
 		enabledEnchant = config.get(general, "Should enchantments be enabled in the game?", true).getBoolean(true);
 
@@ -299,6 +297,11 @@ public class Config {
 		craftingAether = config.get(crafting, "Should the  Aether's Guard Be Craftable?", true).getBoolean(true);
 		craftingWither = config.get(crafting, "Should the  Withers Bane Be Craftable?", true).getBoolean(true);
 		craftingAdmin = config.get(crafting, "Should the  Adminium Ark Be Craftable?", true).getBoolean(true);
+		
+		String monster = "Monster Settings";
+		zombieSwords = config.get(monster, "Should zombies spawn holding swords from this mod?", true).getBoolean(true);
+		skeletonSwords = config.get(monster, "Should skeletons spawn holding swords from this mod?", true).getBoolean(true);
+		pigSwords = config.get(monster, "Should pig zombies spawn holding swords from this mod?", true).getBoolean(true);
 
 		String ignite = "Enchantment: Ignite";
 		igniteEnabled = config.get(ignite, "Should the Ignite enchantment be available?", true).getBoolean(true);
