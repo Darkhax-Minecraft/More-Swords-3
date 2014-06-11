@@ -208,7 +208,7 @@ public class Config {
 
 		Configuration config = new Configuration(configFile);
 		config.load();
-
+		
 		String general = "General Settings";
 		itemsCraftable = config.get(general, "Should all swords be craftable?", true).getBoolean(true);
 		itemsRepairable = config.get(general, "Should all swords be repairable?", true).getBoolean(true);
