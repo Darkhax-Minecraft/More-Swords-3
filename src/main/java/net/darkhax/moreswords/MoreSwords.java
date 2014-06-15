@@ -3,8 +3,10 @@ package net.darkhax.moreswords;
 import java.util.Arrays;
 
 import net.darkhax.moreswords.enchantment.Enchantments;
+import net.darkhax.moreswords.handler.MobHandler;
 import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
+import net.darkhax.moreswords.plugins.Plugins;
 import net.darkhax.moreswords.proxy.CommonProxy;
 import net.darkhax.moreswords.util.Config;
 import net.darkhax.moreswords.util.Reference;
@@ -15,6 +17,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER)
@@ -38,6 +41,13 @@ public class MoreSwords {
 		new SwordItems();
 		new Enchantments(cfg.enabledEnchant);
 		new RecipeHandler(cfg.itemsCraftable);
+		new MobHandler(true);
+	}
+	
+	@EventHandler
+	public void init(FMLInitializationEvent init) {
+		
+		new Plugins(true);
 	}
 
 	void setModInfo(ModMetadata meta) {
