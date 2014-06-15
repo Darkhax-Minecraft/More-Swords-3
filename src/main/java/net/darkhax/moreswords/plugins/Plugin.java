@@ -2,9 +2,9 @@ package net.darkhax.moreswords.plugins;
 
 import cpw.mods.fml.common.Loader;
 
-public class Plugins {
+public class Plugin {
 	
-	public Plugins(Boolean enabled) {
+	public Plugin(Boolean enabled) {
 		
 		new PluginVersionChecker(true);
 	}
