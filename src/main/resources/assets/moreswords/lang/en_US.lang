@@ -4,17 +4,16 @@
 itemGroup.moreSwords= More Swords Mod
 
 #Items
-item.msm.dawnStar.name=Dawn Star
-item.msm.vampiric.name=Vampiric Blade
-item.msm.gladiolus.name=Gladiolus
-item.msm.draconic.name=Draconic Blade
-item.msm.ender.name=EyeEnd Sword
-item.msm.crystal.name=Crystalline Blade
-item.msm.infinity.name=Infinity Blade
-item.msm.glacial.name=Glacial Blade
-item.msm.aether.name=Aether's Guard
-item.msm.wither.name=Wither's Bane
-item.msm.admin.name=Adminium Ark
+item.msm.dawnStar.name=§6Dawn Star
+item.msm.vampiric.name=§4Vampiric Blade
+item.msm.gladiolus.name=§2Gladiolus
+item.msm.draconic.name=§5Draconic Blade
+item.msm.ender.name=§aEyeEnd Sword
+item.msm.crystal.name=§7Crystalline Blade
+item.msm.glacial.name=§bGlacial Blade
+item.msm.aether.name=§eAether's Guard
+item.msm.wither.name=§8Wither's Bane
+item.msm.admin.name=§4Adminium Ark
 
 #Enchantments
 enchantment.msm.ignite=Ignite
