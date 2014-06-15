@@ -215,7 +215,7 @@ public class Config {
 		enabledEnchant = config.get(general, "Should enchantments be enabled in the game?", true).getBoolean(true);
 
 		String damage = "Damage Values";
-		damageDawnStar = config.get(damage, "Damage Value Of Dawns Star", 7).getInt();
+		damageDawnStar = config.get(damage, "Damage Value Of Dawns Star", 6).getInt();
 		damageVampiric = config.get(damage, "Damage Value Of Vampiric Blade", 7).getInt();
 		damageGladiolus = config.get(damage, "Damage Value Of Gladiolus", 6).getInt();
 		damageDraconic = config.get(damage, "Damage Value Of Draconic Blade", 7).getInt();
@@ -228,7 +228,7 @@ public class Config {
 
 		String durability = "Durability Values";
 		durabilityDawnStar = config.get(durability, "Durability Value Of DawnStar", 1286).getInt();
-		durabilityVampiric = config.get(durability, "Durability Value Of Vampiric Blade", 100).getInt();
+		durabilityVampiric = config.get(durability, "Durability Value Of Vampiric Blade", 812).getInt();
 		durabilityGladiolus = config.get(durability, "Durability Value Of Gladiolus", 645).getInt();
 		durabilityDraconic = config.get(durability, "Durability Value Of Draconic Blade", 1080).getInt();
 		durabilityEnder = config.get(durability, "Durability Value Of Eye End Blade", 1580).getInt();
