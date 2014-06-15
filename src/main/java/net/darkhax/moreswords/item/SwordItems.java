@@ -9,8 +9,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
 
-	// List of all swords. Not currently used for anything. Yet.
-	List<Item> swordList = new ArrayList<Item>();
+	public static List<Item> swordList = new ArrayList<Item>();
 
 	public static Item swordDawmStar = new ItemBaseSword("dawnStar");
 	public static Item swordVampiric = new ItemBaseSword("vampiric");
