@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.darkhax.moreswords.MoreSwords;
@@ -19,6 +20,7 @@ import net.minecraft.item.ItemSword;
 public class EnchantmentBase extends Enchantment {
 
 	public static Config cfg;
+	public ArrayList<Enchantment> enchantments = new ArrayList<Enchantment>();
 	protected Random rand = new Random();;
 	protected RandomUtils rnd = Reference.RND;
 	int maxLevel;
@@ -26,18 +28,12 @@ public class EnchantmentBase extends Enchantment {
 	Item item;
 
 	/**
-	 * @param id
-	 *            : ID for the enchantment being added.
-	 * @param weight
-	 *            : How often the enchantment shows up.
-	 * @param unlocalizedName
-	 *            : Name for the enchantment. (unlocalized)
-	 * @param minLevel
-	 *            : The lowest possible level of enchantment.
-	 * @param maxLevel
-	 *            : The highest possible level of enchantment.
-	 * @param item
-	 *            : item that can get this enchantment. Books added by default.
+	 * @param id: ID for the enchantment being added.
+	 * @param weight: How often the enchantment shows up.
+	 * @param unlocalizedName: Name for the enchantment. (unlocalized)
+	 * @param minLevel: The lowest possible level of enchantment.
+	 * @param maxLevel: The highest possible level of enchantment.
+	 * @param item: item that can get this enchantment. Books added by default.
 	 */
 	protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
@@ -46,6 +42,7 @@ public class EnchantmentBase extends Enchantment {
 		this.minLevel = minLevel;
 		this.maxLevel = maxLevel;
 		this.item = item;
+		enchantments.add(this);
 	}
 
 	public int getMinLevel() {
@@ -102,9 +99,7 @@ public class EnchantmentBase extends Enchantment {
 
 	/**
 	 * Checks to see if the entity is an instance of EntityLiving
-	 * 
-	 * @param entity
-	 *            : The entity being checked.
+	 * @param entity: The entity being checked.
 	 */
 	public boolean isLiving(Entity entity) {
 
@@ -120,9 +115,7 @@ public class EnchantmentBase extends Enchantment {
 	 * Checks to see if a player is valid. This is done by seeing if they are an
 	 * instance of EntityPlayer, currently holding an item and if that item has
 	 * the current enchantment or not.
-	 * 
-	 * @param entity
-	 *            : The entity being checked.
+	 * @param entity: The entity being checked.
 	 */
 	public boolean isValidPlayer(Entity entity) {
 
@@ -142,9 +135,7 @@ public class EnchantmentBase extends Enchantment {
 
 	/**
 	 * Returns the current level of this enchantment on the item.
-	 * 
-	 * @param stack
-	 *            : ItemStack being checked.
+	 * @param stack: ItemStack being checked.
 	 */
 	public int level(ItemStack stack) {
 
