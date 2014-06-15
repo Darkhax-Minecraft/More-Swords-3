@@ -20,7 +20,7 @@ import net.minecraft.item.ItemSword;
 public class EnchantmentBase extends Enchantment {
 
 	public static Config cfg;
-	public ArrayList<Enchantment> enchantments = new ArrayList<Enchantment>();
+	public static ArrayList<Enchantment> enchantments = new ArrayList<Enchantment>();
 	protected Random rand = new Random();;
 	protected RandomUtils rnd = Reference.RND;
 	int maxLevel;

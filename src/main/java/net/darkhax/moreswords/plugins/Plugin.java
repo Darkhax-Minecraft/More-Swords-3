@@ -7,5 +7,6 @@ public class Plugin {
 	public Plugin(Boolean enabled) {
 		
 		new PluginVersionChecker(true);
+		new PluginEnchantingPlus(true);
 	}
 }

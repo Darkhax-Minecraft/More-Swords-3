@@ -6,7 +6,7 @@ import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.handler.MobHandler;
 import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.plugins.Plugins;
+import net.darkhax.moreswords.plugins.Plugin;
 import net.darkhax.moreswords.proxy.CommonProxy;
 import net.darkhax.moreswords.util.Config;
 import net.darkhax.moreswords.util.Reference;
@@ -47,7 +47,7 @@ public class MoreSwords {
 	@EventHandler
 	public void init(FMLInitializationEvent init) {
 		
-		new Plugins(true);
+		new Plugin(true);
 	}
 
 	void setModInfo(ModMetadata meta) {
