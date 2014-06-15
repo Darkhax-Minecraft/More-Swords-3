@@ -6,6 +6,6 @@ public class Plugins {
 	
 	public Plugins(Boolean enabled) {
 		
-		new VersionCheckerPlugin(true);
+		new PluginVersionChecker(true);
 	}
 }
