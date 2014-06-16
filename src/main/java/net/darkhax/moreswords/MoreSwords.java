@@ -41,13 +41,13 @@ public class MoreSwords {
 		new SwordItems();
 		new Enchantments(cfg.enabledEnchant);
 		new RecipeHandler(cfg.itemsCraftable);
-		new MobHandler(true);
+		new MobHandler(cfg.enabledSpawning);
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent init) {
 		
-		new Plugin(true);
+		new Plugin(cfg.enabledPlugins);
 	}
 
 	void setModInfo(ModMetadata meta) {

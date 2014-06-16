@@ -10,6 +10,8 @@ public class Config {
 	public static boolean itemsRepairable;
 	public static boolean privateEnchant;
 	public static boolean enabledEnchant;
+	public static boolean enabledSpawning;
+	public static boolean enabledPlugins;
 
 	public static int damageDawnStar;
 	public static int damageVampiric;
@@ -94,6 +96,9 @@ public class Config {
 	public static double zombieChance;
 	public static double skeletonChance;
 	public static double pigChance;
+	
+	public static boolean enabledVersionChecker;
+	public static boolean enabledEnchantingPlus;
 
 	public static boolean igniteEnabled;
 	public static int igniteID;
@@ -213,7 +218,9 @@ public class Config {
 		itemsRepairable = config.get(general, "Should all swords be repairable?", true).getBoolean(true);
 		privateEnchant = config.get(general, "Should enchantments be restricted to the sword of their theme?", true).getBoolean(true);
 		enabledEnchant = config.get(general, "Should enchantments be enabled in the game?", true).getBoolean(true);
-
+		enabledSpawning = config.get(general, "Should mobs (zombie, skeleton, pig man) spawn holding these swords?", true).getBoolean(true);
+		enabledPlugins = config.get(general, "Should the plugins for this mod be loaded?", true).getBoolean(true);
+		
 		String damage = "Damage Values";
 		damageDawnStar = config.get(damage, "Damage Value Of Dawns Star", 6).getInt();
 		damageVampiric = config.get(damage, "Damage Value Of Vampiric Blade", 7).getInt();
@@ -302,6 +309,13 @@ public class Config {
 		zombieSwords = config.get(monster, "Should zombies spawn holding swords from this mod?", true).getBoolean(true);
 		skeletonSwords = config.get(monster, "Should skeletons spawn holding swords from this mod?", true).getBoolean(true);
 		pigSwords = config.get(monster, "Should pig zombies spawn holding swords from this mod?", true).getBoolean(true);
+		zombieChance = config.get(monster, "How often should zombies spawn holding swords?", 0.04).getDouble(0.04);
+		skeletonChance = config.get(monster, "How often should skeletons spawn holding swords?", 0.04).getDouble(0.04);
+		pigChance = config.get(monster, "How often should pig zombies spawn holding swords?", 0.04).getDouble(0.04);
+		
+		String plugins = "Plugins";
+		enabledVersionChecker = config.get(plugins, "Should the Version Checker plugin be loaded?", true).getBoolean(true);
+		enabledEnchantingPlus = config.get(plugins, "Should the Enchanting Plus plugin be loaded?", true).getBoolean(true);
 
 		String ignite = "Enchantment: Ignite";
 		igniteEnabled = config.get(ignite, "Should the Ignite enchantment be available?", true).getBoolean(true);
