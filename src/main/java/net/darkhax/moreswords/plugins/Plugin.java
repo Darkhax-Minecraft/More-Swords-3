@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.plugins;
 
 import net.darkhax.moreswords.util.Config;
-import cpw.mods.fml.common.Loader;
 
 public class Plugin {
 	

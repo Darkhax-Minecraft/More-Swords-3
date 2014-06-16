@@ -2,13 +2,11 @@ package net.darkhax.moreswords.handler;
 
 import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.util.Config;
-import net.darkhax.moreswords.util.RandomUtils;
 import net.darkhax.moreswords.util.Reference;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;

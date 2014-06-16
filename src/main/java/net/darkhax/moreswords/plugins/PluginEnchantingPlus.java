@@ -1,11 +1,11 @@
 package net.darkhax.moreswords.plugins;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
 import net.darkhax.moreswords.enchantment.EnchantmentBase;
 import net.darkhax.moreswords.util.Reference;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * Added support for e+, it's not really working so it's been put on the back burner. 

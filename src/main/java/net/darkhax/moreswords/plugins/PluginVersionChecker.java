@@ -1,7 +1,7 @@
 package net.darkhax.moreswords.plugins;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
 import net.darkhax.moreswords.util.Reference;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * Adds support for Dynious's Version Checker mod. Support will only be
