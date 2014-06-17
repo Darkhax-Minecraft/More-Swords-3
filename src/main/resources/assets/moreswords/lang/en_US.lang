@@ -37,3 +37,6 @@ enchantment.msm.decay=Decay
 enchantment.msm.stealth=Stealth
 enchantment.msm.extinction=Extinction
 
+#Tool Tips
+description.msm.unused=Note: This item/block has been added to help achieve compatability with other mods. As of now these do not do anything and are not an ordinary part of this mod. No new ores or tools will be added this is ONLY for for mod compatibility.
+

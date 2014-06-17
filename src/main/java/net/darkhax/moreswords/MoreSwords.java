@@ -2,7 +2,9 @@ package net.darkhax.moreswords;
 
 import java.util.Arrays;
 
+import net.darkhax.moreswords.blocks.SwordBlocks;
 import net.darkhax.moreswords.enchantment.Enchantments;
+import net.darkhax.moreswords.handler.EnchantmentBookHandler;
 import net.darkhax.moreswords.handler.MobHandler;
 import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
@@ -39,9 +41,11 @@ public class MoreSwords {
 		setModInfo(pre.getModMetadata());
 		new Config(pre.getSuggestedConfigurationFile());
 		new SwordItems();
+		new SwordBlocks();
 		new Enchantments(cfg.enabledEnchant);
 		new RecipeHandler(cfg.itemsCraftable);
 		new MobHandler(cfg.enabledSpawning);
+		new EnchantmentBookHandler(true);
 	}
 	
 	@EventHandler

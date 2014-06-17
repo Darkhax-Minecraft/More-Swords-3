@@ -9,7 +9,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
 
-	public static List<Item> swordList = new ArrayList<Item>();
+	public static List<ItemBaseSword> swordList = new ArrayList<ItemBaseSword>();
 
 	public static Item swordDawmStar = new ItemBaseSword("dawnStar");
 	public static Item swordVampiric = new ItemBaseSword("vampiric");
@@ -21,6 +21,9 @@ public class SwordItems {
 	public static Item swordAether = new ItemBaseSword("aether");
 	public static Item swordWither = new ItemBaseSword("wither");
 	public static Item swordAdmin = new ItemBaseSword("admin");
+	
+	public static Item ingots = new ItemSwordIngots();
+	public static Item dust = new ItemSwordDust();
 
 	public SwordItems() {
 
@@ -34,12 +37,15 @@ public class SwordItems {
 		registerItem(swordAether);
 		registerItem(swordWither);
 		registerItem(swordAdmin);
+		
+		GameRegistry.registerItem(ingots, "swordIngot");
+		GameRegistry.registerItem(dust, "swordDust");
 	}
 
 	public void registerItem(Item item) {
 
 		ItemBaseSword sword = (ItemBaseSword) item;
 		GameRegistry.registerItem(item, sword.swordName, Reference.MOD_ID);
-		swordList.add(item);
+		swordList.add(sword);
 	}
 }
