@@ -15,47 +15,47 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCompactSword extends Block {
-	
-	private IIcon[] iconArray;
 
-	public BlockCompactSword() {	
-		
-		super(Material.iron);
-		this.setCreativeTab(MoreSwords.tabSwords);
-	}
-	
-	@Override
-	public int damageDropped(int meta) {
-		
-		return meta;
-	}
+    private IIcon[] iconArray;
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int par1, int par2) {
-		
-		return this.iconArray[par2 % this.iconArray.length];
-	}
+    public BlockCompactSword() {
 
-	@SideOnly(Side.CLIENT)
-	@Override
+        super(Material.iron);
+        this.setCreativeTab(MoreSwords.tabSwords);
+    }
+
+    @Override
+    public int damageDropped(int meta) {
+
+        return meta;
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int par1, int par2) {
+
+        return this.iconArray[par2 % this.iconArray.length];
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
     public void registerBlockIcons(IIconRegister ir) {
-		
+
         this.iconArray = new IIcon[SwordItems.swordList.size()];
 
         for (int i = 0; i < this.iconArray.length; ++i) {
-        	
+
             this.iconArray[i] = ir.registerIcon("moreswords:block_" + SwordItems.swordList.get(i).swordName);
         }
     }
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list){
-		
-		for (int i = 0; i < SwordItems.swordList.size(); ++i) {
-			
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list) {
+
+        for (int i = 0; i < SwordItems.swordList.size(); ++i) {
+
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 }

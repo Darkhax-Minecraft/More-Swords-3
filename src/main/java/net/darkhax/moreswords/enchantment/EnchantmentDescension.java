@@ -9,39 +9,39 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 
 public class EnchantmentDescension extends EnchantmentBase {
 
-	protected EnchantmentDescension(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentDescension(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-		FMLCommonHandler.instance().bus().register(this);
-	}
+        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        FMLCommonHandler.instance().bus().register(this);
+    }
 
-	@SubscribeEvent
-	public void onUpdate(TickEvent.PlayerTickEvent event) {
+    @SubscribeEvent
+    public void onUpdate(TickEvent.PlayerTickEvent event) {
 
-		if (isValidPlayer(event.player)) {
+        if (isValidPlayer(event.player)) {
 
-			ItemStack stack = event.player.getHeldItem();
+            ItemStack stack = event.player.getHeldItem();
 
-			if (cfg.descensionShift && event.player.isSneaking())
-				playerGlide(event.player);
+            if (cfg.descensionShift && event.player.isSneaking())
+                playerGlide(event.player);
 
-			else if (!cfg.descensionShift)
-				playerGlide(event.player);
+            else if (!cfg.descensionShift)
+                playerGlide(event.player);
 
-			else
-				return;
-		}
-	}
+            else
+                return;
+        }
+    }
 
-	public void playerGlide(EntityPlayer player) {
+    public void playerGlide(EntityPlayer player) {
 
-		if (!player.onGround) {
+        if (!player.onGround) {
 
-			if (player.motionY < 0.0D) {
+            if (player.motionY < 0.0D) {
 
-				player.motionY *= 0.6D;
-				player.fallDistance = (float) (player.fallDistance * cfg.descensionFall);
-			}
-		}
-	}
+                player.motionY *= 0.6D;
+                player.fallDistance = (float) (player.fallDistance * cfg.descensionFall);
+            }
+        }
+    }
 }

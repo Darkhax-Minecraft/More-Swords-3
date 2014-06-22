@@ -11,21 +11,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class CreativeTabMoreSwords extends CreativeTabs {
 
-	CreativeTabMoreSwords(int id, String name) {
+    CreativeTabMoreSwords(int id, String name) {
 
-		super(id, name);
-	}
+        super(id, name);
+    }
 
-	@SideOnly(Side.CLIENT)
-	public void displayAllReleventItems(List items) {
+    @SideOnly(Side.CLIENT)
+    public void displayAllReleventItems(List items) {
 
-		super.displayAllReleventItems(items);
-		this.addEnchantmentBooksToList(items, new EnumEnchantmentType[] { MoreSwords.enumSwords });
-	}
+        super.displayAllReleventItems(items);
+        this.addEnchantmentBooksToList(items, new EnumEnchantmentType[] { MoreSwords.enumSwords });
+    }
 
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem() {
+    @SideOnly(Side.CLIENT)
+    public Item getTabIconItem() {
 
-		return SwordItems.swordDawmStar;
-	}
+        return SwordItems.swordDawmStar;
+    }
 }

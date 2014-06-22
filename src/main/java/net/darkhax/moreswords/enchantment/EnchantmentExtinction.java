@@ -12,53 +12,53 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentExtinction extends EnchantmentBase {
 
-	protected EnchantmentExtinction(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentExtinction(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	@SubscribeEvent
-	public void onEntityHit(AttackEntityEvent event) {
+    @SubscribeEvent
+    public void onEntityHit(AttackEntityEvent event) {
 
-		if (isValidPlayer(event.entityPlayer)) {
+        if (isValidPlayer(event.entityPlayer)) {
 
-			ItemStack stack = event.entityLiving.getHeldItem();
+            ItemStack stack = event.entityLiving.getHeldItem();
 
-			for (Entity entity : (List<Entity>) event.entityPlayer.worldObj.loadedEntityList) {
+            for (Entity entity : (List<Entity>) event.entityPlayer.worldObj.loadedEntityList) {
 
-				if (!entity.getClass().equals(event.entityPlayer.getClass())) {
+                if (!entity.getClass().equals(event.entityPlayer.getClass())) {
 
-					if (entity.getClass().equals(event.target.getClass())) {
+                    if (entity.getClass().equals(event.target.getClass())) {
 
-						entity.setDead();
-					}
-				}
-			}
-		}
-	}
+                        entity.setDead();
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack) {
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
 
-		return cfg.extinctionVanilla;
-	}
+        return cfg.extinctionVanilla;
+    }
 
-	@Override
-	public boolean isAllowedOnBooks() {
+    @Override
+    public boolean isAllowedOnBooks() {
 
-		return cfg.extinctionVanilla;
-	}
+        return cfg.extinctionVanilla;
+    }
 
-	@Override
-	public boolean canApply(ItemStack stack) {
+    @Override
+    public boolean canApply(ItemStack stack) {
 
-		return cfg.extinctionVanilla;
-	}
+        return cfg.extinctionVanilla;
+    }
 
-	@Override
-	public boolean canApplyTogether(Enchantment par1Enchantment) {
+    @Override
+    public boolean canApplyTogether(Enchantment par1Enchantment) {
 
-		return cfg.extinctionVanilla;
-	}
+        return cfg.extinctionVanilla;
+    }
 }

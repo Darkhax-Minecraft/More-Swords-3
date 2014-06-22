@@ -9,29 +9,29 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentAbsorb extends EnchantmentBase {
 
-	protected EnchantmentAbsorb(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentAbsorb(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	/**
-	 * This enchantment has a 5% chance to restore hunger points.
-	 */
-	@SubscribeEvent
-	public void onEntityHit(AttackEntityEvent event) {
+    /**
+     * This enchantment has a 5% chance to restore hunger points.
+     */
+    @SubscribeEvent
+    public void onEntityHit(AttackEntityEvent event) {
 
-		double d = Math.random();
+        double d = Math.random();
 
-		if (d < cfg.absorbChance) {
+        if (d < cfg.absorbChance) {
 
-			if (isValidPlayer(event.entityPlayer)) {
+            if (isValidPlayer(event.entityPlayer)) {
 
-				ItemStack stack = event.entityPlayer.getHeldItem();
-				int food = Reference.RND.nextIntII(cfg.absorbMin, cfg.absorbMax);
-				float saturation = (float) (cfg.absorbSaturation * food);
-				event.entityPlayer.getFoodStats().addStats(food, saturation);
-			}
-		}
-	}
+                ItemStack stack = event.entityPlayer.getHeldItem();
+                int food = Reference.RND.nextIntII(cfg.absorbMin, cfg.absorbMax);
+                float saturation = (float) (cfg.absorbSaturation * food);
+                event.entityPlayer.getFoodStats().addStats(food, saturation);
+            }
+        }
+    }
 }

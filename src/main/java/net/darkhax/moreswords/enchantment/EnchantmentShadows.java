@@ -11,31 +11,30 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentShadows extends EnchantmentBase {
 
-	protected EnchantmentShadows(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentShadows(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	/**
-	 * Gives a mob 1.5 seconds of blindness. Has a 15% per level chance to cause
-	 * wither damage.
-	 */
-	@SubscribeEvent
-	public void onEntityHit(AttackEntityEvent event) {
+    /**
+     * Gives a mob 1.5 seconds of blindness. Has a 15% per level chance to cause wither damage.
+     */
+    @SubscribeEvent
+    public void onEntityHit(AttackEntityEvent event) {
 
-		if (isLiving(event.target)) {
+        if (isLiving(event.target)) {
 
-			if (isValidPlayer(event.entityLiving)) {
+            if (isValidPlayer(event.entityLiving)) {
 
-				ItemStack stack = event.entityPlayer.getHeldItem();
-				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.blindness.id, cfg.shadowsTime * level(stack), cfg.shadowsLevel));
+                ItemStack stack = event.entityPlayer.getHeldItem();
+                ((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.blindness.id, cfg.shadowsTime * level(stack), cfg.shadowsLevel));
 
-				if (Math.random() < (cfg.shadowsWitherChance * level(stack))) {
+                if (Math.random() < (cfg.shadowsWitherChance * level(stack))) {
 
-					((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.wither.id, (int) (cfg.shadowsWitherTime * level(stack)), cfg.shadowsWitherLevel));
-				}
-			}
-		}
-	}
+                    ((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.wither.id, (int) (cfg.shadowsWitherTime * level(stack)), cfg.shadowsWitherLevel));
+                }
+            }
+        }
+    }
 }

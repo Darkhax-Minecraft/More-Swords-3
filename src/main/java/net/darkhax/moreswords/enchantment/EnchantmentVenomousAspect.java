@@ -11,25 +11,25 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentVenomousAspect extends EnchantmentBase {
 
-	protected EnchantmentVenomousAspect(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentVenomousAspect(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
-	/**
-	 * Poisons a mob for seconds equal to the enchantment level.
-	 */
-	@SubscribeEvent
-	public void onEntityHit(AttackEntityEvent event) {
+    /**
+     * Poisons a mob for seconds equal to the enchantment level.
+     */
+    @SubscribeEvent
+    public void onEntityHit(AttackEntityEvent event) {
 
-		if (isLiving(event.target)) {
+        if (isLiving(event.target)) {
 
-			if (isValidPlayer(event.entityLiving)) {
+            if (isValidPlayer(event.entityLiving)) {
 
-				ItemStack stack = event.entityPlayer.getHeldItem();
-				((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.poison.id, cfg.venomTime * level(stack), cfg.venomLevel));
-			}
-		}
-	}
+                ItemStack stack = event.entityPlayer.getHeldItem();
+                ((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.poison.id, cfg.venomTime * level(stack), cfg.venomLevel));
+            }
+        }
+    }
 }
