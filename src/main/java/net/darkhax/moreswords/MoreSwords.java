@@ -37,6 +37,7 @@ public class MoreSwords {
     public void preInit(FMLPreInitializationEvent pre) {
 
         setModInfo(pre.getModMetadata());
+        proxy.registerSidedEvents();
         new Config(pre.getSuggestedConfigurationFile());
         new SwordItems();
         // new SwordBlocks();
