@@ -1,10 +1,10 @@
 package net.darkhax.moreswords.plugins;
 
-import net.darkhax.moreswords.util.Config;
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 
 public class Plugin {
 
-    Config cfg;
+    ConfigurationHandler cfg;
 
     public Plugin(Boolean enabled) {
 

@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.handler;
 
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.util.Config;
 import net.darkhax.moreswords.util.Reference;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityPigZombie;
@@ -14,7 +13,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class MobHandler {
 
-    Config cfg;
+    ConfigurationHandler cfg;
 
     public MobHandler(Boolean status) {
 

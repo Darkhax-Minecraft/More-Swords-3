@@ -1,13 +1,13 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.util.Config;
 
 public class Enchantments {
 
     static int basic = 5;
     static int advanced = 1;
-    static Config cfg;
+    static ConfigurationHandler cfg;
 
     public Enchantments(Boolean shouldLoad) {
 

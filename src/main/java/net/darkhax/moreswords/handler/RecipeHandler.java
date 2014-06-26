@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.handler;
 
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.util.Config;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -9,7 +8,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeHandler {
 
-    Config cfg;
+    ConfigurationHandler cfg;
     SwordItems swords;
     Items items;
     Blocks blocks;

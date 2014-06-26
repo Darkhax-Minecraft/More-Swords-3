@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.darkhax.moreswords.MoreSwords;
-import net.darkhax.moreswords.util.Config;
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.RandomUtils;
 import net.darkhax.moreswords.util.Reference;
 import net.minecraft.enchantment.Enchantment;
@@ -19,7 +19,7 @@ import net.minecraft.item.ItemSword;
 
 public class EnchantmentBase extends Enchantment {
 
-    public static Config cfg;
+    public static ConfigurationHandler cfg;
     public static ArrayList<Enchantment> enchantments = new ArrayList<Enchantment>();
     protected Random rand = new Random();;
     protected RandomUtils rnd = Reference.RND;

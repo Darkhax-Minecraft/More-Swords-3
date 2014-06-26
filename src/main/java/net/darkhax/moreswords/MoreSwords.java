@@ -3,12 +3,12 @@ package net.darkhax.moreswords;
 import java.util.Arrays;
 
 import net.darkhax.moreswords.enchantment.Enchantments;
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.handler.MobHandler;
 import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.plugins.Plugin;
 import net.darkhax.moreswords.proxy.CommonProxy;
-import net.darkhax.moreswords.util.Config;
 import net.darkhax.moreswords.util.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -25,7 +25,7 @@ public class MoreSwords {
 
     public static CreativeTabs tabSwords = new CreativeTabMoreSwords(CreativeTabs.getNextID(), "moreSwords");
     public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
-    Config cfg;
+    ConfigurationHandler cfg;
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
@@ -38,7 +38,7 @@ public class MoreSwords {
 
         setModInfo(pre.getModMetadata());
         proxy.registerSidedEvents();
-        new Config(pre.getSuggestedConfigurationFile());
+        new ConfigurationHandler(pre.getSuggestedConfigurationFile());
         new SwordItems();
         // new SwordBlocks();
         new Enchantments(cfg.enabledEnchant);
