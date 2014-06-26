@@ -11,6 +11,7 @@ public class Reference {
     public static final String CLIENT_PROXY_CLASS = "net.darkhax.moreswords.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "net.darkhax.moreswords.proxy.CommonProxy";
     public static final String TEXTURE_DOMAIN = "moreswords:";
+    public static final String FACTORY = "net.darkhax.moreswords.gui.MoreSwordsGuiFactory";
     public static final RandomUtils RND = new RandomUtils();
     public static final Logger LOGGER = LogManager.getLogger("MoreSwords");
 }
