@@ -1,0 +1,4 @@
+#gradle
+.gradle/1.11/
+gradle-app.setting
+/ui/
