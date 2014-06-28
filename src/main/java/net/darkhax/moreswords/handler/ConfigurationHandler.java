@@ -2,11 +2,11 @@ package net.darkhax.moreswords.handler;
 
 import java.io.File;
 
+import net.darkhax.moreswords.util.Reference;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.darkhax.moreswords.util.Reference;
-import net.minecraftforge.common.config.Configuration;
 
 public class ConfigurationHandler {
 
