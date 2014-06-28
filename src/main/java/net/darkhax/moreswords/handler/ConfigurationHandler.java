@@ -10,23 +10,24 @@ import net.minecraftforge.common.config.Configuration;
 
 public class ConfigurationHandler {
 
-	public static Configuration config;
+    public static Configuration config;
+
     public ConfigurationHandler(File configFile) {
 
         config = new Configuration(configFile);
         FMLCommonHandler.instance().bus().register(this);
         syncConfigData();
     }
-    
+
     @SubscribeEvent
     public void onConfigChange(ConfigChangedEvent.OnConfigChangedEvent event) {
-    	
-    	if (event.modID.equals(Reference.MOD_ID))
-    		syncConfigData();
+
+        if (event.modID.equals(Reference.MOD_ID))
+            syncConfigData();
     }
-    
+
     private void syncConfigData() {
-    	
+
         itemsCraftable = config.get(general, "Should all swords be craftable?", true).getBoolean(true);
         itemsRepairable = config.get(general, "Should all swords be repairable?", true).getBoolean(true);
         privateEnchant = config.get(general, "Should enchantments be restricted to the sword of their theme?", true).getBoolean(true);
@@ -230,7 +231,7 @@ public class ConfigurationHandler {
         extinctionVanilla = config.get(extinction, "Should this effect be available in vanilla?", false).getBoolean(false);
         config.save();
     }
-    
+
     public static String general = "general settings";
     public static boolean itemsCraftable;
     public static boolean itemsRepairable;
