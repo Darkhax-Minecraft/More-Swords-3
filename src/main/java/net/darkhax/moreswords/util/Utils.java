@@ -159,4 +159,19 @@ public class Utils {
 
         return ench;
     }
+
+    /**
+     * Prepares the stack with a new tag compound if one does not exist. The awakenment tag on the item
+     * is then set to true.
+     * 
+     * @param stack: Instance of the item stack being awakened.
+     * @return ItemStack: same instance of the item stack being provided.
+     */
+    public static ItemStack markStackAsAwakened(ItemStack stack) {
+
+        prepareStackTag(stack);
+        NBTTagCompound tag = stack.stackTagCompound;
+        tag.setBoolean("awakened", true);
+        return stack;
+    }
 }
