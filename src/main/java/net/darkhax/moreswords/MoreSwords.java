@@ -41,7 +41,6 @@ public class MoreSwords {
         proxy.registerSidedEvents();
         new ConfigurationHandler(pre.getSuggestedConfigurationFile());
         new SwordItems();
-        // new SwordBlocks();
         new Enchantments(cfg.enabledEnchant);
         new RecipeHandler(cfg.itemsCraftable);
         new MobHandler(cfg.enabledSpawning);

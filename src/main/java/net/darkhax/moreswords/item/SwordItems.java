@@ -21,9 +21,7 @@ public class SwordItems {
     public static Item swordAether = new ItemBaseSword("aether");
     public static Item swordWither = new ItemBaseSword("wither");
     public static Item swordAdmin = new ItemBaseSword("admin");
-
-    // public static Item ingots = new ItemSwordIngots();
-    // public static Item dust = new ItemSwordDust();
+    public static Item swordHoliday = new ItemBaseSword("holiday");
 
     public SwordItems() {
 
@@ -37,9 +35,7 @@ public class SwordItems {
         registerItem(swordAether);
         registerItem(swordWither);
         registerItem(swordAdmin);
-
-        // GameRegistry.registerItem(ingots, "swordIngot");
-        // GameRegistry.registerItem(dust, "swordDust");
+        registerItem(swordHoliday);
     }
 
     public void registerItem(Item item) {
