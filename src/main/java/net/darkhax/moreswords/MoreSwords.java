@@ -2,6 +2,7 @@ package net.darkhax.moreswords;
 
 import java.util.Arrays;
 
+import net.darkhax.moreswords.blocks.AwakenDawnStar;
 import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.handler.MobHandler;
@@ -44,6 +45,7 @@ public class MoreSwords {
         new Enchantments(cfg.enabledEnchant);
         new RecipeHandler(cfg.itemsCraftable);
         new MobHandler(cfg.enabledSpawning);
+        new AwakenDawnStar(true);
     }
 
     @EventHandler
