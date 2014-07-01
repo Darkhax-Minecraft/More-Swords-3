@@ -45,6 +45,7 @@ public class ConfigurationHandler {
         damageAether = config.get(damage, "Damage Value Of Aether's Guard", 8).getInt();
         damageWither = config.get(damage, "Damage Value Of Withers Bane", 8).getInt();
         damageAdmin = config.get(damage, "Damage Value Of Adminium Ark", 99999).getInt();
+        damageHoliday = config.get(damage, "Damage Value of the Holiday Sword", 5).getInt();
 
         durabilityDawnStar = config.get(durability, "Durability Value Of DawnStar", 1286).getInt();
         durabilityVampiric = config.get(durability, "Durability Value Of Vampiric Blade", 812).getInt();
@@ -56,6 +57,7 @@ public class ConfigurationHandler {
         durabilityAether = config.get(durability, "Durability Value Of Aether's Guard", 1796).getInt();
         durabilityWither = config.get(durability, "Durability Value Of Withers Bane", 1869).getInt();
         durabilityAdmin = config.get(durability, "Durability Value Of Adminium Ark", 9999999).getInt();
+        durabilityHoliday = config.get(durability, "Durability Value of Holiday Sword", 587).getInt();
 
         enchantDawnStar = config.get(enchant, "Enchantability Of DawnStar", 12).getInt();
         enchantVampiric = config.get(enchant, "Enchantability Of Vampiric Blade", 12).getInt();
@@ -67,6 +69,7 @@ public class ConfigurationHandler {
         enchantAether = config.get(enchant, "Enchantability Of Aether's Guard", 18).getInt();
         enchantWither = config.get(enchant, "Enchantability Of Withers Bane", 18).getInt();
         enchantAdmin = config.get(enchant, "Enchantability Of Adminium Ark", 999).getInt();
+        enchantHoliday = config.get(enchant, "Enchantability of Holiday Sword", 17).getInt();
 
         harvestDawnStar = config.get(harvest, "Harvest Level Of DawnStar", 3).getInt();
         harvestVampiric = config.get(harvest, "Harvest Level Of Vampiric Blade", 3).getInt();
@@ -78,6 +81,7 @@ public class ConfigurationHandler {
         harvestAether = config.get(harvest, "Harvest Level Of Aether's Guard", 4).getInt();
         harvestWither = config.get(harvest, "Harvest Level Of Withers Bane", 4).getInt();
         harvestAdmin = config.get(harvest, "Harvest Level Of Adminium Ark", 999).getInt();
+        harvestHoliday = config.get(harvest,"Harvest Level Of Holiday Sword", 4).getInt();
 
         efficientDawnStar = config.get(efficient, "Efficiency  Of DawnStar", 8).getInt();
         efficientVampiric = config.get(efficient, "Efficiency  Of Vampiric Blade", 8).getInt();
@@ -89,6 +93,7 @@ public class ConfigurationHandler {
         efficientAether = config.get(efficient, "Efficiency  Of Aether's Guard", 9).getInt();
         efficientWither = config.get(efficient, "Efficiency  Of Withers Bane", 9).getInt();
         efficientAdmin = config.get(efficient, "Efficiency  Of Adminium Ark", 999).getInt();
+        efficientHoliday = config.get(efficient, "Efficiency of Holiday Sword", 4).getInt();
 
         repairDawnStar = config.get(repair, "Repair Item For DawnStar", "blaze_rod").getString();
         repairVampiric = config.get(repair, "Repair Item For Vampiric Blade", "redstone").getString();
@@ -100,6 +105,7 @@ public class ConfigurationHandler {
         repairAether = config.get(repair, "Repair Item For Aether's Guard", "glowstone").getString();
         repairWither = config.get(repair, "Repair Item For Withers Bane", "soul_sand").getString();
         repairAdmin = config.get(repair, "Repair Item For Adminium Ark", "bedrock").getString();
+        repairHoliday = config.get(repair, "Repair Item For Holiday Sword", "fireworks").getString();
 
         craftingDawnStar = config.get(crafting, "Should the  DawnStar Be Craftable?", true).getBoolean(true);
         craftingVampiric = config.get(crafting, "Should the  Vampiric Blade Be Craftable?", true).getBoolean(true);
@@ -111,7 +117,8 @@ public class ConfigurationHandler {
         craftingAether = config.get(crafting, "Should the  Aether's Guard Be Craftable?", true).getBoolean(true);
         craftingWither = config.get(crafting, "Should the  Withers Bane Be Craftable?", true).getBoolean(true);
         craftingAdmin = config.get(crafting, "Should the  Adminium Ark Be Craftable?", true).getBoolean(true);
-
+        craftingHoliday = config.get(crafting, "Should the Holiday Sword Be Craftable?", true).getBoolean(true);
+        
         zombieSwords = config.get(monster, "Should zombies spawn holding swords from this mod?", true).getBoolean(true);
         skeletonSwords = config.get(monster, "Should skeletons spawn holding swords from this mod?", true).getBoolean(true);
         pigSwords = config.get(monster, "Should pig zombies spawn holding swords from this mod?", true).getBoolean(true);
@@ -251,7 +258,8 @@ public class ConfigurationHandler {
     public static int damageAether;
     public static int damageWither;
     public static int damageAdmin;
-
+    public static int damageHoliday;
+    
     public static String durability = "durability values";
     public static int durabilityDawnStar;
     public static int durabilityVampiric;
@@ -263,7 +271,8 @@ public class ConfigurationHandler {
     public static int durabilityAether;
     public static int durabilityWither;
     public static int durabilityAdmin;
-
+    public static int durabilityHoliday;
+    
     public static String enchant = "enchantability values";
     public static int enchantDawnStar;
     public static int enchantVampiric;
@@ -275,6 +284,7 @@ public class ConfigurationHandler {
     public static int enchantAether;
     public static int enchantWither;
     public static int enchantAdmin;
+    public static int enchantHoliday;
 
     public static String harvest = "harvest values";
     public static int harvestDawnStar;
@@ -287,6 +297,7 @@ public class ConfigurationHandler {
     public static int harvestAether;
     public static int harvestWither;
     public static int harvestAdmin;
+    public static int harvestHoliday;
 
     public static String efficient = "efficiency values";
     public static int efficientDawnStar;
@@ -299,6 +310,7 @@ public class ConfigurationHandler {
     public static int efficientAether;
     public static int efficientWither;
     public static int efficientAdmin;
+    public static int efficientHoliday;
 
     public static String repair = "repair items";
     public static String repairDawnStar;
@@ -311,7 +323,8 @@ public class ConfigurationHandler {
     public static String repairAether;
     public static String repairWither;
     public static String repairAdmin;
-
+    public static String repairHoliday;
+    
     public static String crafting = "crafting options";
     public static boolean craftingDawnStar;
     public static boolean craftingVampiric;
@@ -323,6 +336,7 @@ public class ConfigurationHandler {
     public static boolean craftingAether;
     public static boolean craftingWither;
     public static boolean craftingAdmin;
+    public static boolean craftingHoliday;
 
     public static String monster = "monster settings";
     public static boolean zombieSwords;
