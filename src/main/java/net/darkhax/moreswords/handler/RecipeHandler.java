@@ -19,7 +19,6 @@ public class RecipeHandler {
 
     public RecipeHandler(Boolean status) {
 
-    	FMLCommonHandler.instance().bus().register(this);
         if (status) {
 
             createItemRecipe(new ItemStack(swords.swordDawmStar), new Object[] { "xyz", "yzy", "ayx", Character.valueOf('x'), items.blaze_powder, Character.valueOf('y'), items.fire_charge, Character.valueOf('z'), items.magma_cream, Character.valueOf('a'), items.blaze_rod }, cfg.craftingDawnStar);
