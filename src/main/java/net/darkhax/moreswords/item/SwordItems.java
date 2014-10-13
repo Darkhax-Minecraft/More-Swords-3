@@ -21,7 +21,8 @@ public class SwordItems {
     public static Item swordAether = new ItemBaseSword("aether");
     public static Item swordWither = new ItemBaseSword("wither");
     public static Item swordAdmin = new ItemBaseSword("admin");
-    //public static Item swordHoliday = new ItemBaseSword("holiday");
+
+    // public static Item swordHoliday = new ItemBaseSword("holiday");
 
     public SwordItems() {
 
@@ -35,7 +36,7 @@ public class SwordItems {
         registerItem(swordAether);
         registerItem(swordWither);
         registerItem(swordAdmin);
-        //registerItem(swordHoliday);
+        // registerItem(swordHoliday);
     }
 
     public void registerItem(Item item) {

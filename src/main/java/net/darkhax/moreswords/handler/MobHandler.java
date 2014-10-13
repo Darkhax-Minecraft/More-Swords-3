@@ -48,7 +48,7 @@ public class MobHandler {
 
     public void setEntityToHoldSwords(EntityLiving entity, double odds) {
 
-    	ItemStack stack = new ItemStack(SwordItems.swordList.get(Reference.RND.nextIntII(0, SwordItems.swordList.size() - 1)));
+        ItemStack stack = new ItemStack(SwordItems.swordList.get(Reference.RND.nextIntII(0, SwordItems.swordList.size() - 1)));
         if (Math.random() < odds && stack != null && stack.getItem() != SwordItems.swordAdmin)
             entity.setCurrentItemOrArmor(0, stack);
 

@@ -81,7 +81,7 @@ public class ConfigurationHandler {
         harvestAether = config.get(harvest, "Harvest Level Of Aether's Guard", 4).getInt();
         harvestWither = config.get(harvest, "Harvest Level Of Withers Bane", 4).getInt();
         harvestAdmin = config.get(harvest, "Harvest Level Of Adminium Ark", 999).getInt();
-        harvestHoliday = config.get(harvest,"Harvest Level Of Holiday Sword", 4).getInt();
+        harvestHoliday = config.get(harvest, "Harvest Level Of Holiday Sword", 4).getInt();
 
         efficientDawnStar = config.get(efficient, "Efficiency  Of DawnStar", 8).getInt();
         efficientVampiric = config.get(efficient, "Efficiency  Of Vampiric Blade", 8).getInt();
@@ -118,7 +118,7 @@ public class ConfigurationHandler {
         craftingWither = config.get(crafting, "Should the  Withers Bane Be Craftable?", true).getBoolean(true);
         craftingAdmin = config.get(crafting, "Should the  Adminium Ark Be Craftable?", true).getBoolean(true);
         craftingHoliday = config.get(crafting, "Should the Holiday Sword Be Craftable?", true).getBoolean(true);
-        
+
         zombieSwords = config.get(monster, "Should zombies spawn holding swords from this mod?", true).getBoolean(true);
         skeletonSwords = config.get(monster, "Should skeletons spawn holding swords from this mod?", true).getBoolean(true);
         pigSwords = config.get(monster, "Should pig zombies spawn holding swords from this mod?", true).getBoolean(true);
@@ -259,7 +259,7 @@ public class ConfigurationHandler {
     public static int damageWither;
     public static int damageAdmin;
     public static int damageHoliday;
-    
+
     public static String durability = "durability values";
     public static int durabilityDawnStar;
     public static int durabilityVampiric;
@@ -272,7 +272,7 @@ public class ConfigurationHandler {
     public static int durabilityWither;
     public static int durabilityAdmin;
     public static int durabilityHoliday;
-    
+
     public static String enchant = "enchantability values";
     public static int enchantDawnStar;
     public static int enchantVampiric;
@@ -324,7 +324,7 @@ public class ConfigurationHandler {
     public static String repairWither;
     public static String repairAdmin;
     public static String repairHoliday;
-    
+
     public static String crafting = "crafting options";
     public static boolean craftingDawnStar;
     public static boolean craftingVampiric;
