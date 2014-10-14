@@ -11,7 +11,8 @@ public class Plugin {
         if (enabled) {
 
             new PluginVersionChecker(cfg.enabledVersionChecker);
-            new PluginEnchantingPlus(cfg.enabledEnchantingPlus);
+            new PluginTinkersConstruct(true);
+            //new PluginEnchantingPlus(cfg.enabledEnchantingPlus);
         }
     }
 }

@@ -128,6 +128,8 @@ public class ConfigurationHandler {
 
         enabledVersionChecker = config.get(plugins, "Should the Version Checker plugin be loaded?", true).getBoolean(true);
         enabledEnchantingPlus = config.get(plugins, "Should the Enchanting Plus plugin be loaded?", true).getBoolean(true);
+        enableTinkersConstruct = config.get(plugins, "Should the Tinkers Construct plugin be loaded?", true).getBoolean(true);
+        initialIDRange = config.get(plugins, "The initial id range for tinkers construct tool materials", 1337, "This is the intial id for tool materials, you likely won't need to change this, however if another mod uses ids within this range, then tool parts may not be shown. Please check your console if you suspect that this may be the case, warning messages will be printed. This value has no theoretical limit, however increasing this value may cause certain features of tinkers construct, or your game, to decrease in performance.").getInt();
 
         igniteEnabled = config.get(ignite, "Should the Ignite enchantment be available?", true).getBoolean(true);
         igniteID = config.get(ignite, "Enchantment ID for Ignite", 130).getInt();
@@ -349,6 +351,8 @@ public class ConfigurationHandler {
     public static String plugins = "plugins";
     public static boolean enabledVersionChecker;
     public static boolean enabledEnchantingPlus;
+    public static boolean enableTinkersConstruct;
+    public static int initialIDRange;
 
     public static String ignite = "enchantment: ignite";
     public static boolean igniteEnabled;

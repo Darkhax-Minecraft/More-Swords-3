@@ -53,7 +53,7 @@ public class MoreSwords {
 
     void setModInfo(ModMetadata meta) {
 
-        meta.authorList = Arrays.asList(new String[] { "Darkhax" });
+        meta.authorList = Arrays.asList("Darkhax");
         meta.logoFile = "";
         meta.credits = "Maintained by Darkhax";
         meta.description = "More Swords provides a magnificent chain of lustrous new swords that expound upon the foundation of Minecraft weaponry. Razor sharp swords of magic as well as stronger, more practical blaes!";
