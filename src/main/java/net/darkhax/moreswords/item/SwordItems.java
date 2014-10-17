@@ -3,15 +3,15 @@ package net.darkhax.moreswords.item;
 import java.util.HashMap;
 
 import net.darkhax.moreswords.util.Constants;
+import net.darkhax.moreswords.util.EnumMoreSwords;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
 
-    // public static List<ItemBaseSword> swordList = new ArrayList<ItemBaseSword>();
     public static HashMap<String, Item> swordList = new HashMap(50);
 
-    public static Item swordDawmStar = new ItemBaseSword("dawnStar");
+    public static Item swordDawmStar = new ItemBaseSword(EnumMoreSwords.DAWNSTAR.swordName);
     public static Item swordVampiric = new ItemBaseSword("vampiric");
     public static Item swordGladiolus = new ItemBaseSword("gladiolus");
     public static Item swordDraconic = new ItemBaseSword("draconic");
@@ -21,9 +21,7 @@ public class SwordItems {
     public static Item swordAether = new ItemBaseSword("aether");
     public static Item swordWither = new ItemBaseSword("wither");
     public static Item swordAdmin = new ItemBaseSword("admin");
-
-    // public static Item swordHoliday = new ItemBaseSword("holiday");
-
+    
     public SwordItems() {
 
         registerSwordItem(swordDawmStar);
@@ -36,7 +34,6 @@ public class SwordItems {
         registerSwordItem(swordAether);
         registerSwordItem(swordWither);
         registerSwordItem(swordAdmin);
-        // registerItem(swordHoliday);
     }
 
     public void registerSwordItem(Item item) {

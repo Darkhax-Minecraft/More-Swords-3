@@ -5,8 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public enum EnumMoreSwords {
-
-    DAWNSTAR("dawnStar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336),
+    
+    DAWNSTAR("dawnstar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336),
     VAMPIRIC("vampiric", ConfigurationHandler.damageVampiric, ConfigurationHandler.durabilityVampiric, ConfigurationHandler.enchantVampiric, ConfigurationHandler.harvestVampiric, ConfigurationHandler.efficientVampiric, ConfigurationHandler.repairVampiric, ConfigurationHandler.craftingVampiric, 9371648),
     GLADIOLUS("gladiolus", ConfigurationHandler.damageGladiolus, ConfigurationHandler.durabilityGladiolus, ConfigurationHandler.enchantGladiolus, ConfigurationHandler.harvestGladiolus, ConfigurationHandler.efficientGladiolus, ConfigurationHandler.repairGladiolus, ConfigurationHandler.craftingGladiolus, 20992),
     DRACONIC("draconic", ConfigurationHandler.damageDraconic, ConfigurationHandler.durabilityDraconic, ConfigurationHandler.enchantDraconic, ConfigurationHandler.harvestDraconic, ConfigurationHandler.efficientDraconic, ConfigurationHandler.repairDraconic, ConfigurationHandler.craftingDraconic, 4671441),
@@ -16,11 +16,6 @@ public enum EnumMoreSwords {
     AETHER("aether", ConfigurationHandler.damageAether, ConfigurationHandler.durabilityAether, ConfigurationHandler.enchantAether, ConfigurationHandler.harvestAether, ConfigurationHandler.efficientAether, ConfigurationHandler.repairAether, ConfigurationHandler.craftingAether, 6750207),
     WITHER("wither", ConfigurationHandler.damageWither, ConfigurationHandler.durabilityWither, ConfigurationHandler.enchantWither, ConfigurationHandler.harvestWither, ConfigurationHandler.efficientWither, ConfigurationHandler.repairWither, ConfigurationHandler.craftingWither, 657930),
     ADMIN("admin", ConfigurationHandler.damageAdmin, ConfigurationHandler.durabilityAdmin, ConfigurationHandler.enchantAdmin, ConfigurationHandler.harvestAdmin, ConfigurationHandler.efficientAdmin, ConfigurationHandler.repairAdmin, ConfigurationHandler.craftingAdmin, 3342336);
-
-    // HOLIDAY("holiday", ConfigurationHandler.damageHoliday, ConfigurationHandler.durabilityHoliday,
-    // ConfigurationHandler.enchantHoliday, ConfigurationHandler.harvestHoliday,
-    // ConfigurationHandler.efficientHoliday, ConfigurationHandler.repairHoliday,
-    // ConfigurationHandler.craftingHoliday)
 
     /**
      * Creates An enum type similar to tool material but for use with ItemCoreSword.

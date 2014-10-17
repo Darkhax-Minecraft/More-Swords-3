@@ -8,6 +8,7 @@ import net.darkhax.moreswords.util.EnumMoreSwords;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,10 +32,8 @@ public class PluginTinkersConstruct {
             for (EnumMoreSwords data : EnumMoreSwords.values()) {
 
                 createMaterial(data);
-                createAndRegisterFluids(data);
                 createPartCastingMaterial(data);
-                // createPartBuilderMaterial(data);
-                Item recipe = (Item) Item.itemRegistry.getObject("modid:itemID");
+                createAndAddSmelteryMelting(data);
             }
         }
     }
@@ -55,15 +54,20 @@ public class PluginTinkersConstruct {
 
     public static void createPartCastingMaterial(EnumMoreSwords data) {
 
+        System.out.println("Added: " + "msm.fluid." + data.swordName);
+        Fluid swordFluid = new Fluid("msm.fluid." + data.swordName);
+        FluidRegistry.registerFluid(swordFluid);
+        Block swordFluidBlock = new BlockSwordFluid(swordFluid, "msm.fluid." + data.swordName).setBlockName("msm." + data.swordName);
+        GameRegistry.registerBlock(swordFluidBlock, "msm.fluid." + data.swordName);
         NBTTagCompound tag = new NBTTagCompound();
         tag.setInteger("MaterialId", ConfigurationHandler.initialIDRange + data.ordinal());
         tag.setString("FluidName", "msm.fluid." + data.swordName);
+        tag.setInteger("Amount", 144);
         FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "TConstruct", "addPartCastingMaterial", tag);
     }
 
     public static void createPartBuilderMaterial(EnumMoreSwords data) {
 
-        System.out.println("Sword List here: " + SwordItems.swordList.toString());
         NBTTagCompound tag = new NBTTagCompound();
         ItemStack swordStack = new ItemStack(SwordItems.swordList.get(data.swordName));
         tag.setInteger("MaterialId", ConfigurationHandler.initialIDRange + data.ordinal());
@@ -74,12 +78,21 @@ public class PluginTinkersConstruct {
         FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "TConstruct", "addPartBuilderMaterial", tag);
     }
 
-    public static void createAndRegisterFluids(EnumMoreSwords data) {
+    public static void createAndAddSmelteryMelting(EnumMoreSwords data) {
 
-        Fluid swordFluid = new Fluid("msm.fluid." + data.swordName);
-        FluidRegistry.registerFluid(swordFluid);
-        Block swordFluidBlock = new BlockSwordFluid(swordFluid, "msm.fluid." + data.swordName).setBlockName("msm." + data.swordName);
-        GameRegistry.registerBlock(swordFluidBlock, "msm.fluid." + data.swordName);
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setString("FluidName", "msm.fluid." + data.swordName);
+        tag.setInteger("Amount", 144);
+        ItemStack swordStack = new ItemStack(SwordItems.swordList.get(data.swordName));
+        ItemStack swordBlock = new ItemStack(Blocks.iron_block);
+        NBTTagCompound itemTag = new NBTTagCompound();
+        NBTTagCompound blockTag = new NBTTagCompound();
+        swordStack.writeToNBT(itemTag);
+        swordBlock.writeToNBT(blockTag);
+        tag.setTag("Item", itemTag);
+        tag.setTag("Block", blockTag);
+        tag.setInteger("Temperature", 75);
+        FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "TConstruct", "addSmelteryMelting", tag);
     }
 
     public static class BlockSwordFluid extends BlockFluidClassic {
