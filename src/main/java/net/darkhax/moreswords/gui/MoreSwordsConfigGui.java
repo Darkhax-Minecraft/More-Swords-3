@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
-import net.darkhax.moreswords.util.Reference;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
@@ -18,7 +18,7 @@ public class MoreSwordsConfigGui extends GuiConfig {
 
     public MoreSwordsConfigGui(GuiScreen parent) {
 
-        super(parent, generateConfigList(), Reference.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath(ConfigurationHandler.config.toString()));
+        super(parent, generateConfigList(), Constants.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath(ConfigurationHandler.config.toString()));
     }
 
     public static List<IConfigElement> generateConfigList() {

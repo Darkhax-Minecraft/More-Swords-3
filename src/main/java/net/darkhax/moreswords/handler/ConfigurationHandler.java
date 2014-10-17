@@ -2,7 +2,7 @@ package net.darkhax.moreswords.handler;
 
 import java.io.File;
 
-import net.darkhax.moreswords.util.Reference;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -22,7 +22,7 @@ public class ConfigurationHandler {
     @SubscribeEvent
     public void onConfigChange(ConfigChangedEvent.OnConfigChangedEvent event) {
 
-        if (event.modID.equals(Reference.MOD_ID))
+        if (event.modID.equals(Constants.MOD_ID))
             syncConfigData();
     }
 

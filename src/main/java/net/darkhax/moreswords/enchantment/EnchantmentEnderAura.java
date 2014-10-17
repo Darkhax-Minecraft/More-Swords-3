@@ -1,6 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Reference;
+import net.darkhax.moreswords.util.Constants;
 import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,7 +38,7 @@ public class EnchantmentEnderAura extends EnchantmentBase {
 
     public void attemptWarp(EntityPlayer living) {
 
-        Entity target = (Entity) living.worldObj.loadedEntityList.get(Reference.RND.nextIntII(1, living.worldObj.loadedEntityList.size() - 1));
+        Entity target = (Entity) living.worldObj.loadedEntityList.get(Constants.RND.nextIntII(1, living.worldObj.loadedEntityList.size() - 1));
 
         if (isLiving(target)) {
 

@@ -1,7 +1,7 @@
 package net.darkhax.moreswords.plugins;
 
 import net.darkhax.moreswords.enchantment.EnchantmentBase;
-import net.darkhax.moreswords.util.Reference;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
@@ -21,7 +21,7 @@ public class PluginEnchantingPlus {
                 NBTTagCompound ench = new NBTTagCompound();
                 ench.setString("Name", enchant.getName());
                 ench.setString("Description", StatCollector.translateToLocal("description.msm.enchantment" + enchant.getName().substring(16)));
-                FMLInterModComms.sendRuntimeMessage(Reference.MOD_ID, "eplus", "enchant-tooltip", ench);
+                FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "eplus", "enchant-tooltip", ench);
             }
         }
     }

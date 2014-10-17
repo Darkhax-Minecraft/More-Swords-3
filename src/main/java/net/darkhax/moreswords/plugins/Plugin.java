@@ -12,7 +12,7 @@ public class Plugin {
 
             new PluginVersionChecker(cfg.enabledVersionChecker);
             new PluginTinkersConstruct(true);
-            //new PluginEnchantingPlus(cfg.enabledEnchantingPlus);
+            // new PluginEnchantingPlus(cfg.enabledEnchantingPlus);
         }
     }
 }

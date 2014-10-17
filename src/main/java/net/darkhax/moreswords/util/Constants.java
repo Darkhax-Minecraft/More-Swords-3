@@ -3,7 +3,7 @@ package net.darkhax.moreswords.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Reference {
+public class Constants {
 
     public static final String MOD_ID = "MSM3";
     public static final String MOD_NAME = "More Swords 3";
