@@ -8,7 +8,11 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public enum EnumSwordData {
 
-    CANADA("Canada Day", "#ff0000", "ffffff", "#ff0000", createCalendar(7, 1)), MURICA("Independence Day", "E0162B", "FFFFFF", "0052A5", createCalendar(7, 4)), STRAYA("Australia Day", "002B7F", "E8112D", "FFFFFF", createCalendar(1, 26)), GERMANY("German Unity Day", "000000", "ff0000", "ffff00", createCalendar(9, 3)), PRIDE("Pride Day", "000000", "0000000", "000000", createCalendar(6, 28));
+    CANADA("Canada Day", "#ff0000", "ffffff", "#ff0000", createCalendar(7, 1)),
+    MURICA("Independence Day", "E0162B", "FFFFFF", "0052A5", createCalendar(7, 4)),
+    STRAYA("Australia Day", "002B7F", "E8112D", "FFFFFF", createCalendar(1, 26)),
+    GERMANY("German Unity Day", "000000", "ff0000", "ffff00", createCalendar(9, 3)),
+    PRIDE("Pride Day", "000000", "0000000", "000000", createCalendar(6, 28));
 
     EnumSwordData(String name, String hex1, String hex2, String hex3, Calendar date) {
 

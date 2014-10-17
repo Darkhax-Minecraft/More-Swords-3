@@ -6,18 +6,21 @@ import net.minecraft.item.Item;
 
 public enum EnumMoreSwords {
 
-    DAWNSTAR("dawnStar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336), 
-    VAMPIRIC("vampiric", ConfigurationHandler.damageVampiric, ConfigurationHandler.durabilityVampiric, ConfigurationHandler.enchantVampiric, ConfigurationHandler.harvestVampiric, ConfigurationHandler.efficientVampiric, ConfigurationHandler.repairVampiric, ConfigurationHandler.craftingVampiric, 9371648), 
-    GLADIOLUS("gladiolus", ConfigurationHandler.damageGladiolus, ConfigurationHandler.durabilityGladiolus, ConfigurationHandler.enchantGladiolus, ConfigurationHandler.harvestGladiolus, ConfigurationHandler.efficientGladiolus, ConfigurationHandler.repairGladiolus, ConfigurationHandler.craftingGladiolus, 20992), 
-    DRACONIC("draconic", ConfigurationHandler.damageDraconic, ConfigurationHandler.durabilityDraconic, ConfigurationHandler.enchantDraconic, ConfigurationHandler.harvestDraconic, ConfigurationHandler.efficientDraconic, ConfigurationHandler.repairDraconic, ConfigurationHandler.craftingDraconic, 4671441), 
-    ENDER("ender", ConfigurationHandler.damageEnder, ConfigurationHandler.durabilityEnder, ConfigurationHandler.enchantEnder, ConfigurationHandler.harvestEnder, ConfigurationHandler.efficientEnder, ConfigurationHandler.repairEnder, ConfigurationHandler.craftingEnder, 2386759), 
-    CRYSTAL("crystal", ConfigurationHandler.damageCrystal, ConfigurationHandler.durabilityCrystal, ConfigurationHandler.enchantCrystal, ConfigurationHandler.harvestCrystal, ConfigurationHandler.efficientCrystal, ConfigurationHandler.repairCrystal, ConfigurationHandler.craftingCrystal, 13434828), 
-    GLACIAL("glacial", ConfigurationHandler.damageGlacial, ConfigurationHandler.durabilityGlacial, ConfigurationHandler.enchantGlacial, ConfigurationHandler.harvestGlacial, ConfigurationHandler.efficientGlacial, ConfigurationHandler.repairGlacial, ConfigurationHandler.craftingGlacial, 6737151), 
-    AETHER("aether", ConfigurationHandler.damageAether, ConfigurationHandler.durabilityAether, ConfigurationHandler.enchantAether, ConfigurationHandler.harvestAether, ConfigurationHandler.efficientAether, ConfigurationHandler.repairAether, ConfigurationHandler.craftingAether, 6750207), 
-    WITHER("wither", ConfigurationHandler.damageWither, ConfigurationHandler.durabilityWither, ConfigurationHandler.enchantWither, ConfigurationHandler.harvestWither, ConfigurationHandler.efficientWither, ConfigurationHandler.repairWither, ConfigurationHandler.craftingWither, 657930), 
+    DAWNSTAR("dawnStar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336),
+    VAMPIRIC("vampiric", ConfigurationHandler.damageVampiric, ConfigurationHandler.durabilityVampiric, ConfigurationHandler.enchantVampiric, ConfigurationHandler.harvestVampiric, ConfigurationHandler.efficientVampiric, ConfigurationHandler.repairVampiric, ConfigurationHandler.craftingVampiric, 9371648),
+    GLADIOLUS("gladiolus", ConfigurationHandler.damageGladiolus, ConfigurationHandler.durabilityGladiolus, ConfigurationHandler.enchantGladiolus, ConfigurationHandler.harvestGladiolus, ConfigurationHandler.efficientGladiolus, ConfigurationHandler.repairGladiolus, ConfigurationHandler.craftingGladiolus, 20992),
+    DRACONIC("draconic", ConfigurationHandler.damageDraconic, ConfigurationHandler.durabilityDraconic, ConfigurationHandler.enchantDraconic, ConfigurationHandler.harvestDraconic, ConfigurationHandler.efficientDraconic, ConfigurationHandler.repairDraconic, ConfigurationHandler.craftingDraconic, 4671441),
+    ENDER("ender", ConfigurationHandler.damageEnder, ConfigurationHandler.durabilityEnder, ConfigurationHandler.enchantEnder, ConfigurationHandler.harvestEnder, ConfigurationHandler.efficientEnder, ConfigurationHandler.repairEnder, ConfigurationHandler.craftingEnder, 2386759),
+    CRYSTAL("crystal", ConfigurationHandler.damageCrystal, ConfigurationHandler.durabilityCrystal, ConfigurationHandler.enchantCrystal, ConfigurationHandler.harvestCrystal, ConfigurationHandler.efficientCrystal, ConfigurationHandler.repairCrystal, ConfigurationHandler.craftingCrystal, 13434828),
+    GLACIAL("glacial", ConfigurationHandler.damageGlacial, ConfigurationHandler.durabilityGlacial, ConfigurationHandler.enchantGlacial, ConfigurationHandler.harvestGlacial, ConfigurationHandler.efficientGlacial, ConfigurationHandler.repairGlacial, ConfigurationHandler.craftingGlacial, 6737151),
+    AETHER("aether", ConfigurationHandler.damageAether, ConfigurationHandler.durabilityAether, ConfigurationHandler.enchantAether, ConfigurationHandler.harvestAether, ConfigurationHandler.efficientAether, ConfigurationHandler.repairAether, ConfigurationHandler.craftingAether, 6750207),
+    WITHER("wither", ConfigurationHandler.damageWither, ConfigurationHandler.durabilityWither, ConfigurationHandler.enchantWither, ConfigurationHandler.harvestWither, ConfigurationHandler.efficientWither, ConfigurationHandler.repairWither, ConfigurationHandler.craftingWither, 657930),
     ADMIN("admin", ConfigurationHandler.damageAdmin, ConfigurationHandler.durabilityAdmin, ConfigurationHandler.enchantAdmin, ConfigurationHandler.harvestAdmin, ConfigurationHandler.efficientAdmin, ConfigurationHandler.repairAdmin, ConfigurationHandler.craftingAdmin, 3342336);
-    
-    //HOLIDAY("holiday", ConfigurationHandler.damageHoliday, ConfigurationHandler.durabilityHoliday, ConfigurationHandler.enchantHoliday, ConfigurationHandler.harvestHoliday, ConfigurationHandler.efficientHoliday, ConfigurationHandler.repairHoliday, ConfigurationHandler.craftingHoliday)
+
+    // HOLIDAY("holiday", ConfigurationHandler.damageHoliday, ConfigurationHandler.durabilityHoliday,
+    // ConfigurationHandler.enchantHoliday, ConfigurationHandler.harvestHoliday,
+    // ConfigurationHandler.efficientHoliday, ConfigurationHandler.repairHoliday,
+    // ConfigurationHandler.craftingHoliday)
 
     /**
      * Creates An enum type similar to tool material but for use with ItemCoreSword.
@@ -68,7 +71,7 @@ public enum EnumMoreSwords {
             }
         }
 
-        Reference.LOGGER.info("There was an error when attempting to look up " + name);
+        Constants.LOGGER.info("There was an error when attempting to look up " + name);
         return null;
     }
 
@@ -180,7 +183,7 @@ public enum EnumMoreSwords {
             return Item.getItemFromBlock((Block) Block.blockRegistry.getObject(name));
         }
 
-        Reference.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
+        Constants.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
         return null;
     }
 }

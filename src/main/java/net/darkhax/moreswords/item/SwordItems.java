@@ -1,15 +1,15 @@
 package net.darkhax.moreswords.item;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
-import net.darkhax.moreswords.util.Reference;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
 
-    public static List<ItemBaseSword> swordList = new ArrayList<ItemBaseSword>();
+    // public static List<ItemBaseSword> swordList = new ArrayList<ItemBaseSword>();
+    public static HashMap<String, Item> swordList = new HashMap(50);
 
     public static Item swordDawmStar = new ItemBaseSword("dawnStar");
     public static Item swordVampiric = new ItemBaseSword("vampiric");
@@ -26,23 +26,23 @@ public class SwordItems {
 
     public SwordItems() {
 
-        registerItem(swordDawmStar);
-        registerItem(swordVampiric);
-        registerItem(swordGladiolus);
-        registerItem(swordDraconic);
-        registerItem(swordEnder);
-        registerItem(swordCrystal);
-        registerItem(swordGlacial);
-        registerItem(swordAether);
-        registerItem(swordWither);
-        registerItem(swordAdmin);
+        registerSwordItem(swordDawmStar);
+        registerSwordItem(swordVampiric);
+        registerSwordItem(swordGladiolus);
+        registerSwordItem(swordDraconic);
+        registerSwordItem(swordEnder);
+        registerSwordItem(swordCrystal);
+        registerSwordItem(swordGlacial);
+        registerSwordItem(swordAether);
+        registerSwordItem(swordWither);
+        registerSwordItem(swordAdmin);
         // registerItem(swordHoliday);
     }
 
-    public void registerItem(Item item) {
+    public void registerSwordItem(Item item) {
 
         ItemBaseSword sword = (ItemBaseSword) item;
-        GameRegistry.registerItem(item, sword.swordName, Reference.MOD_ID);
-        swordList.add(sword);
+        GameRegistry.registerItem(item, sword.swordName, Constants.MOD_ID);
+        swordList.put(sword.swordName, item);
     }
 }
