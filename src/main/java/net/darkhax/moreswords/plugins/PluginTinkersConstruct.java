@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,6 +35,7 @@ public class PluginTinkersConstruct {
                 createMaterial(data);
                 createPartCastingMaterial(data);
                 createAndAddSmelteryMelting(data);
+                createPartBuilderMaterial(data);
             }
         }
     }
@@ -57,7 +59,7 @@ public class PluginTinkersConstruct {
         System.out.println("Added: " + "msm.fluid." + data.swordName);
         Fluid swordFluid = new Fluid("msm.fluid." + data.swordName);
         FluidRegistry.registerFluid(swordFluid);
-        Block swordFluidBlock = new BlockSwordFluid(swordFluid, "msm.fluid." + data.swordName).setBlockName("msm." + data.swordName);
+        Block swordFluidBlock = new BlockSwordFluid(swordFluid, data.swordName).setBlockName("msm." + data.swordName);
         GameRegistry.registerBlock(swordFluidBlock, "msm.fluid." + data.swordName);
         NBTTagCompound tag = new NBTTagCompound();
         tag.setInteger("MaterialId", ConfigurationHandler.initialIDRange + data.ordinal());
@@ -70,11 +72,15 @@ public class PluginTinkersConstruct {
 
         NBTTagCompound tag = new NBTTagCompound();
         ItemStack swordStack = new ItemStack(SwordItems.swordList.get(data.swordName));
+        ItemStack shard = new ItemStack(Items.beef);
         tag.setInteger("MaterialId", ConfigurationHandler.initialIDRange + data.ordinal());
         tag.setInteger("Value", 1);
         NBTTagCompound itemTag = new NBTTagCompound();
+        NBTTagCompound shardTag = new NBTTagCompound();
         swordStack.writeToNBT(itemTag);
+        shard.writeToNBT(shardTag);
         tag.setTag("Item", itemTag);
+        tag.setTag("Shard", shardTag);
         FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "TConstruct", "addPartBuilderMaterial", tag);
     }
 
@@ -82,7 +88,7 @@ public class PluginTinkersConstruct {
 
         NBTTagCompound tag = new NBTTagCompound();
         tag.setString("FluidName", "msm.fluid." + data.swordName);
-        tag.setInteger("Amount", 144);
+        tag.setInteger("Amount", 4000);
         ItemStack swordStack = new ItemStack(SwordItems.swordList.get(data.swordName));
         ItemStack swordBlock = new ItemStack(Blocks.iron_block);
         NBTTagCompound itemTag = new NBTTagCompound();
@@ -91,7 +97,7 @@ public class PluginTinkersConstruct {
         swordBlock.writeToNBT(blockTag);
         tag.setTag("Item", itemTag);
         tag.setTag("Block", blockTag);
-        tag.setInteger("Temperature", 75);
+        tag.setInteger("Temperature", 75);//data.swordDurability / 10);
         FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "TConstruct", "addSmelteryMelting", tag);
     }
 
@@ -107,7 +113,8 @@ public class PluginTinkersConstruct {
 
         public BlockSwordFluid(Fluid fluid, String fluidName) {
 
-            super(fluid, Material.water);
+            super(fluid, Material.lava);
+            this.fluidName = fluidName;
             setCreativeTab(MoreSwords.tabSwords);
         }
 
@@ -121,8 +128,8 @@ public class PluginTinkersConstruct {
         @Override
         public void registerBlockIcons(IIconRegister register) {
 
-            stillIcon = register.registerIcon("modid:fluid_" + fluidName + "_still");
-            flowingIcon = register.registerIcon("modid:fluid_" + fluidName + "_slowing");
+            stillIcon = register.registerIcon("moreswords:fluid_" + fluidName + "_still");
+            flowingIcon = register.registerIcon("moreswords:fluid_" + fluidName + "_slowing");
         }
 
         @Override
