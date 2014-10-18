@@ -10,7 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
@@ -35,7 +34,6 @@ public class PluginTinkersConstruct {
                 createMaterial(data);
                 createPartCastingMaterial(data);
                 createAndAddSmelteryMelting(data);
-                createPartBuilderMaterial(data);
             }
         }
     }
@@ -88,7 +86,7 @@ public class PluginTinkersConstruct {
 
         NBTTagCompound tag = new NBTTagCompound();
         tag.setString("FluidName", "msm.fluid." + data.swordName);
-        tag.setInteger("Amount", 4000);
+        tag.setInteger("Amount", 288);
         ItemStack swordStack = new ItemStack(SwordItems.swordList.get(data.swordName));
         ItemStack swordBlock = new ItemStack(Blocks.iron_block);
         NBTTagCompound itemTag = new NBTTagCompound();
@@ -97,14 +95,11 @@ public class PluginTinkersConstruct {
         swordBlock.writeToNBT(blockTag);
         tag.setTag("Item", itemTag);
         tag.setTag("Block", blockTag);
-        tag.setInteger("Temperature", 75);//data.swordDurability / 10);
+        tag.setInteger("Temperature", data.swordDurability / 10);
         FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "TConstruct", "addSmelteryMelting", tag);
     }
 
     public static class BlockSwordFluid extends BlockFluidClassic {
-
-        @SideOnly(Side.CLIENT)
-        protected IIcon stillIcon;
 
         @SideOnly(Side.CLIENT)
         protected IIcon flowingIcon;
@@ -121,15 +116,15 @@ public class PluginTinkersConstruct {
         @Override
         public IIcon getIcon(int side, int meta) {
 
-            return (side == 0 || side == 1) ? stillIcon : flowingIcon;
+            return flowingIcon;
         }
 
         @SideOnly(Side.CLIENT)
         @Override
         public void registerBlockIcons(IIconRegister register) {
 
-            stillIcon = register.registerIcon("moreswords:fluid_" + fluidName + "_still");
-            flowingIcon = register.registerIcon("moreswords:fluid_" + fluidName + "_slowing");
+            flowingIcon = register.registerIcon("moreswords:fluid_" + fluidName + "_flowing");
+            this.getFluid().setIcons(flowingIcon, flowingIcon);
         }
 
         @Override

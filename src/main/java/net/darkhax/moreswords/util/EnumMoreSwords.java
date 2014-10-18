@@ -5,7 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public enum EnumMoreSwords {
-    
+
     DAWNSTAR("dawnstar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336),
     VAMPIRIC("vampiric", ConfigurationHandler.damageVampiric, ConfigurationHandler.durabilityVampiric, ConfigurationHandler.enchantVampiric, ConfigurationHandler.harvestVampiric, ConfigurationHandler.efficientVampiric, ConfigurationHandler.repairVampiric, ConfigurationHandler.craftingVampiric, 9371648),
     GLADIOLUS("gladiolus", ConfigurationHandler.damageGladiolus, ConfigurationHandler.durabilityGladiolus, ConfigurationHandler.enchantGladiolus, ConfigurationHandler.harvestGladiolus, ConfigurationHandler.efficientGladiolus, ConfigurationHandler.repairGladiolus, ConfigurationHandler.craftingGladiolus, 20992),

@@ -21,7 +21,7 @@ public class SwordItems {
     public static Item swordAether = new ItemBaseSword("aether");
     public static Item swordWither = new ItemBaseSword("wither");
     public static Item swordAdmin = new ItemBaseSword("admin");
-    
+
     public SwordItems() {
 
         registerSwordItem(swordDawmStar);
