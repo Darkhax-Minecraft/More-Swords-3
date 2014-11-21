@@ -15,6 +15,7 @@ public enum EnumMoreSwords {
     GLACIAL("glacial", ConfigurationHandler.damageGlacial, ConfigurationHandler.durabilityGlacial, ConfigurationHandler.enchantGlacial, ConfigurationHandler.harvestGlacial, ConfigurationHandler.efficientGlacial, ConfigurationHandler.repairGlacial, ConfigurationHandler.craftingGlacial, 6737151),
     AETHER("aether", ConfigurationHandler.damageAether, ConfigurationHandler.durabilityAether, ConfigurationHandler.enchantAether, ConfigurationHandler.harvestAether, ConfigurationHandler.efficientAether, ConfigurationHandler.repairAether, ConfigurationHandler.craftingAether, 6750207),
     WITHER("wither", ConfigurationHandler.damageWither, ConfigurationHandler.durabilityWither, ConfigurationHandler.enchantWither, ConfigurationHandler.harvestWither, ConfigurationHandler.efficientWither, ConfigurationHandler.repairWither, ConfigurationHandler.craftingWither, 657930),
+    LUX("lux", 5, 5, 5, 5, 5, "apple", true, 5),
     ADMIN("admin", ConfigurationHandler.damageAdmin, ConfigurationHandler.durabilityAdmin, ConfigurationHandler.enchantAdmin, ConfigurationHandler.harvestAdmin, ConfigurationHandler.efficientAdmin, ConfigurationHandler.repairAdmin, ConfigurationHandler.craftingAdmin, 3342336);
 
     /**

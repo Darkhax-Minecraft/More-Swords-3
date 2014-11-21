@@ -21,6 +21,7 @@ public class SwordItems {
     public static Item swordGlacial = new ItemBaseSword("glacial");
     public static Item swordAether = new ItemBaseSword("aether");
     public static Item swordWither = new ItemBaseSword("wither");
+    public static Item swordLux = new ItemBaseSword.ItemGlowSword("lux");
     public static Item swordAdmin = new ItemBaseSword("admin");
 
     public SwordItems() {
@@ -34,6 +35,7 @@ public class SwordItems {
         registerSwordItem(swordGlacial);
         registerSwordItem(swordAether);
         registerSwordItem(swordWither);
+        registerSwordItem(swordLux);
         registerSwordItem(swordAdmin);
     }
 
