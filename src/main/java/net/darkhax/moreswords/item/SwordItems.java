@@ -1,6 +1,7 @@
 package net.darkhax.moreswords.item;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import net.darkhax.moreswords.util.Constants;
 import net.darkhax.moreswords.util.EnumMoreSwords;
@@ -9,7 +10,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SwordItems {
 
-    public static HashMap<String, Item> swordList = new HashMap(50);
+    public static HashMap<String, Item> swordList = new HashMap();
 
     public static Item swordDawmStar = new ItemBaseSword(EnumMoreSwords.DAWNSTAR.swordName);
     public static Item swordVampiric = new ItemBaseSword("vampiric");
@@ -41,5 +42,12 @@ public class SwordItems {
         ItemBaseSword sword = (ItemBaseSword) item;
         GameRegistry.registerItem(item, sword.swordName, Constants.MOD_ID);
         swordList.put(sword.swordName, item);
+    }
+
+    public static Item getRandomSword() {
+
+        Random rnd = new Random();
+        Object[] values = SwordItems.swordList.values().toArray();
+        return (Item) values[rnd.nextInt(values.length)];
     }
 }

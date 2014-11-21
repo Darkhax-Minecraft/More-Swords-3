@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.handler;
 
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.util.Constants;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -32,7 +31,7 @@ public class MobHandler {
 
             EntityLiving living = (EntityLiving) event.entity;
 
-            if (!living.getEntityData().hasKey("spawned")) {
+            if (living.getEntityData() != null && !living.getEntityData().hasKey("spawned")) {
 
                 if (event.entity instanceof EntityZombie && cfg.zombieSwords)
                     setEntityToHoldSwords(living, cfg.zombieChance);
@@ -48,9 +47,12 @@ public class MobHandler {
 
     public void setEntityToHoldSwords(EntityLiving entity, double odds) {
 
-        ItemStack stack = new ItemStack(SwordItems.swordList.get(Constants.RND.nextIntII(0, SwordItems.swordList.size() - 1)));
-        if (Math.random() < odds && stack != null && stack.getItem() != SwordItems.swordAdmin)
-            entity.setCurrentItemOrArmor(0, stack);
+        if (SwordItems.swordList.size() > 0) {
+
+            ItemStack stack = new ItemStack(SwordItems.getRandomSword());
+            if (stack != null && stack.getItem() != SwordItems.swordAdmin && Math.random() < odds)
+                entity.setCurrentItemOrArmor(0, stack);
+        }
 
         entity.getEntityData().setBoolean("spawned", true);
     }
