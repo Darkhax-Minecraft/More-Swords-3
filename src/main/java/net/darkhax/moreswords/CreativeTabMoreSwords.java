@@ -6,16 +6,17 @@ import net.darkhax.moreswords.item.SwordItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.Item;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class CreativeTabMoreSwords extends CreativeTabs {
 
-    CreativeTabMoreSwords(int id, String name) {
+    CreativeTabMoreSwords(String name) {
 
-        super(id, name);
+        super(name);
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public void displayAllReleventItems(List items) {
 
@@ -23,9 +24,10 @@ public class CreativeTabMoreSwords extends CreativeTabs {
         this.addEnchantmentBooksToList(items, new EnumEnchantmentType[] { MoreSwords.enumSwords });
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public Item getTabIconItem() {
 
-        return SwordItems.swordDawmStar;
+        return SwordItems.swordAdmin;
     }
 }

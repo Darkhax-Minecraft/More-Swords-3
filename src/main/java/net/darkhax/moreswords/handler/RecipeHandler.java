@@ -1,13 +1,11 @@
 package net.darkhax.moreswords.handler;
 
-import net.darkhax.moreswords.item.ItemBaseSword;
+import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.item.SwordItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RecipeHandler {
 
@@ -30,29 +28,22 @@ public class RecipeHandler {
             createItemRecipe(new ItemStack(swords.swordAether), new Object[] { "abc", "bcd", "eda", Character.valueOf('a'), Items.feather, Character.valueOf('b'), items.diamond, Character.valueOf('c'), Blocks.glowstone, Character.valueOf('d'), Items.iron_ingot, Character.valueOf('e'), Items.stick }, cfg.craftingAether);
             createItemRecipe(new ItemStack(swords.swordWither), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), blocks.soul_sand, Character.valueOf('y'), items.quartz, Character.valueOf('z'), items.nether_star, Character.valueOf('a'), items.stick }, cfg.craftingWither);
             createItemRecipe(new ItemStack(swords.swordAdmin), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), blocks.bedrock, Character.valueOf('y'), blocks.end_portal_frame, Character.valueOf('z'), blocks.command_block, Character.valueOf('a'), items.stick }, cfg.craftingAdmin);
-            // createItemRecipe(new ItemStack(swords.swordHoliday), new Object[] { " xy", "xyx", "zx ",
-            // Character.valueOf('x'), items.fireworks, Character.valueOf('y'), blocks.wool,
-            // Character.valueOf('z'), items.stick}, cfg.craftingHoliday);
         }
     }
 
+    /**
+     * Adds an item recipe, that can be disabled. This reduces the amount of if statements.
+     * 
+     * @param output: The output stack that will be created by the recipe.
+     * @param recipe: An Object array that represents the crafting recipe.
+     * @param craftable: Can this item be crafted? This should be hooked up to a config.
+     */
     void createItemRecipe(ItemStack output, Object[] recipe, boolean craftable) {
 
-        if (craftable) {
-
+        if (craftable)
             GameRegistry.addShapedRecipe(output, recipe);
-        }
-    }
-
-    @SubscribeEvent
-    public void onItemCrafted(ItemCraftedEvent event) {
-
-        System.out.println("Item has been crafted");
-        if (event.crafting != null && event.crafting.getItem() instanceof ItemBaseSword)
-            // SwordData.checkForOngoingEvent(event.crafting);
-            System.out.println("");
 
         else
-            event.crafting.setStackDisplayName("Somethings wrong");
+            MoreSwords.LOGGER.info("Recipe for " + output.getDisplayName() + " has been disabled in the configuration.");
     }
 }

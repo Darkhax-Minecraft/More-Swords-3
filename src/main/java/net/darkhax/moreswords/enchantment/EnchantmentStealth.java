@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentStealth extends EnchantmentBase {
 
@@ -27,10 +27,8 @@ public class EnchantmentStealth extends EnchantmentBase {
 
                 ItemStack stack = event.entityPlayer.getHeldItem();
 
-                if (!event.entityPlayer.isInvisible()) {
-
+                if (!event.entityPlayer.isInvisible())
                     event.entityPlayer.setInvisible(true);
-                }
 
                 else
                     event.entityPlayer.setInvisible(false);

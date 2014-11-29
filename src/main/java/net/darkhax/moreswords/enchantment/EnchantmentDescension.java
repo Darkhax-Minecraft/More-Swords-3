@@ -3,9 +3,9 @@ package net.darkhax.moreswords.enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EnchantmentDescension extends EnchantmentBase {
 
@@ -33,6 +33,11 @@ public class EnchantmentDescension extends EnchantmentBase {
         }
     }
 
+    /**
+     * Attempts to make a player glide slowly.
+     * 
+     * @param player: The player that will be told to glide.
+     */
     public void playerGlide(EntityPlayer player) {
 
         if (!player.onGround) {

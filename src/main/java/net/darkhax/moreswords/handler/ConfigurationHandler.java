@@ -4,9 +4,9 @@ import java.io.File;
 
 import net.darkhax.moreswords.util.Constants;
 import net.minecraftforge.common.config.Configuration;
-import cpw.mods.fml.client.event.ConfigChangedEvent;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ConfigurationHandler {
 
@@ -107,13 +107,13 @@ public class ConfigurationHandler {
         repairWither = config.get(repair, "Repair Item For Withers Bane", "soul_sand").getString();
         craftingWither = config.get(crafting, "Should the  Withers Bane Be Craftable?", true).getBoolean(true);
 
-        damageHoliday = config.get(damage, "Damage Value of the Holiday Sword", 5).getInt();
-        durabilityHoliday = config.get(durability, "Durability Value of Holiday Sword", 587).getInt();
-        enchantHoliday = config.get(enchant, "Enchantability of Holiday Sword", 17).getInt();
-        harvestHoliday = config.get(harvest, "Harvest Level Of Holiday Sword", 4).getInt();
-        efficientHoliday = config.get(efficient, "Efficiency of Holiday Sword", 4).getInt();
-        repairHoliday = config.get(repair, "Repair Item For Holiday Sword", "fireworks").getString();
-        craftingHoliday = config.get(crafting, "Should the Holiday Sword Be Craftable?", true).getBoolean(true);
+        damageLuxBrand = config.get(damage, "Damage Value of LuxBrand", 6).getInt();
+        durabilityLuxBrand = config.get(durability, "Durability Value of LuxBrand", 570).getInt();
+        enchantLuxBrand = config.get(enchant, "Enchantability of LuxBrand", 15).getInt();
+        harvestLuxBrand = config.get(harvest, "Harvest Level Of LuxBrand", 3).getInt();
+        efficientLuxBrand = config.get(efficient, "Efficiency of LuxBrand", 4).getInt();
+        repairLuxBrand = config.get(repair, "Repair Item For LuxBrand", "redstone_lamp").getString();
+        craftingLuxBrand = config.get(crafting, "Should the LuxBrand Be Craftable?", true).getBoolean(true);
 
         damageAdmin = config.get(damage, "Damage Value Of Adminium Ark", 99999).getInt();
         durabilityAdmin = config.get(durability, "Durability Value Of Adminium Ark", 9999999).getInt();
@@ -141,12 +141,13 @@ public class ConfigurationHandler {
         igniteBoom = config.get(ignite, "Should the ignite effect cause creepers to go boom?", true).getBoolean(true);
 
         sparkEnabled = config.get(spark, "Should the Spark enchantment be available?", true).getBoolean(true);
-        sparkID = config.get(ignite, "Enchantment ID for Spark", 131).getInt();
+        sparkID = config.get(spark, "Enchantment ID for Spark", 131).getInt();
         sparkDamage = config.get(spark, "How much is the base damage for the Spark enchantment", 3).getInt();
-        sparkRange = config.get(spark, "How close do mobs have to be to be effected by the spark effect", 2.4).getDouble(3.5d);
+        sparkRange = config.get(spark, "How close do mobs have to be to be effected by the spark effect", 3.25).getDouble(3.5d);
 
         feastEnabled = config.get(feast, "Should the Feast enchantment be available?", true).getBoolean(true);
         feastID = config.get(feast, "Enchantment ID for Feast", 132).getInt();
+        feastChance = config.get(feast, "How often should this enchantment effect take effect?", 0.07).getDouble();
         feastMin = config.get(feast, "What is the minimum amount of durability that should be restored per level?", 0).getInt();
         feastMax = config.get(feast, "What is the maximum amount of durability that should be restored per kevel?", 3).getInt();
 
@@ -198,18 +199,20 @@ public class ConfigurationHandler {
 
         wisdomEnabled = config.get(wisdom, "Should the wisdom Enchantment be available?", true).getBoolean(true);
         wisdomID = config.get(wisdom, "Enchantment ID for Wisdom", 141).getInt();
-        wisdomChance = config.get(wisdom, "How often should the exp be multiplied?", 0.15).getDouble(0.15);
-        wisdomMultiplier = config.get(wisdom, "How many times should the wisdom effect multiply dropped exp?", 2).getInt();
+        wisdomLevel = config.get(wisdom, "How many levels per additional damage?", 5).getInt();
+        wisdomMultiplier = config.get(wisdom, "How much damage should be given per the amount of required levels?", 1).getDouble();
+        wisdomCap = config.get(wisdom, "What should be the cap of damage this enchantment can give?", 10).getDouble();
+        wisodmShouldCap = config.get(wisdom, "Should a damage cap be put in place?", true).getBoolean(true);
 
         frozenEnabled = config.get(frozen, "Should the Frozen Enchantment be available?", true).getBoolean(true);
         frozenID = config.get(frozen, "Enchantment ID for Frozen", 142).getInt();
-        frozenTime = config.get(frozen, "How long the effect should last, per level", 60).getInt();
+        frozenTime = config.get(frozen, "How long the effect should last, per level", 80).getInt();
         frozenLevel = config.get(frozen, "What level of this effect should be applied per level", 1).getInt();
 
         frostEnabled = config.get(frost, "Should the Frost Wave Enchantment be available?", true).getBoolean(true);
         frostID = config.get(frost, "Enchantment ID for FrostWave", 143).getInt();
         frostRange = config.get(frost, "How many blocks should the effect reach?", 2.5).getDouble(2.5);
-        frostTime = config.get(frost, "How long will the effect last?", 30).getInt();
+        frostTime = config.get(frost, "How long will the effect last?", 50).getInt();
         frostLevel = config.get(frost, "What level will the effect be?", 1).getInt();
 
         ascensionEnabled = config.get(ascension, "Should the Ascension Enchantment be available?", true).getBoolean(true);
@@ -333,13 +336,13 @@ public class ConfigurationHandler {
     public static String repairWither;
     public static boolean craftingWither;
 
-    public static int damageHoliday;
-    public static int durabilityHoliday;
-    public static int enchantHoliday;
-    public static int harvestHoliday;
-    public static int efficientHoliday;
-    public static String repairHoliday;
-    public static boolean craftingHoliday;
+    public static int damageLuxBrand;
+    public static int durabilityLuxBrand;
+    public static int enchantLuxBrand;
+    public static int harvestLuxBrand;
+    public static int efficientLuxBrand;
+    public static String repairLuxBrand;
+    public static boolean craftingLuxBrand;
 
     public static int damageAdmin;
     public static int durabilityAdmin;
@@ -378,6 +381,7 @@ public class ConfigurationHandler {
     public static String feast = "enchantment: feast";
     public static boolean feastEnabled;
     public static int feastID;
+    public static double feastChance;
     public static int feastMin;
     public static int feastMax;
 
@@ -438,8 +442,10 @@ public class ConfigurationHandler {
     public static String wisdom = "enchantent: wisdom";
     public static boolean wisdomEnabled;
     public static int wisdomID;
-    public static double wisdomChance;
-    public static int wisdomMultiplier;
+    public static int wisdomLevel;
+    public static double wisdomMultiplier;
+    public static double wisdomCap;
+    public static boolean wisodmShouldCap;
 
     public static String frozen = "enchantment: frozen";
     public static boolean frozenEnabled;

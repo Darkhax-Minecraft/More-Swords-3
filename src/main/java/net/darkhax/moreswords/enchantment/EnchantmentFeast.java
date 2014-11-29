@@ -1,32 +1,32 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentFeast extends EnchantmentBase {
 
     protected EnchantmentFeast(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     /**
      * The feast enchantment will repair damage equal to 0-3 per level on the sword.
      */
-    @SubscribeEvent
-    public void onEntityHit(AttackEntityEvent event) {
+    @Override
+    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
 
-        if (isLiving(event.entityPlayer)) {
+        if (isValidPlayer(user)) {
 
-            if (isValidPlayer(event.entityPlayer)) {
+            double d = Math.random();
+            ItemStack stack = user.getHeldItem();
 
-                ItemStack stack = event.entityPlayer.getHeldItem();
+            if (d < (cfg.feastChance * level(stack))) {
+
                 int repair = rnd.nextIntII(cfg.feastMin, cfg.feastMax) * level(stack);
-                stack.damageItem(-repair, event.entityLiving);
+                stack.damageItem(-repair, user);
             }
         }
     }

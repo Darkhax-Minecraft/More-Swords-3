@@ -1,33 +1,35 @@
 package net.darkhax.moreswords.enchantment;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Constants;
-import net.darkhax.moreswords.util.RandomUtils;
+import net.darkhax.moreswords.util.Utils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.ResourceLocation;
 
 public class EnchantmentBase extends Enchantment {
 
     public static ConfigurationHandler cfg;
-    public static ArrayList<Enchantment> enchantments = new ArrayList<Enchantment>();
     protected Random rand = new Random();;
-    protected RandomUtils rnd = Constants.RND;
+    protected Utils.RandomUtils rnd = Constants.RND;
     int maxLevel;
     int minLevel;
     Item item;
 
     /**
+     * Constructs a new EnchantmentBase object which is a custom wrapper for the vanilla Enchantment
+     * Class however a lot of the important values have been moved out of methods and into the
+     * parameters.
+     * 
      * @param id: ID for the enchantment being added.
      * @param weight: How often the enchantment shows up.
      * @param unlocalizedName: Name for the enchantment. (unlocalized)
@@ -37,12 +39,12 @@ public class EnchantmentBase extends Enchantment {
      */
     protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-        super(id, weight, MoreSwords.enumSwords);
+        super(id, new ResourceLocation("msm:" + unlocalizedName), weight, MoreSwords.enumSwords);
         this.name = "msm." + unlocalizedName;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
         this.item = item;
-        enchantments.add(this);
+        addToBookList(this);
     }
 
     public int getMinLevel() {
@@ -98,21 +100,6 @@ public class EnchantmentBase extends Enchantment {
     }
 
     /**
-     * Checks to see if the entity is an instance of EntityLiving
-     * 
-     * @param entity: The entity being checked.
-     */
-    public boolean isLiving(Entity entity) {
-
-        if (entity instanceof EntityLiving) {
-
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * Checks to see if a player is valid. This is done by seeing if they are an instance of
      * EntityPlayer, currently holding an item and if that item has the current enchantment or not.
      * 
@@ -124,10 +111,8 @@ public class EnchantmentBase extends Enchantment {
 
             if (((EntityPlayer) entity).getHeldItem() != null) {
 
-                if (level(((EntityPlayer) entity).getHeldItem()) > 0) {
-
+                if (level(((EntityPlayer) entity).getHeldItem()) > 0)
                     return true;
-                }
             }
         }
 

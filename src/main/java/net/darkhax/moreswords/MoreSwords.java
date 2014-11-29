@@ -13,19 +13,22 @@ import net.darkhax.moreswords.util.Constants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraftforge.common.util.EnumHelper;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.ModMetadata;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.ModMetadata;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, guiFactory = Constants.FACTORY)
 public class MoreSwords {
 
-    public static CreativeTabs tabSwords = new CreativeTabMoreSwords(CreativeTabs.getNextID(), "moreSwords");
+    public static final Logger LOGGER = LogManager.getLogger("MoreSwords");
+    public static CreativeTabs tabSwords = new CreativeTabMoreSwords("moreSwords");
     public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
-    ConfigurationHandler cfg;
 
     @SidedProxy(clientSide = Constants.CLIENT_PROXY_CLASS, serverSide = Constants.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
@@ -40,17 +43,23 @@ public class MoreSwords {
         proxy.registerSidedEvents();
         new ConfigurationHandler(pre.getSuggestedConfigurationFile());
         new SwordItems();
-        new Enchantments(cfg.enabledEnchant);
-        new RecipeHandler(cfg.itemsCraftable);
-        new MobHandler(cfg.enabledSpawning);
+        new Enchantments(ConfigurationHandler.enabledEnchant);
+        new RecipeHandler(ConfigurationHandler.itemsCraftable);
+        new MobHandler(ConfigurationHandler.enabledSpawning);
     }
 
     @EventHandler
     public void init(FMLInitializationEvent init) {
 
-        new Plugin(cfg.enabledPlugins);
+        proxy.registerRenders();
+        new Plugin(ConfigurationHandler.enabledPlugins);
     }
 
+    /**
+     * Allows for mod information to be supplied through code rather than an mcmod.info file.
+     * 
+     * @param meta: The ModMetadata for the mod instance.
+     */
     void setModInfo(ModMetadata meta) {
 
         meta.authorList = Arrays.asList("Darkhax");

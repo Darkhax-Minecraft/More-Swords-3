@@ -9,7 +9,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentEnderPulse extends EnchantmentBase {
 
@@ -34,30 +34,36 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
                 ItemStack stack = event.entityPlayer.getHeldItem();
                 EntityPlayer player = event.entityPlayer;
                 int distance = level(stack) * cfg.enderPulseRange;
-                MovingObjectPosition position = Utils.rayTrace(player.worldObj, player, distance);
+                MovingObjectPosition position = Utils.rayTrace(player, distance);
 
                 if ((position != null) && (position.typeOfHit == MovingObjectType.BLOCK)) {
 
-                    int x = position.blockX;
-                    int y = position.blockY;
-                    int z = position.blockZ;
+                    int x = position.getBlockPos().getX();
+                    int y = position.getBlockPos().getY();
+                    int z = position.getBlockPos().getZ();
 
-                    switch (position.sideHit) {
+                    switch (position.sideHit.getIndex()) {
+                    // Down
                     case 0:
                         y--;
                         break;
+                    // Up
                     case 1:
                         y++;
                         break;
+                    // North
                     case 2:
                         z--;
                         break;
+                    // South
                     case 3:
                         z++;
                         break;
+                    // West
                     case 4:
                         x--;
                         break;
+                    // East
                     case 5:
                         x++;
                         break;

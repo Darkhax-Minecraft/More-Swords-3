@@ -4,35 +4,33 @@ import java.util.List;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentExtinction extends EnchantmentBase {
 
     protected EnchantmentExtinction(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
-    @SubscribeEvent
-    public void onEntityHit(AttackEntityEvent event) {
+    /**
+     * Kills all instances of the target entity in the world.
+     */
+    @Override
+    public void onEntityDamaged(EntityLivingBase user, Entity target, int level) {
 
-        if (isValidPlayer(event.entityPlayer)) {
+        if (isValidPlayer(user)) {
 
-            ItemStack stack = event.entityLiving.getHeldItem();
+            ItemStack stack = user.getHeldItem();
 
-            for (Entity entity : (List<Entity>) event.entityPlayer.worldObj.loadedEntityList) {
+            for (Entity entity : (List<Entity>) user.worldObj.loadedEntityList) {
 
-                if (!entity.getClass().equals(event.entityPlayer.getClass())) {
+                if (!entity.getClass().equals(user.getClass())) {
 
-                    if (entity.getClass().equals(event.target.getClass())) {
-
+                    if (entity.getClass().equals(target.getClass()))
                         entity.setDead();
-                    }
                 }
             }
         }

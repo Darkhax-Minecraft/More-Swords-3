@@ -8,7 +8,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class MobHandler {
 
@@ -16,10 +16,8 @@ public class MobHandler {
 
     public MobHandler(Boolean status) {
 
-        if (status) {
-
+        if (status)
             MinecraftForge.EVENT_BUS.register(this);
-        }
     }
 
     @SubscribeEvent
@@ -45,6 +43,12 @@ public class MobHandler {
         }
     }
 
+    /**
+     * Sets an entity to hold equipped an item in their hand.
+     * 
+     * @param entity: The entity to hold the item.
+     * @param odds: The odds that this will succeed.
+     */
     public void setEntityToHoldSwords(EntityLiving entity, double odds) {
 
         if (SwordItems.swordList.size() > 0) {

@@ -4,7 +4,7 @@
 itemGroup.moreSwords= More Swords Mod
 
 #Items
-item.msm.dawnStar.name=§6Dawn Star
+item.msm.dawnstar.name=§6Dawn Star
 item.msm.vampiric.name=§4Vampiric Blade
 item.msm.gladiolus.name=§2Gladiolus
 item.msm.draconic.name=§5Draconic Blade
@@ -13,6 +13,7 @@ item.msm.crystal.name=§7Crystalline Blade
 item.msm.glacial.name=§bGlacial Blade
 item.msm.aether.name=§eAether's Guard
 item.msm.wither.name=§8Wither's Bane
+item.msm.lux.name=§6Lux Brand
 item.msm.admin.name=§4Adminium Ark
 
 #Enchantments
@@ -71,6 +72,7 @@ material.msm.ender=Distortium
 material.msm.crystal=Crystal
 material.msm.glacial=Frostium
 material.msm.aether=Divinium
+material.msm.lux=Luxium
 fluid.msm.fluid.wither=Decantium
 fluid.msm.fluid.admin=Adimantium
 fluid.msm.fluid.dawnstar=Scorch-Metal
@@ -81,6 +83,7 @@ fluid.msm.fluid.ender=Distortium
 fluid.msm.fluid.crystal=Crystal
 fluid.msm.fluid.glacial=Frostium
 fluid.msm.fluid.aether=Divinium
+fluid.msm.fluid.lux=Luxium
 tile.msm.wither.name=Molten Decantium
 tile.msm.admin.name=Molten Adimantium
 tile.msm.dawnstar.name=Molten Scorch-Metal
@@ -91,3 +94,4 @@ tile.msm.ender.name=Molten Distortium
 tile.msm.crystal.name=Molten Crystal
 tile.msm.glacial.name=Molten Frostium
 tile.msm.aether.name=Molten Divinium
+tile.msm.lux.name=Molten Luxium

@@ -1,7 +1,7 @@
 package net.darkhax.moreswords.plugins;
 
 import net.darkhax.moreswords.util.Constants;
-import cpw.mods.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 /**
  * Adds support for Dynious's Version Checker mod. Support will only be added if the Version Checker mod

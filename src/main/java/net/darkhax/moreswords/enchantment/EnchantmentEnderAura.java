@@ -3,11 +3,12 @@ package net.darkhax.moreswords.enchantment;
 import net.darkhax.moreswords.util.Constants;
 import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentEnderAura extends EnchantmentBase {
 
@@ -30,17 +31,21 @@ public class EnchantmentEnderAura extends EnchantmentBase {
             if (isValidPlayer(event.entityLiving)) {
 
                 EntityPlayer living = (EntityPlayer) event.entityLiving;
-
                 attemptWarp(living);
             }
         }
     }
 
+    /**
+     * Attempts to warp the player to a random position.
+     * 
+     * @param living: The player being warped.
+     */
     public void attemptWarp(EntityPlayer living) {
 
         Entity target = (Entity) living.worldObj.loadedEntityList.get(Constants.RND.nextIntII(1, living.worldObj.loadedEntityList.size() - 1));
 
-        if (isLiving(target)) {
+        if (target instanceof EntityLiving) {
 
             if (Utils.isEntityWithinRange(living, target, cfg.enderAuraRange)) {
 

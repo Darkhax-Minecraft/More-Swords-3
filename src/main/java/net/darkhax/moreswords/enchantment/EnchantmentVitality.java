@@ -7,7 +7,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentVitality extends EnchantmentBase {
 
@@ -33,12 +33,13 @@ public class EnchantmentVitality extends EnchantmentBase {
                 EntityPlayer player = event.entityPlayer;
                 int enchLevel = level(stack);
 
-                player.getHeldItem().damageItem(cfg.vitalityDamage, player);
-                player.addPotionEffect(new PotionEffect(Potion.regeneration.id, cfg.vitalityRegenTime * enchLevel, cfg.vitalityRegenLevel));
-                player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, cfg.vitalityHeartsTime * enchLevel, cfg.vitalityHeartsLevel));
-                player.addPotionEffect(new PotionEffect(Potion.heal.id, cfg.vitalityHealTime, cfg.vitalityHealLevel));
+                if (stack.getItem().isDamageable()) {
 
-                stack.damageItem(150 / enchLevel, player);
+                    player.getHeldItem().damageItem(cfg.vitalityDamage / enchLevel, player);
+                    player.addPotionEffect(new PotionEffect(Potion.regeneration.id, cfg.vitalityRegenTime * enchLevel, cfg.vitalityRegenLevel));
+                    player.addPotionEffect(new PotionEffect(Potion.absorption.id, cfg.vitalityHeartsTime * enchLevel, cfg.vitalityHeartsLevel));
+                    player.addPotionEffect(new PotionEffect(Potion.heal.id, cfg.vitalityHealTime, cfg.vitalityHealLevel));
+                }
             }
         }
     }
