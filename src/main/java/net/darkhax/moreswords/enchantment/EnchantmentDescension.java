@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -9,7 +8,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 
 public class EnchantmentDescension extends EnchantmentBase {
     
-    protected EnchantmentDescension(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentDescension(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
     
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         FMLCommonHandler.instance().bus().register(this);

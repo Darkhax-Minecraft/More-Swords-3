@@ -1,20 +1,17 @@
 package net.darkhax.moreswords.util;
 
-import java.util.List;
-
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-
-import org.apache.commons.lang3.text.WordUtils;
 
 import com.google.common.collect.Multimap;
 
@@ -30,13 +27,8 @@ public class Utilities {
      */
     public static boolean isEntityWithinRange (Entity source, Entity target, double range) {
     
-        if (isEntityWithinRange(target, source.posX, source.posY, source.posZ, range)) {
-            
-            if (source != target) {
-                
-                return true;
-            }
-        }
+        if (source != target)
+            return isEntityWithinRange(target, source.posX, source.posY, source.posZ, range);
         
         return false;
     }
@@ -56,13 +48,7 @@ public class Utilities {
         double disX = Math.abs(x - target.posX);
         double disY = Math.abs(y - target.posY);
         double disZ = Math.abs(z - target.posZ);
-        
-        if ((disX + disY + disZ < range)) {
-            
-            return true;
-        }
-        
-        return false;
+        return (disX + disY + disZ < range);
     }
     
     /**
@@ -112,52 +98,7 @@ public class Utilities {
         Vec3 vec1 = Vec3.createVectorHelper(player.posX, player.posY + player.getEyeHeight(), player.posZ);
         Vec3 vec2 = player.getLookVec();
         Vec3 vec3 = vec1.addVector(vec2.xCoord * length, vec2.yCoord * length, vec2.zCoord * length);
-        
         return world.rayTraceBlocks(vec1, vec3);
-    }
-    
-    /**
-     * Wraps a string into multiple parts based on a line limit. This is then added to an
-     * existing list. This is to be used with things such as item descriptions.
-     * 
-     * @param string : The string to split.
-     * @param lnlength : The length of the lines.
-     * @param wrapLongWords : Should words longer than the line length be split?
-     * @param list : The list that these are being added to.
-     * @return List: the list provided.
-     */
-    public static List wrapStringToList (String string, int lnlength, boolean wrapLongWords, List list) {
-    
-        String description[] = WordUtils.wrap(string, lnlength, null, wrapLongWords).split("\\r\\n");
-        
-        for (int i = 0; i < description.length; i++) {
-            
-            list.add(description[i]);
-        }
-        
-        return list;
-    }
-    
-    /**
-     * Returns a list of all the enchantments on an item under the StoredEnchantments tag. This
-     * is basically for getting enchantments from an enchantment book.
-     * 
-     * @param stack : The stack being read.
-     * @return Enchantment[]: a list of all the enchantments on the item stack.
-     */
-    public static Enchantment[] getStoredEnchantmentsFromStack (ItemStack stack) {
-    
-        prepareStackTag(stack);
-        NBTTagCompound tag = stack.stackTagCompound;
-        NBTTagList list = tag.getTagList("StoredEnchantments", 10);
-        Enchantment[] ench = new Enchantment[list.tagCount()];
-        
-        for (int i = 0; i < list.tagCount(); i++) {
-            
-            ench[i] = Enchantment.enchantmentsList[list.getCompoundTagAt(i).getShort("id")];
-        }
-        
-        return ench;
     }
     
     /**
@@ -187,5 +128,23 @@ public class Utilities {
     public static int nextIntII (int min, int max) {
     
         return Constants.RANDOM.nextInt(max - min + 1) + min;
+    }
+    
+    /**
+     * Creates an ItemStack using a string based implementation of a string.
+     * 
+     * @param name: The string based id of the item.
+     * @return ItemStack: An ItemStack containing the item/block associated with the string
+     *         based id. If no associated item/block as found, fire is returned.
+     */
+    public static ItemStack getItemFromString (String name) {
+    
+        if (Item.itemRegistry.getObject(name) != null)
+            return new ItemStack((Item) Item.itemRegistry.getObject(name));
+        
+        else if (Block.blockRegistry.getObject(name) != null)
+            return new ItemStack(Item.getItemFromBlock((Block) Block.blockRegistry.getObject(name)));
+        
+        return new ItemStack(Blocks.fire);
     }
 }

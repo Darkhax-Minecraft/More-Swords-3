@@ -1,10 +1,11 @@
 package net.darkhax.moreswords.enchantment;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.item.SwordItems;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -18,8 +19,7 @@ import net.minecraft.item.ItemSword;
 public class EnchantmentBase extends Enchantment {
     
     public static ConfigurationHandler cfg;
-    public static ArrayList<Enchantment> enchantments = new ArrayList<Enchantment>();
-    protected Random rand = new Random();;
+    protected Random rand = Constants.RANDOM;
     int maxLevel;
     int minLevel;
     Item item;
@@ -32,21 +32,22 @@ public class EnchantmentBase extends Enchantment {
      * @param maxLevel : The highest possible level of enchantment.
      * @param item : item that can get this enchantment. Books added by default.
      */
-    protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
     
         super(id, weight, MoreSwords.enumSwords);
         this.name = "msm." + unlocalizedName;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
-        this.item = item;
-        enchantments.add(this);
+        this.item = SwordItems.getSwordFromRegistry(item);
     }
     
+    @Override
     public int getMinLevel () {
     
         return this.minLevel;
     }
     
+    @Override
     public int getMaxLevel () {
     
         return this.maxLevel;

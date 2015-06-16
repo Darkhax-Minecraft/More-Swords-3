@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.util.Utilities;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
@@ -10,7 +9,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentScorn extends EnchantmentBase {
     
-    protected EnchantmentScorn(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentScorn(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
     
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);

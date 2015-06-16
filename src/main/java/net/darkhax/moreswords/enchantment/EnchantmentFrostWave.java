@@ -2,7 +2,6 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,7 +10,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentFrostWave extends EnchantmentBase {
     
-    protected EnchantmentFrostWave(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentFrostWave(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
     
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);

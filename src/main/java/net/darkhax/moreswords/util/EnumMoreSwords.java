@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.util;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public enum EnumMoreSwords {
@@ -28,7 +27,7 @@ public enum EnumMoreSwords {
         this.swordEnchantability = enchant;
         this.swordHarvestLevel = harvest;
         this.swordEfficiency = efficient;
-        this.swordRepairItem = getRepairItem(repairMaterial);
+        this.swordRepairItem = Utilities.getItemFromString(repairMaterial).getItem();
         this.swordColor = color;
     }
     
@@ -149,27 +148,5 @@ public enum EnumMoreSwords {
         }
         
         return -1;
-    }
-    
-    /**
-     * Grabs an item used for tool repair.
-     * 
-     * @param name : name of the swordType.
-     * @return Item: the item used for tool repair.
-     */
-    public static Item getRepairItem (String name) {
-    
-        if (Item.itemRegistry.getObject(name) != null) {
-            
-            return (Item) Item.itemRegistry.getObject(name);
-        }
-        
-        else if (Block.blockRegistry.getObject(name) != null) {
-            
-            return Item.getItemFromBlock((Block) Block.blockRegistry.getObject(name));
-        }
-        
-        Constants.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
-        return null;
     }
 }

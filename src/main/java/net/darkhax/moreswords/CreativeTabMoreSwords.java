@@ -26,6 +26,6 @@ public class CreativeTabMoreSwords extends CreativeTabs {
     @SideOnly(Side.CLIENT)
     public Item getTabIconItem () {
     
-        return SwordItems.swordDawmStar;
+        return SwordItems.swordList.get("dawnstar");
     }
 }

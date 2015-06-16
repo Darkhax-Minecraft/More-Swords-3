@@ -1,7 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -11,7 +10,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentVenomousAspect extends EnchantmentBase {
     
-    protected EnchantmentVenomousAspect(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentVenomousAspect(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
     
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);

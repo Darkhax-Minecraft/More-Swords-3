@@ -50,7 +50,7 @@ public class MobHandler {
         if (SwordItems.swordList.size() > 0) {
             
             ItemStack stack = new ItemStack(SwordItems.getRandomSword());
-            if (stack != null && stack.getItem() != SwordItems.swordAdmin && Math.random() < odds)
+            if (stack != null && stack.getItem() != SwordItems.getSwordFromRegistry("admin") && Math.random() < odds)
                 entity.setCurrentItemOrArmor(0, stack);
         }
         

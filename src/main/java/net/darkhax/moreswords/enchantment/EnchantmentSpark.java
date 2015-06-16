@@ -2,14 +2,13 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentSpark extends EnchantmentBase {
     
-    protected EnchantmentSpark(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentSpark(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
     
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
