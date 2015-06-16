@@ -4,15 +4,15 @@ import net.darkhax.moreswords.handler.ConfigurationHandler;
 
 public class Plugin {
 
-    ConfigurationHandler cfg;
+	ConfigurationHandler cfg;
 
-    public Plugin(Boolean enabled) {
+	public Plugin(Boolean enabled) {
 
-        if (enabled) {
+		if (enabled) {
 
-            new PluginVersionChecker(cfg.enabledVersionChecker);
-            new PluginTinkersConstruct(true);
-            // new PluginEnchantingPlus(cfg.enabledEnchantingPlus);
-        }
-    }
+			new PluginVersionChecker(cfg.enabledVersionChecker);
+			new PluginTinkersConstruct(true);
+			// new PluginEnchantingPlus(cfg.enabledEnchantingPlus);
+		}
+	}
 }

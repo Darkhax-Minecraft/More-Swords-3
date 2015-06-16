@@ -10,28 +10,33 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentScorn extends EnchantmentBase {
 
-    protected EnchantmentScorn(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+	protected EnchantmentScorn(int id, int weight, String unlocalizedName,
+			int minLevel, int maxLevel, Item item) {
 
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
-    /**
-     * Deals double damage to entities if the player is not in the surface world.
-     */
-    @SubscribeEvent
-    public void onEntityHit(AttackEntityEvent event) {
+	/**
+	 * Deals double damage to entities if the player is not in the surface
+	 * world.
+	 */
+	@SubscribeEvent
+	public void onEntityHit(AttackEntityEvent event) {
 
-        if (isLiving(event.target)) {
+		if (isLiving(event.target)) {
 
-            if (isValidPlayer(event.entityPlayer)) {
+			if (isValidPlayer(event.entityPlayer)) {
 
-                if (event.entityPlayer.dimension != 0) {
+				if (event.entityPlayer.dimension != 0) {
 
-                    ItemStack stack = event.entityPlayer.getHeldItem();
-                    event.target.attackEntityFrom(DamageSource.generic, (float) (Utils.getItemWeaponDamage(stack) * cfg.scornMultiplier));
-                }
-            }
-        }
-    }
+					ItemStack stack = event.entityPlayer.getHeldItem();
+					event.target
+							.attackEntityFrom(
+									DamageSource.generic,
+									(float) (Utils.getItemWeaponDamage(stack) * cfg.scornMultiplier));
+				}
+			}
+		}
+	}
 }

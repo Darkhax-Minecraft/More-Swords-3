@@ -11,25 +11,28 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentDecay extends EnchantmentBase {
 
-    protected EnchantmentDecay(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+	protected EnchantmentDecay(int id, int weight, String unlocalizedName,
+			int minLevel, int maxLevel, Item item) {
 
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+		super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+		MinecraftForge.EVENT_BUS.register(this);
+	}
 
-    /**
-     * Gives target wither damage for 75 ticks
-     */
-    @SubscribeEvent
-    public void onEntityHit(AttackEntityEvent event) {
+	/**
+	 * Gives target wither damage for 75 ticks
+	 */
+	@SubscribeEvent
+	public void onEntityHit(AttackEntityEvent event) {
 
-        if (isLiving(event.target)) {
+		if (isLiving(event.target)) {
 
-            if (isValidPlayer(event.entityLiving)) {
+			if (isValidPlayer(event.entityLiving)) {
 
-                ItemStack stack = event.entityPlayer.getHeldItem();
-                ((EntityLiving) event.target).addPotionEffect(new PotionEffect(Potion.wither.id, cfg.decayTime * level(stack), cfg.decayLevel));
-            }
-        }
-    }
+				ItemStack stack = event.entityPlayer.getHeldItem();
+				((EntityLiving) event.target).addPotionEffect(new PotionEffect(
+						Potion.wither.id, cfg.decayTime * level(stack),
+						cfg.decayLevel));
+			}
+		}
+	}
 }
