@@ -8,9 +8,9 @@ public class Enchantments {
     static int advanced = 1;
     static ConfigurationHandler cfg;
     
-    public Enchantments(Boolean shouldLoad) {
+    public Enchantments() {
     
-        if (shouldLoad) {
+        if (ConfigurationHandler.enabledEnchant) {
             
             if (cfg.igniteEnabled)
                 new EnchantmentIgnite(cfg.igniteID, basic, "ignite", 1, 3, "dawnstar");

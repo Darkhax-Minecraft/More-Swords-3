@@ -14,12 +14,10 @@ public class MobHandler {
     
     ConfigurationHandler cfg;
     
-    public MobHandler(Boolean status) {
+    public MobHandler() {
     
-        if (status) {
-            
+        if (ConfigurationHandler.enabledSpawning)
             MinecraftForge.EVENT_BUS.register(this);
-        }
     }
     
     @SubscribeEvent

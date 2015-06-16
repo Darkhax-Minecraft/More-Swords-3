@@ -1,6 +1,5 @@
 package net.darkhax.moreswords.util;
 
-import net.minecraft.item.ItemStack;
 
 public class SwordType {
     
@@ -10,8 +9,9 @@ public class SwordType {
     public int swordEnchantability;
     public int swordHarvestLevel;
     public int swordEfficiency;
-    public ItemStack swordRepairItem;
+    public String swordRepairItem;
     public int swordColor;
+    public boolean isCraftable;
     
     /**
      * Creates An enum type similar to tool material but for use with ItemCoreSword.
@@ -25,7 +25,7 @@ public class SwordType {
      * @param repairMaterial : Item used to repair in anvil.
      * @param isCraftable : Is this item craftable.
      */
-    private SwordType(String name, int damage, int durability, int enchant, int harvest, int efficient, String repairMaterial, boolean isCraftable, int color) {
+    public SwordType(String name, int damage, int durability, int enchant, int harvest, int efficient, String repairMaterial, boolean isCraftable, int color) {
     
         this.swordName = name;
         this.swordDamage = damage;
@@ -33,8 +33,9 @@ public class SwordType {
         this.swordEnchantability = enchant;
         this.swordHarvestLevel = harvest;
         this.swordEfficiency = efficient;
-        this.swordRepairItem = Utilities.getItemFromString(repairMaterial);
+        this.swordRepairItem = repairMaterial;
         this.swordColor = color;
+        this.isCraftable = isCraftable;
     }
     
     /**
@@ -161,21 +162,21 @@ public class SwordType {
     }
     
     /**
-     * Retrieves the ItemStack used to repair the sword in an anvil.
+     * Retrieves the String id for the ItemStack used to repair the sword in an anvil.
      * 
-     * @return ItemStack: An ItemStack containing the item used to repair the sword.
+     * @return String: An ItemStack containing the item used to repair the sword.
      */
-    public ItemStack getSwordRepairItem () {
+    public String getSwordRepairItem () {
     
         return swordRepairItem;
     }
     
     /**
-     * Sets the ItemStack used for repairing the sword in an anvil.
+     * Sets the String id for the ItemStack used for repairing the sword in an anvil.
      * 
      * @param swordRepairItem: The new repair ItemStack.
      */
-    public void setSwordRepairItem (ItemStack swordRepairItem) {
+    public void setSwordRepairItem (String swordRepairItem) {
     
         this.swordRepairItem = swordRepairItem;
     }
@@ -200,5 +201,25 @@ public class SwordType {
     public void setSwordColor (int swordColor) {
     
         this.swordColor = swordColor;
+    }
+    
+    /**
+     * Checks if the sword should be craftable or not.
+     * 
+     * @return boolean: Should the sword be craftable.
+     */
+    public boolean isCraftable () {
+    
+        return isCraftable;
+    }
+    
+    /**
+     * Sets whether or not the sword can be crafted.
+     * 
+     * @param craftable: Should the sword be craftable.
+     */
+    public void setCraftable (boolean craftable) {
+    
+        this.isCraftable = craftable;
     }
 }

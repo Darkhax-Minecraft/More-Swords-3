@@ -13,7 +13,7 @@ public class Constants {
     public static final String CLIENT_PROXY_CLASS = "net.darkhax.moreswords.client.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "net.darkhax.moreswords.common.CommonProxy";
     public static final String TEXTURE_DOMAIN = "moreswords:";
-    public static final String FACTORY = "net.darkhax.moreswords.gui.MoreSwordsGuiFactory";
+    public static final String FACTORY = "net.darkhax.moreswords.client.gui.MoreSwordsGuiFactory";
     public static final Random RANDOM = new Random();
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 }

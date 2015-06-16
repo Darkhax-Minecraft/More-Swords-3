@@ -2,19 +2,12 @@ package net.darkhax.moreswords.item;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
-import net.darkhax.moreswords.util.EnumMoreSwords;
+import net.darkhax.moreswords.util.SwordType;
 import net.darkhax.moreswords.util.Utilities;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBaseSword extends ItemSword {
     
@@ -37,64 +30,12 @@ public class ItemBaseSword extends ItemSword {
      */
     public static Item.ToolMaterial generateToolMaterials (String swordName) {
     
-        EnumMoreSwords sword = EnumMoreSwords.getType(swordName);
+        SwordType sword = MoreSwords.swordTypes.get(swordName);
         Item.ToolMaterial material = EnumHelper.addToolMaterial(swordName, sword.swordHarvestLevel, sword.swordDurability, sword.swordEfficiency, sword.swordDamage - 4, sword.swordEnchantability);
         
-        if (ConfigurationHandler.itemsRepairable) {
-            
-            material.customCraftingMaterial = sword.swordRepairItem;
-        }
+        if (ConfigurationHandler.itemsRepairable)
+            material.setRepairItem(Utilities.getItemFromString(sword.swordRepairItem));
         
         return material;
-    }
-    
-    public static class ItemGlowSword extends ItemBaseSword {
-        
-        public static IIcon[] iconArray;
-        
-        public ItemGlowSword(String swordName) {
-        
-            super(swordName);
-        }
-        
-        @Override
-        @SideOnly(Side.CLIENT)
-        public void registerIcons (IIconRegister register) {
-        
-            iconArray = new IIcon[2];
-            iconArray[0] = register.registerIcon("moreswords:" + "sword_lux_off");
-            iconArray[1] = register.registerIcon("moreswords:" + "sword_lux_on");
-        }
-        
-        @Override
-        @SideOnly(Side.CLIENT)
-        public IIcon getIconIndex (ItemStack stack) {
-        
-            if (stack != null) {
-                
-                Utilities.prepareStackTag(stack);
-                NBTTagCompound stackTag = stack.stackTagCompound;
-                
-                if (stackTag.hasKey("LightStatus")) {
-                    
-                    IIcon icon = iconArray[stackTag.getBoolean("LightStatus") ? 1 : 0];
-                    this.itemIcon = icon;
-                    return icon;
-                }
-            }
-            
-            return iconArray[0];
-        }
-        
-        @Override
-        public boolean onItemUse (ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-        
-            Utilities.prepareStackTag(stack);
-            NBTTagCompound tag = stack.getTagCompound();
-            boolean isOn = tag.getBoolean("LightStatus");
-            
-            tag.setBoolean("LightStatus", (isOn) ? false : true);
-            return true;
-        }
     }
 }

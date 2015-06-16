@@ -24,13 +24,10 @@ public class MoreSwordsConfigGui extends GuiConfig {
     public static List<IConfigElement> generateConfigList () {
     
         ArrayList<IConfigElement> elements = new ArrayList<IConfigElement>();
-        String[] categories = { cfgh.general, cfgh.damage, cfgh.durability, cfgh.enchant, cfgh.harvest, cfgh.efficient, cfgh.repair, cfgh.crafting, cfgh.monster, cfgh.plugins, cfgh.ignite, cfgh.spark, cfgh.feast, cfgh.vitality, cfgh.venom, cfgh.absorb, cfgh.keenEdge, cfgh.scorn, cfgh.enderPulse, cfgh.enderAura, cfgh.greed, cfgh.wisdom, cfgh.frozen, cfgh.frost, cfgh.ascension, cfgh.ascension, cfgh.descension, cfgh.shadows, cfgh.decay, cfgh.stealth, cfgh.extinction };
         
-        for (int i = 0; i < categories.length; i++) {
-            
-            elements.add(new ConfigElement(cfg.getCategory(categories[i])));
-            System.out.println(categories[i]);
-        }
+        for (String name : cfg.getCategoryNames())
+            elements.add(new ConfigElement(cfg.getCategory(name)));
+        
         return elements;
     }
 }

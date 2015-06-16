@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.plugins;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Constants;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
@@ -12,9 +13,9 @@ public class PluginVersionChecker {
     
     String versionLink = "http://dl.dropboxusercontent.com/u/38575752/files/versions/MSM3%20Version%20Info.txt";
     
-    public PluginVersionChecker(Boolean enabled) {
+    public PluginVersionChecker() {
     
-        if (enabled)
+        if (ConfigurationHandler.enabledVersionChecker)
             FMLInterModComms.sendRuntimeMessage(Constants.MOD_ID, "VersionChecker", "addVersionCheck", versionLink);
     }
 }
