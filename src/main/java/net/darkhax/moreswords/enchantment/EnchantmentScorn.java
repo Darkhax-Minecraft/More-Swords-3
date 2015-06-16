@@ -1,6 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Utils;
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -29,7 +29,7 @@ public class EnchantmentScorn extends EnchantmentBase {
                 if (event.entityPlayer.dimension != 0) {
                     
                     ItemStack stack = event.entityPlayer.getHeldItem();
-                    event.target.attackEntityFrom(DamageSource.generic, (float) (Utils.getItemWeaponDamage(stack) * cfg.scornMultiplier));
+                    event.target.attackEntityFrom(DamageSource.generic, (float) (Utilities.getItemWeaponDamage(stack) * cfg.scornMultiplier));
                 }
             }
         }

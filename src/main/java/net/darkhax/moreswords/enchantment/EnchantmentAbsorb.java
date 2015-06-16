@@ -1,6 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Constants;
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,7 +28,7 @@ public class EnchantmentAbsorb extends EnchantmentBase {
             if (isValidPlayer(event.entityPlayer)) {
                 
                 ItemStack stack = event.entityPlayer.getHeldItem();
-                int food = Constants.RND.nextIntII(cfg.absorbMin, cfg.absorbMax);
+                int food = Utilities.nextIntII(cfg.absorbMin, cfg.absorbMax);
                 float saturation = (float) (cfg.absorbSaturation * food);
                 event.entityPlayer.getFoodStats().addStats(food, saturation);
                 

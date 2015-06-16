@@ -1,6 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Utils;
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -27,7 +27,7 @@ public class EnchantmentKeenEdge extends EnchantmentBase {
             if (isValidPlayer(event.entityLiving)) {
                 
                 ItemStack stack = event.entityPlayer.getHeldItem();
-                event.target.attackEntityFrom(DamageSource.magic, (float) (level(stack) + Utils.getItemWeaponDamage(stack)));
+                event.target.attackEntityFrom(DamageSource.magic, (float) (level(stack) + Utilities.getItemWeaponDamage(stack)));
             }
         }
     }

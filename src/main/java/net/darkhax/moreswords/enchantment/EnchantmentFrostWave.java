@@ -1,6 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Utils;
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
@@ -34,7 +34,7 @@ public class EnchantmentFrostWave extends EnchantmentBase {
                         
                         if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
                             
-                            if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.frostRange)) {
+                            if (Utilities.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.frostRange)) {
                                 
                                 EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
                                 closeEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, cfg.frostTime, cfg.frostLevel));

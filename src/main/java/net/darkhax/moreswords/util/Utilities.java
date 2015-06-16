@@ -18,7 +18,7 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import com.google.common.collect.Multimap;
 
-public class Utils {
+public class Utilities {
     
     /**
      * Checks if an entity is within X range of another entity.
@@ -173,5 +173,19 @@ public class Utils {
         NBTTagCompound tag = stack.stackTagCompound;
         tag.setBoolean("awakened", true);
         return stack;
+    }
+    
+    /**
+     * Retrieves a random integer between the two specified values. The specified values are
+     * also possible outputs.
+     * 
+     * @param min: The lowest possible value.
+     * @param max: The highest possible value.
+     * @return int: A random integer between the min and the max. Both the min and the max are
+     *         included as possible outcomes.
+     */
+    public static int nextIntII (int min, int max) {
+    
+        return Constants.RANDOM.nextInt(max - min + 1) + min;
     }
 }

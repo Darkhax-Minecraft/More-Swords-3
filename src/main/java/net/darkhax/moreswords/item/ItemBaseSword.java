@@ -3,7 +3,7 @@ package net.darkhax.moreswords.item;
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.EnumMoreSwords;
-import net.darkhax.moreswords.util.Utils;
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -72,7 +72,7 @@ public class ItemBaseSword extends ItemSword {
         
             if (stack != null) {
                 
-                Utils.prepareStackTag(stack);
+                Utilities.prepareStackTag(stack);
                 NBTTagCompound stackTag = stack.stackTagCompound;
                 
                 if (stackTag.hasKey("LightStatus")) {
@@ -89,7 +89,7 @@ public class ItemBaseSword extends ItemSword {
         @Override
         public boolean onItemUse (ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
         
-            Utils.prepareStackTag(stack);
+            Utilities.prepareStackTag(stack);
             NBTTagCompound tag = stack.getTagCompound();
             boolean isOn = tag.getBoolean("LightStatus");
             

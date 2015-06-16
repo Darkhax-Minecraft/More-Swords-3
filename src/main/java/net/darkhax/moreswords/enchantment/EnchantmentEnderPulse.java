@@ -1,6 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Utils;
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,7 +34,7 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
                 ItemStack stack = event.entityPlayer.getHeldItem();
                 EntityPlayer player = event.entityPlayer;
                 int distance = level(stack) * cfg.enderPulseRange;
-                MovingObjectPosition position = Utils.rayTrace(player.worldObj, player, distance);
+                MovingObjectPosition position = Utilities.rayTrace(player.worldObj, player, distance);
                 
                 if ((position != null) && (position.typeOfHit == MovingObjectType.BLOCK)) {
                     

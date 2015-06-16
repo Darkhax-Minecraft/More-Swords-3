@@ -1,6 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Utils;
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,7 +32,7 @@ public class EnchantmentSpark extends EnchantmentBase {
                         
                         if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
                             
-                            if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.sparkRange)) {
+                            if (Utilities.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.sparkRange)) {
                                 
                                 EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
                                 closeEntity.setFire(cfg.sparkDamage);

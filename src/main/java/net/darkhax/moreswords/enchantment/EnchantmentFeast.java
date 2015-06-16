@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,7 +26,7 @@ public class EnchantmentFeast extends EnchantmentBase {
             if (isValidPlayer(event.entityPlayer)) {
                 
                 ItemStack stack = event.entityPlayer.getHeldItem();
-                int repair = rnd.nextIntII(cfg.feastMin, cfg.feastMax) * level(stack);
+                int repair = Utilities.nextIntII(cfg.feastMin, cfg.feastMax) * level(stack);
                 stack.damageItem(-repair, event.entityLiving);
             }
         }

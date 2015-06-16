@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.util.Utilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.item.Item;
@@ -36,7 +37,7 @@ public class EnchantmentGreed extends EnchantmentBase {
                     
                     if (!living.worldObj.isRemote) {
                         
-                        living.worldObj.spawnEntityInWorld(new EntityXPOrb(living.worldObj, living.posX, living.posY, living.posZ, rnd.nextIntII(cfg.greedMin, cfg.greedMax)));
+                        living.worldObj.spawnEntityInWorld(new EntityXPOrb(living.worldObj, living.posX, living.posY, living.posZ, Utilities.nextIntII(cfg.greedMin, cfg.greedMax)));
                     }
                 }
             }

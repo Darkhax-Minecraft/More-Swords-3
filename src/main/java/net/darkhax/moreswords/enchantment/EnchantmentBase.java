@@ -5,8 +5,6 @@ import java.util.Random;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
-import net.darkhax.moreswords.util.Constants;
-import net.darkhax.moreswords.util.RandomUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -22,7 +20,6 @@ public class EnchantmentBase extends Enchantment {
     public static ConfigurationHandler cfg;
     public static ArrayList<Enchantment> enchantments = new ArrayList<Enchantment>();
     protected Random rand = new Random();;
-    protected RandomUtils rnd = Constants.RND;
     int maxLevel;
     int minLevel;
     Item item;
