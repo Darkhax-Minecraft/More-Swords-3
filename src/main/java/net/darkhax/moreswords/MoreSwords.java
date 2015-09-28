@@ -10,9 +10,6 @@ import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.plugins.Plugin;
 import net.darkhax.moreswords.proxy.CommonProxy;
 import net.darkhax.moreswords.util.Constants;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -22,9 +19,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, guiFactory = Constants.FACTORY)
 public class MoreSwords {
-
-    public static CreativeTabs tabSwords = new CreativeTabMoreSwords();
-    public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
 
     @SidedProxy(clientSide = Constants.CLIENT_PROXY_CLASS, serverSide = Constants.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;

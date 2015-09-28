@@ -3,6 +3,7 @@ package net.darkhax.moreswords;
 import java.util.List;
 
 import net.darkhax.moreswords.item.SwordItems;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.Item;
@@ -21,7 +22,7 @@ public class CreativeTabMoreSwords extends CreativeTabs {
     public void displayAllReleventItems(List items) {
 
         super.displayAllReleventItems(items);
-        this.addEnchantmentBooksToList(items, new EnumEnchantmentType[] { MoreSwords.enumSwords });
+        this.addEnchantmentBooksToList(items, new EnumEnchantmentType[] { Constants.ENCH_TYPE_SWORDS });
     }
 
     @Override

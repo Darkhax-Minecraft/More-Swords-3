@@ -1,6 +1,5 @@
 package net.darkhax.moreswords.item;
 
-import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Constants;
 import net.minecraft.block.Block;
@@ -17,7 +16,7 @@ public class ItemBaseSword extends ItemSword {
         super(generateToolMaterials(swordName));
         this.swordName = swordName;
         this.setUnlocalizedName("msm." + swordName);
-        this.setCreativeTab(MoreSwords.tabSwords);
+        this.setCreativeTab(Constants.TAB_SWORDS);
         SwordItems.registerSwordItem(this);
     }
 

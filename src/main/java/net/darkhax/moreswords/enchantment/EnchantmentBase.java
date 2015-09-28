@@ -2,7 +2,6 @@ package net.darkhax.moreswords.enchantment;
 
 import java.util.Random;
 
-import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Constants;
 import net.darkhax.moreswords.util.Utils;
@@ -39,7 +38,7 @@ public class EnchantmentBase extends Enchantment {
      */
     protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
 
-        super(id, new ResourceLocation("msm:" + unlocalizedName), weight, MoreSwords.enumSwords);
+        super(id, new ResourceLocation("msm:" + unlocalizedName), weight, Constants.ENCH_TYPE_SWORDS);
         this.name = "msm." + unlocalizedName;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
