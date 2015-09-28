@@ -11,12 +11,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class CreativeTabMoreSwords extends CreativeTabs {
 
-    CreativeTabMoreSwords(String name) {
+    public CreativeTabMoreSwords() {
+    	
+		super("moreSwords");
+	}
 
-        super(name);
-    }
-
-    @Override
+	@Override
     @SideOnly(Side.CLIENT)
     public void displayAllReleventItems(List items) {
 

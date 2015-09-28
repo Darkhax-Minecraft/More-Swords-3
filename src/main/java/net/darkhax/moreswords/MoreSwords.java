@@ -2,16 +2,17 @@ package net.darkhax.moreswords;
 
 import java.util.Arrays;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.handler.MobHandler;
 import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.pedestal.BlockPedestal;
 import net.darkhax.moreswords.plugins.Plugin;
 import net.darkhax.moreswords.proxy.CommonProxy;
 import net.darkhax.moreswords.util.Constants;
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraftforge.common.util.EnumHelper;
@@ -22,14 +23,11 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, guiFactory = Constants.FACTORY)
 public class MoreSwords {
 
     public static final Logger LOGGER = LogManager.getLogger("MoreSwords");
-    public static CreativeTabs tabSwords = new CreativeTabMoreSwords("moreSwords");
+    public static CreativeTabs tabSwords = new CreativeTabMoreSwords();
     public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
 
     @SidedProxy(clientSide = Constants.CLIENT_PROXY_CLASS, serverSide = Constants.SERVER_PROXY_CLASS)
