@@ -1,10 +1,8 @@
 package net.darkhax.moreswords.proxy;
 
-import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.item.SwordItems;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.item.Item;
 import net.minecraftforge.fml.client.FMLClientHandler;
 
 public class ClientProxy extends CommonProxy {

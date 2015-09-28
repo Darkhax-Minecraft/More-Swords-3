@@ -2,6 +2,8 @@ package net.darkhax.moreswords.util;
 
 import java.util.Random;
 
+import com.google.common.collect.Multimap;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -10,8 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
-
-import com.google.common.collect.Multimap;
 
 public class Utils {
 
