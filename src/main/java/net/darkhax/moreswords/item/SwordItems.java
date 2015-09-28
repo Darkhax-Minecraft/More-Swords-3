@@ -20,7 +20,6 @@ public class SwordItems {
     public static Item swordGlacial = new ItemBaseSword("glacial");
     public static Item swordAether = new ItemBaseSword("aether");
     public static Item swordWither = new ItemBaseSword("wither");
-    public static Item swordLux = new ItemBaseSword("lux");
     public static Item swordAdmin = new ItemBaseSword("admin");
     
     /**

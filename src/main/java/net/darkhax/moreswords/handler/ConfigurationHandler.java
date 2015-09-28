@@ -107,15 +107,7 @@ public class ConfigurationHandler {
         repairWither = config.get(repair, "Repair Item For Withers Bane", "soul_sand").getString();
         craftingWither = config.get(crafting, "Should the  Withers Bane Be Craftable?", true).getBoolean(true);
         
-        damageLuxBrand = config.get(damage, "Damage Value of LuxBrand", 6).getInt();
-        durabilityLuxBrand = config.get(durability, "Durability Value of LuxBrand", 570).getInt();
-        enchantLuxBrand = config.get(enchant, "Enchantability of LuxBrand", 15).getInt();
-        harvestLuxBrand = config.get(harvest, "Harvest Level Of LuxBrand", 3).getInt();
-        efficientLuxBrand = config.get(efficient, "Efficiency of LuxBrand", 4).getInt();
-        repairLuxBrand = config.get(repair, "Repair Item For LuxBrand", "redstone_lamp").getString();
-        craftingLuxBrand = config.get(crafting, "Should the LuxBrand Be Craftable?", true).getBoolean(true);
-        
-        damageAdmin = config.get(damage, "Damage Value Of Adminium Ark", 99999).getInt();
+        damageAdmin = config.get(damage, "Damage Value Of Adminium Ark", Integer.MAX_VALUE).getInt();
         durabilityAdmin = config.get(durability, "Durability Value Of Adminium Ark", 9999999).getInt();
         enchantAdmin = config.get(enchant, "Enchantability Of Adminium Ark", 999).getInt();
         harvestAdmin = config.get(harvest, "Harvest Level Of Adminium Ark", 999).getInt();
