@@ -1,7 +1,7 @@
 package net.darkhax.moreswords.handler;
 
-import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.item.SwordItems;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -44,6 +44,6 @@ public class RecipeHandler {
             GameRegistry.addShapedRecipe(output, recipe);
 
         else
-            MoreSwords.LOGGER.info("Recipe for " + output.getDisplayName() + " has been disabled in the configuration.");
+            Constants.LOGGER.info("Recipe for " + output.getDisplayName() + " has been disabled in the configuration.");
     }
 }

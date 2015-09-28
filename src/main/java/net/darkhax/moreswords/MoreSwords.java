@@ -2,9 +2,6 @@ package net.darkhax.moreswords;
 
 import java.util.Arrays;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.handler.MobHandler;
@@ -26,7 +23,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, guiFactory = Constants.FACTORY)
 public class MoreSwords {
 
-    public static final Logger LOGGER = LogManager.getLogger("MoreSwords");
     public static CreativeTabs tabSwords = new CreativeTabMoreSwords();
     public static EnumEnchantmentType enumSwords = EnumHelper.addEnchantmentType("moreSword");
 

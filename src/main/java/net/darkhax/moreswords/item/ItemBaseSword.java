@@ -2,6 +2,7 @@ package net.darkhax.moreswords.item;
 
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.util.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSword;
@@ -90,7 +91,7 @@ public class ItemBaseSword extends ItemSword {
                 }
             }
 
-            MoreSwords.LOGGER.info("There was an error when attempting to look up " + name);
+            Constants.LOGGER.info("There was an error when attempting to look up " + name);
             return null;
         }
 
@@ -202,7 +203,7 @@ public class ItemBaseSword extends ItemSword {
                 return Item.getItemFromBlock((Block) Block.blockRegistry.getObject(name));
             }
 
-            MoreSwords.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
+            Constants.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
             return null;
         }
     }
