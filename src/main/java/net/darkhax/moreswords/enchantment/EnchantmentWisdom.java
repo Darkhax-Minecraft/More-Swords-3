@@ -28,4 +28,10 @@ public class EnchantmentWisdom extends EnchantmentBase {
             target.attackEntityFrom(DamageSource.magic, damage);
         }
     }
+    
+    @Override
+    public boolean isValidUser (Entity entity) {
+        
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+    }
 }

@@ -2,6 +2,8 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,11 +22,6 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
         MinecraftForge.EVENT_BUS.register(this);
     }
     
-    /**
-     * Teleports the player where they are looking on right click, provided that space is
-     * within 18 multiplied by enchantment level blocks away. Damages the held item by 50 and
-     * gives the player 1 fall damage.
-     */
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
@@ -78,5 +75,11 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
                 }
             }
         }
+    }
+    
+    @Override
+    public boolean isValidUser (Entity entity) {
+        
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
     }
 }

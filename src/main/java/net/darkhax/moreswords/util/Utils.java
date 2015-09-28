@@ -132,4 +132,19 @@ public class Utils {
         
         return Constants.RND.nextInt(max - min + 1) + min;
     }
+    
+    /**
+     * Easy way to calculate whether an outcome succeeds or not. Very basic calculation, uses
+     * Math.random() to generate a random random double. If that double is less than or equal
+     * to the provided percentage, then the event was successful. If the random double is
+     * greater than the percent chance, then it failed.
+     * 
+     * @param chance: The percent chance of this outcome being true. 1 represents 100% while 0
+     *            represents 0%. 0.8 would represent 80%.
+     * @return boolean: The outcome of the event, true is a success and false is a failure.
+     */
+    public static boolean percentChance (double chance) {
+        
+        return (Math.random() <= chance);
+    }
 }

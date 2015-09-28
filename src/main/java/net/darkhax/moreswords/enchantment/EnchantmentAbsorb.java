@@ -15,24 +15,22 @@ public class EnchantmentAbsorb extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * This enchantment has a 5% chance to restore hunger points.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidUser(user)) {
+        if (isValidUser(user) && Utils.percentChance(ConfigurationHandler.absorbChance)) {
             
-            double d = Math.random();
-            
-            if (d < ConfigurationHandler.absorbChance) {
-                
-                EntityPlayer player = (EntityPlayer) user;
-                ItemStack stack = player.getHeldItem();
-                int food = Utils.nextIntII(ConfigurationHandler.absorbMin, ConfigurationHandler.absorbMax);
-                float saturation = (float) (ConfigurationHandler.absorbSaturation * food);
-                player.getFoodStats().addStats(food, saturation);
-            }
+            EntityPlayer player = (EntityPlayer) user;
+            ItemStack stack = player.getHeldItem();
+            int food = Utils.nextIntII(ConfigurationHandler.absorbMin, ConfigurationHandler.absorbMax);
+            float saturation = (float) (ConfigurationHandler.absorbSaturation * food);
+            player.getFoodStats().addStats(food, saturation);
         }
+    }
+    
+    @Override
+    public boolean isValidUser (Entity entity) {
+        
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
     }
 }

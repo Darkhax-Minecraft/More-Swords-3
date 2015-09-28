@@ -14,10 +14,6 @@ public class EnchantmentIgnite extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * The ignite enchantment will do fire damage to a mob equal to that of the effect. If the
-     * mob is a creeper he will explode.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         

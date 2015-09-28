@@ -16,9 +16,6 @@ public class EnchantmentVenomousAspect extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * Poisons a mob for seconds equal to the enchantment level.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         

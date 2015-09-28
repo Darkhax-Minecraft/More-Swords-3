@@ -10,9 +10,6 @@ public class EnchantmentKeenEdge extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * Deals extra damage to a mob on hit equal to that of the enchantment.
-     */
     @Override
     public float calcDamageByCreature (int level, EnumCreatureAttribute creature) {
         

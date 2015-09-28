@@ -16,25 +16,13 @@ public class EnchantmentExtinction extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * Kills all instances of the target entity in the world.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidUser(user)) {
-            
-            ItemStack stack = user.getHeldItem();
-            
-            for (Entity entity : (List<Entity>) user.worldObj.loadedEntityList) {
-                
-                if (!entity.getClass().equals(user.getClass())) {
-                    
-                    if (entity.getClass().equals(target.getClass()))
-                        entity.setDead();
-                }
-            }
-        }
+        if (isValidUser(user))
+            for (Entity entity : (List<Entity>) user.worldObj.loadedEntityList)
+                if (!entity.getClass().equals(user.getClass()) && entity.getClass().equals(target.getClass()))
+                    entity.setDead();
     }
     
     @Override

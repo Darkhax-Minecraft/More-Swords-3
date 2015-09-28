@@ -13,10 +13,6 @@ public class EnchantmentAscension extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * The Ascension Enchantment will knock hit entities up into the air. Motion is 0.45
-     * multiplied by enchantment level.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         

@@ -16,9 +16,6 @@ public class EnchantmentFrozenAspect extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * Slows down the mob for three second * ench level. The strength is equal to ench level.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         

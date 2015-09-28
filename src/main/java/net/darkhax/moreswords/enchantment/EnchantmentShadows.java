@@ -1,6 +1,7 @@
 package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,9 +17,6 @@ public class EnchantmentShadows extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * Gives a mob 1.5 seconds of blindness. Has a 15% per level chance to cause wither damage.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
@@ -27,7 +25,7 @@ public class EnchantmentShadows extends EnchantmentBase {
             ItemStack stack = user.getHeldItem();
             ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.blindness.id, ConfigurationHandler.shadowsTime * getLevel(stack), ConfigurationHandler.shadowsLevel));
             
-            if (Math.random() < (ConfigurationHandler.shadowsWitherChance * getLevel(stack)))
+            if (Utils.percentChance(ConfigurationHandler.shadowsWitherChance * getLevel(stack)))
                 ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.wither.id, (int) (ConfigurationHandler.shadowsWitherTime * getLevel(stack)), ConfigurationHandler.shadowsWitherLevel));
         }
     }

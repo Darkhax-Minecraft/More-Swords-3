@@ -14,18 +14,14 @@ public class EnchantmentFeast extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * The feast enchantment will repair damage equal to 0-3 per level on the sword.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
         if (isValidUser(user)) {
             
-            double d = Math.random();
             ItemStack stack = user.getHeldItem();
             
-            if (d < (ConfigurationHandler.feastChance * getLevel(stack))) {
+            if (Utils.percentChance(ConfigurationHandler.feastChance * getLevel(stack))) {
                 
                 int repair = Utils.nextIntII(ConfigurationHandler.feastMin, ConfigurationHandler.feastMax) * getLevel(stack);
                 stack.damageItem(-repair, user);

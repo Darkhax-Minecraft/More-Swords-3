@@ -16,29 +16,16 @@ public class EnchantmentFrostWave extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * Slows mobs down that are within 2.5 blocks of the target mob.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
         if (isValidUser(user)) {
             
-            EntityLiving living = (EntityLiving) target;
-            for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
-                
-                if (living.worldObj.loadedEntityList.get(i) != living) {
-                    
-                    if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
-                        
-                        if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), ConfigurationHandler.frostRange)) {
-                            
-                            EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
-                            closeEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, ConfigurationHandler.frostTime, ConfigurationHandler.frostLevel));
-                        }
-                    }
-                }
-            }
+            EntityLivingBase living = (EntityLivingBase) target;
+            
+            for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++)
+                if (living.worldObj.loadedEntityList.get(i) != living && living.worldObj.loadedEntityList.get(i) instanceof EntityLiving && Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), ConfigurationHandler.frostRange))
+                    ((EntityLiving) living.worldObj.loadedEntityList.get(i)).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, ConfigurationHandler.frostTime, ConfigurationHandler.frostLevel));
         }
     }
 }

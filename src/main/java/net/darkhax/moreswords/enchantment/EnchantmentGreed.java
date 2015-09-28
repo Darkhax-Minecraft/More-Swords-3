@@ -16,12 +16,6 @@ public class EnchantmentGreed extends EnchantmentBase {
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
     }
     
-    /**
-     * Drops a bonus of experience orbs where the mob is. The effect will activate about 7% of
-     * the time. The chances of this effect being activated increase with every level of the
-     * effect.The amount dropped is a range between two numbers, by default 1-3. Note that this
-     * effect will still work even if the mob is not killed.
-     */
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
@@ -30,9 +24,8 @@ public class EnchantmentGreed extends EnchantmentBase {
             ItemStack stack = user.getHeldItem();
             EntityLiving living = (EntityLiving) target;
             
-            if (Math.random() < (ConfigurationHandler.greedChance * getLevel(stack)))
-                if (!living.worldObj.isRemote)
-                    living.worldObj.spawnEntityInWorld(new EntityXPOrb(living.worldObj, living.posX, living.posY, living.posZ, Utils.nextIntII(ConfigurationHandler.greedMin, ConfigurationHandler.greedMax)));
+            if (Math.random() < (ConfigurationHandler.greedChance * getLevel(stack)) && !living.worldObj.isRemote)
+                living.worldObj.spawnEntityInWorld(new EntityXPOrb(living.worldObj, living.posX, living.posY, living.posZ, Utils.nextIntII(ConfigurationHandler.greedMin, ConfigurationHandler.greedMax)));
         }
     }
 }
