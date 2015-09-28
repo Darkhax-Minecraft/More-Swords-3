@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,14 +19,14 @@ public class EnchantmentDescension extends EnchantmentBase {
     @SubscribeEvent
     public void onUpdate (TickEvent.PlayerTickEvent event) {
         
-        if (isValidPlayer(event.player)) {
+        if (isValidUser(event.player)) {
             
             ItemStack stack = event.player.getHeldItem();
             
-            if (cfg.descensionShift && event.player.isSneaking())
+            if (ConfigurationHandler.descensionShift && event.player.isSneaking())
                 playerGlide(event.player);
                 
-            else if (!cfg.descensionShift)
+            else if (!ConfigurationHandler.descensionShift)
                 playerGlide(event.player);
                 
             else
@@ -45,7 +46,7 @@ public class EnchantmentDescension extends EnchantmentBase {
             if (player.motionY < 0.0D) {
                 
                 player.motionY *= 0.6D;
-                player.fallDistance = (float) (player.fallDistance * cfg.descensionFall);
+                player.fallDistance = (float) (player.fallDistance * ConfigurationHandler.descensionFall);
             }
         }
     }

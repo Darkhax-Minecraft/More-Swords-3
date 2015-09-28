@@ -1,38 +1,47 @@
 package net.darkhax.moreswords.enchantment;
 
-import java.util.Random;
-
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Constants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.util.ResourceLocation;
 
 public class EnchantmentBase extends Enchantment {
     
-    public static ConfigurationHandler cfg;
-    protected Random rand = new Random();;
-    int maxLevel;
-    int minLevel;
-    Item item;
+    /**
+     * The maximum level that this enchantment can be found at.
+     */
+    private int maxLevel;
     
     /**
-     * Constructs a new EnchantmentBase object which is a custom wrapper for the vanilla
-     * Enchantment Class however a lot of the important values have been moved out of methods
-     * and into the parameters.
+     * The lowest level that this enchantment can be found at.
+     */
+    private int minLevel;
+    
+    /**
+     * A special Item that the enchantment is bound to. By default, this enchantment can only
+     * be applied to its bound Item.
+     */
+    private Item item;
+    
+    /**
+     * Constructs a new EnchantmentBase object which is a basic wrapper for the vanilla
+     * Enchantment object. This wrapper has some specific logic to help with certain tasks.
      * 
-     * @param id: ID for the enchantment being added.
-     * @param weight: How often the enchantment shows up.
-     * @param unlocalizedName: Name for the enchantment. (unlocalized)
-     * @param minLevel: The lowest possible level of enchantment.
-     * @param maxLevel: The highest possible level of enchantment.
-     * @param item: item that can get this enchantment. Books added by default.
+     * @param id: A unique numeric ID for the enchantment. The vanilla range is 0-255.
+     * @param weight: The weight for this enchantment. A larger value will make the enchantment
+     *            show up more often.
+     * @param unlocalizedName: A localization key to use when setting the name of this
+     *            enchantment.
+     * @param minLevel: The lowest possible level that the enchantment can be found at.
+     * @param maxLevel: The highest possible level that the enchantment can be found at.
+     * @param item: A special Item that this enchantment is bound to. By default, only this
+     *            Item can make use of this enchantment.
      */
     protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
@@ -44,85 +53,64 @@ public class EnchantmentBase extends Enchantment {
         addToBookList(this);
     }
     
+    @Override
     public int getMinLevel () {
         
         return this.minLevel;
     }
     
+    @Override
     public int getMaxLevel () {
         
         return this.maxLevel;
     }
     
+    @Override
     public boolean canApplyAtEnchantingTable (ItemStack stack) {
         
-        if (!cfg.privateEnchant) {
-            
-            return true;
-        }
-        
-        if (stack.getItem() == this.item | stack.getItem() == Items.book) {
-            
-            return true;
-        }
-        
-        else
-            return false;
+        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.book);
     }
     
+    @Override
     public boolean canApply (ItemStack stack) {
         
-        if (!cfg.privateEnchant) {
-            
-            return true;
-        }
-        
-        if (stack.getItem() instanceof ItemSword | stack.getItem() == Items.book) {
-            
-            return true;
-        }
-        
-        else
-            return false;
+        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.book);
     }
     
-    public int getMinEnchantability (int par1) {
+    @Override
+    public int getMinEnchantability (int level) {
         
-        return 10 + 20 * (par1 - 1);
+        return super.getMinEnchantability(level) + this.getWeight();
     }
     
-    public int getMaxEnchantability (int par1) {
+    @Override
+    public int getMaxEnchantability (int level) {
         
-        return super.getMinEnchantability(par1) + 50;
+        return super.getMaxEnchantability(level) - this.getWeight();
     }
     
     /**
-     * Checks to see if a player is valid. This is done by seeing if they are an instance of
-     * EntityPlayer, currently holding an item and if that item has the current enchantment or
-     * not.
+     * A basic check to see if an entity is a valid user of this enchantment effect. A valid
+     * user is a user which extends EntityLivingBase, and has a valid held item. That held item
+     * must also have this enchantment on it. This check is on a local level, and makes use of
+     * information available in the enchantment instance.
      * 
-     * @param entity: The entity being checked.
+     * @param entity: An instance of the entity to check against.
+     * @return boolean: True if the entity can use this enchantment, false if they can not.
      */
-    public boolean isValidPlayer (Entity entity) {
+    public boolean isValidUser (Entity entity) {
         
-        if (entity instanceof EntityPlayer) {
-            
-            if (((EntityPlayer) entity).getHeldItem() != null) {
-                
-                if (level(((EntityPlayer) entity).getHeldItem()) > 0)
-                    return true;
-            }
-        }
-        
-        return false;
+        return (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityLivingBase) entity).getHeldItem()) > 0);
     }
     
     /**
-     * Returns the current level of this enchantment on the item.
+     * A simple way to grab the current level of this enchantment from an ItemStack.
      * 
-     * @param stack: ItemStack being checked.
+     * @param stack: The instance of ItemStack to check for this enchantment.
+     * @return int: The level of this enchantment which is currently on the provided ItemStack.
+     *         If the stack does not have this enchantment, 0 will be returned.
      */
-    public int level (ItemStack stack) {
+    public int getLevel (ItemStack stack) {
         
         return EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
     }

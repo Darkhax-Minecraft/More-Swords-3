@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,10 +22,10 @@ public class EnchantmentFrozenAspect extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             ItemStack stack = user.getHeldItem();
-            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, cfg.frozenTime * level(stack), cfg.frozenLevel * level(stack)));
+            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, ConfigurationHandler.frozenTime * getLevel(stack), ConfigurationHandler.frozenLevel * getLevel(stack)));
         }
     }
 }

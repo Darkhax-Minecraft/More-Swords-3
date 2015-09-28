@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,10 +22,10 @@ public class EnchantmentVenomousAspect extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             ItemStack stack = user.getHeldItem();
-            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.poison.id, cfg.venomTime * level(stack), cfg.venomLevel));
+            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.poison.id, ConfigurationHandler.venomTime * getLevel(stack), ConfigurationHandler.venomLevel));
         }
     }
 }

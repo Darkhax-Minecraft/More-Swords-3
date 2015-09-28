@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -21,7 +22,7 @@ public class EnchantmentFrostWave extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             EntityLiving living = (EntityLiving) target;
             for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++) {
@@ -30,10 +31,10 @@ public class EnchantmentFrostWave extends EnchantmentBase {
                     
                     if (living.worldObj.loadedEntityList.get(i) instanceof EntityLiving) {
                         
-                        if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), cfg.frostRange)) {
+                        if (Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), ConfigurationHandler.frostRange)) {
                             
                             EntityLiving closeEntity = (EntityLiving) living.worldObj.loadedEntityList.get(i);
-                            closeEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, cfg.frostTime, cfg.frostLevel));
+                            closeEntity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, ConfigurationHandler.frostTime, ConfigurationHandler.frostLevel));
                         }
                     }
                 }

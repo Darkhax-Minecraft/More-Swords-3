@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,7 +24,7 @@ public class EnchantmentStealth extends EnchantmentBase {
         
         if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR))) {
             
-            if (isValidPlayer(event.entityPlayer)) {
+            if (isValidUser(event.entityPlayer)) {
                 
                 ItemStack stack = event.entityPlayer.getHeldItem();
                 
@@ -39,24 +40,24 @@ public class EnchantmentStealth extends EnchantmentBase {
     @Override
     public boolean canApplyAtEnchantingTable (ItemStack stack) {
         
-        return cfg.stealthVanilla;
+        return ConfigurationHandler.stealthVanilla;
     }
     
     @Override
     public boolean isAllowedOnBooks () {
         
-        return cfg.stealthVanilla;
+        return ConfigurationHandler.stealthVanilla;
     }
     
     @Override
     public boolean canApply (ItemStack stack) {
         
-        return cfg.stealthVanilla;
+        return ConfigurationHandler.stealthVanilla;
     }
     
     @Override
     public boolean canApplyTogether (Enchantment par1Enchantment) {
         
-        return cfg.stealthVanilla;
+        return ConfigurationHandler.stealthVanilla;
     }
 }

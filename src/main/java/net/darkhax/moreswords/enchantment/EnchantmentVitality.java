@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,18 +29,18 @@ public class EnchantmentVitality extends EnchantmentBase {
         
         if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR))) {
             
-            if (isValidPlayer(event.entityPlayer)) {
+            if (isValidUser(event.entityPlayer)) {
                 
                 ItemStack stack = event.entityPlayer.getHeldItem();
                 EntityPlayer player = event.entityPlayer;
-                int enchLevel = level(stack);
+                int enchLevel = getLevel(stack);
                 
                 if (stack.getItem().isDamageable()) {
                     
-                    player.getHeldItem().damageItem(cfg.vitalityDamage / enchLevel, player);
-                    player.addPotionEffect(new PotionEffect(Potion.regeneration.id, cfg.vitalityRegenTime * enchLevel, cfg.vitalityRegenLevel));
-                    player.addPotionEffect(new PotionEffect(Potion.absorption.id, cfg.vitalityHeartsTime * enchLevel, cfg.vitalityHeartsLevel));
-                    player.addPotionEffect(new PotionEffect(Potion.heal.id, cfg.vitalityHealTime, cfg.vitalityHealLevel));
+                    player.getHeldItem().damageItem(ConfigurationHandler.vitalityDamage / enchLevel, player);
+                    player.addPotionEffect(new PotionEffect(Potion.regeneration.id, ConfigurationHandler.vitalityRegenTime * enchLevel, ConfigurationHandler.vitalityRegenLevel));
+                    player.addPotionEffect(new PotionEffect(Potion.absorption.id, ConfigurationHandler.vitalityHeartsTime * enchLevel, ConfigurationHandler.vitalityHeartsLevel));
+                    player.addPotionEffect(new PotionEffect(Potion.heal.id, ConfigurationHandler.vitalityHealTime, ConfigurationHandler.vitalityHealLevel));
                 }
             }
         }

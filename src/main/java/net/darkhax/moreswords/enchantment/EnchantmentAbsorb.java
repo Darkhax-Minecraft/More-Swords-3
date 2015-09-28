@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,16 +21,16 @@ public class EnchantmentAbsorb extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             double d = Math.random();
             
-            if (d < cfg.absorbChance) {
+            if (d < ConfigurationHandler.absorbChance) {
                 
                 EntityPlayer player = (EntityPlayer) user;
                 ItemStack stack = player.getHeldItem();
-                int food = Utils.nextIntII(cfg.absorbMin, cfg.absorbMax);
-                float saturation = (float) (cfg.absorbSaturation * food);
+                int food = Utils.nextIntII(ConfigurationHandler.absorbMin, ConfigurationHandler.absorbMax);
+                float saturation = (float) (ConfigurationHandler.absorbSaturation * food);
                 player.getFoodStats().addStats(food, saturation);
             }
         }

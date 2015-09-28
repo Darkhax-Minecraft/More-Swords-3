@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,13 +22,13 @@ public class EnchantmentShadows extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             ItemStack stack = user.getHeldItem();
-            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.blindness.id, cfg.shadowsTime * level(stack), cfg.shadowsLevel));
+            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.blindness.id, ConfigurationHandler.shadowsTime * getLevel(stack), ConfigurationHandler.shadowsLevel));
             
-            if (Math.random() < (cfg.shadowsWitherChance * level(stack)))
-                ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.wither.id, (int) (cfg.shadowsWitherTime * level(stack)), cfg.shadowsWitherLevel));
+            if (Math.random() < (ConfigurationHandler.shadowsWitherChance * getLevel(stack)))
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.wither.id, (int) (ConfigurationHandler.shadowsWitherTime * getLevel(stack)), ConfigurationHandler.shadowsWitherLevel));
         }
     }
 }

@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -19,10 +20,10 @@ public class EnchantmentAscension extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             ItemStack stack = user.getHeldItem();
-            double Y = level(stack) * cfg.ascensionBase;
+            double Y = getLevel(stack) * ConfigurationHandler.ascensionBase;
             target.motionY = Y;
         }
     }

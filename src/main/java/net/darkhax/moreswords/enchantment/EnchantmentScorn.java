@@ -16,7 +16,7 @@ public class EnchantmentScorn extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user) && user.dimension != 0)
+        if (isValidUser(user) && user.dimension != 0)
             target.attackEntityFrom(DamageSource.magic, (float) (Utils.getItemWeaponDamage(user.getHeldItem()) * 2));
     }
 }

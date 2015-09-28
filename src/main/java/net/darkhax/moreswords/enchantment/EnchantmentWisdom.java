@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,13 +17,13 @@ public class EnchantmentWisdom extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             EntityPlayer player = (EntityPlayer) user;
-            float damage = (float) ((player.experienceLevel / cfg.wisdomLevel) * cfg.wisdomMultiplier);
+            float damage = (float) ((player.experienceLevel / ConfigurationHandler.wisdomLevel) * ConfigurationHandler.wisdomMultiplier);
             
-            if (cfg.wisodmShouldCap && damage > cfg.wisdomCap)
-                damage = (float) cfg.wisdomCap;
+            if (ConfigurationHandler.wisodmShouldCap && damage > ConfigurationHandler.wisdomCap)
+                damage = (float) ConfigurationHandler.wisdomCap;
                 
             target.attackEntityFrom(DamageSource.magic, damage);
         }

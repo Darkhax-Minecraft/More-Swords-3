@@ -2,6 +2,7 @@ package net.darkhax.moreswords.enchantment;
 
 import java.util.List;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,7 +22,7 @@ public class EnchantmentExtinction extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             ItemStack stack = user.getHeldItem();
             
@@ -39,24 +40,24 @@ public class EnchantmentExtinction extends EnchantmentBase {
     @Override
     public boolean canApplyAtEnchantingTable (ItemStack stack) {
         
-        return cfg.extinctionVanilla;
+        return ConfigurationHandler.extinctionVanilla;
     }
     
     @Override
     public boolean isAllowedOnBooks () {
         
-        return cfg.extinctionVanilla;
+        return ConfigurationHandler.extinctionVanilla;
     }
     
     @Override
     public boolean canApply (ItemStack stack) {
         
-        return cfg.extinctionVanilla;
+        return ConfigurationHandler.extinctionVanilla;
     }
     
     @Override
     public boolean canApplyTogether (Enchantment par1Enchantment) {
         
-        return cfg.extinctionVanilla;
+        return ConfigurationHandler.extinctionVanilla;
     }
 }

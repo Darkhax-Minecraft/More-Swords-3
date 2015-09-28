@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -25,9 +26,9 @@ public class EnchantmentEnderAura extends EnchantmentBase {
     public void onEntityHit (LivingHurtEvent event) {
         
         double d = Math.random();
-        if (d < (cfg.enderAuraChance)) {
+        if (d < (ConfigurationHandler.enderAuraChance)) {
             
-            if (isValidPlayer(event.entityLiving)) {
+            if (isValidUser(event.entityLiving)) {
                 
                 EntityPlayer living = (EntityPlayer) event.entityLiving;
                 attemptWarp(living);
@@ -46,7 +47,7 @@ public class EnchantmentEnderAura extends EnchantmentBase {
         
         if (target instanceof EntityLiving) {
             
-            if (Utils.isEntityWithinRange(living, target, cfg.enderAuraRange)) {
+            if (Utils.isEntityWithinRange(living, target, ConfigurationHandler.enderAuraRange)) {
                 
                 living.setPositionAndUpdate(target.posX, target.posY, target.posZ);
                 return;

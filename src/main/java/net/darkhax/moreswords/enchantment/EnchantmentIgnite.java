@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -20,12 +21,12 @@ public class EnchantmentIgnite extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             ItemStack stack = user.getHeldItem();
-            target.setFire(cfg.igniteDamage * level(stack));
+            target.setFire(ConfigurationHandler.igniteDamage * getLevel(stack));
             
-            if (target instanceof EntityCreeper && cfg.igniteBoom) {
+            if (target instanceof EntityCreeper && ConfigurationHandler.igniteBoom) {
                 
                 EntityCreeper creeper = (EntityCreeper) target;
                 creeper.getDataWatcher().updateObject(18, Byte.valueOf((byte) 1));

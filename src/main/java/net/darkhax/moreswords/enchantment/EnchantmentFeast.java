@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,14 +20,14 @@ public class EnchantmentFeast extends EnchantmentBase {
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (isValidPlayer(user)) {
+        if (isValidUser(user)) {
             
             double d = Math.random();
             ItemStack stack = user.getHeldItem();
             
-            if (d < (cfg.feastChance * level(stack))) {
+            if (d < (ConfigurationHandler.feastChance * getLevel(stack))) {
                 
-                int repair = Utils.nextIntII(cfg.feastMin, cfg.feastMax) * level(stack);
+                int repair = Utils.nextIntII(ConfigurationHandler.feastMin, ConfigurationHandler.feastMax) * getLevel(stack);
                 stack.damageItem(-repair, user);
             }
         }
