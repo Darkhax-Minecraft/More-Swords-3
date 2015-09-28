@@ -7,7 +7,6 @@ import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.handler.MobHandler;
 import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.plugins.Plugin;
 import net.darkhax.moreswords.proxy.CommonProxy;
 import net.darkhax.moreswords.util.Constants;
 import net.minecraftforge.fml.common.Mod;
@@ -42,7 +41,6 @@ public class MoreSwords {
     public void init(FMLInitializationEvent init) {
 
         proxy.registerRenders();
-        new Plugin(ConfigurationHandler.enabledPlugins);
     }
 
     /**
