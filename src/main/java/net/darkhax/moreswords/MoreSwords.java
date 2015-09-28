@@ -16,13 +16,13 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, guiFactory = Constants.FACTORY)
+@Mod(modid = Constants.ID, name = Constants.NAME, version = Constants.VERSION, guiFactory = Constants.FACTORY)
 public class MoreSwords {
 
-    @SidedProxy(clientSide = Constants.CLIENT_PROXY_CLASS, serverSide = Constants.SERVER_PROXY_CLASS)
+    @SidedProxy(clientSide = Constants.CLIENT_PROXY, serverSide = Constants.SERVER_PROXY)
     public static CommonProxy proxy;
 
-    @Mod.Instance(Constants.MOD_ID)
+    @Mod.Instance(Constants.ID)
     public static MoreSwords instance;
 
     @EventHandler

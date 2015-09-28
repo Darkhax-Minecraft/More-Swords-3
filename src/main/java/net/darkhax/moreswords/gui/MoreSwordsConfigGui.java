@@ -18,7 +18,7 @@ public class MoreSwordsConfigGui extends GuiConfig {
 
     public MoreSwordsConfigGui(GuiScreen parent) {
 
-        super(parent, generateConfigList(), Constants.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath(ConfigurationHandler.config.toString()));
+        super(parent, generateConfigList(), Constants.ID, false, false, GuiConfig.getAbridgedConfigPath(ConfigurationHandler.config.toString()));
     }
 
     public static List<IConfigElement> generateConfigList() {

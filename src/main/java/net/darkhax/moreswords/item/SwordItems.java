@@ -31,7 +31,7 @@ public class SwordItems {
     public static void registerSwordItem(Item item) {
 
         ItemBaseSword sword = (ItemBaseSword) item;
-        GameRegistry.registerItem(item, sword.swordName, Constants.MOD_ID);
+        GameRegistry.registerItem(item, sword.swordName, Constants.ID);
         swordList.put(sword.swordName, item);
     }
 
