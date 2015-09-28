@@ -6,24 +6,15 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class MobHandler {
     
-    ConfigurationHandler cfg;
-    
-    public MobHandler() {
-    
-        if (ConfigurationHandler.enabledSpawning)
-            MinecraftForge.EVENT_BUS.register(this);
-    }
-    
     @SubscribeEvent
     public void onEnemySpawn (EntityJoinWorldEvent event) {
-    
-        if (event.entity instanceof EntityLiving) {
+        
+        if (ConfigurationHandler.enabledSpawning && event.entity instanceof EntityLiving) {
             
             double rand = Math.random();
             
@@ -31,24 +22,31 @@ public class MobHandler {
             
             if (living.getEntityData() != null && !living.getEntityData().hasKey("spawned")) {
                 
-                if (event.entity instanceof EntityZombie && cfg.zombieSwords)
-                    setEntityToHoldSwords(living, cfg.zombieChance);
-                
-                if (event.entity instanceof EntitySkeleton && cfg.skeletonSwords)
-                    setEntityToHoldSwords(living, cfg.skeletonChance);
-                
-                if (event.entity instanceof EntityPigZombie && cfg.pigSwords)
-                    setEntityToHoldSwords(living, cfg.pigChance);
+                if (event.entity instanceof EntityZombie && ConfigurationHandler.zombieSwords)
+                    setEntityToHoldSwords(living, ConfigurationHandler.zombieChance);
+                    
+                if (event.entity instanceof EntitySkeleton && ConfigurationHandler.skeletonSwords)
+                    setEntityToHoldSwords(living, ConfigurationHandler.skeletonChance);
+                    
+                if (event.entity instanceof EntityPigZombie && ConfigurationHandler.pigSwords)
+                    setEntityToHoldSwords(living, ConfigurationHandler.pigChance);
             }
         }
     }
     
+    /**
+     * Sets an entity to hold equipped an item in their hand.
+     * 
+     * @param entity: The entity to hold the item.
+     * @param odds: The odds that this will succeed.
+     */
     public void setEntityToHoldSwords (EntityLiving entity, double odds) {
-    
+        
         if (SwordItems.swordList.size() > 0) {
             
             ItemStack stack = new ItemStack(SwordItems.getRandomSword());
-            if (stack != null && stack.getItem() != SwordItems.getSwordFromRegistry("admin") && Math.random() < odds)
+            
+            if (stack != null && stack.getItem() != SwordItems.swordAdmin && Math.random() < odds)
                 entity.setCurrentItemOrArmor(0, stack);
         }
         

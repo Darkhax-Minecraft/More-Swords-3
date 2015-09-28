@@ -1,63 +1,58 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentStealth extends EnchantmentBase {
     
-    protected EnchantmentStealth(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
-    
+    protected EnchantmentStealth(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+        
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
     }
     
-    /**
-     * Sets the player invisible without the use of a potion effect.
-     */
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
-    
-        if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR))) {
-            
-            if (isValidPlayer(event.entityPlayer)) {
-                
-                ItemStack stack = event.entityPlayer.getHeldItem();
-                
-                if (!event.entityPlayer.isInvisible()) {
-                    
-                    event.entityPlayer.setInvisible(true);
-                }
-                
-                else
-                    event.entityPlayer.setInvisible(false);
-            }
-        }
+        
+        if (isValidUser(event.entityPlayer) && (event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)))
+            event.entityPlayer.setInvisible(!event.entityPlayer.isInvisible());
     }
     
     @Override
     public boolean canApplyAtEnchantingTable (ItemStack stack) {
-    
-        return cfg.stealthVanilla;
+        
+        return ConfigurationHandler.stealthVanilla;
     }
     
     @Override
     public boolean isAllowedOnBooks () {
-    
-        return cfg.stealthVanilla;
+        
+        return ConfigurationHandler.stealthVanilla;
     }
     
     @Override
     public boolean canApply (ItemStack stack) {
-    
-        return cfg.stealthVanilla;
+        
+        return ConfigurationHandler.stealthVanilla;
     }
     
     @Override
     public boolean canApplyTogether (Enchantment par1Enchantment) {
+        
+        return ConfigurationHandler.stealthVanilla;
+    }
     
-        return cfg.stealthVanilla;
+    @Override
+    public boolean isValidUser (Entity entity) {
+        
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
     }
 }

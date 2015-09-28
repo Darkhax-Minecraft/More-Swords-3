@@ -1,43 +1,47 @@
 package net.darkhax.moreswords.item;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import net.darkhax.moreswords.util.Constants;
 import net.minecraft.item.Item;
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SwordItems {
     
     public static HashMap<String, Item> swordList = new HashMap();
-    public static String[] swordNames = { "dawnstar", "vampiric", "gladiolus", "draconic", "ender", "crystal", "glacial", "aether", "wither", "admin" };
     
-    public SwordItems() {
+    public static Item swordDawmStar = new ItemBaseSword("dawnstar");
+    public static Item swordVampiric = new ItemBaseSword("vampiric");
+    public static Item swordGladiolus = new ItemBaseSword("gladiolus");
+    public static Item swordDraconic = new ItemBaseSword("draconic");
+    public static Item swordEnder = new ItemBaseSword("ender");
+    public static Item swordCrystal = new ItemBaseSword("crystal");
+    public static Item swordGlacial = new ItemBaseSword("glacial");
+    public static Item swordAether = new ItemBaseSword("aether");
+    public static Item swordWither = new ItemBaseSword("wither");
+    public static Item swordLux = new ItemBaseSword("lux");
+    public static Item swordAdmin = new ItemBaseSword("admin");
     
-        for (int pos = 0; pos < swordNames.length; pos++)
-            generateNewSword(swordNames[pos]);
-    }
-    
-    public static void generateNewSword (String swordName) {
-    
-        ItemBaseSword sword = new ItemBaseSword(swordName);
-        GameRegistry.registerItem(sword, swordName);
-        swordList.put(swordName, sword);
-    }
-    
-    public static Item getSwordFromRegistry (String swordName) {
-    
-        Item sword = swordList.get(swordName);
+    /**
+     * Registers a sword item with the sword list, and the games item registry.
+     * 
+     * @param item: The Item object being registered.
+     */
+    public static void registerSwordItem (Item item) {
         
-        if (sword != null)
-            return sword;
-        
-        else
-            return swordList.get("admin");
+        ItemBaseSword sword = (ItemBaseSword) item;
+        GameRegistry.registerItem(item, sword.swordName, Constants.ID);
+        swordList.put(sword.swordName, item);
     }
     
+    /**
+     * Retrieves a random sword item from the swordList.
+     */
     public static Item getRandomSword () {
-    
+        
+        Random rnd = new Random();
         Object[] values = SwordItems.swordList.values().toArray();
-        return (Item) values[Constants.RANDOM.nextInt(values.length)];
+        return (Item) values[rnd.nextInt(values.length)];
     }
 }

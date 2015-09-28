@@ -1,39 +1,36 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Utilities;
+import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.util.Utils;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentAbsorb extends EnchantmentBase {
     
-    protected EnchantmentAbsorb(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
-    
+    protected EnchantmentAbsorb(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+        
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-        MinecraftForge.EVENT_BUS.register(this);
     }
     
-    /**
-     * This enchantment has a 5% chance to restore hunger points.
-     */
-    @SubscribeEvent
-    public void onEntityHit (AttackEntityEvent event) {
-    
-        double d = Math.random();
+    @Override
+    public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
-        if (d < cfg.absorbChance) {
+        if (isValidUser(user) && Utils.percentChance(ConfigurationHandler.absorbChance)) {
             
-            if (isValidPlayer(event.entityPlayer)) {
-                
-                ItemStack stack = event.entityPlayer.getHeldItem();
-                int food = Utilities.nextIntII(cfg.absorbMin, cfg.absorbMax);
-                float saturation = (float) (cfg.absorbSaturation * food);
-                event.entityPlayer.getFoodStats().addStats(food, saturation);
-                
-                if (event.entityPlayer.worldObj.isRemote)
-                    event.entityPlayer.worldObj.playSoundAtEntity(event.entityPlayer, "random.burp", 0.5F, event.entityPlayer.worldObj.rand.nextFloat() * 0.1F + 0.9F);
-            }
+            EntityPlayer player = (EntityPlayer) user;
+            ItemStack stack = player.getHeldItem();
+            int food = Utils.nextIntII(ConfigurationHandler.absorbMin, ConfigurationHandler.absorbMax);
+            float saturation = (float) (ConfigurationHandler.absorbSaturation * food);
+            player.getFoodStats().addStats(food, saturation);
         }
+    }
+    
+    @Override
+    public boolean isValidUser (Entity entity) {
+        
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
     }
 }

@@ -1,32 +1,30 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Utilities;
+import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.util.Utils;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentFeast extends EnchantmentBase {
     
-    protected EnchantmentFeast(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, String item) {
-    
+    protected EnchantmentFeast(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+        
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
-        MinecraftForge.EVENT_BUS.register(this);
     }
     
-    /**
-     * The feast enchantment will repair damage equal to 0-3 per level on the sword.
-     */
-    @SubscribeEvent
-    public void onEntityHit (AttackEntityEvent event) {
-    
-        if (isLiving(event.entityLiving)) {
+    @Override
+    public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
+        
+        if (isValidUser(user)) {
             
-            if (isValidPlayer(event.entityPlayer)) {
+            ItemStack stack = user.getHeldItem();
+            
+            if (Utils.percentChance(ConfigurationHandler.feastChance * getLevel(stack))) {
                 
-                ItemStack stack = event.entityPlayer.getHeldItem();
-                int repair = Utilities.nextIntII(cfg.feastMin, cfg.feastMax) * level(stack);
-                stack.damageItem(-repair, event.entityLiving);
+                int repair = Utils.nextIntII(ConfigurationHandler.feastMin, ConfigurationHandler.feastMax) * getLevel(stack);
+                stack.damageItem(-repair, user);
             }
         }
     }
