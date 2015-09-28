@@ -9,25 +9,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RecipeHandler {
     
-    ConfigurationHandler cfg;
-    SwordItems swords;
-    Items items;
-    Blocks blocks;
-    
-    public RecipeHandler(Boolean status) {
+    public RecipeHandler() {
         
-        if (status) {
+        if (ConfigurationHandler.itemsCraftable) {
             
-            createItemRecipe(new ItemStack(swords.swordDawmStar), new Object[] { "xyz", "yzy", "ayx", Character.valueOf('x'), items.blaze_powder, Character.valueOf('y'), items.fire_charge, Character.valueOf('z'), items.magma_cream, Character.valueOf('a'), items.blaze_rod }, cfg.craftingDawnStar);
-            createItemRecipe(new ItemStack(swords.swordVampiric), new Object[] { " xy", "zyx", "az ", Character.valueOf('x'), items.iron_ingot, Character.valueOf('y'), items.redstone, Character.valueOf('z'), blocks.obsidian, Character.valueOf('a'), items.stick }, cfg.craftingVampiric);
-            createItemRecipe(new ItemStack(swords.swordGladiolus), new Object[] { " xy", "zax", "bz ", Character.valueOf('x'), blocks.leaves, Character.valueOf('y'), blocks.vine, Character.valueOf('z'), blocks.sapling, Character.valueOf('a'), new ItemStack(blocks.red_flower, 1, 1), Character.valueOf('b'), items.stick }, cfg.craftingGladiolus);
-            createItemRecipe(new ItemStack(swords.swordDraconic), new Object[] { " xy", "zax", "bz ", Character.valueOf('x'), items.iron_ingot, Character.valueOf('y'), items.redstone, Character.valueOf('z'), new ItemStack(items.dye, 1, 4), Character.valueOf('a'), items.diamond, Character.valueOf('b'), items.stick }, cfg.craftingDraconic);
-            createItemRecipe(new ItemStack(swords.swordEnder), new Object[] { " xy", "zax", "bz ", Character.valueOf('x'), items.ender_pearl, Character.valueOf('y'), blocks.obsidian, Character.valueOf('z'), items.diamond, Character.valueOf('a'), items.ender_eye, Character.valueOf('b'), items.stick }, cfg.craftingDraconic);
-            createItemRecipe(new ItemStack(swords.swordCrystal), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), blocks.glass, Character.valueOf('y'), items.quartz, Character.valueOf('z'), blocks.glass_pane, Character.valueOf('a'), items.stick }, cfg.craftingCrystal);
-            createItemRecipe(new ItemStack(swords.swordGlacial), new Object[] { " xy", "xyx", "zx ", Character.valueOf('x'), blocks.ice, Character.valueOf('y'), blocks.packed_ice, Character.valueOf('z'), items.stick }, cfg.craftingGlacial);
-            createItemRecipe(new ItemStack(swords.swordAether), new Object[] { "abc", "bcd", "eda", Character.valueOf('a'), Items.feather, Character.valueOf('b'), items.diamond, Character.valueOf('c'), Blocks.glowstone, Character.valueOf('d'), Items.iron_ingot, Character.valueOf('e'), Items.stick }, cfg.craftingAether);
-            createItemRecipe(new ItemStack(swords.swordWither), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), blocks.soul_sand, Character.valueOf('y'), items.quartz, Character.valueOf('z'), items.nether_star, Character.valueOf('a'), items.stick }, cfg.craftingWither);
-            createItemRecipe(new ItemStack(swords.swordAdmin), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), blocks.bedrock, Character.valueOf('y'), blocks.end_portal_frame, Character.valueOf('z'), blocks.command_block, Character.valueOf('a'), items.stick }, cfg.craftingAdmin);
+            createItemRecipe(new ItemStack(SwordItems.swordDawmStar), new Object[] { "xyz", "yzy", "ayx", Character.valueOf('x'), Items.blaze_powder, Character.valueOf('y'), Items.fire_charge, Character.valueOf('z'), Items.magma_cream, Character.valueOf('a'), Items.blaze_rod }, ConfigurationHandler.craftingDawnStar);
+            createItemRecipe(new ItemStack(SwordItems.swordVampiric), new Object[] { " xy", "zyx", "az ", Character.valueOf('x'), Items.iron_ingot, Character.valueOf('y'), Items.redstone, Character.valueOf('z'), Blocks.obsidian, Character.valueOf('a'), Items.stick }, ConfigurationHandler.craftingVampiric);
+            createItemRecipe(new ItemStack(SwordItems.swordGladiolus), new Object[] { " xy", "zax", "bz ", Character.valueOf('x'), Blocks.leaves, Character.valueOf('y'), Blocks.vine, Character.valueOf('z'), Blocks.sapling, Character.valueOf('a'), new ItemStack(Blocks.red_flower, 1, 1), Character.valueOf('b'), Items.stick }, ConfigurationHandler.craftingGladiolus);
+            createItemRecipe(new ItemStack(SwordItems.swordDraconic), new Object[] { " xy", "zax", "bz ", Character.valueOf('x'), Items.iron_ingot, Character.valueOf('y'), Items.redstone, Character.valueOf('z'), new ItemStack(Items.dye, 1, 4), Character.valueOf('a'), Items.diamond, Character.valueOf('b'), Items.stick }, ConfigurationHandler.craftingDraconic);
+            createItemRecipe(new ItemStack(SwordItems.swordEnder), new Object[] { " xy", "zax", "bz ", Character.valueOf('x'), Items.ender_pearl, Character.valueOf('y'), Blocks.obsidian, Character.valueOf('z'), Items.diamond, Character.valueOf('a'), Items.ender_eye, Character.valueOf('b'), Items.stick }, ConfigurationHandler.craftingDraconic);
+            createItemRecipe(new ItemStack(SwordItems.swordCrystal), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), Blocks.glass, Character.valueOf('y'), Items.quartz, Character.valueOf('z'), Blocks.glass_pane, Character.valueOf('a'), Items.stick }, ConfigurationHandler.craftingCrystal);
+            createItemRecipe(new ItemStack(SwordItems.swordGlacial), new Object[] { " xy", "xyx", "zx ", Character.valueOf('x'), Blocks.ice, Character.valueOf('y'), Blocks.packed_ice, Character.valueOf('z'), Items.stick }, ConfigurationHandler.craftingGlacial);
+            createItemRecipe(new ItemStack(SwordItems.swordAether), new Object[] { "abc", "bcd", "eda", Character.valueOf('a'), Items.feather, Character.valueOf('b'), Items.diamond, Character.valueOf('c'), Blocks.glowstone, Character.valueOf('d'), Items.iron_ingot, Character.valueOf('e'), Items.stick }, ConfigurationHandler.craftingAether);
+            createItemRecipe(new ItemStack(SwordItems.swordWither), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), Blocks.soul_sand, Character.valueOf('y'), Items.quartz, Character.valueOf('z'), Items.nether_star, Character.valueOf('a'), Items.stick }, ConfigurationHandler.craftingWither);
+            createItemRecipe(new ItemStack(SwordItems.swordAdmin), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), Blocks.bedrock, Character.valueOf('y'), Blocks.end_portal_frame, Character.valueOf('z'), Blocks.command_block, Character.valueOf('a'), Items.stick }, ConfigurationHandler.craftingAdmin);
         }
     }
     
@@ -38,7 +33,7 @@ public class RecipeHandler {
      * @param recipe: An Object array that represents the crafting recipe.
      * @param craftable: Can this item be crafted? This should be hooked up to a config.
      */
-    void createItemRecipe (ItemStack output, Object[] recipe, boolean craftable) {
+    private void createItemRecipe (ItemStack output, Object[] recipe, boolean craftable) {
         
         if (craftable)
             GameRegistry.addShapedRecipe(output, recipe);

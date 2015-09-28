@@ -9,6 +9,7 @@ import net.darkhax.moreswords.handler.MobHandler;
 import net.darkhax.moreswords.handler.RecipeHandler;
 import net.darkhax.moreswords.item.SwordItems;
 import net.darkhax.moreswords.util.Constants;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -29,12 +30,11 @@ public class MoreSwords {
     public void preInit (FMLPreInitializationEvent pre) {
         
         setModInfo(pre.getModMetadata());
-        proxy.registerSidedEvents();
         new ConfigurationHandler(pre.getSuggestedConfigurationFile());
         new SwordItems();
-        new Enchantments(ConfigurationHandler.enabledEnchant);
-        new RecipeHandler(ConfigurationHandler.itemsCraftable);
-        new MobHandler(ConfigurationHandler.enabledSpawning);
+        new Enchantments();
+        new RecipeHandler();
+        MinecraftForge.EVENT_BUS.register(new MobHandler());
     }
     
     @EventHandler
