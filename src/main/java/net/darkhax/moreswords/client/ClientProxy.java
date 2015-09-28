@@ -1,5 +1,6 @@
-package net.darkhax.moreswords.proxy;
+package net.darkhax.moreswords.client;
 
+import net.darkhax.moreswords.common.CommonProxy;
 import net.darkhax.moreswords.item.SwordItems;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;

@@ -1,4 +1,4 @@
-package net.darkhax.moreswords.proxy;
+package net.darkhax.moreswords.common;
 
 public class CommonProxy {
     

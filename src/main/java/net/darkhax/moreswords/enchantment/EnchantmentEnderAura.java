@@ -1,6 +1,5 @@
 package net.darkhax.moreswords.enchantment;
 
-import net.darkhax.moreswords.util.Constants;
 import net.darkhax.moreswords.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
