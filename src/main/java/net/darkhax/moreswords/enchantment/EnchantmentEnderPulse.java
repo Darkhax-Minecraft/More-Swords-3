@@ -12,65 +12,65 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentEnderPulse extends EnchantmentBase {
-
+    
     protected EnchantmentEnderPulse(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
-
+        
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
     }
-
+    
     /**
-     * Teleports the player where they are looking on right click, provided that space is within 18
-     * multiplied by enchantment level blocks away. Damages the held item by 50 and gives the player 1
-     * fall damage.
+     * Teleports the player where they are looking on right click, provided that space is
+     * within 18 multiplied by enchantment level blocks away. Damages the held item by 50 and
+     * gives the player 1 fall damage.
      */
     @SubscribeEvent
-    public void onItemUsed(PlayerInteractEvent event) {
-
+    public void onItemUsed (PlayerInteractEvent event) {
+        
         if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR))) {
-
+            
             if (isValidPlayer(event.entityPlayer)) {
-
+                
                 ItemStack stack = event.entityPlayer.getHeldItem();
                 EntityPlayer player = event.entityPlayer;
                 int distance = level(stack) * cfg.enderPulseRange;
                 MovingObjectPosition position = Utils.rayTrace(player, distance);
-
+                
                 if ((position != null) && (position.typeOfHit == MovingObjectType.BLOCK)) {
-
+                    
                     int x = position.getBlockPos().getX();
                     int y = position.getBlockPos().getY();
                     int z = position.getBlockPos().getZ();
-
+                    
                     switch (position.sideHit.getIndex()) {
-                    // Down
-                    case 0:
-                        y--;
-                        break;
-                    // Up
-                    case 1:
-                        y++;
-                        break;
-                    // North
-                    case 2:
-                        z--;
-                        break;
-                    // South
-                    case 3:
-                        z++;
-                        break;
-                    // West
-                    case 4:
-                        x--;
-                        break;
-                    // East
-                    case 5:
-                        x++;
-                        break;
-                    default:
-                        y++;
+                        // Down
+                        case 0:
+                            y--;
+                            break;
+                        // Up
+                        case 1:
+                            y++;
+                            break;
+                        // North
+                        case 2:
+                            z--;
+                            break;
+                        // South
+                        case 3:
+                            z++;
+                            break;
+                        // West
+                        case 4:
+                            x--;
+                            break;
+                        // East
+                        case 5:
+                            x++;
+                            break;
+                        default:
+                            y++;
                     }
-
+                    
                     stack.damageItem(cfg.enderPulseItemDamage, player);
                     player.setPositionAndUpdate(x, y, z);
                     player.attackEntityFrom(DamageSource.fall, cfg.enderPulseFallDamage);

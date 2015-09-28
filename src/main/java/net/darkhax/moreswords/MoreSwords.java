@@ -18,16 +18,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Constants.ID, name = Constants.NAME, version = Constants.VERSION, guiFactory = Constants.FACTORY)
 public class MoreSwords {
-
+    
     @SidedProxy(clientSide = Constants.CLIENT_PROXY, serverSide = Constants.SERVER_PROXY)
     public static CommonProxy proxy;
-
+    
     @Mod.Instance(Constants.ID)
     public static MoreSwords instance;
-
+    
     @EventHandler
-    public void preInit(FMLPreInitializationEvent pre) {
-
+    public void preInit (FMLPreInitializationEvent pre) {
+        
         setModInfo(pre.getModMetadata());
         proxy.registerSidedEvents();
         new ConfigurationHandler(pre.getSuggestedConfigurationFile());
@@ -36,20 +36,20 @@ public class MoreSwords {
         new RecipeHandler(ConfigurationHandler.itemsCraftable);
         new MobHandler(ConfigurationHandler.enabledSpawning);
     }
-
+    
     @EventHandler
-    public void init(FMLInitializationEvent init) {
-
+    public void init (FMLInitializationEvent init) {
+        
         proxy.registerRenders();
     }
-
+    
     /**
      * Allows for mod information to be supplied through code rather than an mcmod.info file.
      * 
      * @param meta: The ModMetadata for the mod instance.
      */
-    void setModInfo(ModMetadata meta) {
-
+    void setModInfo (ModMetadata meta) {
+        
         meta.authorList = Arrays.asList("Darkhax");
         meta.logoFile = "";
         meta.credits = "Maintained by Darkhax";

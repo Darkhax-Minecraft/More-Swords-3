@@ -11,24 +11,24 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class CreativeTabMoreSwords extends CreativeTabs {
-
+    
     public CreativeTabMoreSwords() {
-    	
-		super("moreSwords");
-	}
-
-	@Override
+        
+        super("moreSwords");
+    }
+    
+    @Override
     @SideOnly(Side.CLIENT)
-    public void displayAllReleventItems(List items) {
-
+    public void displayAllReleventItems (List items) {
+        
         super.displayAllReleventItems(items);
         this.addEnchantmentBooksToList(items, new EnumEnchantmentType[] { Constants.ENCH_TYPE_SWORDS });
     }
-
+    
     @Override
     @SideOnly(Side.CLIENT)
-    public Item getTabIconItem() {
-
+    public Item getTabIconItem () {
+        
         return SwordItems.swordAdmin;
     }
 }

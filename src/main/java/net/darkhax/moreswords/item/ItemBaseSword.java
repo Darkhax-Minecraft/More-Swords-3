@@ -8,39 +8,39 @@ import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemBaseSword extends ItemSword {
-
+    
     public final String swordName;
-
+    
     public ItemBaseSword(String swordName) {
-
+        
         super(generateToolMaterials(swordName));
         this.swordName = swordName;
         this.setUnlocalizedName("msm." + swordName);
         this.setCreativeTab(Constants.TAB_SWORDS);
         SwordItems.registerSwordItem(this);
     }
-
+    
     /**
      * Creates an EnumToolMaterial using values from an EnumMoreSwords
      * 
      * @param swordName : Name of the sword for lookup.
      * @return EnumToolMaterial: Enum for tool properties.
      */
-    public static Item.ToolMaterial generateToolMaterials(String swordName) {
-
+    public static Item.ToolMaterial generateToolMaterials (String swordName) {
+        
         EnumMoreSwords sword = EnumMoreSwords.getType(swordName);
         Item.ToolMaterial material = EnumHelper.addToolMaterial(swordName, sword.swordHarvestLevel, sword.swordDurability, sword.swordEfficiency, sword.swordDamage - 4, sword.swordEnchantability);
-
+        
         if (ConfigurationHandler.itemsRepairable)
             material.customCraftingMaterial = sword.swordRepairItem;
-
+            
         return material;
     }
-
+    
     public static enum EnumMoreSwords {
-
+        
         DAWNSTAR("dawnstar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336), VAMPIRIC("vampiric", ConfigurationHandler.damageVampiric, ConfigurationHandler.durabilityVampiric, ConfigurationHandler.enchantVampiric, ConfigurationHandler.harvestVampiric, ConfigurationHandler.efficientVampiric, ConfigurationHandler.repairVampiric, ConfigurationHandler.craftingVampiric, 9371648), GLADIOLUS("gladiolus", ConfigurationHandler.damageGladiolus, ConfigurationHandler.durabilityGladiolus, ConfigurationHandler.enchantGladiolus, ConfigurationHandler.harvestGladiolus, ConfigurationHandler.efficientGladiolus, ConfigurationHandler.repairGladiolus, ConfigurationHandler.craftingGladiolus, 20992), DRACONIC("draconic", ConfigurationHandler.damageDraconic, ConfigurationHandler.durabilityDraconic, ConfigurationHandler.enchantDraconic, ConfigurationHandler.harvestDraconic, ConfigurationHandler.efficientDraconic, ConfigurationHandler.repairDraconic, ConfigurationHandler.craftingDraconic, 4671441), ENDER("ender", ConfigurationHandler.damageEnder, ConfigurationHandler.durabilityEnder, ConfigurationHandler.enchantEnder, ConfigurationHandler.harvestEnder, ConfigurationHandler.efficientEnder, ConfigurationHandler.repairEnder, ConfigurationHandler.craftingEnder, 2386759), CRYSTAL("crystal", ConfigurationHandler.damageCrystal, ConfigurationHandler.durabilityCrystal, ConfigurationHandler.enchantCrystal, ConfigurationHandler.harvestCrystal, ConfigurationHandler.efficientCrystal, ConfigurationHandler.repairCrystal, ConfigurationHandler.craftingCrystal, 13434828), GLACIAL("glacial", ConfigurationHandler.damageGlacial, ConfigurationHandler.durabilityGlacial, ConfigurationHandler.enchantGlacial, ConfigurationHandler.harvestGlacial, ConfigurationHandler.efficientGlacial, ConfigurationHandler.repairGlacial, ConfigurationHandler.craftingGlacial, 6737151), AETHER("aether", ConfigurationHandler.damageAether, ConfigurationHandler.durabilityAether, ConfigurationHandler.enchantAether, ConfigurationHandler.harvestAether, ConfigurationHandler.efficientAether, ConfigurationHandler.repairAether, ConfigurationHandler.craftingAether, 6750207), WITHER("wither", ConfigurationHandler.damageWither, ConfigurationHandler.durabilityWither, ConfigurationHandler.enchantWither, ConfigurationHandler.harvestWither, ConfigurationHandler.efficientWither, ConfigurationHandler.repairWither, ConfigurationHandler.craftingWither, 657930), LuxBrand("lux", ConfigurationHandler.damageLuxBrand, ConfigurationHandler.durabilityLuxBrand, ConfigurationHandler.enchantLuxBrand, ConfigurationHandler.harvestLuxBrand, ConfigurationHandler.efficientLuxBrand, ConfigurationHandler.repairLuxBrand, ConfigurationHandler.craftingLuxBrand, 11564112), ADMIN("admin", ConfigurationHandler.damageAdmin, ConfigurationHandler.durabilityAdmin, ConfigurationHandler.enchantAdmin, ConfigurationHandler.harvestAdmin, ConfigurationHandler.efficientAdmin, ConfigurationHandler.repairAdmin, ConfigurationHandler.craftingAdmin, 3342336);
-
+        
         /**
          * Creates An enum type similar to tool material but for use with ItemCoreSword.
          * 
@@ -54,7 +54,7 @@ public class ItemBaseSword extends ItemSword {
          * @param isCraftable : Is this item craftable.
          */
         private EnumMoreSwords(String name, int damage, int durability, int enchant, int harvest, int efficient, String repairMaterial, boolean isCraftable, int color) {
-
+            
             this.swordName = name;
             this.swordDamage = damage;
             this.swordDurability = durability;
@@ -64,7 +64,7 @@ public class ItemBaseSword extends ItemSword {
             this.swordRepairItem = getRepairItem(repairMaterial);
             this.swordColor = color;
         }
-
+        
         public String swordName;
         public int swordDamage;
         public int swordDurability;
@@ -73,135 +73,135 @@ public class ItemBaseSword extends ItemSword {
         public int swordEfficiency;
         public Item swordRepairItem;
         public int swordColor;
-
+        
         /**
          * Get a swordType from the list of enums.
          * 
          * @param name : The name of the sword being looked up.
          * @return EnumMoreSwords: An instance of the enum based off of the name.
          */
-        public static EnumMoreSwords getType(String name) {
-
+        public static EnumMoreSwords getType (String name) {
+            
             for (EnumMoreSwords swordType : values()) {
-
+                
                 if (swordType.swordName.equalsIgnoreCase(name)) {
-
+                    
                     return swordType;
                 }
             }
-
+            
             Constants.LOGGER.info("There was an error when attempting to look up " + name);
             return null;
         }
-
+        
         /**
          * Grabs a damage value from a swordType.
          * 
          * @param name : the name of the swordType.
          * @return int: The damage value for the swordType.
          */
-        public static int getDamage(String name) {
-
+        public static int getDamage (String name) {
+            
             EnumMoreSwords swordType = getType(name);
-
+            
             if (swordType != null) {
-
+                
                 return swordType.swordDamage;
             }
-
+            
             return -1;
         }
-
+        
         /**
          * Grabs a durability value from a swordType.
          * 
          * @param name : the name of the swordType.
          * @return int: the durability value for the swordType.
          */
-        public static int getDurability(String name) {
-
+        public static int getDurability (String name) {
+            
             EnumMoreSwords swordType = getType(name);
-
+            
             if (swordType != null) {
-
+                
                 return swordType.swordDurability;
             }
-
+            
             return -1;
         }
-
+        
         /**
          * Grabs an enchantability value from a swordType.
          * 
          * @param name : the name of the swordType
          * @return int: the enchantability value for the swordType.
          */
-        public static int getEnchantability(String name) {
-
+        public static int getEnchantability (String name) {
+            
             EnumMoreSwords swordType = getType(name);
-
+            
             if (swordType != null) {
-
+                
                 return swordType.swordEnchantability;
             }
-
+            
             return -1;
         }
-
+        
         /**
          * Grabs a harvest level from a swordType.
          * 
          * @param name : the name for the swordType
          * @return int: the harvest level for the swordType.
          */
-        public static int getHarvestLevel(String name) {
-
+        public static int getHarvestLevel (String name) {
+            
             EnumMoreSwords swordType = getType(name);
-
+            
             if (swordType != null) {
-
+                
                 return swordType.swordHarvestLevel;
             }
-
+            
             return -1;
         }
-
+        
         /**
          * Grabs an efficiency value from a swordType.
          * 
          * @param name : the name for the swordType
          * @return int: the efficiency value.
          */
-        public static int getEfficiency(String name) {
-
+        public static int getEfficiency (String name) {
+            
             EnumMoreSwords swordType = getType(name);
-
+            
             if (swordType != null) {
-
+                
                 return swordType.swordEfficiency;
             }
-
+            
             return -1;
         }
-
+        
         /**
          * Grabs an item used for tool repair.
          * 
          * @param name : name of the swordType.
          * @return Item: the item used for tool repair.
          */
-        public static Item getRepairItem(String name) {
-
+        public static Item getRepairItem (String name) {
+            
             if (Item.itemRegistry.getObject(name) != null) {
-
+                
                 return (Item) Item.itemRegistry.getObject(name);
             }
-
+            
             else if (Block.blockRegistry.getObject(name) != null) {
-
+                
                 return Item.getItemFromBlock((Block) Block.blockRegistry.getObject(name));
             }
-
+            
             Constants.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
             return null;
         }

@@ -8,42 +8,42 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EnchantmentDescension extends EnchantmentBase {
-
+    
     protected EnchantmentDescension(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
-
+        
         super(id, weight, unlocalizedName, minLevel, maxLevel, item);
         FMLCommonHandler.instance().bus().register(this);
     }
-
+    
     @SubscribeEvent
-    public void onUpdate(TickEvent.PlayerTickEvent event) {
-
+    public void onUpdate (TickEvent.PlayerTickEvent event) {
+        
         if (isValidPlayer(event.player)) {
-
+            
             ItemStack stack = event.player.getHeldItem();
-
+            
             if (cfg.descensionShift && event.player.isSneaking())
                 playerGlide(event.player);
-
+                
             else if (!cfg.descensionShift)
                 playerGlide(event.player);
-
+                
             else
                 return;
         }
     }
-
+    
     /**
      * Attempts to make a player glide slowly.
      * 
      * @param player: The player that will be told to glide.
      */
-    public void playerGlide(EntityPlayer player) {
-
+    public void playerGlide (EntityPlayer player) {
+        
         if (!player.onGround) {
-
+            
             if (player.motionY < 0.0D) {
-
+                
                 player.motionY *= 0.6D;
                 player.fallDistance = (float) (player.fallDistance * cfg.descensionFall);
             }

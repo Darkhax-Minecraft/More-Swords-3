@@ -8,16 +8,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RecipeHandler {
-
+    
     ConfigurationHandler cfg;
     SwordItems swords;
     Items items;
     Blocks blocks;
-
+    
     public RecipeHandler(Boolean status) {
-
+        
         if (status) {
-
+            
             createItemRecipe(new ItemStack(swords.swordDawmStar), new Object[] { "xyz", "yzy", "ayx", Character.valueOf('x'), items.blaze_powder, Character.valueOf('y'), items.fire_charge, Character.valueOf('z'), items.magma_cream, Character.valueOf('a'), items.blaze_rod }, cfg.craftingDawnStar);
             createItemRecipe(new ItemStack(swords.swordVampiric), new Object[] { " xy", "zyx", "az ", Character.valueOf('x'), items.iron_ingot, Character.valueOf('y'), items.redstone, Character.valueOf('z'), blocks.obsidian, Character.valueOf('a'), items.stick }, cfg.craftingVampiric);
             createItemRecipe(new ItemStack(swords.swordGladiolus), new Object[] { " xy", "zax", "bz ", Character.valueOf('x'), blocks.leaves, Character.valueOf('y'), blocks.vine, Character.valueOf('z'), blocks.sapling, Character.valueOf('a'), new ItemStack(blocks.red_flower, 1, 1), Character.valueOf('b'), items.stick }, cfg.craftingGladiolus);
@@ -30,7 +30,7 @@ public class RecipeHandler {
             createItemRecipe(new ItemStack(swords.swordAdmin), new Object[] { " xx", "yzx", "ay ", Character.valueOf('x'), blocks.bedrock, Character.valueOf('y'), blocks.end_portal_frame, Character.valueOf('z'), blocks.command_block, Character.valueOf('a'), items.stick }, cfg.craftingAdmin);
         }
     }
-
+    
     /**
      * Adds an item recipe, that can be disabled. This reduces the amount of if statements.
      * 
@@ -38,11 +38,11 @@ public class RecipeHandler {
      * @param recipe: An Object array that represents the crafting recipe.
      * @param craftable: Can this item be crafted? This should be hooked up to a config.
      */
-    void createItemRecipe(ItemStack output, Object[] recipe, boolean craftable) {
-
+    void createItemRecipe (ItemStack output, Object[] recipe, boolean craftable) {
+        
         if (craftable)
             GameRegistry.addShapedRecipe(output, recipe);
-
+            
         else
             Constants.LOGGER.info("Recipe for " + output.getDisplayName() + " has been disabled in the configuration.");
     }

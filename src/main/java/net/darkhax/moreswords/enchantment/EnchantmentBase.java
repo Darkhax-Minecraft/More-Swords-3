@@ -16,18 +16,17 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.ResourceLocation;
 
 public class EnchantmentBase extends Enchantment {
-
+    
     public static ConfigurationHandler cfg;
     protected Random rand = new Random();;
-    protected Utils.RandomUtils rnd = Constants.RND;
     int maxLevel;
     int minLevel;
     Item item;
-
+    
     /**
-     * Constructs a new EnchantmentBase object which is a custom wrapper for the vanilla Enchantment
-     * Class however a lot of the important values have been moved out of methods and into the
-     * parameters.
+     * Constructs a new EnchantmentBase object which is a custom wrapper for the vanilla
+     * Enchantment Class however a lot of the important values have been moved out of methods
+     * and into the parameters.
      * 
      * @param id: ID for the enchantment being added.
      * @param weight: How often the enchantment shows up.
@@ -37,7 +36,7 @@ public class EnchantmentBase extends Enchantment {
      * @param item: item that can get this enchantment. Books added by default.
      */
     protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
-
+        
         super(id, new ResourceLocation("msm:" + unlocalizedName), weight, Constants.ENCH_TYPE_SWORDS);
         this.name = "msm." + unlocalizedName;
         this.minLevel = minLevel;
@@ -45,86 +44,87 @@ public class EnchantmentBase extends Enchantment {
         this.item = item;
         addToBookList(this);
     }
-
-    public int getMinLevel() {
-
+    
+    public int getMinLevel () {
+        
         return this.minLevel;
     }
-
-    public int getMaxLevel() {
-
+    
+    public int getMaxLevel () {
+        
         return this.maxLevel;
     }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-
+    
+    public boolean canApplyAtEnchantingTable (ItemStack stack) {
+        
         if (!cfg.privateEnchant) {
-
+            
             return true;
         }
-
+        
         if (stack.getItem() == this.item | stack.getItem() == Items.book) {
-
+            
             return true;
         }
-
+        
         else
             return false;
     }
-
-    public boolean canApply(ItemStack stack) {
-
+    
+    public boolean canApply (ItemStack stack) {
+        
         if (!cfg.privateEnchant) {
-
+            
             return true;
         }
-
+        
         if (stack.getItem() instanceof ItemSword | stack.getItem() == Items.book) {
-
+            
             return true;
         }
-
+        
         else
             return false;
     }
-
-    public int getMinEnchantability(int par1) {
-
+    
+    public int getMinEnchantability (int par1) {
+        
         return 10 + 20 * (par1 - 1);
     }
-
-    public int getMaxEnchantability(int par1) {
-
+    
+    public int getMaxEnchantability (int par1) {
+        
         return super.getMinEnchantability(par1) + 50;
     }
-
+    
     /**
      * Checks to see if a player is valid. This is done by seeing if they are an instance of
-     * EntityPlayer, currently holding an item and if that item has the current enchantment or not.
+     * EntityPlayer, currently holding an item and if that item has the current enchantment or
+     * not.
      * 
      * @param entity: The entity being checked.
      */
-    public boolean isValidPlayer(Entity entity) {
-
+    public boolean isValidPlayer (Entity entity) {
+        
         if (entity instanceof EntityPlayer) {
-
+            
             if (((EntityPlayer) entity).getHeldItem() != null) {
-
+                
                 if (level(((EntityPlayer) entity).getHeldItem()) > 0)
                     return true;
             }
         }
-
+        
         return false;
     }
-
+    
     /**
      * Returns the current level of this enchantment on the item.
      * 
      * @param stack: ItemStack being checked.
      */
-    public int level(ItemStack stack) {
-
+    public int level (ItemStack stack) {
+        
         return EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
     }
 }
