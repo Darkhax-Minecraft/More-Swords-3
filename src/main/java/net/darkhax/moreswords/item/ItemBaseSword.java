@@ -21,14 +21,15 @@ public class ItemBaseSword extends ItemSword {
     }
     
     /**
-     * Creates an EnumToolMaterial using values from an EnumMoreSwords
+     * Generates a ToolMaterial from a SwordMaterial. The SwordMaterial is retrieved based on
+     * the provided name.
      * 
-     * @param swordName : Name of the sword for lookup.
-     * @return EnumToolMaterial: Enum for tool properties.
+     * @param swordName: The name of the sword material type.
+     * @return ToolMaterial: A ToolMaterial which can be used for a new ItemSword.
      */
     public static Item.ToolMaterial generateToolMaterials (String swordName) {
         
-        EnumMoreSwords sword = EnumMoreSwords.getType(swordName);
+        SwordMaterial sword = SwordMaterial.getType(swordName);
         Item.ToolMaterial material = EnumHelper.addToolMaterial(swordName, sword.swordHarvestLevel, sword.swordDurability, sword.swordEfficiency, sword.swordDamage - 4, sword.swordEnchantability);
         
         if (ConfigurationHandler.itemsRepairable)
@@ -37,9 +38,23 @@ public class ItemBaseSword extends ItemSword {
         return material;
     }
     
-    public static enum EnumMoreSwords {
+    public static enum SwordMaterial {
         
-        DAWNSTAR("dawnstar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336), VAMPIRIC("vampiric", ConfigurationHandler.damageVampiric, ConfigurationHandler.durabilityVampiric, ConfigurationHandler.enchantVampiric, ConfigurationHandler.harvestVampiric, ConfigurationHandler.efficientVampiric, ConfigurationHandler.repairVampiric, ConfigurationHandler.craftingVampiric, 9371648), GLADIOLUS("gladiolus", ConfigurationHandler.damageGladiolus, ConfigurationHandler.durabilityGladiolus, ConfigurationHandler.enchantGladiolus, ConfigurationHandler.harvestGladiolus, ConfigurationHandler.efficientGladiolus, ConfigurationHandler.repairGladiolus, ConfigurationHandler.craftingGladiolus, 20992), DRACONIC("draconic", ConfigurationHandler.damageDraconic, ConfigurationHandler.durabilityDraconic, ConfigurationHandler.enchantDraconic, ConfigurationHandler.harvestDraconic, ConfigurationHandler.efficientDraconic, ConfigurationHandler.repairDraconic, ConfigurationHandler.craftingDraconic, 4671441), ENDER("ender", ConfigurationHandler.damageEnder, ConfigurationHandler.durabilityEnder, ConfigurationHandler.enchantEnder, ConfigurationHandler.harvestEnder, ConfigurationHandler.efficientEnder, ConfigurationHandler.repairEnder, ConfigurationHandler.craftingEnder, 2386759), CRYSTAL("crystal", ConfigurationHandler.damageCrystal, ConfigurationHandler.durabilityCrystal, ConfigurationHandler.enchantCrystal, ConfigurationHandler.harvestCrystal, ConfigurationHandler.efficientCrystal, ConfigurationHandler.repairCrystal, ConfigurationHandler.craftingCrystal, 13434828), GLACIAL("glacial", ConfigurationHandler.damageGlacial, ConfigurationHandler.durabilityGlacial, ConfigurationHandler.enchantGlacial, ConfigurationHandler.harvestGlacial, ConfigurationHandler.efficientGlacial, ConfigurationHandler.repairGlacial, ConfigurationHandler.craftingGlacial, 6737151), AETHER("aether", ConfigurationHandler.damageAether, ConfigurationHandler.durabilityAether, ConfigurationHandler.enchantAether, ConfigurationHandler.harvestAether, ConfigurationHandler.efficientAether, ConfigurationHandler.repairAether, ConfigurationHandler.craftingAether, 6750207), WITHER("wither", ConfigurationHandler.damageWither, ConfigurationHandler.durabilityWither, ConfigurationHandler.enchantWither, ConfigurationHandler.harvestWither, ConfigurationHandler.efficientWither, ConfigurationHandler.repairWither, ConfigurationHandler.craftingWither, 657930), LuxBrand("lux", ConfigurationHandler.damageLuxBrand, ConfigurationHandler.durabilityLuxBrand, ConfigurationHandler.enchantLuxBrand, ConfigurationHandler.harvestLuxBrand, ConfigurationHandler.efficientLuxBrand, ConfigurationHandler.repairLuxBrand, ConfigurationHandler.craftingLuxBrand, 11564112), ADMIN("admin", ConfigurationHandler.damageAdmin, ConfigurationHandler.durabilityAdmin, ConfigurationHandler.enchantAdmin, ConfigurationHandler.harvestAdmin, ConfigurationHandler.efficientAdmin, ConfigurationHandler.repairAdmin, ConfigurationHandler.craftingAdmin, 3342336);
+        DAWNSTAR("dawnstar", ConfigurationHandler.damageDawnStar, ConfigurationHandler.durabilityDawnStar, ConfigurationHandler.enchantDawnStar, ConfigurationHandler.harvestDawnStar, ConfigurationHandler.efficientDawnStar, ConfigurationHandler.repairDawnStar, ConfigurationHandler.craftingDawnStar, 13390336),
+        VAMPIRIC("vampiric", ConfigurationHandler.damageVampiric, ConfigurationHandler.durabilityVampiric, ConfigurationHandler.enchantVampiric, ConfigurationHandler.harvestVampiric, ConfigurationHandler.efficientVampiric, ConfigurationHandler.repairVampiric, ConfigurationHandler.craftingVampiric, 9371648),
+        GLADIOLUS("gladiolus", ConfigurationHandler.damageGladiolus, ConfigurationHandler.durabilityGladiolus, ConfigurationHandler.enchantGladiolus, ConfigurationHandler.harvestGladiolus, ConfigurationHandler.efficientGladiolus, ConfigurationHandler.repairGladiolus, ConfigurationHandler.craftingGladiolus, 20992),
+        DRACONIC("draconic", ConfigurationHandler.damageDraconic, ConfigurationHandler.durabilityDraconic, ConfigurationHandler.enchantDraconic, ConfigurationHandler.harvestDraconic, ConfigurationHandler.efficientDraconic, ConfigurationHandler.repairDraconic, ConfigurationHandler.craftingDraconic, 4671441),
+        ENDER("ender", ConfigurationHandler.damageEnder, ConfigurationHandler.durabilityEnder, ConfigurationHandler.enchantEnder, ConfigurationHandler.harvestEnder, ConfigurationHandler.efficientEnder, ConfigurationHandler.repairEnder, ConfigurationHandler.craftingEnder, 2386759),
+        CRYSTAL("crystal", ConfigurationHandler.damageCrystal, ConfigurationHandler.durabilityCrystal, ConfigurationHandler.enchantCrystal, ConfigurationHandler.harvestCrystal, ConfigurationHandler.efficientCrystal, ConfigurationHandler.repairCrystal, ConfigurationHandler.craftingCrystal, 13434828),
+        GLACIAL("glacial", ConfigurationHandler.damageGlacial, ConfigurationHandler.durabilityGlacial, ConfigurationHandler.enchantGlacial, ConfigurationHandler.harvestGlacial, ConfigurationHandler.efficientGlacial, ConfigurationHandler.repairGlacial, ConfigurationHandler.craftingGlacial, 6737151),
+        AETHER("aether", ConfigurationHandler.damageAether, ConfigurationHandler.durabilityAether, ConfigurationHandler.enchantAether, ConfigurationHandler.harvestAether, ConfigurationHandler.efficientAether, ConfigurationHandler.repairAether, ConfigurationHandler.craftingAether, 6750207),
+        WITHER("wither", ConfigurationHandler.damageWither, ConfigurationHandler.durabilityWither, ConfigurationHandler.enchantWither, ConfigurationHandler.harvestWither, ConfigurationHandler.efficientWither, ConfigurationHandler.repairWither, ConfigurationHandler.craftingWither, 657930),
+        // LuxBrand("lux", ConfigurationHandler.damageLuxBrand,
+        // ConfigurationHandler.durabilityLuxBrand, ConfigurationHandler.enchantLuxBrand,
+        // ConfigurationHandler.harvestLuxBrand, ConfigurationHandler.efficientLuxBrand,
+        // ConfigurationHandler.repairLuxBrand, ConfigurationHandler.craftingLuxBrand,
+        // 11564112),
+        ADMIN("admin", ConfigurationHandler.damageAdmin, ConfigurationHandler.durabilityAdmin, ConfigurationHandler.enchantAdmin, ConfigurationHandler.harvestAdmin, ConfigurationHandler.efficientAdmin, ConfigurationHandler.repairAdmin, ConfigurationHandler.craftingAdmin, 3342336);
         
         /**
          * Creates An enum type similar to tool material but for use with ItemCoreSword.
@@ -53,7 +68,7 @@ public class ItemBaseSword extends ItemSword {
          * @param repairMaterial : Item used to repair in anvil.
          * @param isCraftable : Is this item craftable.
          */
-        private EnumMoreSwords(String name, int damage, int durability, int enchant, int harvest, int efficient, String repairMaterial, boolean isCraftable, int color) {
+        private SwordMaterial(String name, int damage, int durability, int enchant, int harvest, int efficient, String repairMaterial, boolean isCraftable, int color) {
             
             this.swordName = name;
             this.swordDamage = damage;
@@ -80,9 +95,9 @@ public class ItemBaseSword extends ItemSword {
          * @param name : The name of the sword being looked up.
          * @return EnumMoreSwords: An instance of the enum based off of the name.
          */
-        public static EnumMoreSwords getType (String name) {
+        public static SwordMaterial getType (String name) {
             
-            for (EnumMoreSwords swordType : values()) {
+            for (SwordMaterial swordType : values()) {
                 
                 if (swordType.swordName.equalsIgnoreCase(name)) {
                     
@@ -102,7 +117,7 @@ public class ItemBaseSword extends ItemSword {
          */
         public static int getDamage (String name) {
             
-            EnumMoreSwords swordType = getType(name);
+            SwordMaterial swordType = getType(name);
             
             if (swordType != null) {
                 
@@ -120,7 +135,7 @@ public class ItemBaseSword extends ItemSword {
          */
         public static int getDurability (String name) {
             
-            EnumMoreSwords swordType = getType(name);
+            SwordMaterial swordType = getType(name);
             
             if (swordType != null) {
                 
@@ -138,7 +153,7 @@ public class ItemBaseSword extends ItemSword {
          */
         public static int getEnchantability (String name) {
             
-            EnumMoreSwords swordType = getType(name);
+            SwordMaterial swordType = getType(name);
             
             if (swordType != null) {
                 
@@ -156,7 +171,7 @@ public class ItemBaseSword extends ItemSword {
          */
         public static int getHarvestLevel (String name) {
             
-            EnumMoreSwords swordType = getType(name);
+            SwordMaterial swordType = getType(name);
             
             if (swordType != null) {
                 
@@ -174,7 +189,7 @@ public class ItemBaseSword extends ItemSword {
          */
         public static int getEfficiency (String name) {
             
-            EnumMoreSwords swordType = getType(name);
+            SwordMaterial swordType = getType(name);
             
             if (swordType != null) {
                 
