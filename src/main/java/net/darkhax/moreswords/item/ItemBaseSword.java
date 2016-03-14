@@ -5,6 +5,7 @@ import net.darkhax.moreswords.util.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemBaseSword extends ItemSword {
@@ -207,15 +208,13 @@ public class ItemBaseSword extends ItemSword {
          */
         public static Item getRepairItem (String name) {
             
-            if (Item.itemRegistry.getObject(name) != null) {
-                
-                return (Item) Item.itemRegistry.getObject(name);
-            }
-            
-            else if (Block.blockRegistry.getObject(name) != null) {
-                
-                return Item.getItemFromBlock((Block) Block.blockRegistry.getObject(name));
-            }
+        	Item item = Item.itemRegistry.getObject(new ResourceLocation(name));
+        	
+        	if (item == null)
+        		item = Item.getItemFromBlock((Block) Block.blockRegistry.getObject(new ResourceLocation(name)));
+
+        	if (item != null)
+        		return item;
             
             Constants.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
             return null;
