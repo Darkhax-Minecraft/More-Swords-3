@@ -35,11 +35,6 @@ public class MoreSwords {
         new Enchantments();
         new RecipeHandler();
         MinecraftForge.EVENT_BUS.register(new MobHandler());
-    }
-    
-    @EventHandler
-    public void init (FMLInitializationEvent init) {
-        
         proxy.registerRenders();
     }
     
