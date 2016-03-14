@@ -1,7 +1,5 @@
 package net.darkhax.moreswords;
 
-import java.util.Arrays;
-
 import net.darkhax.moreswords.common.CommonProxy;
 import net.darkhax.moreswords.enchantment.Enchantments;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
@@ -12,9 +10,7 @@ import net.darkhax.moreswords.util.Constants;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Constants.ID, name = Constants.NAME, version = Constants.VERSION, guiFactory = Constants.FACTORY)

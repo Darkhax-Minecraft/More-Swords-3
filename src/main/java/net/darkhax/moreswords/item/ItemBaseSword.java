@@ -208,14 +208,14 @@ public class ItemBaseSword extends ItemSword {
          */
         public static Item getRepairItem (String name) {
             
-        	Item item = Item.itemRegistry.getObject(new ResourceLocation(name));
-        	
-        	if (item == null)
-        		item = Item.getItemFromBlock((Block) Block.blockRegistry.getObject(new ResourceLocation(name)));
-
-        	if (item != null)
-        		return item;
+            Item item = Item.itemRegistry.getObject(new ResourceLocation(name));
             
+            if (item == null)
+                item = Item.getItemFromBlock((Block) Block.blockRegistry.getObject(new ResourceLocation(name)));
+                
+            if (item != null)
+                return item;
+                
             Constants.LOGGER.info("Null was provided for repair material. There may be issues. " + name);
             return null;
         }
