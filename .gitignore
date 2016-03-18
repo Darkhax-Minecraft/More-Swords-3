@@ -1,4 +1,11 @@
-#gradle
-.gradle/1.11/
-gradle-app.setting
-/ui/
+*.class
+*.iml
+*.ipr
+*.iws
+/output
+
+#ForgeGradle
+/build
+/.gradle
+/eclipse/assets
+/libs
