@@ -19,7 +19,7 @@ public class EnchantmentFeast extends EnchantmentBase {
         
         if (isValidUser(user)) {
             
-            ItemStack stack = user.getHeldItem();
+            ItemStack stack = user.getHeldItemMainhand();
             
             if (Utils.percentChance(ConfigurationHandler.feastChance * getLevel(stack))) {
                 

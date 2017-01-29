@@ -27,7 +27,7 @@ public class EnchantmentDescension extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
     
     /**

@@ -20,7 +20,7 @@ public class EnchantmentExtinction extends EnchantmentBase {
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
         if (isValidUser(user))
-            for (Entity entity : (List<Entity>) user.worldObj.loadedEntityList)
+            for (Entity entity : (List<Entity>) user.world.loadedEntityList)
                 if (!entity.getClass().equals(user.getClass()) && entity.getClass().equals(target.getClass()))
                     entity.setDead();
     }

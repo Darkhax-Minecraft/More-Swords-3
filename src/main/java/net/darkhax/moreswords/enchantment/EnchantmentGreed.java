@@ -21,11 +21,11 @@ public class EnchantmentGreed extends EnchantmentBase {
         
         if (isValidUser(user)) {
             
-            ItemStack stack = user.getHeldItem();
+            ItemStack stack = user.getHeldItemMainhand();
             EntityLiving living = (EntityLiving) target;
             
-            if (Math.random() < (ConfigurationHandler.greedChance * getLevel(stack)) && !living.worldObj.isRemote)
-                living.worldObj.spawnEntityInWorld(new EntityXPOrb(living.worldObj, living.posX, living.posY, living.posZ, Utils.nextIntII(ConfigurationHandler.greedMin, ConfigurationHandler.greedMax)));
+            if (Math.random() < (ConfigurationHandler.greedChance * getLevel(stack)) && !living.world.isRemote)
+                living.world.spawnEntity(new EntityXPOrb(living.world, living.posX, living.posY, living.posZ, Utils.nextIntII(ConfigurationHandler.greedMin, ConfigurationHandler.greedMax)));
         }
     }
 }

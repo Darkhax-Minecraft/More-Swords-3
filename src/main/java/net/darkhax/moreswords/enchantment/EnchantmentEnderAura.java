@@ -21,8 +21,8 @@ public class EnchantmentEnderAura extends EnchantmentBase {
     @SubscribeEvent
     public void onEntityHit (LivingHurtEvent event) {
         
-        if (isValidUser(event.entityLiving) && Utils.percentChance(ConfigurationHandler.enderAuraChance))
-            attemptWarp(event.entityLiving);
+        if (isValidUser(event.getEntityLiving()) && Utils.percentChance(ConfigurationHandler.enderAuraChance))
+            attemptWarp(event.getEntityLiving());
     }
     
     /**
@@ -32,7 +32,7 @@ public class EnchantmentEnderAura extends EnchantmentBase {
      */
     public void attemptWarp (EntityLivingBase living) {
         
-        Entity target = (Entity) living.worldObj.loadedEntityList.get(Utils.nextIntII(1, living.worldObj.loadedEntityList.size() - 1));
+        Entity target = (Entity) living.world.loadedEntityList.get(Utils.nextIntII(1, living.world.loadedEntityList.size() - 1));
         
         if (target instanceof EntityLiving && Utils.isEntityWithinRange(living, target, ConfigurationHandler.enderAuraRange)) {
             

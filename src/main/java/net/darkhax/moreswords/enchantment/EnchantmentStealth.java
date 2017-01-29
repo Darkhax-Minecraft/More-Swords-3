@@ -22,8 +22,8 @@ public class EnchantmentStealth extends EnchantmentBase {
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if (isValidUser(event.entityPlayer) && (event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)))
-            event.entityPlayer.setInvisible(!event.entityPlayer.isInvisible());
+        if (isValidUser(event.getEntityPlayer()) && (event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)))
+            event.getEntityPlayer().setInvisible(event.getEntityPlayer().isInvisible());
     }
     
     @Override
@@ -53,6 +53,6 @@ public class EnchantmentStealth extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
 }

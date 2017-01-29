@@ -68,13 +68,13 @@ public class EnchantmentBase extends Enchantment {
     @Override
     public boolean canApplyAtEnchantingTable (ItemStack stack) {
         
-        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.book);
+        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.BOOK);
     }
     
     @Override
     public boolean canApply (ItemStack stack) {
         
-        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.book);
+        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.BOOK);
     }
     
     @Override
@@ -100,7 +100,7 @@ public class EnchantmentBase extends Enchantment {
      */
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityLivingBase) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityLivingBase) entity).getHeldItemMainhand()) > 0);
     }
     
     /**

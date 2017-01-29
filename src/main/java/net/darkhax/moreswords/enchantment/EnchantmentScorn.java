@@ -17,6 +17,6 @@ public class EnchantmentScorn extends EnchantmentBase {
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
         if (isValidUser(user) && user.dimension != 0)
-            target.attackEntityFrom(DamageSource.magic, (float) (Utils.getItemWeaponDamage(user.getHeldItem()) * 2));
+            target.attackEntityFrom(DamageSource.magic, (float) (Utils.getItemWeaponDamage(user.getHeldItemMainhand()) * 2));
     }
 }

@@ -23,18 +23,18 @@ public class EnchantmentVitality extends EnchantmentBase {
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) && isValidUser(event.entityPlayer)) {
+        if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) && isValidUser(event.getEntityPlayer())) {
             
-            ItemStack stack = event.entityPlayer.getHeldItem();
-            EntityPlayer player = event.entityPlayer;
+            ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+            EntityPlayer player = event.getEntityPlayer();
             int enchLevel = getLevel(stack);
             
             if (stack.getItem().isDamageable()) {
                 
-                player.getHeldItem().damageItem(ConfigurationHandler.vitalityDamage / enchLevel, player);
-                player.addPotionEffect(new PotionEffect(Potion.regeneration.id, ConfigurationHandler.vitalityRegenTime * enchLevel, ConfigurationHandler.vitalityRegenLevel));
-                player.addPotionEffect(new PotionEffect(Potion.absorption.id, ConfigurationHandler.vitalityHeartsTime * enchLevel, ConfigurationHandler.vitalityHeartsLevel));
-                player.addPotionEffect(new PotionEffect(Potion.heal.id, ConfigurationHandler.vitalityHealTime, ConfigurationHandler.vitalityHealLevel));
+                player.getHeldItemMainhand().damageItem(ConfigurationHandler.vitalityDamage / enchLevel, player);
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(10), ConfigurationHandler.vitalityRegenTime * enchLevel, ConfigurationHandler.vitalityRegenLevel));
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(8), ConfigurationHandler.vitalityHeartsTime * enchLevel, ConfigurationHandler.vitalityHeartsLevel));
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(6), ConfigurationHandler.vitalityHealTime, ConfigurationHandler.vitalityHealLevel));
             }
         }
     }
@@ -42,6 +42,6 @@ public class EnchantmentVitality extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
 }

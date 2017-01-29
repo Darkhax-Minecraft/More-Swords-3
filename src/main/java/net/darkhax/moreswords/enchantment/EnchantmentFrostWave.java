@@ -23,9 +23,9 @@ public class EnchantmentFrostWave extends EnchantmentBase {
             
             EntityLivingBase living = (EntityLivingBase) target;
             
-            for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++)
-                if (living.worldObj.loadedEntityList.get(i) != living && living.worldObj.loadedEntityList.get(i) instanceof EntityLiving && Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), ConfigurationHandler.frostRange))
-                    ((EntityLiving) living.worldObj.loadedEntityList.get(i)).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, ConfigurationHandler.frostTime, ConfigurationHandler.frostLevel));
+            for (int i = 0; i < living.world.loadedEntityList.size(); i++)
+                if (living.world.loadedEntityList.get(i) != living && living.world.loadedEntityList.get(i) instanceof EntityLiving && Utils.isEntityWithinRange(living, (EntityLiving) living.world.loadedEntityList.get(i), ConfigurationHandler.frostRange))
+                    ((EntityLiving) living.world.loadedEntityList.get(i)).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, ConfigurationHandler.frostTime, ConfigurationHandler.frostLevel));
         }
     }
 }

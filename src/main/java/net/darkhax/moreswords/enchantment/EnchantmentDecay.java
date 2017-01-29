@@ -20,9 +20,9 @@ public class EnchantmentDecay extends EnchantmentBase {
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
         if (isValidUser(user)) {
-            
-            ItemStack stack = user.getHeldItem();
-            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.wither.id, ConfigurationHandler.decayTime * getLevel(stack), ConfigurationHandler.decayLevel));
+        	
+            ItemStack stack = user.getHeldItemMainhand();
+            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.getPotionById(20), ConfigurationHandler.decayTime * getLevel(stack), ConfigurationHandler.decayLevel));
         }
     }
 }

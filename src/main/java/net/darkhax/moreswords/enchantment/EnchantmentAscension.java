@@ -18,7 +18,7 @@ public class EnchantmentAscension extends EnchantmentBase {
         
         if (isValidUser(user)) {
             
-            ItemStack stack = user.getHeldItem();
+            ItemStack stack = user.getHeldItemMainhand();
             double Y = getLevel(stack) * ConfigurationHandler.ascensionBase;
             target.motionY = Y;
         }

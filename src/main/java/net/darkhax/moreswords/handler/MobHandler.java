@@ -14,21 +14,21 @@ public class MobHandler {
     @SubscribeEvent
     public void onEnemySpawn (EntityJoinWorldEvent event) {
         
-        if (ConfigurationHandler.enabledSpawning && event.entity instanceof EntityLiving) {
+        if (ConfigurationHandler.enabledSpawning && event.getEntity() instanceof EntityLiving) {
             
             double rand = Math.random();
             
-            EntityLiving living = (EntityLiving) event.entity;
+            EntityLiving living = (EntityLiving) event.getEntity();
             
             if (living.getEntityData() != null && !living.getEntityData().hasKey("spawned")) {
                 
-                if (event.entity instanceof EntityZombie && ConfigurationHandler.zombieSwords)
+                if (event.getEntity() instanceof EntityZombie && ConfigurationHandler.zombieSwords)
                     setEntityToHoldSwords(living, ConfigurationHandler.zombieChance);
                     
-                if (event.entity instanceof EntitySkeleton && ConfigurationHandler.skeletonSwords)
+                if (event.getEntity() instanceof EntitySkeleton && ConfigurationHandler.skeletonSwords)
                     setEntityToHoldSwords(living, ConfigurationHandler.skeletonChance);
                     
-                if (event.entity instanceof EntityPigZombie && ConfigurationHandler.pigSwords)
+                if (event.getEntity() instanceof EntityPigZombie && ConfigurationHandler.pigSwords)
                     setEntityToHoldSwords(living, ConfigurationHandler.pigChance);
             }
         }

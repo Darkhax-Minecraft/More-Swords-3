@@ -21,8 +21,8 @@ public class EnchantmentVenomousAspect extends EnchantmentBase {
         
         if (isValidUser(user)) {
             
-            ItemStack stack = user.getHeldItem();
-            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.poison.id, ConfigurationHandler.venomTime * getLevel(stack), ConfigurationHandler.venomLevel));
+            ItemStack stack = user.getHeldItemMainhand();
+            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.getPotionById(19), ConfigurationHandler.venomTime * getLevel(stack), ConfigurationHandler.venomLevel));
         }
     }
 }

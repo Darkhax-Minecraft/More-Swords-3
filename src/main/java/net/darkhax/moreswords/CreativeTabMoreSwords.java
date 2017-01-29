@@ -19,9 +19,9 @@ public class CreativeTabMoreSwords extends CreativeTabs {
     
     @Override
     @SideOnly(Side.CLIENT)
-    public void displayAllReleventItems (List items) {
+    public void displayAllRelevantItems(List items) {
         
-        super.displayAllReleventItems(items);
+        super.displayAllRelevantItems(items);
         this.addEnchantmentBooksToList(items, new EnumEnchantmentType[] { Constants.ENCH_TYPE_SWORDS });
     }
     

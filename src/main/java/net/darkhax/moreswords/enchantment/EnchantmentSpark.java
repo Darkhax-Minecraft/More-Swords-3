@@ -21,9 +21,9 @@ public class EnchantmentSpark extends EnchantmentBase {
             
             EntityLiving living = (EntityLiving) target;
             
-            for (int i = 0; i < living.worldObj.loadedEntityList.size(); i++)
-                if (living.worldObj.loadedEntityList.get(i) != living && living.worldObj.loadedEntityList.get(i) instanceof EntityLiving && Utils.isEntityWithinRange(living, (EntityLiving) living.worldObj.loadedEntityList.get(i), ConfigurationHandler.sparkRange))
-                    ((EntityLiving) (EntityLiving) living.worldObj.loadedEntityList.get(i)).setFire(ConfigurationHandler.sparkDamage);
+            for (int i = 0; i < living.world.loadedEntityList.size(); i++)
+                if (living.world.loadedEntityList.get(i) != living && living.world.loadedEntityList.get(i) instanceof EntityLiving && Utils.isEntityWithinRange(living, (EntityLiving) living.world.loadedEntityList.get(i), ConfigurationHandler.sparkRange))
+                    ((EntityLiving) (EntityLiving) living.world.loadedEntityList.get(i)).setFire(ConfigurationHandler.sparkDamage);
         }
     }
 }

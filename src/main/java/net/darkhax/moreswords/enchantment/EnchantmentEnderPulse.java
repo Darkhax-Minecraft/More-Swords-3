@@ -25,14 +25,14 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR))) {
+        if ((event.action.equals(PlayerInteractEvent.EntityInteractSpecific.RIGHT_CLICK_AIR))) {
             
-            if (isValidUser(event.entityPlayer)) {
+            if (isValidUser(event.getEntityPlayer())) {
                 
-                ItemStack stack = event.entityPlayer.getHeldItem();
-                EntityPlayer player = event.entityPlayer;
+                ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+                EntityPlayer player = event.getEntityPlayer();
                 int distance = getLevel(stack) * ConfigurationHandler.enderPulseRange;
-                MovingObjectPosition position = Utils.rayTrace(player, distance);
+                MovingObjectPosition position = Utils.rayTrace(player, length);
                 
                 if ((position != null) && (position.typeOfHit == MovingObjectType.BLOCK)) {
                     
@@ -80,6 +80,6 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
 }

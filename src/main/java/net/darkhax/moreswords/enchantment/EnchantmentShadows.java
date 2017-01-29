@@ -22,11 +22,11 @@ public class EnchantmentShadows extends EnchantmentBase {
         
         if (isValidUser(user)) {
             
-            ItemStack stack = user.getHeldItem();
-            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.blindness.id, ConfigurationHandler.shadowsTime * getLevel(stack), ConfigurationHandler.shadowsLevel));
+            ItemStack stack = user.getHeldItemMainhand();
+            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.getPotionById(15), ConfigurationHandler.shadowsTime * getLevel(stack), ConfigurationHandler.shadowsLevel));
             
             if (Utils.percentChance(ConfigurationHandler.shadowsWitherChance * getLevel(stack)))
-                ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.wither.id, (int) (ConfigurationHandler.shadowsWitherTime * getLevel(stack)), ConfigurationHandler.shadowsWitherLevel));
+                ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.getPotionById(20), (int) (ConfigurationHandler.shadowsWitherTime * getLevel(stack)), ConfigurationHandler.shadowsWitherLevel));
         }
     }
 }

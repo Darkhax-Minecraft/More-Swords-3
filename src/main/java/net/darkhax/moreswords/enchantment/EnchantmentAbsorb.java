@@ -21,7 +21,7 @@ public class EnchantmentAbsorb extends EnchantmentBase {
         if (isValidUser(user) && Utils.percentChance(ConfigurationHandler.absorbChance)) {
             
             EntityPlayer player = (EntityPlayer) user;
-            ItemStack stack = player.getHeldItem();
+            ItemStack stack = player.getHeldItemMainhand();
             int food = Utils.nextIntII(ConfigurationHandler.absorbMin, ConfigurationHandler.absorbMax);
             float saturation = (float) (ConfigurationHandler.absorbSaturation * food);
             player.getFoodStats().addStats(food, saturation);
@@ -31,6 +31,6 @@ public class EnchantmentAbsorb extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
 }

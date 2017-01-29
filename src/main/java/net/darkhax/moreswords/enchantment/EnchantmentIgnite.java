@@ -19,7 +19,7 @@ public class EnchantmentIgnite extends EnchantmentBase {
         
         if (isValidUser(user)) {
             
-            ItemStack stack = user.getHeldItem();
+            ItemStack stack = user.getHeldItemMainhand();
             target.setFire(ConfigurationHandler.igniteDamage * getLevel(stack));
             
             if (target instanceof EntityCreeper && ConfigurationHandler.igniteBoom) {

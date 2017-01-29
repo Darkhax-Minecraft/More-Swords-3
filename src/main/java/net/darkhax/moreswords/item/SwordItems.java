@@ -30,7 +30,7 @@ public class SwordItems {
     public static void registerSwordItem (Item item) {
         
         ItemBaseSword sword = (ItemBaseSword) item;
-        GameRegistry.registerItem(item, sword.swordName, Constants.ID);
+        GameRegistry.registerItem(item, sword.swordName);
         swordList.put(sword.swordName, item);
     }
     
