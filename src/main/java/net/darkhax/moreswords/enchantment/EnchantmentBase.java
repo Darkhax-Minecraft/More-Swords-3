@@ -80,13 +80,13 @@ public class EnchantmentBase extends Enchantment {
     @Override
     public int getMinEnchantability (int level) {
         
-        return super.getMinEnchantability(level) + this.getWeight();
+        return super.getMinEnchantability(level) + this.getMinEnchantability(level);
     }
     
     @Override
     public int getMaxEnchantability (int level) {
         
-        return super.getMaxEnchantability(level) - this.getWeight();
+        return super.getMaxEnchantability(level) - this.getMinEnchantability(level);
     }
     
     /**

@@ -22,7 +22,7 @@ public class EnchantmentFrozenAspect extends EnchantmentBase {
         if (isValidUser(user)) {
             
             ItemStack stack = user.getHeldItemMainhand();
-            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, ConfigurationHandler.frozenTime * getLevel(stack), ConfigurationHandler.frozenLevel * getLevel(stack)));
+            ((EntityLiving) target).addPotionEffect(new PotionEffect(Potion.getPotionById(2), ConfigurationHandler.frozenTime * getLevel(stack), ConfigurationHandler.frozenLevel * getLevel(stack)));
         }
     }
 }
