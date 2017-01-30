@@ -1,12 +1,22 @@
-*.class
-*.iml
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
 *.ipr
 *.iws
-/output
+*.iml
+.idea
 
-#ForgeGradle
-/build
-/.gradle
-/eclipse/assets
-/libs
-/bin/
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run

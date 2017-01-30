@@ -3,13 +3,12 @@ package net.darkhax.moreswords.item;
 import java.util.HashMap;
 import java.util.Random;
 
-import net.darkhax.moreswords.util.Constants;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class SwordItems {
     
-    public static HashMap<String, Item> swordList = new HashMap();
+    public static HashMap<String, Item> swordList = new HashMap<String, Item>();
     
     public static Item swordDawmStar = new ItemBaseSword("dawnstar");
     public static Item swordVampiric = new ItemBaseSword("vampiric");

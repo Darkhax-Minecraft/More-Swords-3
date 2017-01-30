@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 public class EnchantmentAbsorb extends EnchantmentBase {
     
@@ -21,7 +20,7 @@ public class EnchantmentAbsorb extends EnchantmentBase {
         if (isValidUser(user) && Utils.percentChance(ConfigurationHandler.absorbChance)) {
             
             EntityPlayer player = (EntityPlayer) user;
-            ItemStack stack = player.getHeldItemMainhand();
+            player.getHeldItemMainhand();
             int food = Utils.nextIntII(ConfigurationHandler.absorbMin, ConfigurationHandler.absorbMax);
             float saturation = (float) (ConfigurationHandler.absorbSaturation * food);
             player.getFoodStats().addStats(food, saturation);

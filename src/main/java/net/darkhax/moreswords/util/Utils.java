@@ -1,12 +1,12 @@
 package net.darkhax.moreswords.util;
 
 import com.google.common.collect.Multimap;
-import com.sun.javafx.geom.Vec3d;
-
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -80,7 +80,7 @@ public class Utils {
             net.minecraft.util.math.Vec3d vec2 = player.getLookVec();
             Vec3d vec3 = vec1.addVector(vec2.xCoord * length, vec2.yCoord * length, vec2.zCoord * length);
             
-            return player.world.rayTraceBlocks(vec1, vec3);
+            return (MovingObjectPosition) player.world.rayTraceBlocks(vec1, vec3);
         }
         
         return null;
@@ -95,7 +95,8 @@ public class Utils {
      */
     public static double getItemWeaponDamage (ItemStack stack) {
         
-        Multimap multimap = stack.getAttributeModifiers();
+    	//TODO Potential Problem
+        Multimap<String, ?> multimap = stack.getAttributeModifiers(equipmentSlot);
         if (multimap.containsKey(SharedMonsterAttributes.ATTACK_DAMAGE.getName()))
             if (multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray().length > 0)
                 if (multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray()[0] instanceof AttributeModifier) {

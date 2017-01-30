@@ -22,7 +22,7 @@ public class EnchantmentStealth extends EnchantmentBase {
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if (isValidUser(event.getEntityPlayer()) && (event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)))
+        if (isValidUser(event.getEntityPlayer()) && (event.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)))
             event.getEntityPlayer().setInvisible(event.getEntityPlayer().isInvisible());
     }
     
