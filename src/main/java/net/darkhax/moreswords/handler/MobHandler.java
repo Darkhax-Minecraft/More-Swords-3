@@ -6,6 +6,7 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -45,9 +46,10 @@ public class MobHandler {
         if (SwordItems.swordList.size() > 0) {
             
             ItemStack stack = new ItemStack(SwordItems.getRandomSword());
+            EnumHand hand = EnumHand.MAIN_HAND;
             
             if (stack != null && stack.getItem() != SwordItems.swordAdmin && Math.random() < odds)
-                entity.setCurrentItemOrArmor(0, stack);
+                entity.setHeldItem(hand, stack);
         }
         
         entity.getEntityData().setBoolean("spawned", true);

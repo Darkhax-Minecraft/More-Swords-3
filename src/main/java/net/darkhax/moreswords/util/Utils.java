@@ -96,7 +96,7 @@ public class Utils {
     public static double getItemWeaponDamage (ItemStack stack) {
         
     	//TODO Potential Problem
-        Multimap<String, ?> multimap = stack.getAttributeModifiers(equipmentSlot);
+        Multimap<String, ?> multimap = stack.getAttributeModifiers(EntityEquipmentSlot.MAINHAND);
         if (multimap.containsKey(SharedMonsterAttributes.ATTACK_DAMAGE.getName()))
             if (multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray().length > 0)
                 if (multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray()[0] instanceof AttributeModifier) {

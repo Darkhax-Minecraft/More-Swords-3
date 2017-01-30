@@ -23,7 +23,7 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if ((event.equals(PlayerInteractEvent.RIGHT_CLICK_AIR))) {
+        if ((event.equals(event instanceof PlayerInteractEvent.RightClickEmpty))) {
             
             if (isValidUser(event.getEntityPlayer())) {
                 

@@ -23,7 +23,7 @@ public class EnchantmentVitality extends EnchantmentBase {
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if ((event.equals(PlayerInteractEvent.RIGHT_CLICK_AIR)) && isValidUser(event.getEntityPlayer())) {
+        if ((event.equals(event instanceof PlayerInteractEvent.RightClickEmpty)) && isValidUser(event.getEntityPlayer())) {
             
             ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
             EntityPlayer player = event.getEntityPlayer();
