@@ -7,9 +7,9 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 public class EnchantmentBase extends Enchantment {
     
@@ -43,14 +43,13 @@ public class EnchantmentBase extends Enchantment {
      * @param item: A special Item that this enchantment is bound to. By default, only this
      *            Item can make use of this enchantment.
      */
-    protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
-        
-        super(id, new ResourceLocation("msm:" + unlocalizedName), weight, Constants.ENCH_TYPE_SWORDS);
+    protected EnchantmentBase(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+
+        super(rarity, Constants.ENCH_TYPE_SWORDS, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.name = "msm." + unlocalizedName;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
         this.item = item;
-        addToBookList(this);
     }
     
     @Override
@@ -112,6 +111,6 @@ public class EnchantmentBase extends Enchantment {
      */
     public int getLevel (ItemStack stack) {
         
-        return EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
+        return EnchantmentHelper.getEnchantmentLevel(this, stack);
     }
 }

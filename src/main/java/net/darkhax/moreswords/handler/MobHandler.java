@@ -17,7 +17,7 @@ public class MobHandler {
         
         if (ConfigurationHandler.enabledSpawning && event.getEntity() instanceof EntityLiving) {
             
-            double rand = Math.random();
+            Math.random();
             
             EntityLiving living = (EntityLiving) event.getEntity();
             

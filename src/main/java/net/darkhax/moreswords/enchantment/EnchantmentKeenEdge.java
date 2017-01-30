@@ -1,13 +1,14 @@
 package net.darkhax.moreswords.enchantment;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.item.Item;
 
 public class EnchantmentKeenEdge extends EnchantmentBase {
     
-    protected EnchantmentKeenEdge(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentKeenEdge(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
     }
     
     @Override

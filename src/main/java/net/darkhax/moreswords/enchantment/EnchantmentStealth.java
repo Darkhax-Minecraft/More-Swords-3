@@ -13,16 +13,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentStealth extends EnchantmentBase {
     
-    protected EnchantmentStealth(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentStealth(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
     }
     
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if (isValidUser(event.getEntityPlayer()) && (event.equals(PlayerInteractEvent.RIGHT_CLICK_AIR)))
+        if (isValidUser(event.getEntityPlayer()) && (event instanceof PlayerInteractEvent.RightClickEmpty))
             event.getEntityPlayer().setInvisible(event.getEntityPlayer().isInvisible());
     }
     

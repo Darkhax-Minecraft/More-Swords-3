@@ -67,20 +67,20 @@ public class Utils {
     /**
      * Creates a MovingObjectPosition based on an EntityPlayer object, allows for limited
      * range.
-     * @param <MovingObjectPosition>
+     * @param <RayTraceResult>
      * 
      * @param player: The instance of a player which is being used.
-     * @param length: A limit placed on the range. Normal reach is 4.5.
+     * @param distance: A limit placed on the range. Normal reach is 4.5.
      */
-    public static <MovingObjectPosition> MovingObjectPosition rayTrace (EntityPlayer player, int length) {
+    public static <RayTraceResult> RayTraceResult rayTrace (EntityPlayer player, int distance) {
         
         if (player != null) {
             
             Vec3d vec1 = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
             net.minecraft.util.math.Vec3d vec2 = player.getLookVec();
-            Vec3d vec3 = vec1.addVector(vec2.xCoord * length, vec2.yCoord * length, vec2.zCoord * length);
+            Vec3d vec3 = vec1.addVector(vec2.xCoord * distance, vec2.yCoord * distance, vec2.zCoord * distance);
             
-            return (MovingObjectPosition) player.world.rayTraceBlocks(vec1, vec3);
+            return (RayTraceResult) player.world.rayTraceBlocks(vec1, vec3);
         }
         
         return null;
@@ -95,7 +95,6 @@ public class Utils {
      */
     public static double getItemWeaponDamage (ItemStack stack) {
         
-    	//TODO Potential Problem
         Multimap<String, ?> multimap = stack.getAttributeModifiers(EntityEquipmentSlot.MAINHAND);
         if (multimap.containsKey(SharedMonsterAttributes.ATTACK_DAMAGE.getName()))
             if (multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray().length > 0)

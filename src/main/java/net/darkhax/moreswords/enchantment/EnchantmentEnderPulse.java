@@ -2,21 +2,23 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentEnderPulse extends EnchantmentBase {
     
-    protected EnchantmentEnderPulse(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentEnderPulse(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
     }
     
@@ -30,9 +32,9 @@ public class EnchantmentEnderPulse extends EnchantmentBase {
                 ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
                 EntityPlayer player = event.getEntityPlayer();
                 int distance = getLevel(stack) * ConfigurationHandler.enderPulseRange;
-                MovingObjectPosition position = Utils.rayTrace(player, length);
+                RayTraceResult position = Utils.rayTrace(player, distance);
                 
-                if ((position != null) && (position.typeOfHit == MovingObjectType.BLOCK)) {
+                if ((position != null) && (position.typeOfHit == RayTraceResult.Type.BLOCK)) {
                     
                     int x = position.getBlockPos().getX();
                     int y = position.getBlockPos().getY();
