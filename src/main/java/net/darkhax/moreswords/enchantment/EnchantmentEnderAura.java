@@ -2,6 +2,7 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,17 +13,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentEnderAura extends EnchantmentBase {
     
-    protected EnchantmentEnderAura(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentEnderAura(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
     }
     
     @SubscribeEvent
     public void onEntityHit (LivingHurtEvent event) {
         
-        if (isValidUser(event.entityLiving) && Utils.percentChance(ConfigurationHandler.enderAuraChance))
-            attemptWarp(event.entityLiving);
+        if (isValidUser(event.getEntityLiving()) && Utils.percentChance(ConfigurationHandler.enderAuraChance))
+            attemptWarp(event.getEntityLiving());
     }
     
     /**
@@ -32,7 +33,7 @@ public class EnchantmentEnderAura extends EnchantmentBase {
      */
     public void attemptWarp (EntityLivingBase living) {
         
-        Entity target = (Entity) living.worldObj.loadedEntityList.get(Utils.nextIntII(1, living.worldObj.loadedEntityList.size() - 1));
+        Entity target = (Entity) living.world.loadedEntityList.get(Utils.nextIntII(1, living.world.loadedEntityList.size() - 1));
         
         if (target instanceof EntityLiving && Utils.isEntityWithinRange(living, target, ConfigurationHandler.enderAuraRange)) {
             

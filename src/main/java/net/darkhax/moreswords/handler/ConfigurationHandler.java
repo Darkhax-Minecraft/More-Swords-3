@@ -22,7 +22,7 @@ public class ConfigurationHandler {
     @SubscribeEvent
     public void onConfigChange (ConfigChangedEvent.OnConfigChangedEvent event) {
         
-        if (event.modID.equals(Constants.ID))
+        if (event.getModID().equals(Constants.ID))
             syncConfigData();
     }
     

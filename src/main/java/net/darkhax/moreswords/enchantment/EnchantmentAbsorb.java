@@ -2,17 +2,17 @@ package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.util.Utils;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 public class EnchantmentAbsorb extends EnchantmentBase {
     
-    protected EnchantmentAbsorb(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentAbsorb(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
     }
     
     @Override
@@ -21,7 +21,7 @@ public class EnchantmentAbsorb extends EnchantmentBase {
         if (isValidUser(user) && Utils.percentChance(ConfigurationHandler.absorbChance)) {
             
             EntityPlayer player = (EntityPlayer) user;
-            ItemStack stack = player.getHeldItem();
+            player.getHeldItemMainhand();
             int food = Utils.nextIntII(ConfigurationHandler.absorbMin, ConfigurationHandler.absorbMax);
             float saturation = (float) (ConfigurationHandler.absorbSaturation * food);
             player.getFoodStats().addStats(food, saturation);
@@ -31,6 +31,6 @@ public class EnchantmentAbsorb extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
 }

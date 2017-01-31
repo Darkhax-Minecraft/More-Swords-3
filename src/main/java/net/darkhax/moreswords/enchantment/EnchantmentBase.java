@@ -7,9 +7,9 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 public class EnchantmentBase extends Enchantment {
     
@@ -43,14 +43,13 @@ public class EnchantmentBase extends Enchantment {
      * @param item: A special Item that this enchantment is bound to. By default, only this
      *            Item can make use of this enchantment.
      */
-    protected EnchantmentBase(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
-        
-        super(id, new ResourceLocation("msm:" + unlocalizedName), weight, Constants.ENCH_TYPE_SWORDS);
+    protected EnchantmentBase(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+
+        super(rarity, Constants.ENCH_TYPE_SWORDS, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.name = "msm." + unlocalizedName;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
         this.item = item;
-        addToBookList(this);
     }
     
     @Override
@@ -68,25 +67,25 @@ public class EnchantmentBase extends Enchantment {
     @Override
     public boolean canApplyAtEnchantingTable (ItemStack stack) {
         
-        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.book);
+        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.BOOK);
     }
     
     @Override
     public boolean canApply (ItemStack stack) {
         
-        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.book);
+        return (!ConfigurationHandler.privateEnchant || stack.getItem() == this.item || stack.getItem() == Items.BOOK);
     }
     
     @Override
     public int getMinEnchantability (int level) {
         
-        return super.getMinEnchantability(level) + this.getWeight();
+        return super.getMinEnchantability(level) + this.getMinEnchantability(level);
     }
     
     @Override
     public int getMaxEnchantability (int level) {
         
-        return super.getMaxEnchantability(level) - this.getWeight();
+        return super.getMaxEnchantability(level) - this.getMinEnchantability(level);
     }
     
     /**
@@ -100,7 +99,7 @@ public class EnchantmentBase extends Enchantment {
      */
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityLivingBase) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityLivingBase) entity).getHeldItemMainhand()) > 0);
     }
     
     /**
@@ -112,6 +111,6 @@ public class EnchantmentBase extends Enchantment {
      */
     public int getLevel (ItemStack stack) {
         
-        return EnchantmentHelper.getEnchantmentLevel(this.effectId, stack);
+        return EnchantmentHelper.getEnchantmentLevel(this, stack);
     }
 }

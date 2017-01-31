@@ -13,17 +13,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentStealth extends EnchantmentBase {
     
-    protected EnchantmentStealth(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentStealth(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
     }
     
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if (isValidUser(event.entityPlayer) && (event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)))
-            event.entityPlayer.setInvisible(!event.entityPlayer.isInvisible());
+        if (isValidUser(event.getEntityPlayer()) && (event instanceof PlayerInteractEvent.RightClickEmpty))
+            event.getEntityPlayer().setInvisible(event.getEntityPlayer().isInvisible());
     }
     
     @Override
@@ -53,6 +53,6 @@ public class EnchantmentStealth extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
 }

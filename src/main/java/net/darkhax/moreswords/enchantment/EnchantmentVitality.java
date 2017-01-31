@@ -1,6 +1,7 @@
 package net.darkhax.moreswords.enchantment;
 
 import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,27 +15,27 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentVitality extends EnchantmentBase {
     
-    protected EnchantmentVitality(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentVitality(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
         MinecraftForge.EVENT_BUS.register(this);
     }
     
     @SubscribeEvent
     public void onItemUsed (PlayerInteractEvent event) {
         
-        if ((event.action.equals(PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) && isValidUser(event.entityPlayer)) {
+        if ((event.equals(event instanceof PlayerInteractEvent.RightClickEmpty)) && isValidUser(event.getEntityPlayer())) {
             
-            ItemStack stack = event.entityPlayer.getHeldItem();
-            EntityPlayer player = event.entityPlayer;
+            ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
+            EntityPlayer player = event.getEntityPlayer();
             int enchLevel = getLevel(stack);
             
             if (stack.getItem().isDamageable()) {
                 
-                player.getHeldItem().damageItem(ConfigurationHandler.vitalityDamage / enchLevel, player);
-                player.addPotionEffect(new PotionEffect(Potion.regeneration.id, ConfigurationHandler.vitalityRegenTime * enchLevel, ConfigurationHandler.vitalityRegenLevel));
-                player.addPotionEffect(new PotionEffect(Potion.absorption.id, ConfigurationHandler.vitalityHeartsTime * enchLevel, ConfigurationHandler.vitalityHeartsLevel));
-                player.addPotionEffect(new PotionEffect(Potion.heal.id, ConfigurationHandler.vitalityHealTime, ConfigurationHandler.vitalityHealLevel));
+                player.getHeldItemMainhand().damageItem(ConfigurationHandler.vitalityDamage / enchLevel, player);
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(10), ConfigurationHandler.vitalityRegenTime * enchLevel, ConfigurationHandler.vitalityRegenLevel));
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(8), ConfigurationHandler.vitalityHeartsTime * enchLevel, ConfigurationHandler.vitalityHeartsLevel));
+                player.addPotionEffect(new PotionEffect(Potion.getPotionById(6), ConfigurationHandler.vitalityHealTime, ConfigurationHandler.vitalityHealLevel));
             }
         }
     }
@@ -42,6 +43,6 @@ public class EnchantmentVitality extends EnchantmentBase {
     @Override
     public boolean isValidUser (Entity entity) {
         
-        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItem() != null && getLevel(((EntityPlayer) entity).getHeldItem()) > 0);
+        return (entity instanceof EntityPlayer && ((EntityLivingBase) entity).getHeldItemMainhand() != null && getLevel(((EntityPlayer) entity).getHeldItemMainhand()) > 0);
     }
 }

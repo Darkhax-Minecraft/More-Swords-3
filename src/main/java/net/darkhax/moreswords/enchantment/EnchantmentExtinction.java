@@ -11,16 +11,16 @@ import net.minecraft.item.ItemStack;
 
 public class EnchantmentExtinction extends EnchantmentBase {
     
-    protected EnchantmentExtinction(int id, int weight, String unlocalizedName, int minLevel, int maxLevel, Item item) {
+    protected EnchantmentExtinction(Enchantment.Rarity rarity, String unlocalizedName, int minLevel, int maxLevel, Item item) {
         
-        super(id, weight, unlocalizedName, minLevel, maxLevel, item);
+        super(rarity, unlocalizedName, minLevel, maxLevel, item);
     }
     
     @Override
     public void onEntityDamaged (EntityLivingBase user, Entity target, int level) {
         
         if (isValidUser(user))
-            for (Entity entity : (List<Entity>) user.worldObj.loadedEntityList)
+            for (Entity entity : (List<Entity>) user.world.loadedEntityList)
                 if (!entity.getClass().equals(user.getClass()) && entity.getClass().equals(target.getClass()))
                     entity.setDead();
     }

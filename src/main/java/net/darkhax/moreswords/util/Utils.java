@@ -1,15 +1,14 @@
 package net.darkhax.moreswords.util;
 
 import com.google.common.collect.Multimap;
-
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
 
 public class Utils {
     
@@ -68,19 +67,20 @@ public class Utils {
     /**
      * Creates a MovingObjectPosition based on an EntityPlayer object, allows for limited
      * range.
+     * @param <RayTraceResult>
      * 
      * @param player: The instance of a player which is being used.
-     * @param length: A limit placed on the range. Normal reach is 4.5.
+     * @param distance: A limit placed on the range. Normal reach is 4.5.
      */
-    public static MovingObjectPosition rayTrace (EntityPlayer player, int length) {
+    public static <RayTraceResult> RayTraceResult rayTrace (EntityPlayer player, int distance) {
         
         if (player != null) {
             
-            Vec3 vec1 = new Vec3(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-            Vec3 vec2 = player.getLookVec();
-            Vec3 vec3 = vec1.addVector(vec2.xCoord * length, vec2.yCoord * length, vec2.zCoord * length);
+            Vec3d vec1 = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+            net.minecraft.util.math.Vec3d vec2 = player.getLookVec();
+            Vec3d vec3 = vec1.addVector(vec2.xCoord * distance, vec2.yCoord * distance, vec2.zCoord * distance);
             
-            return player.worldObj.rayTraceBlocks(vec1, vec3);
+            return (RayTraceResult) player.world.rayTraceBlocks(vec1, vec3);
         }
         
         return null;
@@ -95,12 +95,12 @@ public class Utils {
      */
     public static double getItemWeaponDamage (ItemStack stack) {
         
-        Multimap multimap = stack.getAttributeModifiers();
-        if (multimap.containsKey(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName()))
-            if (multimap.get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName()).toArray().length > 0)
-                if (multimap.get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName()).toArray()[0] instanceof AttributeModifier) {
+        Multimap<String, ?> multimap = stack.getAttributeModifiers(EntityEquipmentSlot.MAINHAND);
+        if (multimap.containsKey(SharedMonsterAttributes.ATTACK_DAMAGE.getName()))
+            if (multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray().length > 0)
+                if (multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray()[0] instanceof AttributeModifier) {
                     
-                    AttributeModifier weaponModifier = (AttributeModifier) multimap.get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName()).toArray()[0];
+                    AttributeModifier weaponModifier = (AttributeModifier) multimap.get(SharedMonsterAttributes.ATTACK_DAMAGE.getName()).toArray()[0];
                     return weaponModifier.getAmount();
                 }
                 
