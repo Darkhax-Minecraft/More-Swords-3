@@ -1,35 +1,77 @@
 package net.darkhax.moreswords;
 
-import net.darkhax.moreswords.common.CommonProxy;
-import net.darkhax.moreswords.enchantment.Enchantments;
-import net.darkhax.moreswords.handler.ConfigurationHandler;
-import net.darkhax.moreswords.handler.MobHandler;
-import net.darkhax.moreswords.handler.RecipeHandler;
-import net.darkhax.moreswords.item.SwordItems;
-import net.darkhax.moreswords.util.Constants;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import java.io.File;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-@Mod(modid = Constants.ID, name = Constants.NAME, version = Constants.VERSION, guiFactory = Constants.FACTORY)
+import net.darkhax.bookshelf.registry.RegistryHelper;
+import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.items.ItemInertSword;
+import net.darkhax.moreswords.items.ItemSwordBase;
+import net.darkhax.moreswords.materials.Quality;
+import net.darkhax.moreswords.materials.Speed;
+import net.darkhax.moreswords.materials.SwordMaterial;
+import net.darkhax.moreswords.tabs.CreativeTabMoreSwords;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@")
 public class MoreSwords {
     
-    @SidedProxy(clientSide = Constants.CLIENT_PROXY, serverSide = Constants.SERVER_PROXY)
-    public static CommonProxy proxy;
+    public static final ConfigurationHandler config = new ConfigurationHandler(new File("config/moreswords.cfg"));
+    public static final CreativeTabs TAB = new CreativeTabMoreSwords();
+    public static final RegistryHelper REGISTRY = new RegistryHelper("moreswords").setTab(TAB);
     
-    @Mod.Instance(Constants.ID)
-    public static MoreSwords instance;
+    public static final Map<String, SwordMaterial> MATERIALS = new LinkedHashMap<>();
     
-    @EventHandler
-    public void preInit (FMLPreInitializationEvent pre) {
+    public static final SwordMaterial DAWNSTAR = new SwordMaterial("dawnstar", Quality.UNCOMMON, 666, 6f, new ItemStack(Items.MAGMA_CREAM), Speed.FAST);
+    public static final SwordMaterial VAMPIRIC = new SwordMaterial("vampiric", Quality.RARE, 1300, 7f, new ItemStack(Blocks.OBSIDIAN), Speed.NORMAL);
+    public static final SwordMaterial GLADIOLUS = new SwordMaterial("gladiolus", Quality.BASIC, 415, 6f, new ItemStack(Blocks.RED_FLOWER, 1, 1), Speed.FAST);
+    public static final SwordMaterial DRACONIC = new SwordMaterial("draconic", Quality.RARE, 1080, 7f, new ItemStack(Items.DIAMOND), Speed.NORMAL);
+    public static final SwordMaterial ENDER = new SwordMaterial("ender", Quality.EPIC, 1580, 8f, new ItemStack(Items.ENDER_EYE), Speed.NORMAL);
+    public static final SwordMaterial CRYSTAL = new SwordMaterial("crystaline", Quality.BASIC, 570, 5f, new ItemStack(Items.QUARTZ), Speed.FAST);
+    public static final SwordMaterial GLACIAL = new SwordMaterial("glacial", Quality.UNCOMMON, 800, 6f, new ItemStack(Blocks.ICE), Speed.FAST);
+    public static final SwordMaterial AETHER = new SwordMaterial("aether", Quality.EPIC, 1777, 8f, new ItemStack(Blocks.GLOWSTONE), Speed.SLOW);
+    public static final SwordMaterial WITHER = new SwordMaterial("wither", Quality.EPIC, 1666, 8f, new ItemStack(Blocks.SOUL_SAND), Speed.SLOW);
+    public static final SwordMaterial ADMIN = new SwordMaterial("admin", Quality.EPIC, Integer.MAX_VALUE, Float.MAX_VALUE, new ItemStack(Blocks.BEDROCK), Speed.FAST);
+    
+    public MoreSwords () {
         
-        new ConfigurationHandler(pre.getSuggestedConfigurationFile());
-        new SwordItems();
-        new Enchantments();
-        new RecipeHandler();
-        MinecraftForge.EVENT_BUS.register(new MobHandler());
-        proxy.registerRenders();
+        MinecraftForge.EVENT_BUS.register(this);
+        
+        for (final SwordMaterial material : MATERIALS.values()) {
+            
+            REGISTRY.registerItem(new ItemSwordBase(material), "sword_" + material.getName());
+        }
+        
+        REGISTRY.registerItem(new ItemInertSword(), "inert");
+        
+        config.syncConfigData();
+    }
+    
+    
+    @SubscribeEvent
+    public void onLivingSpawn(SpecialSpawn event) {
+        
+        
+        event.getEntity().setCustomNameTag("Spawned");
+    }
+    
+    @SubscribeEvent
+    public void onItemRegistry (Register<Item> event) {
+        
+        for (final Item item : REGISTRY.getItems()) {
+            
+            event.getRegistry().register(item);
+        }
     }
 }

@@ -1,9 +1,0 @@
-{
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "msm3:items/sword_dawnstar"
-    },
-    "display": {
-		}
-    }
-}

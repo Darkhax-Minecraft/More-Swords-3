@@ -1,0 +1,28 @@
+#English file by Darkhax
+
+#Creative Tab
+itemGroup.moreswords= More Swords
+
+#Swords
+item.moreswords.sword.dawnstar.name=§6Dawn Star
+item.moreswords.sword.vampiric.name=§4Vampiric Blade
+item.moreswords.sword.gladiolus.name=§2Gladiolus
+item.moreswords.sword.draconic.name=§5Draconic Blade
+item.moreswords.sword.ender.name=§aEyeEnd Sword
+item.moreswords.sword.crystaline.name=§7Crystalline Blade
+item.moreswords.sword.glacial.name=§bGlacial Blade
+item.moreswords.sword.aether.name=§eAether's Guard
+item.moreswords.sword.wither.name=§8Wither's Bane
+item.moreswords.sword.admin.name=§4Adminium Ark
+
+#Inert Swords
+item.moreswords.inert.dawnstar.name=Inert Dawn Star
+item.moreswords.inert.vampiric.name=Inert Vampiric Blade
+item.moreswords.inert.gladiolus.name=Inert Gladiolus
+item.moreswords.inert.draconic.name=Inert Draconic Blade
+item.moreswords.inert.ender.name=Inert EyeEnd Sword
+item.moreswords.inert.crystaline.name=Inert Crystalline Blade
+item.moreswords.inert.glacial.name=Inert Glacial Blade
+item.moreswords.inert.aether.name=Inert Aether's Guard
+item.moreswords.inert.wither.name=Inert Wither's Bane
+item.moreswords.inert.admin.name=Inert Adminium Ark
