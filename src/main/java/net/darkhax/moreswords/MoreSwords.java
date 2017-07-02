@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
@@ -79,6 +80,15 @@ public class MoreSwords {
         for (final Item item : REGISTRY.getItems()) {
             
             event.getRegistry().register(item);
+        }
+    }
+    
+    @SubscribeEvent
+    public void onModelRegistry(ModelRegistryEvent event) {
+        
+        for (final Item item : REGISTRY.getItems()) {
+            
+            REGISTRY.registerInventoryModel(item);
         }
     }
 }
