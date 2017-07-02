@@ -51,12 +51,16 @@ public class MoreSwords {
         
         MinecraftForge.EVENT_BUS.register(this);
         
+        final Item inertSword = REGISTRY.registerItem(new ItemInertSword(), "inert");
+        int meta = 0;
+        
         for (final SwordMaterial material : MATERIALS.values()) {
             
-            REGISTRY.registerItem(new ItemSwordBase(material), "sword_" + material.getName());
+            material.setMeta(meta);
+            material.setAwakenedItem(REGISTRY.registerItem(new ItemSwordBase(material), "sword_" + material.getName()));
+            material.setInertItem(new ItemStack(inertSword, 1, meta));
+            meta++;
         }
-        
-        REGISTRY.registerItem(new ItemInertSword(), "inert");
         
         config.syncConfigData();
     }

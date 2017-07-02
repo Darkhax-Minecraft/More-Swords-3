@@ -8,6 +8,7 @@ import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
@@ -26,6 +27,10 @@ public class SwordMaterial {
     private final Quality type;
     private final double speed;
     private ToolMaterial material;
+    
+    private int meta;
+    private Item awakenedItem;
+    private ItemStack inertItem;
     
     public SwordMaterial (String name, Quality type, int maxUses, float damage, ItemStack repair, Speed speed) {
         
@@ -108,5 +113,35 @@ public class SwordMaterial {
     public double getSpeed () {
         
         return speed;
+    }
+
+    public int getMeta () {
+        
+        return meta;
+    }
+
+    public void setMeta (int meta) {
+        
+        this.meta = meta;
+    }
+
+    public Item getAwakenedItem () {
+        
+        return awakenedItem;
+    }
+
+    public void setAwakenedItem (Item awakenedItem) {
+        
+        this.awakenedItem = awakenedItem;
+    }
+
+    public ItemStack getInertItem () {
+        
+        return inertItem;
+    }
+
+    public void setInertItem (ItemStack inertItem) {
+        
+        this.inertItem = inertItem;
     }
 }
