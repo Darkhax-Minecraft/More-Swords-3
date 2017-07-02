@@ -22,6 +22,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@")
@@ -44,7 +46,8 @@ public class MoreSwords {
     public static final SwordMaterial WITHER = new SwordMaterial("wither", Quality.EPIC, 1666, 8f, new ItemStack(Blocks.SOUL_SAND), Speed.SLOW);
     public static final SwordMaterial ADMIN = new SwordMaterial("admin", Quality.EPIC, Integer.MAX_VALUE, Float.MAX_VALUE, new ItemStack(Blocks.BEDROCK), Speed.FAST);
     
-    public MoreSwords () {
+    @EventHandler
+    public void onPreInit(FMLPreInitializationEvent event) {
         
         MinecraftForge.EVENT_BUS.register(this);
         
