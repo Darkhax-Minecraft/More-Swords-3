@@ -6,6 +6,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.darkhax.bookshelf.registry.RegistryHelper;
+import net.darkhax.moreswords.awakening.AwakenAdmin;
+import net.darkhax.moreswords.awakening.AwakenAether;
+import net.darkhax.moreswords.awakening.AwakenCrystal;
+import net.darkhax.moreswords.awakening.AwakenDawnStar;
+import net.darkhax.moreswords.awakening.AwakenDraconic;
+import net.darkhax.moreswords.awakening.AwakenEnder;
+import net.darkhax.moreswords.awakening.AwakenGlacial;
+import net.darkhax.moreswords.awakening.AwakenGladiolus;
+import net.darkhax.moreswords.awakening.AwakenVampiric;
+import net.darkhax.moreswords.awakening.AwakenWither;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.darkhax.moreswords.items.ItemInertSword;
 import net.darkhax.moreswords.items.ItemSwordBase;
@@ -36,16 +46,16 @@ public class MoreSwords {
     
     public static final Map<String, SwordMaterial> MATERIALS = new LinkedHashMap<>();
     
-    public static final SwordMaterial DAWNSTAR = new SwordMaterial("dawnstar", Quality.UNCOMMON, 666, 6f, new ItemStack(Items.MAGMA_CREAM), Speed.FAST);
-    public static final SwordMaterial VAMPIRIC = new SwordMaterial("vampiric", Quality.RARE, 1300, 7f, new ItemStack(Blocks.OBSIDIAN), Speed.NORMAL);
-    public static final SwordMaterial GLADIOLUS = new SwordMaterial("gladiolus", Quality.BASIC, 415, 6f, new ItemStack(Blocks.RED_FLOWER, 1, 1), Speed.FAST);
-    public static final SwordMaterial DRACONIC = new SwordMaterial("draconic", Quality.RARE, 1080, 7f, new ItemStack(Items.DIAMOND), Speed.NORMAL);
-    public static final SwordMaterial ENDER = new SwordMaterial("ender", Quality.EPIC, 1580, 8f, new ItemStack(Items.ENDER_EYE), Speed.NORMAL);
-    public static final SwordMaterial CRYSTAL = new SwordMaterial("crystaline", Quality.BASIC, 570, 5f, new ItemStack(Items.QUARTZ), Speed.FAST);
-    public static final SwordMaterial GLACIAL = new SwordMaterial("glacial", Quality.UNCOMMON, 800, 6f, new ItemStack(Blocks.ICE), Speed.FAST);
-    public static final SwordMaterial AETHER = new SwordMaterial("aether", Quality.EPIC, 1777, 8f, new ItemStack(Blocks.GLOWSTONE), Speed.SLOW);
-    public static final SwordMaterial WITHER = new SwordMaterial("wither", Quality.EPIC, 1666, 8f, new ItemStack(Blocks.SOUL_SAND), Speed.SLOW);
-    public static final SwordMaterial ADMIN = new SwordMaterial("admin", Quality.EPIC, Integer.MAX_VALUE, Float.MAX_VALUE, new ItemStack(Blocks.BEDROCK), Speed.FAST);
+    public static final SwordMaterial DAWNSTAR = new SwordMaterial("dawnstar", Quality.UNCOMMON, 666, 6f, new ItemStack(Items.MAGMA_CREAM), Speed.FAST, new AwakenDawnStar());
+    public static final SwordMaterial VAMPIRIC = new SwordMaterial("vampiric", Quality.RARE, 1300, 7f, new ItemStack(Blocks.OBSIDIAN), Speed.NORMAL, new AwakenVampiric());
+    public static final SwordMaterial GLADIOLUS = new SwordMaterial("gladiolus", Quality.BASIC, 415, 6f, new ItemStack(Blocks.RED_FLOWER, 1, 1), Speed.FAST, new AwakenGladiolus());
+    public static final SwordMaterial DRACONIC = new SwordMaterial("draconic", Quality.RARE, 1080, 7f, new ItemStack(Items.DIAMOND), Speed.NORMAL, new AwakenDraconic());
+    public static final SwordMaterial ENDER = new SwordMaterial("ender", Quality.EPIC, 1580, 8f, new ItemStack(Items.ENDER_EYE), Speed.NORMAL, new AwakenEnder());
+    public static final SwordMaterial CRYSTAL = new SwordMaterial("crystaline", Quality.BASIC, 570, 5f, new ItemStack(Items.QUARTZ), Speed.FAST, new AwakenCrystal());
+    public static final SwordMaterial GLACIAL = new SwordMaterial("glacial", Quality.UNCOMMON, 800, 6f, new ItemStack(Blocks.ICE), Speed.FAST, new AwakenGlacial());
+    public static final SwordMaterial AETHER = new SwordMaterial("aether", Quality.EPIC, 1777, 8f, new ItemStack(Blocks.GLOWSTONE), Speed.SLOW, new AwakenAether());
+    public static final SwordMaterial WITHER = new SwordMaterial("wither", Quality.EPIC, 1666, 8f, new ItemStack(Blocks.SOUL_SAND), Speed.SLOW, new AwakenWither());
+    public static final SwordMaterial ADMIN = new SwordMaterial("admin", Quality.EPIC, Integer.MAX_VALUE, Float.MAX_VALUE, new ItemStack(Blocks.BEDROCK), Speed.FAST, new AwakenAdmin());
     
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {

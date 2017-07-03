@@ -5,12 +5,14 @@ import java.util.Map;
 
 import net.darkhax.bookshelf.util.StackUtils;
 import net.darkhax.moreswords.MoreSwords;
+import net.darkhax.moreswords.awakening.Awakening;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
@@ -26,18 +28,19 @@ public class SwordMaterial {
     private final String repair;
     private final Quality type;
     private final double speed;
-    private ToolMaterial material;
+    private final Awakening awakening;
     
+    private ToolMaterial material;   
     private int meta;
     private Item awakenedItem;
     private ItemStack inertItem;
     
-    public SwordMaterial (String name, Quality type, int maxUses, float damage, ItemStack repair, Speed speed) {
+    public SwordMaterial (String name, Quality type, int maxUses, float damage, ItemStack repair, Speed speed, Awakening awakening) {
         
-        this(name, type.harvestLevel, maxUses, type.efficiency, damage, type.enchantability, repair, type, speed.getSpeed());
+        this(name, type.harvestLevel, maxUses, type.efficiency, damage, type.enchantability, repair, type, speed.getSpeed(), awakening);
     }
     
-    private SwordMaterial (String name, int harvestLevel, int maxUses, float efficiency, float damageVsEntity, int enchantability, ItemStack repair, Quality type, double speed) {
+    private SwordMaterial (String name, int harvestLevel, int maxUses, float efficiency, float damageVsEntity, int enchantability, ItemStack repair, Quality type, double speed, Awakening awakening) {
         
         this.name = name;
         
@@ -50,6 +53,9 @@ public class SwordMaterial {
         this.enchantability = config.getInt("Enchantability", name, enchantability, 0, Integer.MAX_VALUE, "The enchantability modifier for the " + " sword");
         this.repair = config.getString("Repair", name, StackUtils.writeStackToString(repair), "The item used to repair the " + " sword. format is itemid#meta where meta is optional.");
         this.speed = (double) config.getFloat("WeaponSpeed", name, (float) speed, 0f, 1024f, "The weapon speed of the " + name + " sword.");
+        this.awakening = awakening;
+        this.awakening.setSwordMaterial(this);
+        MinecraftForge.EVENT_BUS.register(this.awakening);
         this.type = type;
         MoreSwords.MATERIALS.put(name, this);
     }
@@ -143,5 +149,10 @@ public class SwordMaterial {
     public void setInertItem (ItemStack inertItem) {
         
         this.inertItem = inertItem;
+    }
+
+    public Awakening getAwakening () {
+        
+        return awakening;
     }
 }

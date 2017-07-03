@@ -26,3 +26,9 @@ item.moreswords.inert.glacial.name=Inert Glacial Blade
 item.moreswords.inert.aether.name=Inert Aether's Guard
 item.moreswords.inert.wither.name=Inert Wither's Bane
 item.moreswords.inert.admin.name=Inert Adminium Ark
+
+#Awakening
+awakening.dawnstart.fireballs=Fireballs
+
+#Misc
+misc.moreswords.progress=Progress: %d
