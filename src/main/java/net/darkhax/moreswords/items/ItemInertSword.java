@@ -8,10 +8,9 @@ import com.google.common.collect.Multimap;
 
 import net.darkhax.bookshelf.item.ItemSubType;
 import net.darkhax.bookshelf.registry.IVariant;
+import net.darkhax.bookshelf.util.PlayerUtils;
 import net.darkhax.bookshelf.util.StackUtils;
 import net.darkhax.moreswords.MoreSwords;
-import net.darkhax.moreswords.awakening.AwakenDawnStar;
-import net.darkhax.moreswords.awakening.Awakening;
 import net.darkhax.moreswords.materials.SwordMaterial;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -34,7 +33,12 @@ public class ItemInertSword extends ItemSubType implements IVariant {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         
-        tooltip.add(I18n.format("misc.moreswords.progress", getSwordMaterial(stack).getAwakening().getAwakenProgress(stack, StackUtils.prepareStackTag(stack))));
+        if (PlayerUtils.getClientPlayer() == null) {
+            
+            return;
+        }
+        
+        tooltip.add(I18n.format("misc.moreswords.progress", getSwordMaterial(stack).getAwakening().getAwakenProgress(PlayerUtils.getClientPlayer(), stack, StackUtils.prepareStackTag(stack))));
     }
     
     @Override
