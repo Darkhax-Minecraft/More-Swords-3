@@ -1,5 +1,6 @@
 package net.darkhax.moreswords.awakening;
 
+import net.darkhax.bookshelf.util.StackUtils;
 import net.darkhax.moreswords.items.ItemInertSword;
 import net.darkhax.moreswords.materials.SwordMaterial;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,8 +12,12 @@ public abstract class Awakening {
     
     private SwordMaterial material;
     
-    public abstract int getAwakenProgress(ItemStack stack, NBTTagCompound tag);
-    public abstract boolean canAwaken (ItemStack stack);
+    public abstract int getAwakenProgress(EntityLivingBase livingSource, ItemStack stack, NBTTagCompound tag);
+    
+    public boolean canAwaken (EntityLivingBase livingSource, ItemStack stack) {
+        
+        return getAwakenProgress(livingSource, stack, StackUtils.prepareStackTag(stack))>= 100;
+    }
     
     public void awaken(EntityLivingBase entity) {
         
