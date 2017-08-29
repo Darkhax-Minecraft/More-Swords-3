@@ -5,10 +5,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class AwakenCrystal extends Awakening {
-    
+
     @Override
     public int getAwakenProgress (EntityLivingBase entity, ItemStack stack, NBTTagCompound tag) {
-        
+
         // TODO Auto-generated method stub
         return 0;
     }

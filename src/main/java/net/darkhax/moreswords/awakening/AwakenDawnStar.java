@@ -18,13 +18,14 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class AwakenDawnStar extends Awakening {
 
+    private static final String TAG_FIREBALL = "FireBalls";
     private final int requiredFireballs = 10;
     private final Set<EntityLargeFireball> trackedFireballs = new HashSet<>();
 
     @Override
     public int getAwakenProgress (EntityLivingBase player, ItemStack stack, NBTTagCompound tag) {
 
-        return MathsUtils.getPercentage(NBTUtils.getAmount(stack, "fireballs"), this.requiredFireballs);
+        return MathsUtils.getPercentage(NBTUtils.getAmount(stack, TAG_FIREBALL), this.requiredFireballs);
     }
 
     @SubscribeEvent
@@ -65,7 +66,7 @@ public class AwakenDawnStar extends Awakening {
                 // Makes sure the player has the right held item.
                 if (!player.isDead && this.isValidItem(player.getHeldItemMainhand())) {
 
-                    NBTUtils.increment(player.getHeldItemMainhand(), "fireballs", 1);
+                    NBTUtils.increment(player.getHeldItemMainhand(), TAG_FIREBALL, 1);
                     fireball.setDead();
                     it.remove();
 

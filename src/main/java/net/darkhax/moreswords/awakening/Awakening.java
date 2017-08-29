@@ -9,35 +9,35 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 
 public abstract class Awakening {
-    
+
     private SwordMaterial material;
-    
-    public abstract int getAwakenProgress(EntityLivingBase livingSource, ItemStack stack, NBTTagCompound tag);
-    
+
+    public abstract int getAwakenProgress (EntityLivingBase livingSource, ItemStack stack, NBTTagCompound tag);
+
     public boolean canAwaken (EntityLivingBase livingSource, ItemStack stack) {
-        
-        return getAwakenProgress(livingSource, stack, StackUtils.prepareStackTag(stack))>= 100;
+
+        return this.getAwakenProgress(livingSource, stack, StackUtils.prepareStackTag(stack)) >= 100;
     }
-    
-    public void awaken(EntityLivingBase entity) {
-        
+
+    public void awaken (EntityLivingBase entity) {
+
         if (!entity.getHeldItemMainhand().isEmpty()) {
-            
-            ItemStack held = entity.getHeldItemMainhand();
-            ItemStack stack = new ItemStack(this.material.getAwakenedItem());
-            
+
+            final ItemStack held = entity.getHeldItemMainhand();
+            final ItemStack stack = new ItemStack(this.material.getAwakenedItem());
+
             stack.setTagCompound(held.getTagCompound());
             entity.setHeldItem(EnumHand.MAIN_HAND, stack);
         }
     }
-    
-    public boolean isValidItem(ItemStack stack) {
-        
-        return stack != null && !stack.isEmpty() && stack.getItem() instanceof ItemInertSword && stack.getMetadata() == material.getMeta();
+
+    public boolean isValidItem (ItemStack stack) {
+
+        return stack != null && !stack.isEmpty() && stack.getItem() instanceof ItemInertSword && stack.getMetadata() == this.material.getMeta();
     }
-    
-    public void setSwordMaterial(SwordMaterial material) {
-        
+
+    public void setSwordMaterial (SwordMaterial material) {
+
         this.material = material;
     }
 }
