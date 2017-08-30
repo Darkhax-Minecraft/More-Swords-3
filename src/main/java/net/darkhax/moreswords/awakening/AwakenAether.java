@@ -1,41 +1,40 @@
 package net.darkhax.moreswords.awakening;
 
 import net.darkhax.bookshelf.util.MathsUtils;
-import net.darkhax.bookshelf.util.StackUtils;
-import net.minecraft.entity.Entity;
+import net.darkhax.bookshelf.util.NBTUtils;
+import net.darkhax.bookshelf.util.PlayerUtils;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AwakenAether extends Awakening {
 
-    private final int requiredKills = 10;
+    private static final String TAG_FALL_DISTANCE = "FallDistance";
+    private final int requiredFallDistance = 256;
 
     @Override
     public int getAwakenProgress (EntityLivingBase entity, ItemStack stack, NBTTagCompound tag) {
 
-        return MathsUtils.getPercentage(tag.getInteger("kills"), this.requiredKills);
+        return MathsUtils.getPercentage(NBTUtils.getAmount(stack, TAG_FALL_DISTANCE), this.requiredFallDistance);
     }
 
     @SubscribeEvent
-    public void onLivingKilled (LivingDeathEvent event) {
+    public void onLivingFall (LivingFallEvent event) {
 
-        final Entity source = event.getSource().getTrueSource();
+        if (PlayerUtils.isPlayerReal(event.getEntity()) && event.getDistance() > 5f) {
 
-        if (source instanceof EntityLivingBase && !source.isDead) {
+            final EntityPlayer player = (EntityPlayer) event.getEntity();
 
-            final EntityLivingBase livingSource = (EntityLivingBase) source;
+            if (this.isValidItem(player.getHeldItemMainhand())) {
 
-            if (this.isValidItem(livingSource.getHeldItemMainhand()) && !event.getEntity().onGround && !livingSource.onGround) {
+                NBTUtils.increment(player.getHeldItemMainhand(), TAG_FALL_DISTANCE, (int) event.getDistance());
 
-                final NBTTagCompound tag = StackUtils.prepareStackTag(livingSource.getHeldItemMainhand());
-                tag.setInteger("kills", tag.getInteger("kills") + 1);
+                if (this.canAwaken(player, player.getHeldItemMainhand())) {
 
-                if (this.canAwaken(livingSource, livingSource.getHeldItemMainhand())) {
-
-                    this.awaken(livingSource);
+                    this.awaken(player);
                 }
             }
         }
