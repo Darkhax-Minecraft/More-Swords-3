@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import net.darkhax.bookshelf.lib.LoggingHelper;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.moreswords.awakening.AwakenAdmin;
 import net.darkhax.moreswords.awakening.AwakenAether;
@@ -33,12 +34,14 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@")
+@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.1.427,)s@[1.0.12,)", acceptedMinecraftVersions = "[1.12,1.12.2)", certificateFingerprint = "@FINGERPRINT@")
 public class MoreSwords {
 
+    public static final LoggingHelper LOG = new LoggingHelper("More Swords");
     public static final ConfigurationHandler config = new ConfigurationHandler(new File("config/moreswords.cfg"));
     public static final CreativeTabs TAB = new CreativeTabMoreSwords();
     public static final RegistryHelper REGISTRY = new RegistryHelper("moreswords").setTab(TAB);
@@ -97,5 +100,11 @@ public class MoreSwords {
 
             REGISTRY.registerInventoryModel(item);
         }
+    }
+    
+    @EventHandler
+    public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
+        
+        LOG.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
     }
 }
