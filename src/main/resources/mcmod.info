@@ -1,11 +1,11 @@
 [  
    {  
-      "modid":"MSM3",
+      "modid":"moreswords",
       "name":"More Swords 3",
       "description":"Adds new swords and enchantments to Minecraft",
       "version":"${version}",
       "mcversion":"${mcversion}",
-      "url":"http://www.darkhax.net/wawla.html",
+      "url":"https://minecraft.curseforge.com/projects/more-swords-mod",
       "updateUrl":"",
       "authorList":[  
          "Darkhax"
