@@ -64,7 +64,7 @@ repositories {
 dependencies {
 
     deobfCompile "mezz.jei:jei_1.12:${version_jei}"
-    deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.1:${version_bookshelf}"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf-1.12.2:${version_bookshelf}"
 }
 
 
