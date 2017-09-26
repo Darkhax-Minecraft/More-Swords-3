@@ -17,6 +17,7 @@ import net.darkhax.moreswords.awakening.AwakenGladiolus;
 import net.darkhax.moreswords.awakening.AwakenVampiric;
 import net.darkhax.moreswords.awakening.AwakenWither;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.items.ItemBrokenSword;
 import net.darkhax.moreswords.items.ItemInertSword;
 import net.darkhax.moreswords.items.ItemSwordBase;
 import net.darkhax.moreswords.materials.Quality;
@@ -38,7 +39,7 @@ import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.1.427,)", acceptedMinecraftVersions = "[1.12,1.12.2)", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.1.427,)", certificateFingerprint = "@FINGERPRINT@")
 public class MoreSwords {
 
     public static final LoggingHelper LOG = new LoggingHelper("More Swords");
@@ -65,6 +66,7 @@ public class MoreSwords {
         MinecraftForge.EVENT_BUS.register(this);
 
         final Item inertSword = REGISTRY.registerItem(new ItemInertSword(), "inert");
+        final Item borkenSword = REGISTRY.registerItem(new ItemBrokenSword(), "broken");
         int meta = 0;
 
         for (final SwordMaterial material : MATERIALS.values()) {
@@ -72,6 +74,7 @@ public class MoreSwords {
             material.setMeta(meta);
             material.setAwakenedItem(REGISTRY.registerItem(new ItemSwordBase(material), "sword_" + material.getName()));
             material.setInertItem(new ItemStack(inertSword, 1, meta));
+            material.setBrokenItem(new ItemStack(borkenSword, 1, meta));
             meta++;
         }
 
@@ -101,10 +104,10 @@ public class MoreSwords {
             REGISTRY.registerInventoryModel(item);
         }
     }
-    
+
     @EventHandler
-    public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        
+    public void onFingerprintViolation (FMLFingerprintViolationEvent event) {
+
         LOG.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
     }
 }

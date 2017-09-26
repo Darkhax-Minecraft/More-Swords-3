@@ -27,6 +27,18 @@ item.moreswords.inert.aether.name=Inert Aether's Guard
 item.moreswords.inert.wither.name=Inert Wither's Bane
 item.moreswords.inert.admin.name=Inert Adminium Ark
 
+#Broken Swords
+item.moreswords.broken.dawnstar.name=Broken Dawn Star
+item.moreswords.broken.vampiric.name=Broken Vampiric Blade
+item.moreswords.broken.gladiolus.name=Broken Gladiolus
+item.moreswords.broken.draconic.name=Broken Draconic Blade
+item.moreswords.broken.ender.name=Broken EyeEnd Sword
+item.moreswords.broken.crystaline.name=Broken Crystalline Blade
+item.moreswords.broken.glacial.name=Broken Glacial Blade
+item.moreswords.broken.aether.name=Broken Aether's Guard
+item.moreswords.broken.wither.name=Broken Wither's Bane
+item.moreswords.broken.admin.name=Broken Adminium Ark
+
 #Awakening
 awakening.dawnstart.fireballs=Fireballs
 

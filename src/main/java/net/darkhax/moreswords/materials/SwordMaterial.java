@@ -28,6 +28,8 @@ public class SwordMaterial {
     private int meta;
     private Item awakenedItem;
     private ItemStack inertItem;
+    private ItemStack brokenItem;
+    private ItemStack repairStack;
 
     public SwordMaterial (String name, Quality type, int maxUses, float damage, ItemStack repair, Speed speed, Awakening awakening) {
 
@@ -59,7 +61,9 @@ public class SwordMaterial {
         if (this.material == null) {
 
             this.material = EnumHelper.addToolMaterial("MSM_" + this.name.toUpperCase(), this.harvestLevel, this.maxUses, this.efficiency, this.damageVsEntity, this.enchantability);
-            this.material.setRepairItem(StackUtils.createStackFromString(this.repair));
+            
+            this.repairStack = StackUtils.createStackFromString(this.repair);
+            this.material.setRepairItem(this.repairStack);
         }
 
         return this.material;
@@ -144,9 +148,24 @@ public class SwordMaterial {
 
         this.inertItem = inertItem;
     }
+    
+    public void setBrokenItem (ItemStack inertItem) {
 
+        this.brokenItem = inertItem;
+    }
+    
     public Awakening getAwakening () {
 
         return this.awakening;
+    }
+
+    public ItemStack getBrokenItem () {
+        
+        return brokenItem;
+    }
+
+    public ItemStack getRepairStack () {
+        
+        return repairStack;
     }
 }
