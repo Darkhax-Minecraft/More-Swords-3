@@ -26,7 +26,7 @@ public class AwakenWither extends Awakening {
 
         final Entity source = event.getSource().getTrueSource();
 
-        // Checks if dragon is hurt
+        // Checks if wither is hurt
         if (event.getEntity() instanceof EntityWither && source instanceof EntityLivingBase) {
 
             final EntityLivingBase living = (EntityLivingBase) source;
