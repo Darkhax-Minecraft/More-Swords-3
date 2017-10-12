@@ -6,13 +6,19 @@ import java.util.Set;
 
 import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.NBTUtils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -26,6 +32,32 @@ public class AwakenDawnStar extends Awakening {
     public int getAwakenProgress (EntityLivingBase player, ItemStack stack, NBTTagCompound tag) {
 
         return MathsUtils.getPercentage(NBTUtils.getAmount(stack, TAG_FIREBALL), this.requiredFireballs);
+    }
+    
+    @Override
+    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
+    	
+    	// Gives the valid holder fire resistance
+    	holder.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 10, 1, false, false));
+    }
+    
+    @Override
+    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+    	
+    	final int fireTime = MathHelper.floor(event.getAmount() / 2f);
+    	
+    	// Does half of the damage in fire damage
+    	victim.setFire(fireTime);
+		
+    	// All mobs in 2.5 block radius.
+    	for (Entity entity : holder.getEntityWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(victim.getPosition()).grow(2.5))) {
+    		
+    		if (entity != holder && entity != victim) {
+    			
+    			// Does 25% of the damage as fire to nearby mobs of the same type.
+    			entity.setFire(Math.max(2, fireTime / 2));
+    		}
+    	}
     }
 
     @SubscribeEvent
