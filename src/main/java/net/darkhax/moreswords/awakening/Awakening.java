@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public abstract class Awakening {
 
@@ -46,7 +47,7 @@ public abstract class Awakening {
     	
     }
     
-    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, float amount, ItemStack stack) {
+    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
     	
     }
 }

@@ -20,7 +20,7 @@ public class EffectHandler {
 				
 				if (material.isPlayerHolding(player)) {
 					
-					material.getAwakening().onHolderAttack(player, event.getEntityLiving(), event.getAmount(), player.getHeldItemMainhand());
+					material.getAwakening().onHolderAttack(player, event.getEntityLiving(), player.getHeldItemMainhand(), event);
 					break;
 				}
 			}
