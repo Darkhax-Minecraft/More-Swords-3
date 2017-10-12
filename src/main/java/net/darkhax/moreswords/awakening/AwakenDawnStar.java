@@ -8,6 +8,7 @@ import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.NBTUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityOwnable;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
@@ -54,8 +55,11 @@ public class AwakenDawnStar extends Awakening {
     		
     		if (entity != holder && entity != victim) {
     			
-    			// Does 25% of the damage as fire to nearby mobs of the same type.
-    			entity.setFire(Math.max(2, fireTime / 2));
+    			if (!isInvalidTarget(holder, entity)) {
+    				
+        			// Does 25% of the damage as fire to nearby mobs of the same type.
+        			entity.setFire(Math.max(2, fireTime / 2));
+    			}
     		}
     	}
     }
@@ -110,5 +114,22 @@ public class AwakenDawnStar extends Awakening {
                 }
             }
         }
+    }
+    
+    public static boolean isInvalidTarget(EntityLivingBase owner, Entity victim) {
+    	
+    	// True for pets owned by the attacker.
+    	if (victim instanceof IEntityOwnable && ((IEntityOwnable) victim).getOwner() == owner) {
+    		
+    		return true;
+    	}
+    	
+    	// Checks if they share a team
+    	if (victim.isOnSameTeam(owner)) {
+    		
+    		return true;
+    	}
+    	
+    	return false;
     }
 }
