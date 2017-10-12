@@ -36,7 +36,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.1.450,)", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.2.464,)", certificateFingerprint = "@FINGERPRINT@")
 public class MoreSwords {
 
     public static final LoggingHelper LOG = new LoggingHelper("More Swords");
