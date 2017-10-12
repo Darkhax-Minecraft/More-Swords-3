@@ -4,6 +4,7 @@ import net.darkhax.bookshelf.util.StackUtils;
 import net.darkhax.moreswords.items.ItemInertSword;
 import net.darkhax.moreswords.materials.SwordMaterial;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -39,5 +40,13 @@ public abstract class Awakening {
     public void setSwordMaterial (SwordMaterial material) {
 
         this.material = material;
+    }
+    
+    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
+    	
+    }
+    
+    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, float amount, ItemStack stack) {
+    	
     }
 }

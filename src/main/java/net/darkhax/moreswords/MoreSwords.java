@@ -17,6 +17,7 @@ import net.darkhax.moreswords.awakening.AwakenGladiolus;
 import net.darkhax.moreswords.awakening.AwakenVampiric;
 import net.darkhax.moreswords.awakening.AwakenWither;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.darkhax.moreswords.handler.EffectHandler;
 import net.darkhax.moreswords.items.ItemBrokenSword;
 import net.darkhax.moreswords.items.ItemInertSword;
 import net.darkhax.moreswords.items.ItemSwordBase;
@@ -63,6 +64,7 @@ public class MoreSwords {
     @EventHandler
     public void onPreInit (FMLPreInitializationEvent event) {
 
+    	MinecraftForge.EVENT_BUS.register(new EffectHandler());
         MinecraftForge.EVENT_BUS.register(this);
 
         final Item inertSword = REGISTRY.registerItem(new ItemInertSword(), "inert");
