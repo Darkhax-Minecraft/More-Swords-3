@@ -4,6 +4,7 @@ import net.darkhax.bookshelf.util.StackUtils;
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.awakening.Awakening;
 import net.darkhax.moreswords.handler.ConfigurationHandler;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
@@ -167,5 +168,10 @@ public class SwordMaterial {
     public ItemStack getRepairStack () {
         
         return repairStack;
+    }
+    
+    public boolean isPlayerHolding(EntityPlayer player) {
+    	
+    	return player.getHeldItemMainhand().getItem() == this.awakenedItem;
     }
 }
