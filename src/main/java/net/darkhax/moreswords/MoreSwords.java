@@ -42,7 +42,7 @@ public class MoreSwords {
     public static final LoggingHelper LOG = new LoggingHelper("More Swords");
     public static final ConfigurationHandler config = new ConfigurationHandler(new File("config/moreswords.cfg"));
     public static final CreativeTabs TAB = new CreativeTabMoreSwords();
-    public static final RegistryHelper REGISTRY = new RegistryHelper("moreswords").setTab(TAB);
+    public static final RegistryHelper REGISTRY = new RegistryHelper("moreswords").enableAutoRegistration().setTab(TAB);
 
     public static final Map<String, SwordMaterial> MATERIALS = new LinkedHashMap<>();
 
