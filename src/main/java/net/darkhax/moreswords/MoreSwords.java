@@ -30,15 +30,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.1.450,)", certificateFingerprint = "@FINGERPRINT@")
 public class MoreSwords {
@@ -65,7 +61,6 @@ public class MoreSwords {
     public void onPreInit (FMLPreInitializationEvent event) {
 
     	MinecraftForge.EVENT_BUS.register(new EffectHandler());
-        MinecraftForge.EVENT_BUS.register(this);
 
         final Item inertSword = REGISTRY.registerItem(new ItemInertSword(), "inert");
         final Item borkenSword = REGISTRY.registerItem(new ItemBrokenSword(), "broken");
@@ -81,30 +76,6 @@ public class MoreSwords {
         }
 
         config.syncConfigData();
-    }
-
-    @SubscribeEvent
-    public void onLivingSpawn (SpecialSpawn event) {
-
-        event.getEntity().setCustomNameTag("Spawned");
-    }
-
-    @SubscribeEvent
-    public void onItemRegistry (Register<Item> event) {
-
-        for (final Item item : REGISTRY.getItems()) {
-
-            event.getRegistry().register(item);
-        }
-    }
-
-    @SubscribeEvent
-    public void onModelRegistry (ModelRegistryEvent event) {
-
-        for (final Item item : REGISTRY.getItems()) {
-
-            REGISTRY.registerInventoryModel(item);
-        }
     }
 
     @EventHandler
