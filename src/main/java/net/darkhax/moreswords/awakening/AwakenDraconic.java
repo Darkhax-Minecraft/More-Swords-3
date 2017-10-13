@@ -6,8 +6,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityEnderCrystal;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
@@ -22,6 +24,27 @@ public class AwakenDraconic extends Awakening {
     public int getAwakenProgress (EntityLivingBase entity, ItemStack stack, NBTTagCompound tag) {
 
         return MathsUtils.getPercentage(NBTUtils.getAmount(stack, TAG_DRAGON_DAMAGE), this.requiredDamage);
+    }
+    
+    @Override
+    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
+    	
+    	for (PotionEffect effect : holder.getActivePotionEffects()) {
+    		
+    		if (effect.getPotion().isBadEffect()) {
+    			
+    			effect.deincrementDuration();
+    		}
+    	}
+    }
+    
+    @Override
+    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+    	
+    	if (holder.dimension != 0) {
+    		
+    		event.setAmount(event.getAmount() * 2f);
+    	}
     }
 
     @SubscribeEvent
