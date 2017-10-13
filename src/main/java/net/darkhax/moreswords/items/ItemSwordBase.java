@@ -22,6 +22,11 @@ public class ItemSwordBase extends ItemSword {
         super(material.toToolMaterial());
         this.material = material;
     }
+    
+    public SwordMaterial getMaterial() {
+    	
+    	return this.material;
+    }
 
     @Override
     public Multimap<String, AttributeModifier> getItemAttributeModifiers (EntityEquipmentSlot equipmentSlot) {
