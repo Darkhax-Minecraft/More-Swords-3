@@ -43,6 +43,11 @@ public abstract class Awakening {
         this.material = material;
     }
     
+    public SwordMaterial getMaterial() {
+    	
+    	return this.material;
+    }
+    
     public void onHolderTick(EntityPlayer holder, ItemStack stack) {
     	
     }
