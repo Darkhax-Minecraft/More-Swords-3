@@ -4,9 +4,11 @@ import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.NBTUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -15,6 +17,23 @@ public class AwakenGladiolus extends Awakening {
     private static String TAG_POISON_DAMAGE = "PoisonDamage";
     private final int requiredDamage = 100;
 
+    @Override
+    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
+    	
+    	holder.getActivePotionMap().remove(MobEffects.POISON);
+    }
+    
+    @Override
+    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+    	
+    	if (MathsUtils.tryPercentage(0.15)) {
+    		
+        	holder.getFoodStats().addStats(MathsUtils.nextIntInclusive(1, 3), MathsUtils.nextIntInclusive(1, 3));
+    	}
+    	
+    	victim.addPotionEffect(new PotionEffect(MobEffects.POISON, MathsUtils.nextIntInclusive(1, 6) * 20, 0, false, false));
+    }
+    
     @Override
     public int getAwakenProgress (EntityLivingBase entity, ItemStack stack, NBTTagCompound tag) {
 

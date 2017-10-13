@@ -1,6 +1,5 @@
 package net.darkhax.moreswords.awakening;
 
-import net.darkhax.bookshelf.util.EntityUtils;
 import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.NBTUtils;
 import net.darkhax.bookshelf.util.PlayerUtils;
