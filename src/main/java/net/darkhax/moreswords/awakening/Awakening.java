@@ -59,4 +59,8 @@ public abstract class Awakening {
     public void onHolderKill(EntityPlayer holder, EntityLivingBase victim, ItemStack stack) {
     	
     }
+    
+    public void onHolderRightClick(EntityPlayer holder, ItemStack stack) {
+    	
+    }
 }
