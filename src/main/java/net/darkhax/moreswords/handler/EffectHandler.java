@@ -3,6 +3,7 @@ package net.darkhax.moreswords.handler;
 import net.darkhax.moreswords.MoreSwords;
 import net.darkhax.moreswords.materials.SwordMaterial;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -21,6 +22,24 @@ public class EffectHandler {
 				if (material.isPlayerHolding(player)) {
 					
 					material.getAwakening().onHolderAttack(player, event.getEntityLiving(), player.getHeldItemMainhand(), event);
+					break;
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onLivingKilled(LivingDeathEvent event) {
+		
+		if (event.getSource().getTrueSource() instanceof EntityPlayer) {
+			
+			final EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+			
+			for (SwordMaterial material : MoreSwords.MATERIALS.values()) {
+				
+				if (material.isPlayerHolding(player)) {
+					
+					material.getAwakening().onHolderKill(player, event.getEntityLiving(), player.getHeldItemMainhand());
 					break;
 				}
 			}
