@@ -62,7 +62,7 @@ public class SwordMaterial {
         if (this.material == null) {
 
             this.material = EnumHelper.addToolMaterial("MSM_" + this.name.toUpperCase(), this.harvestLevel, this.maxUses, this.efficiency, this.damageVsEntity, this.enchantability);
-            
+
             this.repairStack = StackUtils.createStackFromString(this.repair);
             this.material.setRepairItem(this.repairStack);
         }
@@ -149,29 +149,29 @@ public class SwordMaterial {
 
         this.inertItem = inertItem;
     }
-    
+
     public void setBrokenItem (ItemStack inertItem) {
 
         this.brokenItem = inertItem;
     }
-    
+
     public Awakening getAwakening () {
 
         return this.awakening;
     }
 
     public ItemStack getBrokenItem () {
-        
-        return brokenItem;
+
+        return this.brokenItem;
     }
 
     public ItemStack getRepairStack () {
-        
-        return repairStack;
+
+        return this.repairStack;
     }
-    
-    public boolean isPlayerHolding(EntityPlayer player) {
-    	
-    	return player.getHeldItemMainhand().getItem() == this.awakenedItem;
+
+    public boolean isPlayerHolding (EntityPlayer player) {
+
+        return player.getHeldItemMainhand().getItem() == this.awakenedItem;
     }
 }

@@ -27,9 +27,9 @@ public class ItemBrokenSword extends ItemSubType implements IVariant {
     public void addInformation (ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 
         final SwordMaterial material = this.getSwordMaterial(stack);
-        
+
         if (material != null) {
-            
+
             tooltip.add("Repair with: " + material.getRepairStack().getDisplayName());
         }
     }

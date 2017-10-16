@@ -34,34 +34,34 @@ public class AwakenDawnStar extends Awakening {
 
         return MathsUtils.getPercentage(NBTUtils.getAmount(stack, TAG_FIREBALL), this.requiredFireballs);
     }
-    
+
     @Override
-    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
-    	
-    	// Gives the valid holder fire resistance
-    	holder.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 10, 1, false, false));
+    public void onHolderTick (EntityPlayer holder, ItemStack stack) {
+
+        // Gives the valid holder fire resistance
+        holder.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 10, 1, false, false));
     }
-    
+
     @Override
-    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
-    	
-    	final int fireTime = MathHelper.floor(event.getAmount() / 2f);
-    	
-    	// Does half of the damage in fire damage
-    	victim.setFire(fireTime);
-		
-    	// All mobs in 2.5 block radius.
-    	for (Entity entity : holder.getEntityWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(victim.getPosition()).grow(2.5))) {
-    		
-    		if (entity != holder && entity != victim) {
-    			
-    			if (!isInvalidTarget(holder, entity)) {
-    				
-        			// Does 25% of the damage as fire to nearby mobs of the same type.
-        			entity.setFire(Math.max(2, fireTime / 2));
-    			}
-    		}
-    	}
+    public void onHolderAttack (EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+
+        final int fireTime = MathHelper.floor(event.getAmount() / 2f);
+
+        // Does half of the damage in fire damage
+        victim.setFire(fireTime);
+
+        // All mobs in 2.5 block radius.
+        for (final Entity entity : holder.getEntityWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(victim.getPosition()).grow(2.5))) {
+
+            if (entity != holder && entity != victim) {
+
+                if (!isInvalidTarget(holder, entity)) {
+
+                    // Does 25% of the damage as fire to nearby mobs of the same type.
+                    entity.setFire(Math.max(2, fireTime / 2));
+                }
+            }
+        }
     }
 
     @SubscribeEvent
@@ -115,21 +115,21 @@ public class AwakenDawnStar extends Awakening {
             }
         }
     }
-    
-    public static boolean isInvalidTarget(EntityLivingBase owner, Entity victim) {
-    	
-    	// True for pets owned by the attacker.
-    	if (victim instanceof IEntityOwnable && ((IEntityOwnable) victim).getOwner() == owner) {
-    		
-    		return true;
-    	}
-    	
-    	// Checks if they share a team
-    	if (victim.isOnSameTeam(owner)) {
-    		
-    		return true;
-    	}
-    	
-    	return false;
+
+    public static boolean isInvalidTarget (EntityLivingBase owner, Entity victim) {
+
+        // True for pets owned by the attacker.
+        if (victim instanceof IEntityOwnable && ((IEntityOwnable) victim).getOwner() == owner) {
+
+            return true;
+        }
+
+        // Checks if they share a team
+        if (victim.isOnSameTeam(owner)) {
+
+            return true;
+        }
+
+        return false;
     }
 }

@@ -22,10 +22,10 @@ public class ItemSwordBase extends ItemSword {
         super(material.toToolMaterial());
         this.material = material;
     }
-    
-    public SwordMaterial getMaterial() {
-    	
-    	return this.material;
+
+    public SwordMaterial getMaterial () {
+
+        return this.material;
     }
 
     @Override

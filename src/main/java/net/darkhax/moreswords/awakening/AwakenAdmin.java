@@ -7,23 +7,23 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AwakenAdmin extends Awakening {
 
-	@Override
-    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
-    	
-		if (PlayerUtils.isPlayerReal(victim)) {
-			
-			final EntityPlayerMP player = (EntityPlayerMP) victim;
-			
-			player.connection.disconnect(new TextComponentTranslation("msm.message.adminium.kick"));
-		}
+    @Override
+    public void onHolderAttack (EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+
+        if (PlayerUtils.isPlayerReal(victim)) {
+
+            final EntityPlayerMP player = (EntityPlayerMP) victim;
+
+            player.connection.disconnect(new TextComponentTranslation("msm.message.adminium.kick"));
+        }
     }
-    
+
     @Override
     public int getAwakenProgress (EntityLivingBase entity, ItemStack stack, NBTTagCompound tag) {
 

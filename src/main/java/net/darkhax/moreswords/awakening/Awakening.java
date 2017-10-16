@@ -44,33 +44,33 @@ public abstract class Awakening {
 
         this.material = material;
     }
-    
-    public SwordMaterial getMaterial() {
-    	
-    	return this.material;
+
+    public SwordMaterial getMaterial () {
+
+        return this.material;
     }
-    
-    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
-    	
+
+    public void onHolderTick (EntityPlayer holder, ItemStack stack) {
+
     }
-    
-    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
-    	
+
+    public void onHolderAttack (EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+
     }
-    
-    public void onHolderKill(EntityPlayer holder, EntityLivingBase victim, ItemStack stack) {
-    	
+
+    public void onHolderKill (EntityPlayer holder, EntityLivingBase victim, ItemStack stack) {
+
     }
-    
-    public void onHolderRightClick(EntityPlayer holder, ItemStack stack, boolean isBlock) {
-    	
+
+    public void onHolderRightClick (EntityPlayer holder, ItemStack stack, boolean isBlock) {
+
     }
-    
-    public void onHolderGetsDrops(EntityPlayer holder, LivingDropsEvent event) {
-    	
+
+    public void onHolderGetsDrops (EntityPlayer holder, LivingDropsEvent event) {
+
     }
-    
-    public void onHolderPickup(EntityPlayer holder, EntityItemPickupEvent event) {
-    	
+
+    public void onHolderPickup (EntityPlayer holder, EntityItemPickupEvent event) {
+
     }
 }

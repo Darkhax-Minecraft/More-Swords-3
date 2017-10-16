@@ -25,26 +25,26 @@ public class AwakenDraconic extends Awakening {
 
         return MathsUtils.getPercentage(NBTUtils.getAmount(stack, TAG_DRAGON_DAMAGE), this.requiredDamage);
     }
-    
+
     @Override
-    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
-    	
-    	for (PotionEffect effect : holder.getActivePotionEffects()) {
-    		
-    		if (effect.getPotion().isBadEffect()) {
-    			
-    			effect.deincrementDuration();
-    		}
-    	}
+    public void onHolderTick (EntityPlayer holder, ItemStack stack) {
+
+        for (final PotionEffect effect : holder.getActivePotionEffects()) {
+
+            if (effect.getPotion().isBadEffect()) {
+
+                effect.deincrementDuration();
+            }
+        }
     }
-    
+
     @Override
-    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
-    	
-    	if (holder.dimension != 0) {
-    		
-    		event.setAmount(event.getAmount() * 2f);
-    	}
+    public void onHolderAttack (EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+
+        if (holder.dimension != 0) {
+
+            event.setAmount(event.getAmount() * 2f);
+        }
     }
 
     @SubscribeEvent

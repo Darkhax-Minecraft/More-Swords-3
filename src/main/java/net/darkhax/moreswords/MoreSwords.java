@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import net.darkhax.bookshelf.BookshelfRegistry;
 import net.darkhax.bookshelf.lib.LoggingHelper;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.moreswords.awakening.AwakenAdmin;
@@ -36,7 +37,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.2.464,)", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "", certificateFingerprint = "@FINGERPRINT@")
 public class MoreSwords {
 
     public static final LoggingHelper LOG = new LoggingHelper("More Swords");
@@ -60,7 +61,7 @@ public class MoreSwords {
     @EventHandler
     public void onPreInit (FMLPreInitializationEvent event) {
 
-    	MinecraftForge.EVENT_BUS.register(new EffectHandler());
+        MinecraftForge.EVENT_BUS.register(new EffectHandler());
 
         final Item inertSword = REGISTRY.registerItem(new ItemInertSword(), "inert");
         final Item borkenSword = REGISTRY.registerItem(new ItemBrokenSword(), "broken");
@@ -72,6 +73,8 @@ public class MoreSwords {
             material.setAwakenedItem(REGISTRY.registerItem(new ItemSwordBase(material), "sword_" + material.getName()));
             material.setInertItem(new ItemStack(inertSword, 1, meta));
             material.setBrokenItem(new ItemStack(borkenSword, 1, meta));
+
+            BookshelfRegistry.addAnvilRecipe(material.getBrokenItem().copy(), material.getRepairStack().copy(), 5, 1, new ItemStack(material.getAwakenedItem(), 1, material.getMaxUses() - material.getMaxUses() / 4));
             meta++;
         }
 

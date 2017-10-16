@@ -18,22 +18,22 @@ public class AwakenGladiolus extends Awakening {
     private final int requiredDamage = 100;
 
     @Override
-    public void onHolderTick(EntityPlayer holder, ItemStack stack) {
-    	
-    	holder.getActivePotionMap().remove(MobEffects.POISON);
+    public void onHolderTick (EntityPlayer holder, ItemStack stack) {
+
+        holder.getActivePotionMap().remove(MobEffects.POISON);
     }
-    
+
     @Override
-    public void onHolderAttack(EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
-    	
-    	if (MathsUtils.tryPercentage(0.15)) {
-    		
-        	holder.getFoodStats().addStats(MathsUtils.nextIntInclusive(1, 3), MathsUtils.nextIntInclusive(1, 3));
-    	}
-    	
-    	victim.addPotionEffect(new PotionEffect(MobEffects.POISON, MathsUtils.nextIntInclusive(1, 6) * 20, 0, false, false));
+    public void onHolderAttack (EntityPlayer holder, EntityLivingBase victim, ItemStack stack, LivingHurtEvent event) {
+
+        if (MathsUtils.tryPercentage(0.15)) {
+
+            holder.getFoodStats().addStats(MathsUtils.nextIntInclusive(1, 3), MathsUtils.nextIntInclusive(1, 3));
+        }
+
+        victim.addPotionEffect(new PotionEffect(MobEffects.POISON, MathsUtils.nextIntInclusive(1, 6) * 20, 0, false, false));
     }
-    
+
     @Override
     public int getAwakenProgress (EntityLivingBase entity, ItemStack stack, NBTTagCompound tag) {
 

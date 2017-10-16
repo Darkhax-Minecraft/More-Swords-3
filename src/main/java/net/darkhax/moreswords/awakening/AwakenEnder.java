@@ -2,7 +2,6 @@ package net.darkhax.moreswords.awakening;
 
 import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.NBTUtils;
-import net.darkhax.bookshelf.util.StackUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -12,10 +11,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AwakenEnder extends Awakening {
@@ -23,47 +20,47 @@ public class AwakenEnder extends Awakening {
     private static final String TAG_ENDER_KILLS = "EnderKills";
 
     private final int requiredKills = 100;
-    
+
     @Override
-    public void onHolderRightClick(EntityPlayer holder, ItemStack stack, boolean isBlock) {
-    	
-    	final RayTraceResult position = MathsUtils.rayTrace(holder, 128d);
-    	
-    	if ((position != null) && (position.typeOfHit == RayTraceResult.Type.BLOCK)) {
+    public void onHolderRightClick (EntityPlayer holder, ItemStack stack, boolean isBlock) {
+
+        final RayTraceResult position = MathsUtils.rayTrace(holder, 128d);
+
+        if (position != null && position.typeOfHit == RayTraceResult.Type.BLOCK) {
 
             double x = position.hitVec.x;
             double y = position.hitVec.y;
             double z = position.hitVec.z;
 
             switch (position.sideHit) {
-            case DOWN:
-                y--;
-                break;
-            case UP:
-                y++;
-                break;
-            case NORTH:
-                z--;
-                break;
-            case SOUTH:
-                z++;
-                break;
-            case WEST:
-                x--;
-                break;
-            case EAST:
-                x++;
-                break;
-            default:
-                y++;
+                case DOWN:
+                    y--;
+                    break;
+                case UP:
+                    y++;
+                    break;
+                case NORTH:
+                    z--;
+                    break;
+                case SOUTH:
+                    z++;
+                    break;
+                case WEST:
+                    x--;
+                    break;
+                case EAST:
+                    x++;
+                    break;
+                default:
+                    y++;
             }
-            
+
             holder.setPositionAndUpdate(x, y, z);
             stack.damageItem(10, holder);
             holder.attackEntityFrom(DamageSource.FALL, 1f);
-    	}	
+        }
     }
-    
+
     @Override
     public int getAwakenProgress (EntityLivingBase entity, ItemStack stack, NBTTagCompound tag) {
 
