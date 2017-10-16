@@ -8,7 +8,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 
 public abstract class Awakening {
 
@@ -60,7 +62,15 @@ public abstract class Awakening {
     	
     }
     
-    public void onHolderRightClick(EntityPlayer holder, ItemStack stack) {
+    public void onHolderRightClick(EntityPlayer holder, ItemStack stack, boolean isBlock) {
+    	
+    }
+    
+    public void onHolderGetsDrops(EntityPlayer holder, LivingDropsEvent event) {
+    	
+    }
+    
+    public void onHolderPickup(EntityPlayer holder, EntityItemPickupEvent event) {
     	
     }
 }
