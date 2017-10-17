@@ -37,8 +37,11 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "moreswords", name = "More Swords", version = "@VERSION@", dependencies = "", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = MoreSwords.MODID, name = MoreSwords.MOD_NAME, version = "@VERSION@", dependencies = "", certificateFingerprint = "@FINGERPRINT@")
 public class MoreSwords {
+    
+    public static final String MODID = "moreswords";
+    public static final String MOD_NAME = "More Swords";
 
     public static final LoggingHelper LOG = new LoggingHelper("More Swords");
     public static final ConfigurationHandler config = new ConfigurationHandler(new File("config/moreswords.cfg"));
