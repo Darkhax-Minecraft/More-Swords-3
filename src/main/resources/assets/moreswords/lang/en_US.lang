@@ -46,3 +46,26 @@ awakening.dawnstart.fireballs=Fireballs
 misc.moreswords.progress=Progress: %d
 misc.message.adminium.kick=You were kicked by the Adminium Ark
 death.attack.msm.freeze=%s froze to death!
+
+#JEI
+description.msm.broken=The remaining shards of a sword that once held mystical powers. It is useless in it's current state, but it can be repaired!
+description.msm.dawnstar.awakening=The remnant of an ancient sword. They are commonly found in nether forts. There have also been reports of Zombie pig men carrying them. Legend rumours that this sword can be awoken by deflecting ghast fireballs.
+description.msm.dawnstar.awakened=This sword is said to burn as hot as the sun itself! Wielding this sword will give you immunity to fire. Attacking a mob will inflict additional fire damage equal to half the attack damage of the sword. Mobs that are close enough to the initial target will also get fire damage equal to 25% of the base damage.
+description.msm.vampiric.awakening=
+description.msm.vampiric.awakened=
+description.msm.gladiolus.awakening=The remnant of an ancient sword. They are commonly found in jungle temples. Zombies and Skeletons have also been seen carrying this artifact in jungles, swamps and flower forrests.
+description.msm.gladiolus.awakened=This sword is said to have been forged by seven nature spirits. Holding this blade will cure the holder of poison. Attacking a mob will poison it, and have a chance to restore some of your hunger points.
+description.msm.draconic.awakening=The remnant of an ancient sword. They are commonly found in dungeon and stronghold chests. Legends say that soaking this sword in dragon's blood will awaken it from it's deep slumber.
+description.msm.draconic.awakened=This sword is said to have been used to protect the surface world from otherworldly threats in ancient times. Wielding this sword will cause negative status effects to go away twice as fast. The damage of this sword is doubled when used in dimensions other than the surface world. 
+description.msm.ender.awakening=The remnant of an ancient sword. They are commonly found in end city chests. Zombies and skeletons have also been known to carry this sword in the end, however this is a very uncommon phenonemon. Legends say that this sword could be awoken by slaying ender mobs.
+description.msm.ender.awakened=This sword is said to have been forged using end stone, in a log forgotten technique. Right clicking with this sword will teleport the player there. 
+description.msm.crystaline.awakening=The remnant of an ancient sword. They are commonly found in dungeon chests and stronghold libraries. Legend says that this sword could be awakened by gaining experience with it in battle.
+description.msm.crystaline.awakened=This sword is said to have some inteligence of it's own, and is always processing combat situations. Using this sword will double the amount of experience dropped. It also get's stronger the higher it's wielder's level is. Every 5 levels results in one extra damage, with a cap of 10 extra damage.
+description.msm.glacial.awakening=The remnant of an ancient sword. Zombies and Skeletons have been known to carry this sword in cold biomes. Legends say this sword could be awoken by soaking it in blood while being inflicted with a slowness debuff.
+description.msm.glacial.awakened=This sword is said to be able to absorb and release coldness at will. Wielding this sword will make the player immune to slowness debuffs. Damaging a mob will give it 20 seconds of the slowness debuff, along with 4 freezing damage. If any other mobs are close enough to the initial target, they will recieve 5 to 10 seconds of slowness, and 1 freeze damage.
+description.msm.aether.awakening=The remant of an ancient sword. There have been reports of zombies and skeletons carrying this sword at very high altitudes. Legend says that this sword can be awoken while falling great distances. 
+description.msm.aether.awakened=This sword is said to be the last remnant of an ancient realm. Attacking a mob with this sword will rapidly propel them into the sky. Wielding this sword will protect the user from fall damage, and sneaking while falling can greatly decrease the player's falling speed.
+description.msm.wither.awakening=The remant of an ancient sword. They have been found in nether fort chests, and ocasionally held by wither skeletons in the nether. Legend mentions that this sword could be revived by soaking it in the toxic blood of a wither boss.
+description.msm.wither.awakened=This sword is said to have been involved with an ancient war against the withers. Wielding this sword will give the user immunity to the wither debuff. Attacking a mob will give it five seconds of wither, and nearby mobs will get one second of wither damage, and five to ten seconds of blindness.
+description.msm.admin.awakening=The remant of an ancient sword. They are sometimes found in dungeon chests. It is said that the powers of a god are needed to awaken this sword. 
+description.msm.admin.awakened=This sword is said to be the most dangerous weapon ever forged. There are no known entities that can survive an attack from this sword, including creative mode players. Attacking a player with this sword will also temporarily remove them from the game. 
