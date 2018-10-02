@@ -1,4 +1,20 @@
-#gradle
-.gradle/1.11/
-gradle-app.setting
-/ui/
+#IntelliJ IDEA
+*.class
+*.iml
+*.ipr
+*.iws
+*.launch
+out/
+
+#ForgeGradle
+build/
+.gradle/
+run/
+libs/
+
+#Eclipse
+.classpath
+.metadata/
+.project
+.settings/
+/bin/
