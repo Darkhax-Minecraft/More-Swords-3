@@ -11,11 +11,11 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
     }
 }
 
-apply plugin: 'forge'
+apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.0"
 group= "net.darkhax.moreswords"
@@ -23,9 +23,9 @@ archivesBaseName = "MSM3"
 
 minecraft {
 
-    version = "1.8-11.14.0.1245-1.8"
-    runDir = "eclipse"
-    mappings = "snapshot_20141128"
+    version = "1.8-11.14.4.1577"
+    runDir = "run"
+    mappings = "stable_18"
 }
 
 dependencies {
