@@ -34,9 +34,9 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/moreswords/util/Con
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.8.9-11.15.1.1764"
+    version = "1.8.9-11.15.1.2318-1.8.9"
     runDir = "run"
-    mappings = "stable_20"
+    mappings = "stable_22"
     useDepAts = true
 }
 
