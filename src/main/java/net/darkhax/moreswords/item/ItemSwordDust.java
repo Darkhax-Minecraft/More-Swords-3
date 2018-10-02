@@ -27,7 +27,7 @@ public class ItemSwordDust extends Item {
     @Override
     public String getUnlocalizedName(ItemStack stack) {
 
-        return "item.msm.dust." + SwordItems.swordList.get(stack.getItemDamage()).swordName;
+        return "item.msm.dust." + SwordItems.swordList.get(stack.getMetadata()).swordName;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class ItemSwordDust extends Item {
     @SideOnly(Side.CLIENT)
     public IIcon getIconIndex(ItemStack stack) {
 
-        return iconArray[stack.getItemDamage()];
+        return iconArray[stack.getMetadata()];
     }
 
     @Override

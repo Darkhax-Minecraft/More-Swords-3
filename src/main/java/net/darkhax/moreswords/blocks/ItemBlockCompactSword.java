@@ -31,7 +31,7 @@ public class ItemBlockCompactSword extends ItemBlock {
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
 
-        int i = itemStack.getItemDamage();
+        int i = itemStack.getMetadata();
 
         if (i < 0 || i >= SwordItems.swordList.size()) {
 
