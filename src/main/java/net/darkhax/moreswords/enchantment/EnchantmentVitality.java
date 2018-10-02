@@ -35,7 +35,7 @@ public class EnchantmentVitality extends EnchantmentBase {
 
                 player.getHeldItem().damageItem(cfg.vitalityDamage, player);
                 player.addPotionEffect(new PotionEffect(Potion.regeneration.id, cfg.vitalityRegenTime * enchLevel, cfg.vitalityRegenLevel));
-                player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, cfg.vitalityHeartsTime * enchLevel, cfg.vitalityHeartsLevel));
+                player.addPotionEffect(new PotionEffect(Potion.healthBoost.id, cfg.vitalityHeartsTime * enchLevel, cfg.vitalityHeartsLevel));
                 player.addPotionEffect(new PotionEffect(Potion.heal.id, cfg.vitalityHealTime, cfg.vitalityHealLevel));
 
                 stack.damageItem(150 / enchLevel, player);

@@ -39,7 +39,7 @@ public class BlockCompactSword extends Block {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void registerBlockIcons(IIconRegister ir) {
+    public void registerIcons(IIconRegister ir) {
 
         this.iconArray = new IIcon[SwordItems.swordList.size()];
 
